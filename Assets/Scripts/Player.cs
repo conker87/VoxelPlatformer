@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+	[SerializeField]
 	List<string> Collectables = new List<string>();
 
 	// Use this for initialization

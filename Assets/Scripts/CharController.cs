@@ -14,6 +14,9 @@ public class CharController : MonoBehaviour {
 	int jumpIndex = 0, maxDoubleJumps = 1;
 	Rigidbody rb;
 
+	[SerializeField]
+	PlayerForceMode playerForceMode;
+
 	Vector3 forward, right;
 
 	void Start() {
@@ -71,7 +74,7 @@ public class CharController : MonoBehaviour {
 		}
 
 		rb.velocity = new Vector3 (rb.velocity.x, 0f, rb.velocity.z);
-		rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
+		rb.AddForce (Vector3.up * jumpHeight, SetPlayerForceMode(playerForceMode));//ForceMode.Impulse);
 		jumpIndex++;
 
 	}
@@ -91,4 +94,34 @@ public class CharController : MonoBehaviour {
 
 	}
 
-}
+	ForceMode SetPlayerForceMode(PlayerForceMode _playerForceMode) {
+
+		if (_playerForceMode == PlayerForceMode.Acceleration) {
+
+			return ForceMode.Acceleration;
+
+		}
+
+		if (_playerForceMode == PlayerForceMode.Force) {
+
+			return ForceMode.Force;
+
+		}
+
+		if (_playerForceMode == PlayerForceMode.Impulse) {
+
+			return ForceMode.Impulse;
+
+		}
+
+		if (_playerForceMode == PlayerForceMode.VelocityChange) {
+
+			return ForceMode.VelocityChange;
+
+		}
+
+		return ForceMode.Impulse;
+
+	}
+
+} enum PlayerForceMode { Acceleration, Force, Impulse, VelocityChange }
