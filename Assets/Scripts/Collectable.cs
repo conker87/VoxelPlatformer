@@ -7,9 +7,6 @@ public class Collectable : MonoBehaviour {
 	[SerializeField]
 	string CollectableID = "";
 
-	[SerializeField]
-	LayerMask PlayerLayerMask;
-
 	// Use this for initialization
 	void Start () {
 
@@ -23,11 +20,15 @@ public class Collectable : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 
-		Debug.Log("Hit something:");
+		Player player;
 
-		if (other.gameObject.layer == PlayerLayerMask) {
+		if ((player = other.GetComponent<Player>()) != null) {
 
 			Debug.Log(string.Format("Collectable '{0}' at position {1} has hit the player and will be collected.", CollectableID, transform.position));
+
+			player.AddToCollectables (CollectableID);
+
+			Destroy (gameObject);
 
 		}
 

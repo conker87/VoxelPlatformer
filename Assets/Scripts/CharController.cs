@@ -9,9 +9,6 @@ public class CharController : MonoBehaviour {
 	public Transform playerGFX, ground;
 
 	[SerializeField]
-	LayerMask lm;
-
-	[SerializeField]
 	float jumpHeight = 8f;
 	[SerializeField]
 	int jumpIndex = 0, maxDoubleJumps = 1;

@@ -6,11 +6,16 @@ public class OnGround : MonoBehaviour {
 	
 	public bool IsOnGround = false;
 
+	[SerializeField]
+	LayerMask GeometryLayerMask;
+
 	// Use this for initialization
 
 	void OnTriggerEnter(Collider other) {
 
-		IsOnGround = true;
+		if (other.gameObject.layer == Mathf.Log(GeometryLayerMask.value, 2)) {
+			IsOnGround = true;
+		}
 
 	}
 
@@ -22,7 +27,9 @@ public class OnGround : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) {
 
-		IsOnGround = false;
+		if (other.gameObject.layer == Mathf.Log(GeometryLayerMask.value, 2)) {
+			IsOnGround = false;
+		}
 
 	}
 
