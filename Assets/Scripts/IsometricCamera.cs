@@ -16,35 +16,52 @@ public class IsometricCamera : MonoBehaviour
 	void Start() {
 		
 		Camera.main.orthographic = true;
-		CameraParent.transform.rotation = Quaternion.Euler(30f, 45f, 0);
+		transform.rotation = Quaternion.Euler(30f, 45f, 0);
 
 	}
 
 	void LateUpdate() {
-		
+
+		CameraParent.transform.position = target.transform.position;
+
 		Camera.main.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * Time.deltaTime;
+
+		if (Input.GetKey(KeyCode.Q)) {
+			
+			transform.Rotate(Vector3.right * scrollSpeed * Time.deltaTime, Space.Self);
+			transform.LookAt (target.transform.position);
+
+			//transform.Rotate(target.transform.position, Vector3.right, 45f);
+
+		}
+
+		if (Input.GetKey(KeyCode.E)) {
+			
+			transform.Rotate(-Vector3.right * scrollSpeed * Time.deltaTime, Space.Self);
+
+		}
 
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 
-			CameraParent.transform.eulerAngles = new Vector3 (30f, 45f, 0f);
+			transform.eulerAngles = new Vector3 (30f, 45f, 0f);
 
 		}
 
 		if (Input.GetKeyDown (KeyCode.Alpha2)) {
 
-			CameraParent.transform.eulerAngles = new Vector3 (30f, 135f, 0f);
+			transform.eulerAngles = new Vector3 (30f, 135f, 0f);
 
 		}
 
 		if (Input.GetKeyDown (KeyCode.Alpha3)) {
 
-			CameraParent.transform.eulerAngles = new Vector3 (30f, 225f, 0f);
+			transform.eulerAngles = new Vector3 (30f, 225f, 0f);
 
 		}
 
 		if (Input.GetKeyDown (KeyCode.Alpha4)) {
 
-			CameraParent.transform.eulerAngles = new Vector3 (30f, 315f, 0f);
+			transform.eulerAngles = new Vector3 (30f, 315f, 0f);
 
 		}
 
@@ -53,25 +70,29 @@ public class IsometricCamera : MonoBehaviour
 		Vector3 addition = Vector3.zero;
 		// cameraDistanceY = cameraDistanceXZ * .8f;
 
-		if (CameraParent.transform.eulerAngles.y % 315f == 0) {
+		if (transform.eulerAngles.y % 315f == 0) {
 
 			addition = new Vector3 (cameraDistanceXZ, cameraDistanceY, -cameraDistanceXZ);
 
-		} else if (CameraParent.transform.eulerAngles.y % 225f == 0) {
+		} else if (transform.eulerAngles.y % 225f == 0) {
 
 			addition = new Vector3 (cameraDistanceXZ, cameraDistanceY, cameraDistanceXZ);
 
-		} else if (CameraParent.transform.eulerAngles.y % 135f == 0) {
+		} else if (transform.eulerAngles.y % 135f == 0) {
 
 			addition = new Vector3 (-cameraDistanceXZ, cameraDistanceY, cameraDistanceXZ);
 
-		} else if (CameraParent.transform.eulerAngles.y % 45f == 0) {
+		} else if (transform.eulerAngles.y % 45f == 0) {
 	
+			addition = new Vector3 (-cameraDistanceXZ, cameraDistanceY, -cameraDistanceXZ);
+
+		} else {
+
 			addition = new Vector3 (-cameraDistanceXZ, cameraDistanceY, -cameraDistanceXZ);
 
 		}
 
-		CameraParent.transform.position = target.transform.position + addition;
+		transform.position = target.transform.position + addition;
 
 	}
 }

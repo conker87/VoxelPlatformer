@@ -1,11 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CharController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Collectable\Ability.cs">
     <Files>
-      <File FileName="Assets\Scripts\Collectable.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharController.cs" Line="123" Column="28" />
+      <File FileName="Assets\Scripts\CharController.cs" Line="142" Column="72" />
       <File FileName="Assets\Scripts\OnGround.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player.cs" Line="7" Column="18" />
+      <File FileName="Assets\Scripts\Player.cs" Line="60" Column="2" />
+      <File FileName="Assets\Scripts\IsometricCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Collectable\Collectable.cs" Line="11" Column="12" />
+      <File FileName="Assets\Scripts\Collectable\Coin.cs" Line="7" Column="1" />
+      <File FileName="Assets\Scripts\Collectable\Star.cs" Line="7" Column="1" />
+      <File FileName="Assets\Scripts\Collectable\Ability.cs" Line="18" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

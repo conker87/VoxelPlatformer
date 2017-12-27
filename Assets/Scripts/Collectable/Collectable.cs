@@ -1,0 +1,50 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Collectable : MonoBehaviour {
+
+	// TODO: This needs to be split into different inherited Collectables: Coin, Star, etc.
+
+	protected string CollectableID = "";
+	[SerializeField]
+	protected string CollectableType = "";
+
+	// Use this for initialization
+	protected virtual void Start () {
+
+		if (string.IsNullOrEmpty (CollectableType) || CollectableType.Equals ("") || CollectableType == "" || CollectableType == null) {
+
+			Debug.LogError (string.Format("Collectable at position: {0} has no CollectableID. This WILL break the game. Please fix.", transform.position));
+
+		}
+
+		CollectableID = CollectableType + "_" + transform.position;
+
+	}
+
+	protected virtual void OnTriggerEnter(Collider other) {
+
+		Debug.LogError (string.Format("{0}, of type {1}, requires OnTriggerEnter to be overriden in its inheritence.", gameObject.name, CollectableType));
+
+		return;
+
+		/* Player player;
+
+		if ((player = other.GetComponent<Player>()) != null) {
+
+			Debug.Log(string.Format("Collectable '{0}' at position {1} has hit the player and will be collected.", CollectableID, transform.position));
+
+			player.AddToCoins (CollectableID);
+
+			SFXManager.instance.PlayRandomCoinClip ();
+
+			Destroy (gameObject);
+
+		} */
+
+
+	}
+
+
+}

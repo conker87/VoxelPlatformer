@@ -52,12 +52,17 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CharController.cs" />
-     <Compile Include="Assets\Scripts\Collectable.cs" />
+     <Compile Include="Assets\Scripts\Collectable\Ability.cs" />
+     <Compile Include="Assets\Scripts\Collectable\Coin.cs" />
+     <Compile Include="Assets\Scripts\Collectable\Collectable.cs" />
+     <Compile Include="Assets\Scripts\Collectable\Star.cs" />
      <Compile Include="Assets\Scripts\IsometricCamera.cs" />
      <Compile Include="Assets\Scripts\MoveForward.cs" />
      <Compile Include="Assets\Scripts\OnGround.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\RotateChild.cs" />
+     <Compile Include="Assets\Scripts\UIElements.cs" />
+     <Compile Include="Assets\SFXManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />
@@ -108,7 +113,9 @@
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\Shaders\ProjectorLight.shader" />
      <None Include="Assets\TextMesh Pro\Fonts\Bangers - OFL.txt" />
+     <None Include="Assets\Shaders\ProjectorMultiply.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

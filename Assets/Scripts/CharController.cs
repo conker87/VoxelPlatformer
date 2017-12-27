@@ -6,12 +6,22 @@ public class CharController : MonoBehaviour {
 
 	[SerializeField]
 	float moveSpeed = 4f;
-	public Transform playerGFX, ground;
+	public Transform playerGFX;
 
 	[SerializeField]
 	float jumpHeight = 8f;
 	[SerializeField]
-	int jumpIndex = 0, maxDoubleJumps = 1;
+	int jumpIndex = 0, jumpMax = 1;
+
+	[SerializeField]
+	float baseButtStompForce = 10f;
+	bool hasButtStomped = false;
+
+	float originalYLevel;
+
+	[SerializeField]
+	float lowestYLevel;
+
 	Rigidbody rb;
 
 	[SerializeField]
@@ -19,23 +29,38 @@ public class CharController : MonoBehaviour {
 
 	Vector3 forward, right;
 
+	[SerializeField]
+	bool OnGround;
+
+	Player player;
+
 	void Start() {
 		
 		ResetForwardDirection ();
 
 		rb = GetComponent<Rigidbody> ();
 
+		player = GetComponent<Player> ();
+
 	}
 
 	void FixedUpdate() {
 
-		if (IsOnGround () && jumpIndex != 0) {
+		OnGround = IsOnGround ();
+
+		if (OnGround && jumpIndex != 0) {
 
 			jumpIndex = 0;
 
 		}
 
 		if (Input.GetButtonDown ("Jump")) {
+
+			if (OnGround) {
+
+				originalYLevel = transform.position.y;
+
+			}
 
 			Jump ();
 
@@ -45,7 +70,27 @@ public class CharController : MonoBehaviour {
 
 		}
 
+		if (Input.GetButtonDown ("ButtStomp") && !OnGround && !hasButtStomped) {
+
+			ButtStomp ();
+
+		}
+
 		rb.velocity = new Vector3 (0f, rb.velocity.y, 0f);
+
+		if (!(rb.velocity.y > -0.01f && rb.velocity.y < 0.01f)) {
+			
+			Debug.Log (rb.velocity.y.ToString ("##.00000000"));
+
+		}
+
+		if (OnGround) {
+
+			hasButtStomped = false;
+
+		}
+
+		lowestYLevel = (lowestYLevel > transform.position.y) ? transform.position.y : lowestYLevel;
 
 	}
 
@@ -67,21 +112,41 @@ public class CharController : MonoBehaviour {
 
 	void Jump() {
 
-		if (jumpIndex >= maxDoubleJumps) {
+		if (player.HasAcquiredAbility ("DoubleJump")) { 
+
+			jumpMax = 2;
+
+		}
+
+		if (jumpIndex >= jumpMax) {
 
 			return;
 
 		}
 
 		rb.velocity = new Vector3 (rb.velocity.x, 0f, rb.velocity.z);
-		rb.AddForce (Vector3.up * jumpHeight, SetPlayerForceMode(playerForceMode));//ForceMode.Impulse);
+		rb.AddForce (Vector3.up * jumpHeight, SetPlayerForceMode(playerForceMode));
 		jumpIndex++;
+
+	}
+
+	void ButtStomp() {
+
+		float currentYLevel = transform.position.y;
+
+		float buttonStompForce = baseButtStompForce + (1.5f * (currentYLevel - originalYLevel));
+
+		Debug.Log (string.Format("buttonStompForce: {0}, original/currentY: {1}/{2}", buttonStompForce, originalYLevel, currentYLevel));
+
+		hasButtStomped = true;
+		rb.AddForce (-Vector3.up * buttonStompForce, ForceMode.VelocityChange);
 
 	}
 
 	bool IsOnGround() {
 
-		return ground.GetComponent<OnGround> ().IsOnGround;
+		return (rb.velocity.y > -0.01f && rb.velocity.y < 0.01f);
+		// return Mathf.Approximately(0f, rb.velocity.y);
 
 	}
 

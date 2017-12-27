@@ -5,7 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
 	[SerializeField]
-	List<string> Collectables = new List<string>();
+	List<string> Abilities = new List<string>();
+	[SerializeField]
+	List<string> Coins = new List<string>();
+	[SerializeField]
+	List<string> Stars = new List<string>();
 
 	// Use this for initialization
 	void Start () {
@@ -17,15 +21,57 @@ public class Player : MonoBehaviour {
 		
 	}
 
-	public void AddToCollectables(string collectableID) {
+	public void AddToAbilities(string abilityID) {
 
-		if (Collectables.Contains (collectableID)) {
+		if (Abilities.Contains (abilityID)) {
 
 			return;
 
 		}
 
-		Collectables.Add (collectableID);
+		Abilities.Add (abilityID);
+
+	}
+
+	public bool HasAcquiredAbility(string abilityID) {
+
+		return Abilities.Contains (abilityID);
+
+	}
+
+	public void AddToCoins(string coinID) {
+
+		if (Coins.Contains (coinID)) {
+
+			return;
+
+		}
+
+		Coins.Add (coinID);
+
+	}
+
+	public int NumberOfCoins() {
+
+		return Coins.Count;
+
+	}
+
+	public void AddToStars(string starID) {
+
+		if (Stars.Contains (starID)) {
+
+			return;
+
+		}
+
+		Stars.Add (starID);
+
+	}
+
+	public int NumberOfStars() {
+
+		return Stars.Count;
 
 	}
 
