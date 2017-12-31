@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SaveData SaveFileName="SaveFileName" SaveFileDate="SaveFileDate" SaveFileTime="SaveFileTime" SaveFileTimeOnGame="SaveFileTimeOnGame">
+<!--This is the list of Coins collected.-->
+	<coins>
+	</coins>
+
+<!--This is the list of Stars collected.-->
+	<stars>
+		<star CollectableID="Star_(7.0, 2.0, -51.0)" />
+	</stars>
+
+<!--This is the list of Abilities collected.-->
+	<abilities>
+	</abilities>
+</SaveData>

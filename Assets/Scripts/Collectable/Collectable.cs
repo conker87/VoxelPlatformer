@@ -6,9 +6,11 @@ public class Collectable : MonoBehaviour {
 
 	// TODO: This needs to be split into different inherited Collectables: Coin, Star, etc.
 
-	protected string CollectableID = "";
+	public string CollectableID = "";
 	[SerializeField]
 	protected string CollectableType = "";
+
+	public bool CollectableCollected = false;
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -46,5 +48,13 @@ public class Collectable : MonoBehaviour {
 
 	}
 
+	protected virtual void Update() {
+		
+		if (CollectableCollected) {
 
+			gameObject.SetActive (false);
+
+		}
+
+	}
 }
