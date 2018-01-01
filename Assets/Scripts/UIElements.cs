@@ -17,6 +17,8 @@ public class UIElements : MonoBehaviour {
 
 	void OnGUI() {
 
+		FindPlayer ();
+
 		if (NumberOfCoins != null) {
 
 			NumberOfCoins.text = "Coins: " + player.NumberOfCoins ().ToString();
@@ -28,6 +30,19 @@ public class UIElements : MonoBehaviour {
 			NumberOfStars.text = "Stars: " + player.NumberOfStars ().ToString();
 
 		}
+
+
+	}
+
+	void FindPlayer() {
+
+		if (player != null) {
+
+			return;
+
+		}
+
+		player = FindObjectOfType<Player> ();
 
 
 	}

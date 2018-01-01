@@ -4,18 +4,36 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-	public static GameController current;
+	// public static GameController current;
 
-	[SerializeField]
 	public List<float> BestLevelTimes = new List<float> ();
-	[SerializeField]
 	public List<bool> OpenedLevels = new List<bool>();
 
-	void Awake() {
+	public List<Level> LevelPrefabs = new List<Level> ();
 
-		if (current == null) {
+	public Player PlayerPrefab;
 
-			current = this;
+	bool HasLoaded = false;
+
+	void Start() {
+
+		if (LevelPrefabs.Count > 0) {
+
+			// DEBUG: Spawn the test level.
+
+			foreach (Level level in FindObjectsOfType<Level>()) {
+
+				if (level.LevelName == LevelPrefabs [0].LevelName) {
+
+					HasLoaded = true;
+
+				}
+
+			}
+
+			if (!HasLoaded) {
+				Instantiate (LevelPrefabs [0]);
+			}
 
 		}
 

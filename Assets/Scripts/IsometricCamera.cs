@@ -3,7 +3,7 @@ using System.Collections;
 
 public class IsometricCamera : MonoBehaviour
 {
-	public GameObject target;
+	public Player player;
 	public Transform CameraParent;
 	public float size = 10;
 	public float scrollSpeed = 30;
@@ -22,14 +22,16 @@ public class IsometricCamera : MonoBehaviour
 
 	void LateUpdate() {
 
-		CameraParent.transform.position = target.transform.position;
+		FindPlayer ();
+
+		CameraParent.transform.position = player.transform.position;
 
 		Camera.main.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * Time.deltaTime;
 
 		if (Input.GetKey(KeyCode.Q)) {
 			
 			transform.Rotate(Vector3.right * scrollSpeed * Time.deltaTime, Space.Self);
-			transform.LookAt (target.transform.position);
+			transform.LookAt (player.transform.position);
 
 			//transform.Rotate(target.transform.position, Vector3.right, 45f);
 
@@ -65,7 +67,7 @@ public class IsometricCamera : MonoBehaviour
 
 		}
 
-		target.GetComponent<CharController> ().ResetForwardDirection ();
+		player.GetComponent<CharController> ().ResetForwardDirection ();
 
 		Vector3 addition = Vector3.zero;
 		// cameraDistanceY = cameraDistanceXZ * .8f;
@@ -92,7 +94,21 @@ public class IsometricCamera : MonoBehaviour
 
 		}
 
-		transform.position = target.transform.position + addition;
+		transform.position = player.transform.position + addition;
 
 	}
+
+	void FindPlayer() {
+
+		if (player != null) {
+
+			return;
+
+		}
+
+		player = FindObjectOfType<Player> ();
+
+
+	}
+
 }

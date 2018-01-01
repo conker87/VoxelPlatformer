@@ -10,11 +10,30 @@ public class Level : MonoBehaviour {
 
 	public bool IsCurrentLevel = false;
 
+	public GameObject GeometryObject;
+
 	public List<Enemy> EnemiesInLevel = new List<Enemy>();
+
+	GameController gameController;
+
+	public Player player;
 
 	// Should this be OnEnable?
 	void Start() {
 
+		gameController = FindObjectOfType<GameController> ();
+
+		if (!IsCurrentLevel) {
+
+			GeometryObject.SetActive (false);
+
+		}
+
+	}
+
+	void OnEnable() {
+
+		Instantiate (player, StartLocation.transform.position + (StartLocation.transform.forward * 4f), Quaternion.identity);
 
 
 	}

@@ -2,11 +2,17 @@
 <SaveData SaveFileName="SaveFileName" SaveFileDate="SaveFileDate" SaveFileTime="SaveFileTime" SaveFileTimeOnGame="SaveFileTimeOnGame">
 <!--This is the list of Coins collected.-->
 	<coins>
+		<coin CollectableID="Coin_(37.0, 2.0, -39.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -36.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -33.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -30.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -26.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -22.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -19.5)" />
 	</coins>
 
 <!--This is the list of Stars collected.-->
 	<stars>
-		<star CollectableID="Star_(7.0, 2.0, -51.0)" />
 	</stars>
 
 <!--This is the list of Abilities collected.-->

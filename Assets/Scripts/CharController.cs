@@ -42,6 +42,9 @@ public class CharController : MonoBehaviour {
 
 		player = GetComponent<Player> ();
 
+
+		rb.AddForce (player.transform.forward * 10f);
+
 	}
 
 	void FixedUpdate() {
