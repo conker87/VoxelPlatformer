@@ -3,8 +3,21 @@
 <!--This is the list of Coins collected.-->
 	<coins>
 		<coin CollectableID="Coin_(37.0, 2.0, -39.5)" />
-		<coin CollectableID="Coin_(37.0, 2.0, -33.5)" />
 		<coin CollectableID="Coin_(37.0, 2.0, -36.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -33.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -30.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -26.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -22.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -19.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -5.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -8.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -12.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -16.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -2.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, 1.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, 5.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, 8.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, 11.5)" />
 	</coins>
 
 <!--This is the list of Stars collected.-->
@@ -13,5 +26,6 @@
 
 <!--This is the list of Abilities collected.-->
 	<abilities>
+		<ability AbilityID="DoubleJump" />
 	</abilities>
 </SaveData>

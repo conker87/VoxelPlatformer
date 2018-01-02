@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using System.Linq;
+
 using UnityEngine;
 using UnityEngine.UI;
+
 using System.Text;
 using System.Xml;
 
-public static class SaveController {
+public class SaveController : MonoBehaviour {
 
 	// TODO: Make it so that it actually saves to a file.
 		// Maybe obfuscate the save file to prevent editing? Who cares? Question mark?
-
-	static Player player;
 
 	static List<string> _starsInWorld = new List<string> ();
 	public static List<string> StarsInWorld {
@@ -39,13 +40,17 @@ public static class SaveController {
 
 	static XmlWriter xmlWriter;
 
+	void Start() {
+		
+	}
+
 	public static void LoadGame() {
 
 		XmlReader xmlReader = XmlReader.Create("saveGameTest.xml");
 
-		Player.current.Abilities.Clear ();
-		Player.current.Coins.Clear ();
-		Player.current.Stars.Clear ();
+		GameController.current.Abilities.Clear ();
+		GameController.current.Coins.Clear ();
+		GameController.current.Stars.Clear ();
 
 		while(xmlReader.Read()) {
 
@@ -64,7 +69,7 @@ public static class SaveController {
 
 					while (xmlReader.MoveToNextAttribute ()) {
 
-						Player.current.Abilities.Add (xmlReader.Value);
+						GameController.current.Abilities.Add (xmlReader.Value);
 
 					}
 
@@ -74,7 +79,7 @@ public static class SaveController {
 
 					while (xmlReader.MoveToNextAttribute ()) {
 
-						Player.current.Coins.Add (xmlReader.GetAttribute("CollectableID"));
+						GameController.current.Coins.Add (xmlReader.GetAttribute("CollectableID"));
 
 					}
 
@@ -84,7 +89,7 @@ public static class SaveController {
 
 					while (xmlReader.MoveToNextAttribute ()) {
 
-						Player.current.Stars.Add (xmlReader.Value);
+						GameController.current.Stars.Add (xmlReader.Value);
 
 					}
 
@@ -106,7 +111,7 @@ public static class SaveController {
 		// TODO: We should make sure that when we load the level, it also does this, because having all levels loaded is fucking dumb af.
 		foreach (Coin coin in GameObject.FindObjectsOfType<Coin>()) {
 
-			if (Player.current.Coins.Contains(coin.CollectableID)) {
+			if (GameController.current.Coins.Contains(coin.CollectableID)) {
 
 				coin.CollectableCollected = true;
 
@@ -116,7 +121,7 @@ public static class SaveController {
 
 		foreach (Star star in GameObject.FindObjectsOfType<Star>()) {
 
-			if (Player.current.Stars.Contains(star.CollectableID)) {
+			if (GameController.current.Stars.Contains(star.CollectableID)) {
 
 				star.CollectableCollected = true;
 
@@ -159,7 +164,7 @@ public static class SaveController {
 
 		xmlWriter.WriteStartElement("stars");
 
-		foreach (string star in Player.current.Stars) {
+		foreach (string star in GameController.current.Stars) {
 
 			xmlWriter.WriteWhitespace("\n\t\t");
 
@@ -184,7 +189,7 @@ public static class SaveController {
 
 		xmlWriter.WriteStartElement("abilities");
 
-		foreach (string ability in Player.current.Abilities) {
+		foreach (string ability in GameController.current.Abilities) {
 
 			xmlWriter.WriteWhitespace("\n\t\t");
 
@@ -209,7 +214,7 @@ public static class SaveController {
 
 		xmlWriter.WriteStartElement("coins");
 
-		foreach (string coin in Player.current.Coins) {
+		foreach (string coin in GameController.current.Coins) {
 
 			xmlWriter.WriteWhitespace("\n\t\t");
 

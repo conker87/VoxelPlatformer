@@ -23,12 +23,7 @@ public class Player : MonoBehaviour {
 
 	public bool 	IsDead = false;
 
-	[SerializeField]
-	public List<string> Abilities = new List<string>();
-	[SerializeField]
-	public List<string> Coins = new List<string>();
-	[SerializeField]
-	public List<string> Stars = new List<string>();
+
 
 	void Start () {
 		
@@ -86,58 +81,5 @@ public class Player : MonoBehaviour {
 
 	}
 
-	public void AddToAbilities(string abilityID) {
-
-		if (Abilities.Contains (abilityID)) {
-
-			return;
-
-		}
-
-		Abilities.Add (abilityID);
-
-	}
-
-	public bool HasAcquiredAbility(string abilityID) {
-
-		return Abilities.Contains (abilityID);
-
-	}
-
-	public void AddToCoins(string coinID) {
-
-		if (Coins.Contains (coinID)) {
-
-			return;
-
-		}
-
-		Coins.Add (coinID);
-
-	}
-
-	public int NumberOfCoins() {
-
-		return Coins.Count;
-
-	}
-
-	public void AddToStars(string starID) {
-
-		if (Stars.Contains (starID)) {
-
-			return;
-
-		}
-
-		Stars.Add (starID);
-
-	}
-
-	public int NumberOfStars() {
-
-		return Stars.Count;
-
-	}
 
 }

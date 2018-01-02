@@ -34,6 +34,8 @@ public class CharController : MonoBehaviour {
 
 	Player player;
 
+	GameController gameController;
+
 	void Start() {
 		
 		ResetForwardDirection ();
@@ -41,6 +43,8 @@ public class CharController : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 
 		player = GetComponent<Player> ();
+
+		gameController = FindObjectOfType<GameController> ();
 
 	}
 
@@ -118,7 +122,7 @@ public class CharController : MonoBehaviour {
 
 	void Jump() {
 
-		if (player.HasAcquiredAbility ("DoubleJump")) { 
+		if (gameController.HasAcquiredAbility ("DoubleJump")) { 
 
 			jumpMax = 2;
 

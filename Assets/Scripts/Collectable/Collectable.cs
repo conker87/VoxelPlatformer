@@ -13,7 +13,12 @@ public class Collectable : MonoBehaviour {
 	public bool CollectableCollected = false;
 
 	// Use this for initialization
+
+	protected GameController gameController;
+
 	protected virtual void Start () {
+
+		gameController = FindObjectOfType<GameController> ();
 
 		if (string.IsNullOrEmpty (CollectableType) || CollectableType.Equals ("") || CollectableType == "" || CollectableType == null) {
 
@@ -57,4 +62,11 @@ public class Collectable : MonoBehaviour {
 		}
 
 	}
+
+	protected virtual void HasCollectedCollectable() {
+
+		Debug.LogError (string.Format("{0}, of type {1}, requires HasCollectedCollected to be overriden in its inheritence.", gameObject.name, CollectableType));
+
+	}
+
 }

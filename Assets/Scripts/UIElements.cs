@@ -8,10 +8,11 @@ public class UIElements : MonoBehaviour {
 	public TextMeshProUGUI NumberOfCoins, NumberOfStars, Health;
 
 	public Player player;
+	public GameController gameController;
 
 	void Start() {
 
-
+		gameController = FindObjectOfType<GameController> ();
 
 	}
 
@@ -25,13 +26,13 @@ public class UIElements : MonoBehaviour {
 
 		if (NumberOfCoins != null) {
 
-			NumberOfCoins.text = "Coins: " + player.NumberOfCoins ().ToString();
+			NumberOfCoins.text = "Coins: " + gameController.NumberOfCoins ().ToString();
 
 		}
 
 		if (NumberOfStars != null) {
 
-			NumberOfStars.text = "Stars: " + player.NumberOfStars ().ToString();
+			NumberOfStars.text = "Stars: " + gameController.NumberOfStars ().ToString();
 
 		}
 

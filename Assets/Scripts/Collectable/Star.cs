@@ -4,20 +4,41 @@ using UnityEngine;
 
 public class Star : Collectable {
 
+	protected override void Start () {
+
+		base.Start ();
+
+		HasCollectedCollectable ();
+
+	}
+
 	protected override void OnTriggerEnter (Collider other) {
 
-		Player player;
-
-		if ((player = other.GetComponent<Player>()) != null) {
+		if (other.GetComponent<Player>() != null) {
 
 			Debug.Log(string.Format("Collectable '{0}' at position {1} has hit the player and will be collected.", CollectableID, transform.position));
 
-			player.AddToStars (CollectableID);
+			gameController.AddToStars (CollectableID);
 
 			// TODO: Add some star collection clips.
 			SFXManager.instance.PlayRandomCoinClip ();
 
 			Destroy (gameObject);
+
+		}
+
+	}
+
+	protected override void HasCollectedCollectable () {
+
+		foreach (string SCollectableID in GameController.current.Stars) {
+
+			if (SCollectableID == CollectableID) {
+
+				gameObject.SetActive (false);
+
+
+			}
 
 		}
 
