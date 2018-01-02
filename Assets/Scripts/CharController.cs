@@ -42,12 +42,15 @@ public class CharController : MonoBehaviour {
 
 		player = GetComponent<Player> ();
 
-
-		rb.AddForce (player.transform.forward * 10f);
-
 	}
 
 	void FixedUpdate() {
+
+		if (player.IsDead) {
+
+			return;
+
+		}
 
 		OnGround = IsOnGround ();
 
@@ -83,7 +86,7 @@ public class CharController : MonoBehaviour {
 
 		if (!(rb.velocity.y > -0.01f && rb.velocity.y < 0.01f)) {
 			
-			Debug.Log (rb.velocity.y.ToString ("##.00000000"));
+			// Debug.Log (rb.velocity.y.ToString ("##.00000000"));
 
 		}
 
@@ -149,7 +152,6 @@ public class CharController : MonoBehaviour {
 	bool IsOnGround() {
 
 		return (rb.velocity.y > -0.01f && rb.velocity.y < 0.01f);
-		// return Mathf.Approximately(0f, rb.velocity.y);
 
 	}
 

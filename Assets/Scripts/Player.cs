@@ -42,6 +42,8 @@ public class Player : MonoBehaviour {
 
 		}
 
+		IsDead = (CurrentHealth == 0) ? true : false;
+
 		// Disable invincibility frames when needed.
 		if (IsCurrentlyInInvincibilityFrames && Time.time > CurrentInvincibilityFramesTime) {
 

@@ -56,10 +56,12 @@
      <Compile Include="Assets\Scripts\Collectable\Coin.cs" />
      <Compile Include="Assets\Scripts\Collectable\Collectable.cs" />
      <Compile Include="Assets\Scripts\Collectable\Star.cs" />
+     <Compile Include="Assets\Scripts\DEBUG_LevelList.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\IsometricCamera.cs" />
      <Compile Include="Assets\Scripts\Level.cs" />
+     <Compile Include="Assets\Scripts\LevelSelectButton.cs" />
      <Compile Include="Assets\Scripts\MoveForward.cs" />
      <Compile Include="Assets\Scripts\OnGround.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />

@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
 	public List<bool> OpenedLevels = new List<bool>();
 
 	public List<Level> LevelPrefabs = new List<Level> ();
+	Level currentlyLoadedLevel;
 
 	public Player PlayerPrefab;
 
@@ -32,10 +33,36 @@ public class GameController : MonoBehaviour {
 			}
 
 			if (!HasLoaded) {
-				Instantiate (LevelPrefabs [0]);
+				// LoadLevel(LevelPrefabs [0]);
 			}
 
 		}
+
+	}
+
+	public void LoadLevel(Level level) {
+
+		if (currentlyLoadedLevel != null) {
+
+			// if (currentlyLoadedLevel.GetComponent<LevelSelectButton>().level == 
+
+			Destroy (currentlyLoadedLevel.gameObject);
+			Destroy (FindObjectOfType<Player> ().gameObject);
+
+		}
+
+
+
+		currentlyLoadedLevel = null;
+
+		currentlyLoadedLevel = Instantiate (level) as Level;
+		currentlyLoadedLevel.IsCurrentLevel = true;
+
+	}
+
+	public void LoadLevel(int level) {
+
+		LoadLevel (LevelPrefabs [level]);
 
 	}
 

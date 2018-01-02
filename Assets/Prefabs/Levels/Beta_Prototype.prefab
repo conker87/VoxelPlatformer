@@ -4311,7 +4311,7 @@ MonoBehaviour:
   LevelNumber: -1
   StartLocation: {fileID: 4282503929448604}
   FinishLocation: {fileID: 4911308595353368}
-  IsCurrentLevel: 1
+  IsCurrentLevel: 0
   GeometryObject: {fileID: 1320856338437896}
   EnemiesInLevel: []
   player: {fileID: 114906714296772224, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}

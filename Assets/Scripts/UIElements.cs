@@ -5,7 +5,7 @@ using TMPro;
 
 public class UIElements : MonoBehaviour {
 
-	public TextMeshProUGUI NumberOfCoins, NumberOfStars;
+	public TextMeshProUGUI NumberOfCoins, NumberOfStars, Health;
 
 	public Player player;
 
@@ -17,7 +17,11 @@ public class UIElements : MonoBehaviour {
 
 	void OnGUI() {
 
-		FindPlayer ();
+		if (!FindPlayer ()) {
+
+			return;
+
+		}
 
 		if (NumberOfCoins != null) {
 
@@ -31,19 +35,34 @@ public class UIElements : MonoBehaviour {
 
 		}
 
+		if (Health != null) {
 
-	}
-
-	void FindPlayer() {
-
-		if (player != null) {
-
-			return;
+			Health.text = player.CurrentHealth + "/" + player.MaximumHealth;
 
 		}
 
-		player = FindObjectOfType<Player> ();
 
+	}
+
+	bool FindPlayer() {
+
+		if (player != null) {
+
+			return true;
+
+		} else {
+
+			player = FindObjectOfType<Player> ();
+
+			if (player != null) {
+
+				return true;
+
+			}
+
+		}
+
+		return false;
 
 	}
 

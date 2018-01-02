@@ -35,7 +35,6 @@ public class Level : MonoBehaviour {
 
 		Instantiate (player, StartLocation.transform.position + (StartLocation.transform.forward * 4f), Quaternion.identity);
 
-
 	}
 
 	void OnDrawGizmos() {

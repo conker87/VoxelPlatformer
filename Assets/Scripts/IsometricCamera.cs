@@ -22,7 +22,11 @@ public class IsometricCamera : MonoBehaviour
 
 	void LateUpdate() {
 
-		FindPlayer ();
+		if (!FindPlayer ()) {
+
+			return;
+
+		}
 
 		CameraParent.transform.position = player.transform.position;
 
@@ -98,16 +102,25 @@ public class IsometricCamera : MonoBehaviour
 
 	}
 
-	void FindPlayer() {
+	bool FindPlayer() {
 
 		if (player != null) {
 
-			return;
+			return true;
+
+		} else {
+
+			player = FindObjectOfType<Player> ();
+
+			if (player != null) {
+
+				return true;
+
+			}
 
 		}
 
-		player = FindObjectOfType<Player> ();
-
+		return false;
 
 	}
 
