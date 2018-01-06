@@ -48,6 +48,31 @@ public class CharController : MonoBehaviour {
 
 	}
 
+	void Update() {
+
+		OnGround = IsOnGround ();
+
+		if (Input.GetButtonDown ("Jump")) {
+
+			if (OnGround) {
+
+				originalYLevel = transform.position.y;
+
+				hasButtStomped = false;
+
+				if (jumpIndex != 0) {
+
+					jumpIndex = 0;
+
+				}
+			}
+
+			Jump ();
+
+		}
+
+	}
+
 	void FixedUpdate() {
 
 		if (player.IsDead) {
@@ -56,29 +81,9 @@ public class CharController : MonoBehaviour {
 
 		}
 
-		OnGround = IsOnGround ();
+		rb.velocity = new Vector3 (0f, rb.velocity.y, 0f);
 
-		if (OnGround && jumpIndex != 0) {
-
-			jumpIndex = 0;
-
-		}
-
-		if (Input.GetButtonDown ("Jump")) {
-
-			if (OnGround) {
-
-				originalYLevel = transform.position.y;
-
-			}
-
-			Jump ();
-
-		} else {
-			
-			Move ();
-
-		}
+		Move ();
 
 		if (Input.GetButtonDown ("ButtStomp") && !OnGround && !hasButtStomped) {
 
@@ -86,17 +91,9 @@ public class CharController : MonoBehaviour {
 
 		}
 
-		rb.velocity = new Vector3 (0f, rb.velocity.y, 0f);
-
 		if (!(rb.velocity.y > -0.01f && rb.velocity.y < 0.01f)) {
 			
-			// Debug.Log (rb.velocity.y.ToString ("##.00000000"));
-
-		}
-
-		if (OnGround) {
-
-			hasButtStomped = false;
+			Debug.Log (rb.velocity.y.ToString ("##.00000000"));
 
 		}
 
@@ -133,6 +130,8 @@ public class CharController : MonoBehaviour {
 			return;
 
 		}
+
+		Debug.Log ("jumps");
 
 		rb.velocity = new Vector3 (rb.velocity.x, 0f, rb.velocity.z);
 		rb.AddForce (Vector3.up * jumpHeight, SetPlayerForceMode(playerForceMode));
