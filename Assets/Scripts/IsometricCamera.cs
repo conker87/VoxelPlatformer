@@ -41,12 +41,6 @@ public class IsometricCamera : MonoBehaviour
 
 		}
 
-		if (Input.GetKey(KeyCode.E)) {
-			
-			transform.Rotate(-Vector3.right * scrollSpeed * Time.deltaTime, Space.Self);
-
-		}
-
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 
 			transform.eulerAngles = new Vector3 (30f, 45f, 0f);

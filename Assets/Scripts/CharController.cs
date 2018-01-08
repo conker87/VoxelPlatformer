@@ -5,69 +5,53 @@ using UnityEngine;
 public class CharController : MonoBehaviour {
 
 	[SerializeField]
-	float moveSpeed = 4f;
-	public Transform playerGFX;
-
+	float moveSpeed = 4f, jumpHeight = 8f;
 	[SerializeField]
-	float jumpHeight = 8f;
-	[SerializeField]
-	int jumpIndex = 0, jumpMax = 1;
+	bool bCanMove = true, bIsOnGround;
 
 	[SerializeField]
 	float baseButtStompForce = 10f;
-	bool hasButtStomped = false;
+	bool bHasButtStomped = false;
 
-	float originalYLevel;
+	float fPreJumpYLevel;
 
 	[SerializeField]
-	float lowestYLevel;
+	LayerMask lmGeometryLayerMask;
 
 	Rigidbody rb;
+	Player p;
 
-	[SerializeField]
-	PlayerForceMode playerForceMode;
+	Vector3 v3Forward, v3Right;
 
-	Vector3 forward, right;
-
-	[SerializeField]
-	bool OnGround;
-
-	Player player;
-
-	GameController gameController;
+	float fRaycastSkin = 0.1f;
+	float fCapsuleColliderYBounds;
 
 	void Start() {
 		
 		ResetForwardDirection ();
 
 		rb = GetComponent<Rigidbody> ();
+		p = GetComponent<Player> ();
 
-		player = GetComponent<Player> ();
-
-		gameController = FindObjectOfType<GameController> ();
+		fCapsuleColliderYBounds = GetComponent<CapsuleCollider>().bounds.extents.y;
 
 	}
 
 	void Update() {
 
-		OnGround = IsOnGround ();
+		IsGrounded ();
 
 		if (Input.GetButtonDown ("Jump")) {
 
-			if (OnGround) {
-
-				originalYLevel = transform.position.y;
-
-				hasButtStomped = false;
-
-				if (jumpIndex != 0) {
-
-					jumpIndex = 0;
-
-				}
-			}
-
 			Jump ();
+
+		}
+
+		if (Input.GetButtonDown ("ButtStomp") && !bHasButtStomped) {
+
+			if (!bIsOnGround) {
+				ButtStomp ();
+			}
 
 		}
 
@@ -75,36 +59,28 @@ public class CharController : MonoBehaviour {
 
 	void FixedUpdate() {
 
-		if (player.IsDead) {
+		rb.velocity = new Vector3 (0f, rb.velocity.y, 0f);
+
+		if (p.IsDead) {
 
 			return;
 
 		}
 
-		rb.velocity = new Vector3 (0f, rb.velocity.y, 0f);
+		if (!bCanMove) {
+
+			return;
+
+		}
 
 		Move ();
-
-		if (Input.GetButtonDown ("ButtStomp") && !OnGround && !hasButtStomped) {
-
-			ButtStomp ();
-
-		}
-
-		if (!(rb.velocity.y > -0.01f && rb.velocity.y < 0.01f)) {
-			
-			Debug.Log (rb.velocity.y.ToString ("##.00000000"));
-
-		}
-
-		lowestYLevel = (lowestYLevel > transform.position.y) ? transform.position.y : lowestYLevel;
 
 	}
 
 	void Move() {
 		
-		Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis ("HorizontalKey"); 
-		Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis ("VerticalKey");
+		Vector3 rightMovement = v3Right * moveSpeed * Time.deltaTime * Input.GetAxis ("HorizontalKey"); 
+		Vector3 upMovement = v3Forward * moveSpeed * Time.deltaTime * Input.GetAxis ("VerticalKey");
 		Vector3 heading = Vector3.Normalize (rightMovement + upMovement);
 
 		if (heading.magnitude > 0.1f) {
@@ -119,82 +95,87 @@ public class CharController : MonoBehaviour {
 
 	void Jump() {
 
-		if (gameController.HasAcquiredAbility ("DoubleJump")) { 
+		if (!bIsOnGround) {
 
-			jumpMax = 2;
 
-		}
-
-		if (jumpIndex >= jumpMax) {
 
 			return;
 
+		} else {
+
+			fPreJumpYLevel = transform.position.y;
+
 		}
 
-		Debug.Log ("jumps");
-
 		rb.velocity = new Vector3 (rb.velocity.x, 0f, rb.velocity.z);
-		rb.AddForce (Vector3.up * jumpHeight, SetPlayerForceMode(playerForceMode));
-		jumpIndex++;
+		rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
 
 	}
 
 	void ButtStomp() {
 
-		float currentYLevel = transform.position.y;
+		float fCurrentYLevel = transform.position.y;
+		float fButtStompForce = baseButtStompForce + (1.5f * (fCurrentYLevel - fPreJumpYLevel));
 
-		float buttonStompForce = baseButtStompForce + (1.5f * (currentYLevel - originalYLevel));
+		Debug.Log (string.Format("buttonStompForce: {0}, original/currentY: {1}/{2}", fButtStompForce, fPreJumpYLevel, fCurrentYLevel));
 
-		Debug.Log (string.Format("buttonStompForce: {0}, original/currentY: {1}/{2}", buttonStompForce, originalYLevel, currentYLevel));
-
-		hasButtStomped = true;
-		rb.AddForce (-Vector3.up * buttonStompForce, ForceMode.VelocityChange);
-
-	}
-
-	bool IsOnGround() {
-
-		return (rb.velocity.y > -0.01f && rb.velocity.y < 0.01f);
+		rb.velocity = Vector3.zero;
+		bHasButtStomped = true;
+		rb.AddForce (-Vector3.up * fButtStompForce, ForceMode.VelocityChange);
 
 	}
 
 	public void ResetForwardDirection() {
 
-		forward = Camera.main.transform.forward; 
-		forward.y = 0; 
-		forward = Vector3.Normalize(forward); 
-		right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward; 
+		v3Forward = Camera.main.transform.forward; 
+		v3Forward.y = 0; 
+		v3Forward = Vector3.Normalize(v3Forward); 
+		v3Right = Quaternion.Euler(new Vector3(0, 90, 0)) * v3Forward; 
 
 	}
 
-	ForceMode SetPlayerForceMode(PlayerForceMode _playerForceMode) {
+	void IsGrounded() {
+		
+		if (Physics.Raycast (transform.position, -Vector3.up, fCapsuleColliderYBounds + fRaycastSkin, lmGeometryLayerMask)) {
 
-		if (_playerForceMode == PlayerForceMode.Acceleration) {
+			bHasButtStomped = false;
+			bIsOnGround = true;
 
-			return ForceMode.Acceleration;
+		} else {
 
-		}
-
-		if (_playerForceMode == PlayerForceMode.Force) {
-
-			return ForceMode.Force;
-
-		}
-
-		if (_playerForceMode == PlayerForceMode.Impulse) {
-
-			return ForceMode.Impulse;
+			bIsOnGround = false; 
 
 		}
+			
+	}
 
-		if (_playerForceMode == PlayerForceMode.VelocityChange) {
+	void OnDrawGizmos() {
 
-			return ForceMode.VelocityChange;
-
-		}
-
-		return ForceMode.Impulse;
+		Debug.DrawLine (transform.position, new Vector3 (transform.position.x, transform.position.y - (fCapsuleColliderYBounds + fRaycastSkin), transform.position.z), Color.green);
+		// Gizmos.DrawWireSphere (new Vector3(transform.position.x, transform.position.y - fSphereColliderOffset, transform.position.z), 1f);
 
 	}
 
-} enum PlayerForceMode { Acceleration, Force, Impulse, VelocityChange }
+	/* void OnCollisionEnter(Collision other) {
+
+		foreach (ContactPoint cp in other.contacts) {
+			
+			// Debug.Log (cp.point);
+			//cp.otherCollider.
+
+		}
+
+
+		Debug.Log ("Entered Collision");
+		bIsOnGround = true;
+
+	}
+
+	//consider when character is jumping .. it will exit collision.
+	void OnCollisionExit(Collision other) {
+
+		bIsOnGround = false;
+
+	} */
+
+}

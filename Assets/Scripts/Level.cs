@@ -24,6 +24,12 @@ public class Level : MonoBehaviour {
 
 		}
 
+		foreach (Transform go in GetComponentsInChildren<Transform>()) {
+
+			go.gameObject.tag = "Geometry";
+
+		}
+
 	}
 
 	void OnEnable() {

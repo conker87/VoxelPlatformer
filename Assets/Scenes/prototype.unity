@@ -1609,6 +1609,7 @@ MonoBehaviour:
   NumberOfStars: {fileID: 411216521}
   Health: {fileID: 334069701}
   player: {fileID: 0}
+  gameController: {fileID: 0}
 --- !u!1 &1736562402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1710,52 @@ MonoBehaviour:
   scrollSpeed: 30
   cameraDistanceY: 85
   cameraDistanceXZ: 100
+--- !u!1001 &1791328830
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4738165346403698, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738165346403698, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738165346403698, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738165346403698, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738165346403698, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738165346403698, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738165346403698, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738165346403698, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678283881056016, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c77dc81388e46b84fbf74afba92d1f86, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1849870790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +1801,9 @@ MonoBehaviour:
   LevelPrefabs:
   - {fileID: 114935994654313664, guid: ee32a2c794e8f3a4ea3d7e4c8de5baa1, type: 2}
   - {fileID: 114562191669621506, guid: cda402c1fe07e8240b3b44d9d1990469, type: 2}
+  Abilities: []
+  Coins: []
+  Stars: []
   PlayerPrefab: {fileID: 114906714296772224, guid: c77dc81388e46b84fbf74afba92d1f86,
     type: 2}
 --- !u!1 &1891970700

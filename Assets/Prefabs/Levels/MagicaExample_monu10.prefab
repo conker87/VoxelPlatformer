@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 114562191669621506}
   m_Layer: 9
   m_Name: MagicaExample_monu10
-  m_TagString: Untagged
+  m_TagString: Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
