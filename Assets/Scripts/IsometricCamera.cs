@@ -16,7 +16,8 @@ public class IsometricCamera : MonoBehaviour
 	void Start() {
 		
 		Camera.main.orthographic = true;
-		transform.rotation = Quaternion.Euler(30f, 45f, 0);
+		// transform.rotation = Quaternion.Euler(30f, 45f, 0);
+		transform.eulerAngles = new Vector3 (30f, 315f, 0f);
 
 	}
 

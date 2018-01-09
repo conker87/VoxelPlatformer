@@ -34,7 +34,7 @@ public class Level : MonoBehaviour {
 
 	void OnEnable() {
 
-		Instantiate (player, StartLocation.transform.position + (StartLocation.transform.forward * 4f), Quaternion.identity);
+		Instantiate (player, (StartLocation == null) ? Vector3.zero : StartLocation.transform.position, Quaternion.identity);
 
 	}
 
