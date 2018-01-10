@@ -1,24 +1,26 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UIElements.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SaveController.cs">
     <Files>
       <File FileName="Assets\Scripts\CharController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Collectable\Collectable.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Collectable\Coin.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Collectable\Star.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Level.cs" Line="45" Column="129" />
+      <File FileName="Assets\Scripts\Level.cs" Line="50" Column="38" />
+      <File FileName="Assets\Scripts\LevelScore.cs" Line="8" Column="1" />
       <File FileName="Assets\Scripts\DEBUG_LevelList.cs" Line="31" Column="3" />
-      <File FileName="Assets\Scripts\LevelDetails.cs" Line="1" Column="1" />
-      <File FileName="Assets\EndLocation.cs" Line="15" Column="3" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="58" Column="4" />
-      <File FileName="Assets\Scripts\SaveController.cs" Line="1" Column="1" />
-      <File FileName="Assets\LevelSelect.cs" Line="7" Column="28" />
-      <File FileName="Assets\Scripts\UIElements.cs" Line="48" Column="37" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="43" Column="62" />
+      <File FileName="Assets\Scripts\SaveController.cs" Line="108" Column="38" />
+      <File FileName="Assets\Scripts\UIElements.cs" Line="6" Column="42" />
+      <File FileName="Assets\Scripts\DEBUG_UIQuitLevel.cs" Line="10" Column="84" />
+      <File FileName="Assets\Scripts\UIButton_LoadGame.cs" Line="8" Column="1" />
+      <File FileName="Assets\Scripts\Collectable\Coin.cs" Line="17" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <RunToCursorBreakpoint file="U:\UNITY\VoxelPlatformer\Assets\Scripts\UIElements.cs" line="11" column="23" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

@@ -38,6 +38,13 @@ public class SaveController : MonoBehaviour {
 
 	}
 
+	static List<LevelScore> _levelScore = new List<LevelScore> ();
+	public static List<LevelScore> LevelScore {
+
+		get { return _levelScore; } 
+		set { _levelScore = value; }
+
+	}
 
 	static List<string> _openedLevels = new List<string>();
 	public static List<string> OpenedLevels {
@@ -61,6 +68,7 @@ public class SaveController : MonoBehaviour {
 		GameController.current.Coins.Clear ();
 		GameController.current.Stars.Clear ();
 		GameController.current.OpenedLevels.Clear ();
+		GameController.current.LevelScores.Clear ();
 
 		while(xmlReader.Read()) {
 
@@ -78,7 +86,7 @@ public class SaveController : MonoBehaviour {
 				if (xmlReader.Name == "ability") {
 
 					while (xmlReader.MoveToNextAttribute ()) {
-
+						// xmlReader.GetAttribute ("stationID"))
 						GameController.current.Abilities.Add (xmlReader.Value);
 
 					}
@@ -87,31 +95,23 @@ public class SaveController : MonoBehaviour {
 
 				if (xmlReader.Name == "coin") {
 
-					while (xmlReader.MoveToNextAttribute ()) {
-
-						GameController.current.Coins.Add (xmlReader.GetAttribute("CollectableID"));
-
-					}
+					GameController.current.Coins.Add (xmlReader.GetAttribute("CollectableID"));
 
 				}
 
 				if (xmlReader.Name == "star") {
 
-					while (xmlReader.MoveToNextAttribute ()) {
-
-						GameController.current.Stars.Add (xmlReader.Value);
-
-					}
+					GameController.current.Stars.Add (xmlReader.GetAttribute("CollectableID"));
 
 				}
 
-				if (xmlReader.Name == "level") {
+				if (xmlReader.Name == "levelscore") {
 
-					while (xmlReader.MoveToNextAttribute ()) {
+					LevelScore temp = new LevelScore(xmlReader.GetAttribute("LevelID").ToString(), float.Parse(xmlReader.GetAttribute("BestTime")),
+						int.Parse(xmlReader.GetAttribute("CurrentCoins")), int.Parse(xmlReader.GetAttribute("MaxCoins")));
 
-						GameController.current.Stars.Add (xmlReader.Value);
-
-					}
+					Debug.Log (string.Format("Details: {0}, {1}, {2}, {3}", temp.LevelID, temp.BestTime, temp.CurrentCoins, temp.MaxCoins));
+					GameController.current.LevelScores.Add(temp);
 
 				}
 
@@ -169,6 +169,7 @@ public class SaveController : MonoBehaviour {
 		SaveCoinsCollected ();
 		SaveStarsCollected ();
 		SaveAbilitiesCollected ();
+		SaveLevelScores ();
 
 		xmlWriter.WriteEndElement();
 		xmlWriter.WriteEndDocument();
@@ -227,7 +228,7 @@ public class SaveController : MonoBehaviour {
 	}
 
 	static void SaveCoinsCollected() {
-		
+
 		xmlWriter.WriteWhitespace("\n");
 		xmlWriter.WriteComment ("This is the list of Coins collected.");
 		xmlWriter.WriteWhitespace("\n\t");
@@ -240,6 +241,34 @@ public class SaveController : MonoBehaviour {
 
 			xmlWriter.WriteStartElement("coin");
 			xmlWriter.WriteAttributeString ("CollectableID", coin);
+
+			xmlWriter.WriteEndElement();
+
+		}
+
+		xmlWriter.WriteWhitespace("\n\t");
+		xmlWriter.WriteEndElement();
+		xmlWriter.WriteWhitespace("\n");
+
+	}
+
+	static void SaveLevelScores() {
+
+		xmlWriter.WriteWhitespace("\n");
+		xmlWriter.WriteComment ("This is the list of level scores.");
+		xmlWriter.WriteWhitespace("\n\t");
+
+		xmlWriter.WriteStartElement("levelscores");
+
+		foreach (LevelScore levelScore in GameController.current.LevelScores) {
+
+			xmlWriter.WriteWhitespace("\n\t\t");
+
+			xmlWriter.WriteStartElement("levelscore");
+			xmlWriter.WriteAttributeString ("LevelID", levelScore.LevelID);
+			xmlWriter.WriteAttributeString ("BestTime", levelScore.BestTime.ToString());
+			xmlWriter.WriteAttributeString ("CurrentCoins", levelScore.CurrentCoins.ToString());
+			xmlWriter.WriteAttributeString ("MaxCoins", levelScore.MaxCoins.ToString());
 
 			xmlWriter.WriteEndElement();
 

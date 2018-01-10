@@ -19,6 +19,12 @@ public class UIElements : MonoBehaviour {
 
 	void OnGUI() {
 
+		if (GameController.current.CurrentState == "") {
+
+			Debug.LogWarning (string.Format("GameController.current.CurrentState is empty, this shouldn't ever happen!!"));
+
+		}
+
 		if (GameController.current.CurrentState == "LEVEL_SELECT") {
 
 			GameCanvas.gameObject.SetActive (false);
@@ -51,6 +57,7 @@ public class UIElements : MonoBehaviour {
 
 		}
 
+		// Debug.Log (string.Format("Number of currentCoins: {0}", GameController.current.LevelPrefabs[2].levelScore.CurrentCoins));
 
 	}
 

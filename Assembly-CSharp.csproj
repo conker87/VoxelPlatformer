@@ -51,19 +51,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\EndLocation.cs" />
-     <Compile Include="Assets\LevelSelect.cs" />
      <Compile Include="Assets\Scripts\CharController.cs" />
      <Compile Include="Assets\Scripts\Collectable\Ability.cs" />
      <Compile Include="Assets\Scripts\Collectable\Coin.cs" />
      <Compile Include="Assets\Scripts\Collectable\Collectable.cs" />
      <Compile Include="Assets\Scripts\Collectable\Star.cs" />
      <Compile Include="Assets\Scripts\DEBUG_LevelList.cs" />
+     <Compile Include="Assets\Scripts\DEBUG_UIQuitLevel.cs" />
+     <Compile Include="Assets\Scripts\EndLocation.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\IsometricCamera.cs" />
      <Compile Include="Assets\Scripts\Level.cs" />
-     <Compile Include="Assets\Scripts\LevelDetails.cs" />
+     <Compile Include="Assets\Scripts\LevelScore.cs" />
+     <Compile Include="Assets\Scripts\LevelSelect.cs" />
      <Compile Include="Assets\Scripts\LevelSelectButton.cs" />
      <Compile Include="Assets\Scripts\MoveForward.cs" />
      <Compile Include="Assets\Scripts\OnGround.cs" />

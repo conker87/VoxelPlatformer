@@ -19,23 +19,32 @@ public class GameController : MonoBehaviour {
 	public List<float> BestLevelTimes = new List<float> ();
 	public List<string> OpenedLevels = new List<string>();
 
+	// This is used ONLY as a place to store the prefabs of levels, (as I hate using Resources.*), this will not save currently loaded level scores!
 	public List<Level> LevelPrefabs = new List<Level> ();
+	public List<LevelScore> LevelScores = new List<LevelScore> ();
 
 	public List<string> Abilities = new List<string>();
 	public List<string> Coins = new List<string>();
 	public List<string> Stars = new List<string>();
 
-	Level currentlyLoadedLevel;
+	public Level currentlyLoadedLevel;
 
 	public Player PlayerPrefab;
 
 	public string CurrentState = "";
 
-	bool HasLoaded = false;
-
 	void Start() {
 
 		CurrentState = "LEVEL_SELECT";
+
+		foreach (Level level in LevelPrefabs) {
+
+			// Create a new LevelScore, otherwise it saves details to the Prefab itself.
+			LevelScore newLS = new LevelScore (level.LevelID, 0f, 0, 0);
+
+			LevelScores.Add (newLS);
+
+		}
 
 	}
 
@@ -56,6 +65,8 @@ public class GameController : MonoBehaviour {
 			Destroy (level.gameObject);
 			currentlyLoadedLevel = null;
 		}
+
+		CurrentState = "LEVEL_SELECT";
 
 	}
 

@@ -1,22 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Level : MonoBehaviour {
 
-	public string LevelName = "", LevelID = "";
+	[Header("Level Details")]
+	public string LevelName = "";
+	public string LevelID = "";
 	public int LevelNumber = -1;
-	public Transform StartLocation, FinishLocation;
 
 	public bool IsCurrentLevel = false;
 
-	public GameObject GeometryObject;
+	[Header("Level Transforms")]
+	public Transform StartLocation;
+	public Transform FinishLocation;
+	public Transform GeometryParent;
 
+	[Header("Enemies")]
 	public List<Enemy> EnemiesInLevel = new List<Enemy>();
 
-	public LevelDetails LevelDetails;
-
-	public Player player;
+	// [Header("Player Details")]
 
 	void Start() {
 
@@ -28,13 +32,24 @@ public class Level : MonoBehaviour {
 
 		if (!IsCurrentLevel) {
 
-			GeometryObject.SetActive (false);
+			// GeometryObject.SetActive (false);
 
 		}
 
-		foreach (Transform go in GetComponentsInChildren<Transform>()) {
+		int MaximumCoins = 0;
 
-			go.gameObject.tag = "Geometry";
+		foreach (Coin coin in GetComponentsInChildren<Coin>()) {
+
+			coin.CurrentLevel = this;
+			MaximumCoins++;
+
+		}
+
+		LevelScore foundLS = GameController.current.LevelScores.FirstOrDefault (s => s.LevelID == LevelID);
+
+		if (foundLS != null && MaximumCoins >= foundLS.MaxCoins) {
+
+			foundLS.MaxCoins = MaximumCoins;
 
 		}
 
@@ -42,7 +57,7 @@ public class Level : MonoBehaviour {
 
 	void OnEnable() {
 
-		Instantiate (player, (StartLocation == null) ? Vector3.zero : StartLocation.transform.position, Quaternion.identity, transform);
+		Instantiate (GameController.current.PlayerPrefab, (StartLocation == null) ? Vector3.zero : StartLocation.transform.position, Quaternion.identity, transform);
 
 		if (StartLocation == null || FinishLocation == null) {
 

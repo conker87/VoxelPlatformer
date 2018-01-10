@@ -2,6 +2,18 @@
 <SaveData SaveFileName="SaveFileName" SaveFileDate="SaveFileDate" SaveFileTime="SaveFileTime" SaveFileTimeOnGame="SaveFileTimeOnGame">
 <!--This is the list of Coins collected.-->
 	<coins>
+		<coin CollectableID="Coin_(37.0, 2.0, -39.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -36.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -33.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -30.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -26.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -22.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -19.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -16.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -5.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -8.5)" />
+		<coin CollectableID="Coin_(37.0, 2.0, -12.5)" />
+		<coin CollectableID="Coin_(106.3, 0.5, 36.1)" />
 	</coins>
 
 <!--This is the list of Stars collected.-->
@@ -10,5 +22,13 @@
 
 <!--This is the list of Abilities collected.-->
 	<abilities>
+		<ability AbilityID="DoubleJump" />
 	</abilities>
+
+<!--This is the list of level scores.-->
+	<levelscores>
+		<levelscore LevelID="beta_prototype" BestTime="0" CurrentCoins="11" MaxCoins="16" />
+		<levelscore LevelID="magica_example_10" BestTime="0" CurrentCoins="0" MaxCoins="0" />
+		<levelscore LevelID="new_prototype_level" BestTime="0" CurrentCoins="1" MaxCoins="1" />
+	</levelscores>
 </SaveData>
