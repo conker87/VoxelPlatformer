@@ -1,16 +1,20 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\IsometricCamera.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UIElements.cs">
     <Files>
-      <File FileName="Assets\Scripts\CharController.cs" Line="52" Column="1" />
+      <File FileName="Assets\Scripts\CharController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Collectable\Collectable.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Collectable\Coin.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Collectable\Star.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Level.cs" Line="37" Column="96" />
-      <File FileName="Assets\Scripts\IsometricCamera.cs" Line="20" Column="55" />
-      <File FileName="Assets\OrderGeometryChildren.cs" Line="46" Column="20" />
+      <File FileName="Assets\Scripts\Level.cs" Line="45" Column="129" />
+      <File FileName="Assets\Scripts\DEBUG_LevelList.cs" Line="31" Column="3" />
+      <File FileName="Assets\Scripts\LevelDetails.cs" Line="1" Column="1" />
+      <File FileName="Assets\EndLocation.cs" Line="15" Column="3" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="58" Column="4" />
+      <File FileName="Assets\Scripts\SaveController.cs" Line="1" Column="1" />
+      <File FileName="Assets\LevelSelect.cs" Line="7" Column="28" />
+      <File FileName="Assets\Scripts\UIElements.cs" Line="48" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

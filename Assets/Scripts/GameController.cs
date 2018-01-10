@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public List<float> BestLevelTimes = new List<float> ();
-	public List<bool> OpenedLevels = new List<bool>();
+	public List<string> OpenedLevels = new List<string>();
 
 	public List<Level> LevelPrefabs = new List<Level> ();
 
@@ -29,49 +29,33 @@ public class GameController : MonoBehaviour {
 
 	public Player PlayerPrefab;
 
+	public string CurrentState = "";
+
 	bool HasLoaded = false;
 
 	void Start() {
 
-		if (LevelPrefabs.Count > 0) {
-
-			// DEBUG: Spawn the test level.
-
-			foreach (Level level in FindObjectsOfType<Level>()) {
-
-				if (level.LevelName == LevelPrefabs [0].LevelName) {
-
-					HasLoaded = true;
-
-				}
-
-			}
-
-			if (!HasLoaded) {
-				// LoadLevel(LevelPrefabs [0]);
-			}
-
-		}
+		CurrentState = "LEVEL_SELECT";
 
 	}
 
 	public void LoadLevel(Level level) {
 
-		if (currentlyLoadedLevel != null) {
-
-			// if (currentlyLoadedLevel.GetComponent<LevelSelectButton>().level == 
-
-			Destroy (currentlyLoadedLevel.gameObject);
-			Destroy (FindObjectOfType<Player> ().gameObject);
-
-		}
-
-
-
-		currentlyLoadedLevel = null;
+		UnloadLevel (currentlyLoadedLevel);
 
 		currentlyLoadedLevel = Instantiate (level) as Level;
 		currentlyLoadedLevel.IsCurrentLevel = true;
+
+		CurrentState = "LEVEL_LOADED";
+
+	}
+
+	public void UnloadLevel(Level level) {
+
+		if (level != null) {
+			Destroy (level.gameObject);
+			currentlyLoadedLevel = null;
+		}
 
 	}
 

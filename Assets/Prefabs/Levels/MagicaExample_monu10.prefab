@@ -893,6 +893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelName: MagicaExample monu10
+  LevelID: magica_example_10
   LevelNumber: -1
   StartLocation: {fileID: 4114972232436092}
   FinishLocation: {fileID: 4787308527070894}

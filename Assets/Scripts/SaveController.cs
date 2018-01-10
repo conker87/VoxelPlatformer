@@ -38,6 +38,15 @@ public class SaveController : MonoBehaviour {
 
 	}
 
+
+	static List<string> _openedLevels = new List<string>();
+	public static List<string> OpenedLevels {
+
+		get { return _openedLevels; } 
+		set { _openedLevels = value; }
+
+	}
+
 	static XmlWriter xmlWriter;
 
 	void Start() {
@@ -51,6 +60,7 @@ public class SaveController : MonoBehaviour {
 		GameController.current.Abilities.Clear ();
 		GameController.current.Coins.Clear ();
 		GameController.current.Stars.Clear ();
+		GameController.current.OpenedLevels.Clear ();
 
 		while(xmlReader.Read()) {
 
@@ -86,6 +96,16 @@ public class SaveController : MonoBehaviour {
 				}
 
 				if (xmlReader.Name == "star") {
+
+					while (xmlReader.MoveToNextAttribute ()) {
+
+						GameController.current.Stars.Add (xmlReader.Value);
+
+					}
+
+				}
+
+				if (xmlReader.Name == "level") {
 
 					while (xmlReader.MoveToNextAttribute ()) {
 

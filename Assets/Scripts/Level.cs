@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour {
 
-	public string LevelName = "";
+	public string LevelName = "", LevelID = "";
 	public int LevelNumber = -1;
 	public Transform StartLocation, FinishLocation;
 
@@ -14,9 +14,17 @@ public class Level : MonoBehaviour {
 
 	public List<Enemy> EnemiesInLevel = new List<Enemy>();
 
+	public LevelDetails LevelDetails;
+
 	public Player player;
 
 	void Start() {
+
+		if (LevelID == "") {
+
+			Debug.LogError (string.Format("{0} has no LevelID, this is really bad.", this.LevelName));
+
+		}
 
 		if (!IsCurrentLevel) {
 
@@ -34,7 +42,13 @@ public class Level : MonoBehaviour {
 
 	void OnEnable() {
 
-		Instantiate (player, (StartLocation == null) ? Vector3.zero : StartLocation.transform.position, Quaternion.identity);
+		Instantiate (player, (StartLocation == null) ? Vector3.zero : StartLocation.transform.position, Quaternion.identity, transform);
+
+		if (StartLocation == null || FinishLocation == null) {
+
+			Debug.LogError (string.Format("{0} has no StartingLocation/FinishLocation and is fucked.", LevelID));
+
+		}
 
 	}
 

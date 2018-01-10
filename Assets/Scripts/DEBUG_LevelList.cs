@@ -31,6 +31,9 @@ public class DEBUG_LevelList : MonoBehaviour {
 
 		foreach (Level level in gameController.LevelPrefabs) {
 
+			if (level == null)
+				continue;
+
 			LevelSelectButton levelSelectButton = Instantiate (ButtonLevelSelect, transform) as LevelSelectButton;
 
 			levelSelectButton.level = i;

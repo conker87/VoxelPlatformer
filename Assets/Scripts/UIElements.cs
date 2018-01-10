@@ -6,6 +6,7 @@ using TMPro;
 public class UIElements : MonoBehaviour {
 
 	public TextMeshProUGUI NumberOfCoins, NumberOfStars, Health;
+	public Transform GameCanvas, LevelSelectCanvas, GameOptionsCanvas;
 
 	public Player player;
 	public GameController gameController;
@@ -18,9 +19,17 @@ public class UIElements : MonoBehaviour {
 
 	void OnGUI() {
 
-		if (!FindPlayer ()) {
+		if (GameController.current.CurrentState == "LEVEL_SELECT") {
 
-			return;
+			GameCanvas.gameObject.SetActive (false);
+			LevelSelectCanvas.gameObject.SetActive (true);
+
+		}
+
+		if (GameController.current.CurrentState == "LEVEL_LOADED") {
+
+			GameCanvas.gameObject.SetActive (true);
+			LevelSelectCanvas.gameObject.SetActive (false);
 
 		}
 
@@ -36,7 +45,7 @@ public class UIElements : MonoBehaviour {
 
 		}
 
-		if (Health != null) {
+		if (Health != null && FindPlayer()) {
 
 			Health.text = player.CurrentHealth + "/" + player.MaximumHealth;
 

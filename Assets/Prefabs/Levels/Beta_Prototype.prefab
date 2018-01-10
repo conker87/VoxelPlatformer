@@ -605,6 +605,7 @@ GameObject:
   - component: {fileID: 33194030776775038}
   - component: {fileID: 23161411699601016}
   - component: {fileID: 64949354826635192}
+  - component: {fileID: 114299392186708764}
   m_Layer: 9
   m_Name: LocationPortal
   m_TagString: Untagged
@@ -4073,6 +4074,17 @@ MonoBehaviour:
   CollectableID: 
   CollectableType: Coin
   CollectableCollected: 0
+--- !u!114 &114299392186708764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534599878877962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923494c6075f28e428853d9fd15d8264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114334725805421922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4308,6 +4320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelName: 'Beta: Prototype'
+  LevelID: beta_prototype
   LevelNumber: -1
   StartLocation: {fileID: 4282503929448604}
   FinishLocation: {fileID: 4911308595353368}
