@@ -27,20 +27,27 @@ public class GameController : MonoBehaviour {
 	public List<string> Coins = new List<string>();
 	public List<string> Stars = new List<string>();
 
+	public float currentTime;
+
 	public Level currentlyLoadedLevel;
 
 	public Player PlayerPrefab;
 
 	public string CurrentState = "";
+	public bool justChangedState = false;
 
 	void Start() {
 
-		CurrentState = "LEVEL_SELECT";
+		ChangeState ("LEVEL_SELECT");
+
+		bool first = true;
 
 		foreach (Level level in LevelPrefabs) {
 
 			// Create a new LevelScore, otherwise it saves details to the Prefab itself.
-			LevelScore newLS = new LevelScore (level.LevelID, 0f, 0, 0);
+			LevelScore newLS = new LevelScore (level.LevelID, 0f, 0, 0, 0, 0, first);
+
+			first = false;
 
 			LevelScores.Add (newLS);
 
@@ -55,18 +62,33 @@ public class GameController : MonoBehaviour {
 		currentlyLoadedLevel = Instantiate (level) as Level;
 		currentlyLoadedLevel.IsCurrentLevel = true;
 
-		CurrentState = "LEVEL_LOADED";
+		currentTime = 0f;
+
+		ChangeState ("LEVEL_LOADED");
 
 	}
 
 	public void UnloadLevel(Level level) {
 
 		if (level != null) {
+
+			currentlyLoadedLevel.SaveLevelScores ();
+
 			Destroy (level.gameObject);
 			currentlyLoadedLevel = null;
+
+			ChangeState ("LEVEL_SELECT");
+
 		}
 
-		CurrentState = "LEVEL_SELECT";
+	}
+
+	public void ChangeState(string newState) {
+
+		justChangedState = true;
+		CurrentState = newState;
+
+		Debug.Log (string.Format("Changing States to -- {0}", newState));
 
 	}
 

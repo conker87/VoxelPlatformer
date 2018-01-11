@@ -42,6 +42,7 @@ public class OrderGeometryChildren : MonoBehaviour {
 			}
 
 			children [i].transform.parent.position = new Vector3 ((float) iTransformsColumn * (fPositionModifier / fScaleModifier), 0f, (float) iTransformRow * (fPositionModifier / fScaleModifier));
+			children [i].transform.parent.localScale = new Vector3 (0.25f, 0.25f, 0.25f);
 
 			iTransformRow++;
 

@@ -13,7 +13,7 @@ public class Ability : Collectable {
 
 			Debug.Log(string.Format("Collectable '{0}' at position {1} has hit the player and will be collected.", CollectableID, transform.position));
 
-			gameController.AddToAbilities (AbilityID);
+			GameController.current.AddToAbilities (AbilityID);
 
 			// TODO: Add some star collection clips.
 			SFXManager.instance.PlayRandomCoinClip ();

@@ -1,19 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
+using System.Linq;
+
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DEBUG_LevelList : MonoBehaviour {
-
-	GameController gameController;
 
 	public LevelSelectButton ButtonLevelSelect;
 
 
 	void Start () {
 
-		gameController = FindObjectOfType<GameController> ();
+		PopulateLevelSelect ();
+
+	}
+
+	void OnEnable() {
 
 		PopulateLevelSelect ();
 
@@ -21,17 +25,28 @@ public class DEBUG_LevelList : MonoBehaviour {
 
 	void PopulateLevelSelect() {
 
-		if (gameController == null)
+		foreach (Button levelSelectButton in GetComponentsInChildren<Button>()) {
+
+			Destroy (levelSelectButton.gameObject);
+
+		}
+
+		if (GameController.current == null)
 			return;
 
-		if (gameController.LevelPrefabs.Count == 0)
+		if (GameController.current.LevelPrefabs.Count == 0)
 			return;
 
 		int i = 0;
 
-		foreach (Level level in gameController.LevelPrefabs) {
+		foreach (Level level in GameController.current.LevelPrefabs) {
 
 			if (level == null)
+				continue;
+
+			LevelScore foundLS = GameController.current.LevelScores.FirstOrDefault (s => s.LevelID == level.LevelID);
+
+			if (foundLS != null && !foundLS.HasUnlockedLevel)
 				continue;
 
 			LevelSelectButton levelSelectButton = Instantiate (ButtonLevelSelect, transform) as LevelSelectButton;
@@ -40,7 +55,7 @@ public class DEBUG_LevelList : MonoBehaviour {
 			levelSelectButton.LevelName = level.LevelName;
 
 			levelSelectButton.GetComponent<Button> ().onClick.AddListener (delegate {
-				gameController.LoadLevel (levelSelectButton.level);
+				GameController.current.LoadLevel (levelSelectButton.level);
 			} );
 
 			levelSelectButton.GetComponentInChildren<Text> ().text = levelSelectButton.LevelName;

@@ -12,13 +12,9 @@ public class Collectable : MonoBehaviour {
 
 	public bool CollectableCollected = false;
 
-	// Use this for initialization
-
-	protected GameController gameController;
+	public Level CurrentLevel;
 
 	protected virtual void Start () {
-
-		gameController = FindObjectOfType<GameController> ();
 
 		if (string.IsNullOrEmpty (CollectableType) || CollectableType.Equals ("") || CollectableType == "" || CollectableType == null) {
 
@@ -26,7 +22,7 @@ public class Collectable : MonoBehaviour {
 
 		}
 
-		CollectableID = CollectableType + "_" + transform.position;
+		CollectableID = CollectableType + "_" + transform.position + "_" + CurrentLevel.LevelID;
 
 	}
 

@@ -4,21 +4,9 @@ using UnityEngine;
 
 public class Coin : Collectable {
 
-	public Level CurrentLevel;
-
 	protected override void Start () {
 
 		base.Start ();
-
-		foreach (LevelScore levelScore in GameController.current.LevelScores) {
-
-			if (levelScore.LevelID == CurrentLevel.LevelID) {
-
-				//levelScore.MaxCoins++;
-
-			}
-
-		}
 
 		HasCollectedCollectable ();
 
@@ -30,19 +18,21 @@ public class Coin : Collectable {
 
 			Debug.Log(string.Format("Collectable '{0}' at position {1} has hit the player and will be collected.", CollectableID, transform.position));
 
-			gameController.AddToCoins (CollectableID);
+			GameController.current.AddToCoins (CollectableID);
 
 			SFXManager.instance.PlayRandomCoinClip ();
 
-			foreach (LevelScore levelScore in GameController.current.LevelScores) {
+			CurrentLevel.LevelsLevelScore.CurrentCoins++;
+
+			/*foreach (LevelScore levelScore in GameController.current.LevelScores) {
 
 				if (levelScore.LevelID == CurrentLevel.LevelID) {
 
-					levelScore.CurrentCoins++;
+					//levelScore.CurrentCoins++;
 
 				}
 
-			}
+			} */
 
 			Destroy (gameObject);
 

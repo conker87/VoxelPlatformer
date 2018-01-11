@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using System.Linq;
+
 using UnityEngine;
 
 public class Level : MonoBehaviour {
@@ -20,9 +22,13 @@ public class Level : MonoBehaviour {
 	[Header("Enemies")]
 	public List<Enemy> EnemiesInLevel = new List<Enemy>();
 
+	public LevelScore LevelsLevelScore;
+
 	// [Header("Player Details")]
 
 	void Start() {
+
+		LevelsLevelScore = new LevelScore ();
 
 		if (LevelID == "") {
 
@@ -36,7 +42,7 @@ public class Level : MonoBehaviour {
 
 		}
 
-		int MaximumCoins = 0;
+		int MaximumCoins = 0, MaximumStars = 0;
 
 		foreach (Coin coin in GetComponentsInChildren<Coin>()) {
 
@@ -45,13 +51,55 @@ public class Level : MonoBehaviour {
 
 		}
 
-		LevelScore foundLS = GameController.current.LevelScores.FirstOrDefault (s => s.LevelID == LevelID);
+		foreach (Star star in GetComponentsInChildren<Star>()) {
 
-		if (foundLS != null && MaximumCoins >= foundLS.MaxCoins) {
-
-			foundLS.MaxCoins = MaximumCoins;
+			star.CurrentLevel = this;
+			MaximumStars++;
 
 		}
+
+		// LevelScore foundLS = GameController.current.LevelScores.FirstOrDefault (s => s.LevelID == LevelID);
+
+		LevelsLevelScore.LevelID = LevelID;
+		LevelsLevelScore.HasUnlockedLevel = true;
+
+		if (LevelsLevelScore != null && MaximumCoins >= LevelsLevelScore.MaxCoins) {
+
+			LevelsLevelScore.MaxCoins = MaximumCoins;
+
+		}
+
+		if (LevelsLevelScore != null && MaximumStars >= LevelsLevelScore.MaxStars) {
+
+			LevelsLevelScore.MaxStars = MaximumStars;
+
+		}
+
+		LevelsLevelScore.BestTime = 0f;
+
+	}
+
+	public void Update() {
+
+		LevelsLevelScore.BestTime = GameController.current.currentTime;
+
+	}
+
+	public void SaveLevelScores() {
+
+		LevelScore foundLS = GameController.current.LevelScores.FirstOrDefault (s => s.LevelID == LevelID);
+
+		if (foundLS.BestTime != 0f && LevelsLevelScore.BestTime > foundLS.BestTime) {
+
+			LevelsLevelScore.BestTime = foundLS.BestTime;
+
+		}
+
+		int index = GameController.current.LevelScores.IndexOf (foundLS);
+
+		GameController.current.LevelScores.Remove (foundLS);
+		GameController.current.LevelScores.Insert (index, LevelsLevelScore);
+
 
 	}
 

@@ -18,7 +18,7 @@ public class Star : Collectable {
 
 			Debug.Log(string.Format("Collectable '{0}' at position {1} has hit the player and will be collected.", CollectableID, transform.position));
 
-			gameController.AddToStars (CollectableID);
+			GameController.current.AddToStars (CollectableID);
 
 			// TODO: Add some star collection clips.
 			SFXManager.instance.PlayRandomCoinClip ();

@@ -108,9 +108,11 @@ public class SaveController : MonoBehaviour {
 				if (xmlReader.Name == "levelscore") {
 
 					LevelScore temp = new LevelScore(xmlReader.GetAttribute("LevelID").ToString(), float.Parse(xmlReader.GetAttribute("BestTime")),
-						int.Parse(xmlReader.GetAttribute("CurrentCoins")), int.Parse(xmlReader.GetAttribute("MaxCoins")));
+						int.Parse(xmlReader.GetAttribute("CurrentCoins")), int.Parse(xmlReader.GetAttribute("MaxCoins")),
+						int.Parse(xmlReader.GetAttribute("CurrentStars")), int.Parse(xmlReader.GetAttribute("MaxStars")),
+						bool.Parse(xmlReader.GetAttribute("HasUnlockedLevel")));
 
-					Debug.Log (string.Format("Details: {0}, {1}, {2}, {3}", temp.LevelID, temp.BestTime, temp.CurrentCoins, temp.MaxCoins));
+					Debug.Log (string.Format("Details: {0}, {1}, {2}, {3}, {4}", temp.LevelID, temp.BestTime, temp.CurrentCoins, temp.MaxCoins, temp.HasUnlockedLevel));
 					GameController.current.LevelScores.Add(temp);
 
 				}
@@ -269,6 +271,9 @@ public class SaveController : MonoBehaviour {
 			xmlWriter.WriteAttributeString ("BestTime", levelScore.BestTime.ToString());
 			xmlWriter.WriteAttributeString ("CurrentCoins", levelScore.CurrentCoins.ToString());
 			xmlWriter.WriteAttributeString ("MaxCoins", levelScore.MaxCoins.ToString());
+			xmlWriter.WriteAttributeString ("CurrentStars", levelScore.CurrentStars.ToString());
+			xmlWriter.WriteAttributeString ("MaxStars", levelScore.MaxStars.ToString());
+			xmlWriter.WriteAttributeString ("HasUnlockedLevel", levelScore.HasUnlockedLevel.ToString());
 
 			xmlWriter.WriteEndElement();
 
