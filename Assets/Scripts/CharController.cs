@@ -10,13 +10,16 @@ public class CharController : MonoBehaviour {
 	bool bCanMove = true, bIsOnGround;
 
 	[SerializeField]
+	float fInteractableDistance = 5f;
+
+	[SerializeField]
 	float baseButtStompForce = 10f;
 	bool bHasButtStomped = false;
 
 	float fPreJumpYLevel;
 
 	[SerializeField]
-	LayerMask lmGeometryLayerMask;
+	LayerMask lmGeometryLayerMask, lmInteractableLayerMask;
 
 	Rigidbody rb;
 	Player p;
@@ -51,6 +54,34 @@ public class CharController : MonoBehaviour {
 
 			if (!bIsOnGround) {
 				ButtStomp ();
+			}
+
+		}
+
+		// Set this to "Interact"
+		if (Input.GetKeyDown (KeyCode.E)) {
+
+			Collider[] overlappedSphere = Physics.OverlapSphere (transform.position, fInteractableDistance, lmInteractableLayerMask);
+
+			if (overlappedSphere != null && overlappedSphere.Length > 0) {
+
+				Debug.Log ("overlappedSphere != null");
+
+				foreach (Collider coll in overlappedSphere) {
+
+					Debug.Log (coll.gameObject);
+
+					Interactable interactable;
+
+					if ((interactable = coll.GetComponent<Interactable>()) != null) {
+					
+						Debug.Log ("(interactable = coll.GetComponent<Interactable>()) != null");
+						interactable.Interact ();
+
+					}
+
+				}
+
 			}
 
 		}
@@ -152,7 +183,7 @@ public class CharController : MonoBehaviour {
 	void OnDrawGizmos() {
 
 		Debug.DrawLine (transform.position, new Vector3 (transform.position.x, transform.position.y - (fCapsuleColliderYBounds + fRaycastSkin), transform.position.z), Color.green);
-		// Gizmos.DrawWireSphere (new Vector3(transform.position.x, transform.position.y - fSphereColliderOffset, transform.position.z), 1f);
+		Gizmos.DrawWireSphere (transform.position, fInteractableDistance);
 
 	}
 

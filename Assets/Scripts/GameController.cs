@@ -31,7 +31,9 @@ public class GameController : MonoBehaviour {
 
 	public Level currentlyLoadedLevel;
 
-	public Player PlayerPrefab;
+	// PlayerSpawnablePrefab: The Prefab that should be spawned into the game.
+	// Player: 
+	public Player PlayerSpawnablePrefab, Player;
 
 	public string CurrentState = "";
 	public bool justChangedState = false;
@@ -52,6 +54,38 @@ public class GameController : MonoBehaviour {
 			LevelScores.Add (newLS);
 
 		}
+
+	}
+
+	void Update() {
+
+		if (CurrentState != "" || CurrentState != "LEVEL_SELECT" || CurrentState != "MAIN_MENU") {
+
+			// FindPlayer ();
+
+		}
+
+	}
+
+	bool FindPlayer() {
+
+		if (Player != null) {
+
+			return true;
+
+		} else {
+
+			Player = FindObjectOfType<Player> ();
+
+			if (Player != null) {
+
+				return true;
+
+			}
+
+		}
+
+		return false;
 
 	}
 

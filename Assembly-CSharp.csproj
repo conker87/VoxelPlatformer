@@ -61,6 +61,8 @@
      <Compile Include="Assets\Scripts\EndLocation.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\Interactables\Interactable.cs" />
+     <Compile Include="Assets\Scripts\Interactables\Interactable_Switch.cs" />
      <Compile Include="Assets\Scripts\IsometricCamera.cs" />
      <Compile Include="Assets\Scripts\Level.cs" />
      <Compile Include="Assets\Scripts\LevelScore.cs" />

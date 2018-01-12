@@ -11,40 +11,35 @@ public class UIElements : MonoBehaviour {
 	public TextMeshProUGUI NumberOfCoins, NumberOfStars, Health, TimeT;
 	public Transform LevelLoadedCanvas, LevelSelectCanvas, LevelLoadedPausedCanvas;
 
-	public Player player;
-
 	void OnGUI() {
 
 		if (GameController.current.justChangedState) {
 			LevelSelectCanvas.gameObject.SetActive (false);
 			LevelLoadedCanvas.gameObject.SetActive (false);
 			LevelLoadedPausedCanvas.gameObject.SetActive (false);
+
+			GameController.current.justChangedState = false;
 		}
 
 		if (GameController.current.CurrentState == "") {
-
-			GameController.current.justChangedState = false;
 			Debug.LogWarning (string.Format("GameController.current.CurrentState is empty, this shouldn't ever happen!!"));
 
 		}
 
 		if (GameController.current.CurrentState == "MAIN_MENU") {
 
-			GameController.current.justChangedState = false;
 			Debug.LogWarning (string.Format("GameController.current.CurrentState is empty, this shouldn't ever happen!!"));
 
 		}
 
 		if (GameController.current.CurrentState == "LEVEL_SELECT") {
 
-			GameController.current.justChangedState = false;
 			LevelSelectCanvas.gameObject.SetActive (true);
 
 		}
 
 		if (GameController.current.CurrentState == "LEVEL_LOADED") {
 
-			GameController.current.justChangedState = false;
 			LevelLoadedCanvas.gameObject.SetActive (true);
 
 			if (NumberOfCoins != null) {
@@ -59,13 +54,13 @@ public class UIElements : MonoBehaviour {
 
 			}
 
-			if (Health != null && FindPlayer()) {
+			if (Health != null && GameController.current.Player != null) {
 
-				Health.text = player.CurrentHealth + "/" + player.MaximumHealth;
+				Health.text = GameController.current.Player.CurrentHealth + "/" + GameController.current.Player.MaximumHealth;
 
 			}
 
-			if (TimeT != null && FindPlayer()) {
+			if (TimeT != null && GameController.current.Player != null) {
 
 				GameController.current.currentTime += Time.deltaTime;
 
@@ -89,33 +84,10 @@ public class UIElements : MonoBehaviour {
 
 		if (GameController.current.CurrentState == "LEVEL_LOADED_PAUSED") {
 
-			GameController.current.justChangedState = false;
 			LevelLoadedCanvas.gameObject.SetActive (true);
 			LevelLoadedPausedCanvas.gameObject.SetActive (true);
 
 		}
-
-	}
-		
-	bool FindPlayer() {
-
-		if (player != null) {
-
-			return true;
-
-		} else {
-
-			player = FindObjectOfType<Player> ();
-
-			if (player != null) {
-
-				return true;
-
-			}
-
-		}
-
-		return false;
 
 	}
 

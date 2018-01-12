@@ -105,7 +105,7 @@ public class Level : MonoBehaviour {
 
 	void OnEnable() {
 
-		Instantiate (GameController.current.PlayerPrefab, (StartLocation == null) ? Vector3.zero : StartLocation.transform.position, Quaternion.identity, transform);
+		GameController.current.Player = Instantiate (GameController.current.PlayerSpawnablePrefab, (StartLocation == null) ? Vector3.zero : StartLocation.transform.position, Quaternion.identity, transform);
 
 		if (StartLocation == null || FinishLocation == null) {
 

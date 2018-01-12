@@ -23,24 +23,15 @@ public class IsometricCamera : MonoBehaviour
 
 	void LateUpdate() {
 
-		if (!FindPlayer ()) {
+		if (GameController.current.Player == null) {
 
 			return;
 
 		}
 
-		CameraParent.transform.position = player.transform.position;
+		CameraParent.transform.position = GameController.current.Player.transform.position;
 
 		Camera.main.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * Time.deltaTime;
-
-		if (Input.GetKey(KeyCode.Q)) {
-			
-			transform.Rotate(Vector3.right * scrollSpeed * Time.deltaTime, Space.Self);
-			transform.LookAt (player.transform.position);
-
-			//transform.Rotate(target.transform.position, Vector3.right, 45f);
-
-		}
 
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 
@@ -66,7 +57,7 @@ public class IsometricCamera : MonoBehaviour
 
 		}
 
-		player.GetComponent<CharController> ().ResetForwardDirection ();
+		GameController.current.Player.GetComponent<CharController> ().ResetForwardDirection ();
 
 		Vector3 addition = Vector3.zero;
 		// cameraDistanceY = cameraDistanceXZ * .8f;
@@ -93,30 +84,36 @@ public class IsometricCamera : MonoBehaviour
 
 		}
 
-		transform.position = player.transform.position + addition;
+		transform.position = GameController.current.Player.transform.position + addition;
 
 	}
 
-	bool FindPlayer() {
-
-		if (player != null) {
-
-			return true;
-
-		} else {
-
-			player = FindObjectOfType<Player> ();
-
-			if (player != null) {
-
-				return true;
-
-			}
-
-		}
-
-		return false;
-
-	}
+//	bool FindPlayer() {
+//
+//		if (GameController.current.Player != null) {
+//
+//			return false;
+//
+//		}
+//
+//		if (player != null) {
+//
+//			return true;
+//
+//		} else {
+//
+//			player = FindObjectOfType<Player> ();
+//
+//			if (player != null) {
+//
+//				return true;
+//
+//			}
+//
+//		}
+//
+//		return false;
+//
+//	}
 
 }

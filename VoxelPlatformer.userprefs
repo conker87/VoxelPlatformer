@@ -1,18 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UIElements.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Interactables\Interactable_Switch.cs">
     <Files>
-      <File FileName="Assets\Scripts\UIElements.cs" Line="84" Column="78" />
-      <File FileName="Assets\Scripts\Collectable\Collectable.cs" Line="17" Column="35" />
-      <File FileName="Assets\Scripts\Collectable\Star.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Level.cs" Line="92" Column="29" />
-      <File FileName="Assets\Scripts\LevelScore.cs" Line="45" Column="1" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="74" Column="4" />
-      <File FileName="Assets\Scripts\SaveController.cs" Line="79" Column="6" />
-      <File FileName="Assets\Scripts\OrderGeometryChildren.cs" Line="45" Column="79" />
-      <File FileName="Assets\Scripts\Collectable\Coin.cs" Line="9" Column="10" />
-      <File FileName="Assets\Scripts\DEBUG_LevelList.cs" Line="33" Column="3" />
-      <File FileName="Assets\Scripts\UIButton_LoadGame.cs" Line="11" Column="1" />
+      <File FileName="Assets\Scripts\Interactables\Interactable_Switch.cs" Line="42" Column="28" />
+      <File FileName="Assets\Scripts\Interactables\Interactable.cs" Line="8" Column="57" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
