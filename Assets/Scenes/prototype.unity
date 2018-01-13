@@ -2433,8 +2433,8 @@ MonoBehaviour:
   BestLevelTimes: []
   OpenedLevels: []
   LevelPrefabs:
+  - {fileID: 114615272843159320, guid: 78b7e2596030a2940a6f31d508e41528, type: 2}
   - {fileID: 114306222736926016, guid: cd5fc00f7c201b741bc31e730502215d, type: 2}
-  - {fileID: 114306222736926016, guid: 7215581c9b32a6d409a5ca12a4e7e5a0, type: 2}
   LevelScores: []
   Abilities: []
   Coins: []
@@ -2446,6 +2446,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   CurrentState: 
   justChangedState: 0
+  OriginalCameraFOV: 17.5
 --- !u!1 &1891970700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,7 +2461,7 @@ GameObject:
   - component: {fileID: 1891970705}
   - component: {fileID: 1891970704}
   m_Layer: 0
-  m_Name: Master_SFXManager
+  m_Name: SFXManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

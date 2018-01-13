@@ -38,6 +38,8 @@ public class GameController : MonoBehaviour {
 	public string CurrentState = "";
 	public bool justChangedState = false;
 
+	public float OriginalCameraFOV = 17.5f;
+
 	void Start() {
 
 		ChangeState ("LEVEL_SELECT");
@@ -97,6 +99,7 @@ public class GameController : MonoBehaviour {
 		currentlyLoadedLevel.IsCurrentLevel = true;
 
 		currentTime = 0f;
+		Camera.main.orthographicSize = (currentlyLoadedLevel.OverwriteCameraFOV > 0) ? currentlyLoadedLevel.OverwriteCameraFOV : OriginalCameraFOV;
 
 		ChangeState ("LEVEL_LOADED");
 
@@ -110,6 +113,8 @@ public class GameController : MonoBehaviour {
 
 			Destroy (level.gameObject);
 			currentlyLoadedLevel = null;
+
+			Camera.main.orthographicSize = OriginalCameraFOV;
 
 			ChangeState ("LEVEL_SELECT");
 

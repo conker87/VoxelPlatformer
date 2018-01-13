@@ -6,32 +6,21 @@ public class Interactable_Switch : Interactable {
 
 	public Interactable[] Connections;
 
-	[SerializeField]
-	bool isOn = false, doInteracts = false;
-
 	void Update() {
-
-		if (isOn == true) {
-
-			if (doInteracts == true) {
-
-				foreach (Interactable interactable in Connections) {
-
-					interactable.Interact ();
-
-				}
-
-				doInteracts = false;
-
-			}
-
-		}
 
 	}
 
-	public override void Interact () {
+	public override void Interact (bool directlyInteracting = false) {
+
+		base.Interact (directlyInteracting);
 
 		if (OneTimeUse == true && HasBeenUsedOnce == true) {
+
+			canContinue = false;
+
+		}
+
+		if (canContinue == false) {
 
 			return;
 
@@ -47,7 +36,11 @@ public class Interactable_Switch : Interactable {
 
 		if (isOn == true) {
 			
-			doInteracts = true;
+			foreach (Interactable interactable in Connections) {
+
+				interactable.Interact ();
+
+			}
 
 		}
 

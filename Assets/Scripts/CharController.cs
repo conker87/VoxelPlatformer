@@ -65,17 +65,12 @@ public class CharController : MonoBehaviour {
 
 			if (overlappedSphere != null && overlappedSphere.Length > 0) {
 
-				Debug.Log ("overlappedSphere != null");
-
 				foreach (Collider coll in overlappedSphere) {
-
-					Debug.Log (coll.gameObject);
 
 					Interactable interactable;
 
 					if ((interactable = coll.GetComponent<Interactable>()) != null) {
 					
-						Debug.Log ("(interactable = coll.GetComponent<Interactable>()) != null");
 						interactable.Interact ();
 
 					}

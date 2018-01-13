@@ -14,13 +14,16 @@ public class Level : MonoBehaviour {
 
 	public bool IsCurrentLevel = false;
 
-	[Header("Level Transforms")]
+	[Header("Level Locations & Transforms")]
 	public Transform StartLocation;
 	public Transform FinishLocation;
 	public Transform GeometryParent;
 
 	[Header("Enemies")]
 	public List<Enemy> EnemiesInLevel = new List<Enemy>();
+
+	[Header("Camera")]
+	public float OverwriteCameraFOV = -1f;
 
 	public LevelScore LevelsLevelScore;
 
