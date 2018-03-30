@@ -1,22 +1,52 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 using TMPro;
 
 public class UIElements : MonoBehaviour {
 
-	public TextMeshProUGUI NumberOfCoins, NumberOfStars, Health, TimeT;
-	public Transform LevelLoadedCanvas, LevelSelectCanvas, LevelLoadedPausedCanvas;
+	[Header("Canvases")]
+	public Transform IngameLevelLoadedCanvas;
+	public Transform MenuLevelSelectCanvas, IngameLevelLoadedPausedCanvas, MenuOptionsCanvas;
+
+	[Header("Level Loaded Canvas")]
+	public TextMeshProUGUI NumberOfCoins;
+	public TextMeshProUGUI NumberOfStars, Health, TimeT;
+
+	[Header("Menu Level Select Canvas")]
+	public Button MenuOptionsButton;
+
+	[Header("Menu Options Canvas")]
+	public Dropdown QualityPresetsDropdown;
+	public Dropdown GameResolutionDropdown;
+	public Toggle FullscreenToggle;
+
+	// Not usable currently?
+	public float resolutionScale = 1f;
+
+
+	void Start() {
+
+		// QualityPresets
+		PopulateQualityPresetsDropdown();
+		PopulateGameResolutionDropdown ();
+
+		FullscreenToggle.isOn = Screen.fullScreen;
+
+	}
 
 	void OnGUI() {
 
 		if (GameController.current.justChangedState) {
-			LevelSelectCanvas.gameObject.SetActive (false);
-			LevelLoadedCanvas.gameObject.SetActive (false);
-			LevelLoadedPausedCanvas.gameObject.SetActive (false);
+			MenuLevelSelectCanvas.gameObject.SetActive (false);
+			IngameLevelLoadedCanvas.gameObject.SetActive (false);
+			// IngameLevelLoadedPausedCanvas.gameObject.SetActive (false);
+			MenuOptionsCanvas.gameObject.SetActive(false);
 
 			GameController.current.justChangedState = false;
 		}
@@ -26,21 +56,21 @@ public class UIElements : MonoBehaviour {
 
 		}
 
-		if (GameController.current.CurrentState == "MAIN_MENU") {
+		if (GameController.current.CurrentState == "MAIN_MENU_OPTIONS") {
 
-			Debug.LogWarning (string.Format("GameController.current.CurrentState is empty, this shouldn't ever happen!!"));
+			MenuOptionsCanvas.gameObject.SetActive (true);
 
 		}
 
 		if (GameController.current.CurrentState == "LEVEL_SELECT") {
 
-			LevelSelectCanvas.gameObject.SetActive (true);
+			MenuLevelSelectCanvas.gameObject.SetActive (true);
 
 		}
 
 		if (GameController.current.CurrentState == "LEVEL_LOADED") {
 
-			LevelLoadedCanvas.gameObject.SetActive (true);
+			IngameLevelLoadedCanvas.gameObject.SetActive (true);
 
 			if (NumberOfCoins != null) {
 
@@ -84,10 +114,75 @@ public class UIElements : MonoBehaviour {
 
 		if (GameController.current.CurrentState == "LEVEL_LOADED_PAUSED") {
 
-			LevelLoadedCanvas.gameObject.SetActive (true);
-			LevelLoadedPausedCanvas.gameObject.SetActive (true);
+			IngameLevelLoadedCanvas.gameObject.SetActive (true);
+			IngameLevelLoadedPausedCanvas.gameObject.SetActive (true);
 
 		}
+
+	}
+
+	// Populate Dropdowns
+	void PopulateQualityPresetsDropdown() {
+
+		QualityPresetsDropdown.ClearOptions ();
+
+		List<string> qualityPresets = QualitySettings.names.ToList<string>();
+
+		QualityPresetsDropdown.AddOptions (qualityPresets);
+
+	}
+
+	void PopulateGameResolutionDropdown() {
+
+		GameResolutionDropdown.ClearOptions ();
+
+		Resolution[] resolutions = Screen.resolutions;
+		List<string> resolutionsList = new List<string> ();
+
+		int currentResolution = 0;
+		for (int i = 0; i < resolutions.Count(); i++) {
+
+			resolutionsList.Add (resolutions[i].width + " x " + resolutions[i].height + " x " + resolutions[i].refreshRate + "Hz");
+
+			if (Screen.fullScreen) {
+
+				if (Screen.currentResolution.width == resolutions [i].width && Screen.currentResolution.height == resolutions [i].height && Screen.currentResolution.refreshRate == resolutions [i].refreshRate) {
+
+					currentResolution = i;
+
+				}
+
+			} else {
+
+				if (Screen.width == resolutions [i].width && Screen.height == resolutions [i].height) {
+
+					currentResolution = i;
+
+				}
+
+			}
+
+		}
+
+		GameResolutionDropdown.AddOptions (resolutionsList);
+		GameResolutionDropdown.value = currentResolution;
+
+	}
+
+	// OnClick methods
+	public void QualityPresetsOnClick(int index) {
+
+		QualitySettings.SetQualityLevel(index, true);
+
+	}
+
+	// Major Button OnClicks
+	public void SaveButtonOnClick() {
+
+		// Set the resolution of the game.
+		Screen.SetResolution (Screen.resolutions [GameResolutionDropdown.value].width, Screen.resolutions [GameResolutionDropdown.value].height, FullscreenToggle.isOn);
+
+		//Screen.
 
 	}
 

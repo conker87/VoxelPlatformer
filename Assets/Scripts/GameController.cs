@@ -69,27 +69,27 @@ public class GameController : MonoBehaviour {
 
 	}
 
-	bool FindPlayer() {
-
-		if (Player != null) {
-
-			return true;
-
-		} else {
-
-			Player = FindObjectOfType<Player> ();
-
-			if (Player != null) {
-
-				return true;
-
-			}
-
-		}
-
-		return false;
-
-	}
+//	bool FindPlayer() {
+//
+//		if (Player != null) {
+//
+//			return true;
+//
+//		} else {
+//
+//			Player = FindObjectOfType<Player> ();
+//
+//			if (Player != null) {
+//
+//				return true;
+//
+//			}
+//
+//		}
+//
+//		return false;
+//
+//	}
 
 	public void LoadLevel(Level level) {
 

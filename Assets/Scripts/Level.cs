@@ -35,11 +35,18 @@ public class Level : MonoBehaviour {
 
 		if (LevelID == "") {
 
-			Debug.LogError (string.Format("{0} has no LevelID, this is really bad.", this.LevelName));
+			Debug.LogError (string.Format("{0} has no LevelID, this is really bad.", (this.LevelName == "") ? this.gameObject.name : this.LevelName));
 
 		}
 
-		if (!IsCurrentLevel) {
+        if (StartLocation == null || FinishLocation == null)
+        {
+
+            Debug.LogError(string.Format("{0} has no StartingLocation/FinishLocation and is fucked.", (this.LevelName == "") ? this.gameObject.name : this.LevelName));
+
+        }
+
+        if (!IsCurrentLevel) {
 
 			// GeometryObject.SetActive (false);
 
@@ -109,12 +116,6 @@ public class Level : MonoBehaviour {
 	void OnEnable() {
 
 		GameController.current.Player = Instantiate (GameController.current.PlayerSpawnablePrefab, (StartLocation == null) ? Vector3.zero : StartLocation.transform.position, Quaternion.identity, transform);
-
-		if (StartLocation == null || FinishLocation == null) {
-
-			Debug.LogError (string.Format("{0} has no StartingLocation/FinishLocation and is fucked.", LevelID));
-
-		}
 
 	}
 

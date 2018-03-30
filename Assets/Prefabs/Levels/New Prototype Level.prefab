@@ -854,6 +854,7 @@ GameObject:
   - component: {fileID: 33674525901558486}
   - component: {fileID: 23093340648868746}
   - component: {fileID: 64149802463146040}
+  - component: {fileID: 114105019004663696}
   m_Layer: 9
   m_Name: newPrototypeLevel-1
   m_TagString: Untagged
@@ -3513,6 +3514,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 2
+--- !u!114 &114105019004663696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1785990167591556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b9a962d8272182428eb6fa111c9b095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114114056077917750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3561,9 +3573,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractableID: 
-  Connections: []
+  OneTimeUse: 0
+  HasBeenUsedOnce: 0
+  canOnlyInteractFromOtherInteractables: 0
   isOn: 0
-  doInteracts: 0
+  Connections: []
 --- !u!114 &114306222736926016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3583,6 +3597,7 @@ MonoBehaviour:
   FinishLocation: {fileID: 4598669681545716}
   GeometryParent: {fileID: 4561464076801332}
   EnemiesInLevel: []
+  OverwriteCameraFOV: -1
   LevelsLevelScore:
     LevelID: 
     BestTime: 0

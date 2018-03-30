@@ -7,16 +7,16 @@ public class CharController : MonoBehaviour {
 	[SerializeField]
 	float moveSpeed = 4f, jumpHeight = 8f;
 	[SerializeField]
-	bool bCanMove = true, bIsOnGround;
+	bool canMove = true, isOnGround, hasJumped;
 
 	[SerializeField]
-	float fInteractableDistance = 5f;
+	float interactableDistance = 5f;
 
 	[SerializeField]
 	float baseButtStompForce = 10f;
-	bool bHasButtStomped = false;
+	bool hasButtStomped = false;
 
-	float fPreJumpYLevel;
+	float preJumpYLevel;
 
 	[SerializeField]
 	LayerMask lmGeometryLayerMask, lmInteractableLayerMask;
@@ -26,8 +26,8 @@ public class CharController : MonoBehaviour {
 
 	Vector3 v3Forward, v3Right;
 
-	float fRaycastSkin = 0.1f;
-	float fCapsuleColliderYBounds;
+	float raycastSkin = 0.1f;
+	float capsuleColliderYBounds;
 
 	void Start() {
 		
@@ -36,11 +36,13 @@ public class CharController : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		p = GetComponent<Player> ();
 
-		fCapsuleColliderYBounds = GetComponent<CapsuleCollider>().bounds.extents.y;
+		capsuleColliderYBounds = GetComponent<CapsuleCollider>().bounds.extents.y;
 
 	}
 
 	void Update() {
+
+		RaycastObjectCheck ();
 
 		IsGrounded ();
 
@@ -50,9 +52,9 @@ public class CharController : MonoBehaviour {
 
 		}
 
-		if (Input.GetButtonDown ("ButtStomp") && !bHasButtStomped) {
+		if (Input.GetButtonDown ("ButtStomp") && !hasButtStomped) {
 
-			if (!bIsOnGround) {
+			if (!isOnGround) {
 				ButtStomp ();
 			}
 
@@ -61,7 +63,7 @@ public class CharController : MonoBehaviour {
 		// Set this to "Interact"
 		if (Input.GetKeyDown (KeyCode.E)) {
 
-			Collider[] overlappedSphere = Physics.OverlapSphere (transform.position, fInteractableDistance, lmInteractableLayerMask);
+			Collider[] overlappedSphere = Physics.OverlapSphere (transform.position, interactableDistance, lmInteractableLayerMask);
 
 			if (overlappedSphere != null && overlappedSphere.Length > 0) {
 
@@ -93,7 +95,7 @@ public class CharController : MonoBehaviour {
 
 		}
 
-		if (!bCanMove) {
+		if (!canMove) {
 
 			return;
 
@@ -110,44 +112,50 @@ public class CharController : MonoBehaviour {
 		Vector3 heading = Vector3.Normalize (rightMovement + upMovement);
 
 		if (heading.magnitude > 0.1f) {
-			
-			transform.forward = heading;
 
-			transform.position += rightMovement;
-			transform.position += upMovement;
+            if (!isOnGround)
+            {
+               // rightMovement *= .2f;
+               // upMovement *= .2f;
+            }
 
-		}
+            transform.forward = heading;
+
+            transform.position += rightMovement;
+            transform.position += upMovement;
+
+        }
 	}
 
 	void Jump() {
 
-		if (!bIsOnGround) {
-
-
+		if (!isOnGround) {
 
 			return;
 
 		} else {
 
-			fPreJumpYLevel = transform.position.y;
+			preJumpYLevel = transform.position.y;
 
 		}
 
-		rb.velocity = new Vector3 (rb.velocity.x, 0f, rb.velocity.z);
-		rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
+		rb.velocity = new Vector3 (rb.velocity.x, jumpHeight, rb.velocity.z);
+        //rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
+
+        hasJumped = true;
 
 	}
 
 	void ButtStomp() {
 
 		float fCurrentYLevel = transform.position.y;
-		float fButtStompForce = baseButtStompForce + (1.5f * (fCurrentYLevel - fPreJumpYLevel));
+		float fButtStompForce = baseButtStompForce + (1.5f * (fCurrentYLevel - preJumpYLevel));
 
-		Debug.Log (string.Format("buttonStompForce: {0}, original/currentY: {1}/{2}", fButtStompForce, fPreJumpYLevel, fCurrentYLevel));
+		Debug.Log (string.Format("buttonStompForce: {0}, original/currentY: {1}/{2}", fButtStompForce, preJumpYLevel, fCurrentYLevel));
 
 		rb.velocity = Vector3.zero;
-		bHasButtStomped = true;
-		rb.AddForce (-Vector3.up * fButtStompForce, ForceMode.VelocityChange);
+		hasButtStomped = true;
+		rb.AddForce (-Vector3.up * fButtStompForce, ForceMode.Force);
 
 	}
 
@@ -162,23 +170,42 @@ public class CharController : MonoBehaviour {
 
 	void IsGrounded() {
 		
-		if (Physics.Raycast (transform.position, -Vector3.up, fCapsuleColliderYBounds + fRaycastSkin, lmGeometryLayerMask)) {
+		if (Physics.Raycast (transform.position, -Vector3.up, capsuleColliderYBounds + raycastSkin, lmGeometryLayerMask)) {
 
-			bHasButtStomped = false;
-			bIsOnGround = true;
+			hasButtStomped = false;
+			isOnGround = true;
+            hasJumped = false;
 
 		} else {
 
-			bIsOnGround = false; 
+			isOnGround = false; 
 
 		}
 			
 	}
 
+	void RaycastObjectCheck() {
+
+		RaycastHit hitInfo;
+
+		if (Physics.Linecast(transform.position, Camera.main.transform.position, out hitInfo, lmGeometryLayerMask)) {
+
+			DisableGameObjectOnLinecast disableGameObjectOnLinecast;
+
+			if ((disableGameObjectOnLinecast = hitInfo.collider.gameObject.GetComponent<DisableGameObjectOnLinecast> ()) != null) {
+
+				disableGameObjectOnLinecast.DisableMeshRenderer ();
+
+			}
+
+		}
+
+	}
+
 	void OnDrawGizmos() {
 
-		Debug.DrawLine (transform.position, new Vector3 (transform.position.x, transform.position.y - (fCapsuleColliderYBounds + fRaycastSkin), transform.position.z), Color.green);
-		Gizmos.DrawWireSphere (transform.position, fInteractableDistance);
+		Debug.DrawLine (transform.position, new Vector3 (transform.position.x, transform.position.y - (capsuleColliderYBounds + raycastSkin), transform.position.z), Color.green);
+		Gizmos.DrawWireSphere (transform.position, interactableDistance);
 
 	}
 
@@ -193,14 +220,14 @@ public class CharController : MonoBehaviour {
 
 
 		Debug.Log ("Entered Collision");
-		bIsOnGround = true;
+		isOnGround = true;
 
 	}
 
 	//consider when character is jumping .. it will exit collision.
 	void OnCollisionExit(Collision other) {
 
-		bIsOnGround = false;
+		isOnGround = false;
 
 	} */
 
