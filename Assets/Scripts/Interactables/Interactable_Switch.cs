@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class Interactable_Switch : Interactable {
 
-	public Interactable[] Connections;
+	/* public Interactable[] Connections;
 
-	void Update() {
-
-	}
-
-	public override void Interact (bool directlyInteracting = false) {
+	public void Interact (bool directlyInteracting = false) {
 
 		base.Interact (directlyInteracting);
 
@@ -36,14 +32,14 @@ public class Interactable_Switch : Interactable {
 
 		if (isOn == true) {
 			
-			foreach (Interactable interactable in Connections) {
+			foreach (InteractableTriggers interactable in TriggerList) {
 
-				interactable.Interact ();
+				interactable.InteractableToTrigger.Interact ();
 
 			}
 
 		}
 
-	}
+	} */
 
 }
