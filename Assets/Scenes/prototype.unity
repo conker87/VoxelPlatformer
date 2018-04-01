@@ -3040,6 +3040,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114799420012090368, guid: 1793920016361ce49acb808645de8d17,
+        type: 2}
+      propertyPath: interactableTriggers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799420012090368, guid: 1793920016361ce49acb808645de8d17,
+        type: 2}
+      propertyPath: interactableTriggers.Array.data[0].InteractableTriggerCauses.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4086745456179934, guid: 1793920016361ce49acb808645de8d17, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.75
@@ -3071,6 +3081,26 @@ Prefab:
     - target: {fileID: 4086745456179934, guid: 1793920016361ce49acb808645de8d17, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799420012090368, guid: 1793920016361ce49acb808645de8d17,
+        type: 2}
+      propertyPath: interactableTriggers.Array.data[0].InteractableToTrigger
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799420012090368, guid: 1793920016361ce49acb808645de8d17,
+        type: 2}
+      propertyPath: onTriggerStayCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799420012090368, guid: 1793920016361ce49acb808645de8d17,
+        type: 2}
+      propertyPath: interactableTriggers.Array.data[0].InteractableTriggerCauses.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799420012090368, guid: 1793920016361ce49acb808645de8d17,
+        type: 2}
+      propertyPath: interactableTriggers.Array.data[0].InteractableTriggerEffect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1793920016361ce49acb808645de8d17, type: 2}

@@ -4,12 +4,19 @@
 public class InteractableTrigger {
 
     public Interactable InteractableToTrigger;
-    public bool OnTriggerEnter;
-    public bool OnTriggerStay;
-    public bool OnTriggerExit;
-    public bool OnInteract;
 
-/// <summary>
+    public InteractableTriggerEffect InteractableTriggerEffect;
+    public InteractableTriggerCauses[] InteractableTriggerCauses;
+
+    /// <summary>
+    ///  Use this to invert the Trigger's clause. Will only work with the following:
+    ///     OnTriggerStay: Only when the Player is not within the trigger boundaries.
+    ///     OnTriggerDistance: Only when the Player is not within the Distance from GameObject.
+    ///     OnTriggerTimeSinceLevelStart: Only when the time is under the given value.
+    /// </summary>
+    public bool Invert;
+
+    /// <summary>
     /// Set to true to allow the InteractableToTrigger
     /// to activate its Interact();
     /// </summary>
@@ -20,22 +27,26 @@ public class InteractableTrigger {
     }
 
     public InteractableTrigger(InteractableTrigger value) {
+
         InteractableToTrigger = value.InteractableToTrigger;
-        OnTriggerEnter = value.OnTriggerEnter;
-        OnTriggerStay = value.OnTriggerStay;
-        OnTriggerExit = value.OnTriggerExit;
-        OnInteract = value.OnInteract;
+        InteractableTriggerEffect = value.InteractableTriggerEffect;
+        InteractableTriggerCauses = value.InteractableTriggerCauses;
+        Invert = value.Invert;
         CauseTriggerEffect = value.CauseTriggerEffect;
+
     }
 
-    public InteractableTrigger(Interactable interactableToTrigger, bool triggerEnter, bool triggerStay, bool triggerExit, bool onInteract,
-        bool triggerEffect) {
+    public InteractableTrigger(Interactable interactableToTrigger, InteractableTriggerEffect interactableTriggerEffect, InteractableTriggerCauses[] interactableTriggerCauses, bool invert, bool triggerEffect) {
+
         InteractableToTrigger = interactableToTrigger;
-        OnTriggerEnter = triggerEnter;
-        OnTriggerStay = triggerStay;
-        OnTriggerExit = triggerExit;
-        OnInteract = onInteract;
+        InteractableTriggerEffect = interactableTriggerEffect;
+        InteractableTriggerCauses = interactableTriggerCauses;
+        Invert = invert;
         CauseTriggerEffect = triggerEffect;
+
     }
 
 }
+
+public enum InteractableTriggerEffect { TurnOn, Toggle, TurnOff };
+public enum InteractableTriggerCauses { OnTriggerEnter, OnTriggerStay, OnTriggerExit, OnTriggerInteract, OnTriggerTimeSinceLevelStart, OnTriggerRepeatTime };
