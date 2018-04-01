@@ -56,6 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4031067583216352}
   - component: {fileID: 65465265519332752}
+  - component: {fileID: 114910387128279180}
   m_Layer: 9
   m_Name: EndLocation
   m_TagString: Untagged
@@ -146,6 +147,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: c02e0ab6954688e4e8dea1e3602f3799, type: 2}
   m_StaticBatchInfo:
@@ -180,6 +182,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 35f164b8926667341a170ab2cb25a72c, type: 2}
   m_StaticBatchInfo:
@@ -255,3 +258,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114910387128279180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1785060626581846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923494c6075f28e428853d9fd15d8264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

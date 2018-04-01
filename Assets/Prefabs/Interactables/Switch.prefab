@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4086745456179934}
   - component: {fileID: 64313341542514986}
-  - component: {fileID: 114799420012090368}
+  - component: {fileID: 114743216839290966}
   m_Layer: 10
   m_Name: Switch
   m_TagString: Untagged
@@ -38,9 +38,8 @@ GameObject:
   - component: {fileID: 4557092107715892}
   - component: {fileID: 33438960496313040}
   - component: {fileID: 23355314194109518}
-  - component: {fileID: 64668923409843662}
   m_Layer: 10
-  m_Name: Switch
+  m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,8 +51,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008136629111310}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1, y: 0, z: -2}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.75, y: 0, z: -2}
   m_LocalScale: {x: 0.125, y: 0.125, z: 0.125}
   m_Children:
   - {fileID: 4557092107715892}
@@ -125,25 +124,11 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: c850f11b86e4d414584ec662fc30b825, type: 3}
---- !u!64 &64668923409843662
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1130211090095442}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c850f11b86e4d414584ec662fc30b825, type: 3}
---- !u!114 &114799420012090368
+--- !u!114 &114743216839290966
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -151,18 +136,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1008136629111310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ce3089661638c44a0d450b7a6a0b91, type: 3}
+  m_Script: {fileID: 11500000, guid: eb068f5c3c8f0694d96b5f1a2fa4694d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
   oneTimeUse: 0
   canOnlyInteractFromOtherInteractables: 0
   isOn: 0
-  canContinue: 1
+  onTriggerExecuteCooldown: 1
+  onTriggerTimeSinceLevelStart: 60
+  onTriggerRepeatTime: 10
   interactableTriggers:
   - InteractableToTrigger: {fileID: 0}
-    OnTriggerEnter: 0
-    OnTriggerStay: 0
-    OnTriggerExit: 0
-    OnInteract: 0
+    InteractableTriggerEffect: 0
+    InteractableTriggerCauses: 00000000
+    Invert: 0
     CauseTriggerEffect: 0

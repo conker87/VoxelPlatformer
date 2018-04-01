@@ -7,7 +7,7 @@ public class DEBUG_UIQuitLevel : MonoBehaviour {
 
 	void Start() {
 
-		GetComponent<Button>().onClick.AddListener (delegate { GameController.current.UnloadLevel(GameController.current.currentlyLoadedLevel); });
+		GetComponent<Button>().onClick.AddListener (delegate { GameController.current.UnloadLevel(GameController.current.currentlyLoadedLevel, false); });
 
 	}
 

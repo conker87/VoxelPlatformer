@@ -15,19 +15,6 @@ public class Interactable : MonoBehaviour {
 
     [SerializeField]
     private bool isOn = false;
-
-    [SerializeField]
-    private float onTriggerExecuteCooldown = 1f;
-    private float onTriggerExecuteTime;
-
-    [SerializeField]
-    private float onTriggerTimeSinceLevelStart = 60f;
-
-    [SerializeField]
-    private float onTriggerRepeatTime = 10f;
-
-    [SerializeField]
-    private List<InteractableTrigger> interactableTriggers = new List<InteractableTrigger>();
     #endregion
 
     #region Encapsulated Public Fields
@@ -76,51 +63,9 @@ public class Interactable : MonoBehaviour {
             isOn = value;
         }
     }
-
-    public float OnTriggerExecuteCooldown {
-        get {
-            return onTriggerExecuteCooldown;
-        }
-
-        set {
-            onTriggerExecuteCooldown = value;
-        }
-    }
-    public float OnTriggerTimeSinceLevelStart {
-        get {
-            return onTriggerTimeSinceLevelStart;
-        }
-
-        set {
-            onTriggerTimeSinceLevelStart = value;
-        }
-    }
-    public float OnTriggerRepeatTime {
-        get {
-            return onTriggerRepeatTime;
-        }
-
-        set {
-            onTriggerRepeatTime = value;
-        }
-    }
-
-    public List<InteractableTrigger> InteractableTriggers {
-        get {
-            return interactableTriggers;
-        }
-
-        set {
-            interactableTriggers = value;
-        }
-    }
     #endregion
 
-    /// TODO: Create an inherited class from this and the Triggers to that to seperate basic Interactables
-    /// and Advanced Interactables that have triggers, and call it
-    /// Interactable_Triggers
-
-    public void Interact(bool playerInteracting = true) {
+    public virtual void Interact(bool playerInteracting = true) {
 
         if (OneTimeUse == true && HasBeenUsedOnce == true)
             return;
@@ -132,90 +77,6 @@ public class Interactable : MonoBehaviour {
 
         if (OneTimeUse == true)
             HasBeenUsedOnce = true;
-
-        if (IsOn == true) {
-
-            foreach (InteractableTrigger interactable in InteractableTriggers) {
-
-                interactable.InteractableToTrigger.Interact(false);
-
-            }
-
-        }
-
-    }
-
-    private void OnTriggerEnter(Collider other) {
-
-        if (other.GetComponent<Player>() == null)
-            return;
-
-        foreach (InteractableTrigger interactable in InteractableTriggers) {
-
-            if (interactable.InteractableToTrigger == null)
-                continue;
-
-            foreach (InteractableTriggerCauses cause in interactable.InteractableTriggerCauses) {
-
-                if (cause != InteractableTriggerCauses.OnTriggerEnter)
-                    continue;
-
-                interactable.InteractableToTrigger.Interact(false);
-
-            }
-                
-        }
-
-    }
-
-    private void OnTriggerStay(Collider other) {
-
-        if (other.GetComponent<Player>() == null)
-            return;
-
-        if (Time.time - onTriggerExecuteTime < onTriggerExecuteCooldown)
-            return;
-
-        foreach (InteractableTrigger interactable in InteractableTriggers) {
-
-            if (interactable.InteractableToTrigger == null)
-                continue;
-
-            foreach (InteractableTriggerCauses cause in interactable.InteractableTriggerCauses) {
-
-                if (cause != InteractableTriggerCauses.OnTriggerStay)
-                    continue;
-
-                interactable.InteractableToTrigger.Interact(false);
-
-            }
-
-        }
-
-        onTriggerExecuteTime = Time.time;
-
-    }
-
-    private void OnTriggerExit(Collider other) {
-
-        if (other.GetComponent<Player>() == null)
-            return;
-
-        foreach (InteractableTrigger interactable in InteractableTriggers) {
-
-            if (interactable.InteractableToTrigger == null)
-                continue;
-
-            foreach (InteractableTriggerCauses cause in interactable.InteractableTriggerCauses) {
-
-                if (cause != InteractableTriggerCauses.OnTriggerExit)
-                    continue;
-
-                interactable.InteractableToTrigger.Interact(false);
-
-            }
-
-        }
 
     }
 

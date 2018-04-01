@@ -95,7 +95,7 @@ public class GameController : MonoBehaviour {
 
 		UnloadLevel (currentlyLoadedLevel);
 
-		currentlyLoadedLevel = Instantiate (level) as Level;
+		currentlyLoadedLevel = Instantiate (level, Vector3.zero, Quaternion.identity) as Level;
 		currentlyLoadedLevel.IsCurrentLevel = true;
 
 		currentTime = 0f;
@@ -105,11 +105,12 @@ public class GameController : MonoBehaviour {
 
 	}
 
-	public void UnloadLevel(Level level) {
+	public void UnloadLevel(Level level, bool saveLevelScores = true) {
 
 		if (level != null) {
 
-			currentlyLoadedLevel.SaveLevelScores ();
+            if (saveLevelScores == true)
+			    currentlyLoadedLevel.SaveLevelScores ();
 
 			Destroy (level.gameObject);
 			currentlyLoadedLevel = null;

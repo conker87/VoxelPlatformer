@@ -14,6 +14,7 @@ public class EndLocation : MonoBehaviour {
 			Debug.LogWarning (string.Format("The player has his the end portal and should show the end screen and go to the level select screen."));
 
 			LevelScore currentLevelScore = GameController.current.LevelScores.FirstOrDefault (s => s.LevelID == GameController.current.currentlyLoadedLevel.LevelID);
+
 			int indexOfCurrent = GameController.current.LevelScores.IndexOf(currentLevelScore);
 
 			if (indexOfCurrent < GameController.current.LevelScores.Count - 1) {

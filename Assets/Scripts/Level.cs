@@ -54,6 +54,7 @@ public class Level : MonoBehaviour {
 
 		int MaximumCoins = 0, MaximumStars = 0;
 
+        // Loads the Coins and Stars from 
 		foreach (Coin coin in GetComponentsInChildren<Coin>()) {
 
 			coin.CurrentLevel = this;
