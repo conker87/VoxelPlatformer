@@ -79,6 +79,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1947263556177348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4002138458296528}
+  - component: {fileID: 65191642134244310}
+  m_Layer: 12
+  m_Name: PusherCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4001064981878366
 Transform:
   m_ObjectHideFlags: 1
@@ -92,6 +108,19 @@ Transform:
   m_Father: {fileID: 4738165346403698}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!4 &4002138458296528
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1947263556177348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4738165346403698}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4343169720439526
 Transform:
   m_ObjectHideFlags: 1
@@ -112,12 +141,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1678283881056016}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -14, y: 4, z: -0.1}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 4001064981878366}
   - {fileID: 4343169720439526}
+  - {fileID: 4002138458296528}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -191,6 +221,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!65 &65191642134244310
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1947263556177348}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 8, z: 1}
+  m_Center: {x: 0, y: -0.4, z: 3.1}
 --- !u!65 &65643732743018796
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -199,10 +241,10 @@ BoxCollider:
   m_GameObject: {fileID: 1678283881056016}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 7, y: 0.9, z: 7}
-  m_Center: {x: 0, y: -3.5, z: 0}
+  m_Size: {x: 1, y: 4, z: 1}
+  m_Center: {x: 0, y: -0.4, z: 3.1}
 --- !u!114 &114082602826124092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,9 +258,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   jumpHeight: 12
+  fallDamageOffset: 5
+  preJumpYLevel: 0
+  maxFallDistance: 7.5
   canMove: 1
-  isOnGround: 0
+  isOnGround: 1
   hasJumped: 0
+  hasTouchedGroundAfterFall: 0
   interactableDistance: 5
   baseButtStompForce: 10
   lmGeometryLayerMask:
@@ -227,6 +273,9 @@ MonoBehaviour:
   lmInteractableLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  raycastSkin: 0.05
+  isGroundedCheckTime: 0
+  isGroundedCheckCooldown: 0.1
 --- !u!114 &114906714296772224
 MonoBehaviour:
   m_ObjectHideFlags: 1

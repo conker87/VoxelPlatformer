@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DisableOnStart.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Constant.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Enum.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_IconUtility.cs" />
@@ -78,8 +79,10 @@
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Interactable_PressurePlate_OnTriggers.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable_Switch.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable_Triggers.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Interactable_Triggers_PressurePlate.cs" />
     <Compile Include="Assets\Scripts\Interactables\InteractableTriggers.cs" />
     <Compile Include="Assets\Scripts\IsometricCamera.cs" />
     <Compile Include="Assets\Scripts\Level.cs" />

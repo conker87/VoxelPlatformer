@@ -118,7 +118,10 @@ public class Level : MonoBehaviour {
 
 		GameController.current.Player = Instantiate (GameController.current.PlayerSpawnablePrefab, (StartLocation == null) ? Vector3.zero : StartLocation.transform.position, Quaternion.identity, transform);
 
-	}
+        GameController.current.Player.gameObject.SetActive(true);
+
+
+    }
 
 	void OnDrawGizmos() {
 

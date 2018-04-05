@@ -59,8 +59,6 @@ public class Interactable_Triggers : Interactable {
     }
     #endregion
 
-    // TODO: Need to make a Pressure Plate kind of thing.
-
     public override void Interact(bool playerInteracting = true) {
 
         if (OneTimeUse == true && HasBeenUsedOnce == true)
@@ -92,7 +90,7 @@ public class Interactable_Triggers : Interactable {
 
     }
 
-    private void OnTriggerEnter(Collider other) {
+    protected virtual void OnTriggerEnter(Collider other) {
 
         if (other.GetComponent<Player>() == null)
             return;
@@ -118,7 +116,7 @@ public class Interactable_Triggers : Interactable {
 
     }
 
-    private void OnTriggerStay(Collider other) {
+    protected virtual void OnTriggerStay(Collider other) {
 
         if (other.GetComponent<Player>() == null)
             return;
@@ -149,7 +147,7 @@ public class Interactable_Triggers : Interactable {
 
     }
 
-    private void OnTriggerExit(Collider other) {
+    protected virtual void OnTriggerExit(Collider other) {
 
         if (other.GetComponent<Player>() == null)
             return;

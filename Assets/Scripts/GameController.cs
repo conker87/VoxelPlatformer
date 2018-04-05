@@ -98,7 +98,9 @@ public class GameController : MonoBehaviour {
 		currentlyLoadedLevel = Instantiate (level, Vector3.zero, Quaternion.identity) as Level;
 		currentlyLoadedLevel.IsCurrentLevel = true;
 
-		currentTime = 0f;
+        currentlyLoadedLevel.gameObject.SetActive(true);
+
+        currentTime = 0f;
 		Camera.main.orthographicSize = (currentlyLoadedLevel.OverwriteCameraFOV > 0) ? currentlyLoadedLevel.OverwriteCameraFOV : OriginalCameraFOV;
 
 		ChangeState ("LEVEL_LOADED");
