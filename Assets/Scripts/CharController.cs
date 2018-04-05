@@ -5,10 +5,10 @@ using UnityEngine;
 public class CharController : MonoBehaviour {
 
 	[SerializeField]
-	float moveSpeed = 4f, jumpHeight = 8f, fallDamageOffset = 5f, preJumpYLevel, maxFallDistance = 5f;
+	float moveSpeed = 4f, jumpHeight = 8f, preJumpYLevel, maxFallDistance = 5f;
 
 	[SerializeField]
-	bool canMove = true, isOnGround = true, hasJumped, hasTouchedGroundAfterFall;
+	bool canMove = true, isOnGround = true, hasJumped;
 
 	[SerializeField]
 	float interactableDistance = 5f;
@@ -18,9 +18,28 @@ public class CharController : MonoBehaviour {
 	bool hasButtStomped = false;
 
 	[SerializeField]
-	LayerMask lmGeometryLayerMask, lmInteractableLayerMask;
+	LayerMask geometryLayerMask, interactableLayerMask;
 
-	Rigidbody rb;
+    public LayerMask GeometryLayerMask {
+        get {
+            return geometryLayerMask;
+        }
+
+        set {
+            geometryLayerMask = value;
+        }
+    }
+    public LayerMask InteractableLayerMask {
+        get {
+            return interactableLayerMask;
+        }
+
+        set {
+            interactableLayerMask = value;
+        }
+    }
+
+    Rigidbody rb;
 	Player p;
 
 	Vector3 v3Forward, v3Right;
@@ -29,7 +48,7 @@ public class CharController : MonoBehaviour {
 	float raycastSkin = 0.01f, isGroundedCheckTime, isGroundedCheckCooldown = 0.5f;
 	float capsuleColliderYBounds;
 
-	void Start() {
+    void Start() {
 		
 		ResetForwardDirection ();
 
@@ -54,18 +73,6 @@ public class CharController : MonoBehaviour {
 
 		}
 
-        if (hasTouchedGroundAfterFall == true) {
-
-            hasJumped = false;
-
-            if (fallDamageOffset > transform.position.y - preJumpYLevel) {
-                Debug.Log("The fall was more than the offset and should take fall dmg.");
-            }
-
-            hasTouchedGroundAfterFall = false;
-
-        }
-
         if (isOnGround == true) {
 
             if (preJumpYLevel - transform.position.y > maxFallDistance) {
@@ -81,7 +88,7 @@ public class CharController : MonoBehaviour {
 		// Set this to "Interact"
 		if (Input.GetKeyDown (KeyCode.E)) {
 
-			Collider[] overlappedSphere = Physics.OverlapSphere (transform.position, interactableDistance, lmInteractableLayerMask);
+			Collider[] overlappedSphere = Physics.OverlapSphere (transform.position, interactableDistance, InteractableLayerMask);
 
 			if (overlappedSphere != null && overlappedSphere.Length > 0) {
 
@@ -168,7 +175,7 @@ public class CharController : MonoBehaviour {
         isGroundedCheckTime += 0.5f;
     }
 
-        void ButtStomp() {
+    void ButtStomp() {
 
 		float fCurrentYLevel = transform.position.y;
 		float fButtStompForce = baseButtStompForce + (1.5f * (fCurrentYLevel - preJumpYLevel));
@@ -198,7 +205,7 @@ public class CharController : MonoBehaviour {
 
             // Debug.Log("Will Ground Check.");
 
-            if (Physics.Raycast(transform.position, -Vector3.up, capsuleColliderYBounds + raycastSkin, lmGeometryLayerMask)) {
+            if (Physics.Raycast(transform.position, -Vector3.up, capsuleColliderYBounds + raycastSkin, GeometryLayerMask)) {
 
                 isOnGround = true;
                 hasButtStomped = hasJumped = false;

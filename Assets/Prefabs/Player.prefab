@@ -258,19 +258,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   jumpHeight: 12
-  fallDamageOffset: 5
   preJumpYLevel: 0
   maxFallDistance: 7.5
   canMove: 1
   isOnGround: 1
   hasJumped: 0
-  hasTouchedGroundAfterFall: 0
   interactableDistance: 5
   baseButtStompForce: 10
-  lmGeometryLayerMask:
+  geometryLayerMask:
     serializedVersion: 2
     m_Bits: 513
-  lmInteractableLayerMask:
+  interactableLayerMask:
     serializedVersion: 2
     m_Bits: 1024
   raycastSkin: 0.05

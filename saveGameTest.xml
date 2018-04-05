@@ -14,8 +14,8 @@
 
 <!--This is the list of level scores.-->
 	<levelscores>
-		<levelscore LevelID="ProBuilderCubeTest" BestTime="5.075548" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="True" />
-		<levelscore LevelID="level_01_your_house" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="False" />
-		<levelscore LevelID="new_prototype_level" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="False" />
+		<levelscore LevelID="ProBuilderCubeTest" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="True" />
+		<levelscore LevelID="level_01_your_house" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="True" />
+		<levelscore LevelID="new_prototype_level" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="True" />
 	</levelscores>
 </SaveData>

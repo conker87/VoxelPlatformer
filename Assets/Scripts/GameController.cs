@@ -116,6 +116,7 @@ public class GameController : MonoBehaviour {
 
 			Destroy (level.gameObject);
 			currentlyLoadedLevel = null;
+            Player = null;
 
 			Camera.main.orthographicSize = OriginalCameraFOV;
 
