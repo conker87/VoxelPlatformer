@@ -299,7 +299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4293033538709012}
   m_Layer: 9
-  m_Name: Positions
+  m_Name: Actives
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -712,8 +712,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4293033538709012}
-  - {fileID: 4686462036009648}
   - {fileID: 4791438730710974}
+  - {fileID: 4686462036009648}
   m_Father: {fileID: 4855677344722066}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -778,7 +778,7 @@ Transform:
   - {fileID: 4910924648086196}
   - {fileID: 4834237855562962}
   m_Father: {fileID: 4396937614185268}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4692088928813036
 Transform:
@@ -875,7 +875,7 @@ Transform:
   - {fileID: 4034726572683878}
   - {fileID: 4806788582813442}
   m_Father: {fileID: 4396937614185268}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4806788582813442
 Transform:
@@ -16931,23 +16931,18 @@ MonoBehaviour:
   canOnlyInteractFromOtherInteractables: 0
   anim: {fileID: 0}
   isOn: 0
-  onTriggerExecuteCooldown: 1
-  onTriggerTimeSinceLevelStart: 60
-  onTriggerRepeatTime: 10
+  onTriggerStayCooldown: 1
   interactableTriggers:
   - InteractableToTrigger: {fileID: 114750385399194536}
     InteractableTriggerCause: 0
     InteractableTriggerEffect: 0
+    InteractableTriggerValue: 0
     Invert: 0
     CauseTriggerEffect: 0
   - InteractableToTrigger: {fileID: 114750385399194536}
     InteractableTriggerCause: 2
     InteractableTriggerEffect: 2
-    Invert: 0
-    CauseTriggerEffect: 0
-  - InteractableToTrigger: {fileID: 114750385399194536}
-    InteractableTriggerCause: 3
-    InteractableTriggerEffect: 1
+    InteractableTriggerValue: 0
     Invert: 0
     CauseTriggerEffect: 0
   moveableBlockName: MoveableBlock
@@ -18517,9 +18512,7 @@ MonoBehaviour:
   canOnlyInteractFromOtherInteractables: 0
   anim: {fileID: 0}
   isOn: 0
-  onTriggerExecuteCooldown: 1
-  onTriggerTimeSinceLevelStart: 60
-  onTriggerRepeatTime: 10
+  onTriggerStayCooldown: 1
   interactableTriggers: []
 --- !u!114 &114786893393783424
 MonoBehaviour:

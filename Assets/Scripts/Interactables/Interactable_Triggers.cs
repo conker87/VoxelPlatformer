@@ -3,48 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable_Triggers : Interactable {
-    
+
     #region Serialized Private Fields
-    [SerializeField]
-    private float onTriggerExecuteCooldown = 1f;
-    protected float onTriggerExecuteTime;
 
+    private bool hasTriggerOverlapSphere, hasTriggerTimeSinceLevelStart, hasTriggerRepeatTime;
+    
     [SerializeField]
-    private float onTriggerTimeSinceLevelStart = 60f;
-
-    [SerializeField]
-    private float onTriggerRepeatTime = 10f;
+    private float onTriggerStayCooldown = 1f;
+    protected float onTriggerStayTime;
+    protected float onTriggerUpdateTime;
 
     [SerializeField]
     private List<InteractableTrigger> interactableTriggers = new List<InteractableTrigger>();
     #endregion
 
     #region Encapsulated Public Fields
-    public float OnTriggerExecuteCooldown {
+
+    public float OnTriggerStayCooldown {
         get {
-            return onTriggerExecuteCooldown;
+            return onTriggerStayCooldown;
         }
 
         set {
-            onTriggerExecuteCooldown = value;
-        }
-    }
-    public float OnTriggerTimeSinceLevelStart {
-        get {
-            return onTriggerTimeSinceLevelStart;
-        }
-
-        set {
-            onTriggerTimeSinceLevelStart = value;
-        }
-    }
-    public float OnTriggerRepeatTime {
-        get {
-            return onTriggerRepeatTime;
-        }
-
-        set {
-            onTriggerRepeatTime = value;
+            onTriggerStayCooldown = value;
         }
     }
 
@@ -57,7 +38,95 @@ public class Interactable_Triggers : Interactable {
             interactableTriggers = value;
         }
     }
+
     #endregion
+
+    private void Start() {
+
+        // Check to see if the list of triggers has a OnTriggerOverlapSphere, OnTriggerTimeSinceLevelStart or OnTriggerRepeatTime
+        foreach (InteractableTrigger interactable in InteractableTriggers) {
+
+            if (interactable.InteractableToTrigger == null)
+                continue;
+
+            if (interactable.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerOverlapSphere)
+                hasTriggerOverlapSphere = true;
+
+            if (interactable.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerTimeSinceLevelStart)
+                hasTriggerTimeSinceLevelStart = true;
+
+            if (interactable.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerRepeatTime)
+                hasTriggerRepeatTime = true;
+
+        }
+
+    }
+
+    private void Update() {
+
+        if ((hasTriggerOverlapSphere == true || hasTriggerTimeSinceLevelStart == true || hasTriggerRepeatTime == true)
+            && Time.time > onTriggerUpdateTime) {
+
+            Debug.Log(string.Format("This should only execute if one+ of these three values are true: {0},{1}, {2}",
+                hasTriggerOverlapSphere,
+                hasTriggerTimeSinceLevelStart,
+                hasTriggerRepeatTime));
+
+            foreach (InteractableTrigger interactableTrigger in InteractableTriggers) {
+
+                if (interactableTrigger.InteractableToTrigger == null)
+                    continue;
+
+                if (interactableTrigger.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerOverlapSphere) {
+
+                    Collider[] overlappedSphere = Physics.OverlapSphere(transform.position, interactableTrigger.InteractableTriggerValue);
+
+                    if (overlappedSphere != null && overlappedSphere.Length > 0) {
+
+                        foreach (Collider coll in overlappedSphere) {
+
+                            Player player;
+
+                            if ((player = coll.GetComponent<Player>()) != null
+                                && GameController.current.currentTime > interactableTrigger.InteractableTriggerValue) {
+
+                                interactableTrigger.InteractableToTrigger.Interact(true,
+                                    interactableTrigger.InteractableTriggerCause,
+                                    interactableTrigger.InteractableTriggerEffect);
+
+                            }
+
+                        }
+
+                    }
+
+                }
+                else if (interactableTrigger.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerTimeSinceLevelStart) {
+
+                    continue;
+
+                    interactableTrigger.InteractableToTrigger.Interact(true,
+                        interactableTrigger.InteractableTriggerCause,
+                        interactableTrigger.InteractableTriggerEffect);
+
+                }
+                else if (interactableTrigger.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerRepeatTime) {
+
+                    continue;
+
+                    interactableTrigger.InteractableToTrigger.Interact(true,
+                        interactableTrigger.InteractableTriggerCause,
+                        interactableTrigger.InteractableTriggerEffect);
+
+                }
+
+            }
+
+            onTriggerUpdateTime = Time.time + 1f;
+
+        }
+
+    }
 
     public override void Interact(bool playerInteracting = false,
         InteractableTriggerCauses interactableTriggerCauses = InteractableTriggerCauses.OnTriggerInteract,
@@ -126,7 +195,7 @@ public class Interactable_Triggers : Interactable {
         if (other.GetComponent<Player>() == null)
             return;
 
-        if (Time.time - onTriggerExecuteTime < OnTriggerExecuteCooldown)
+        if (Time.time - onTriggerStayTime < OnTriggerStayCooldown)
             return;
 
         foreach (InteractableTrigger interactable in InteractableTriggers) {
@@ -134,14 +203,14 @@ public class Interactable_Triggers : Interactable {
             if (interactable.InteractableToTrigger == null)
                 continue;
 
-            if (interactable.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerStay)
+            if (interactable.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerOverlapSphere)
                 continue;
 
-            interactable.InteractableToTrigger.Interact(false, InteractableTriggerCauses.OnTriggerStay, interactable.InteractableTriggerEffect);
+            interactable.InteractableToTrigger.Interact(false, InteractableTriggerCauses.OnTriggerOverlapSphere, interactable.InteractableTriggerEffect);
 
         }
 
-        onTriggerExecuteTime = Time.time;
+        onTriggerStayTime = Time.time;
 
     }
 
