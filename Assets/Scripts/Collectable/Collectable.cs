@@ -22,7 +22,8 @@ public class Collectable : MonoBehaviour {
 
 		}
 
-		CollectableID = CollectableType + "_" + transform.position + "_" + CurrentLevel.LevelID;
+        if (CurrentLevel != null)
+		    CollectableID = CollectableType + "_" + transform.position + "_" + CurrentLevel.LevelID;
 
 	}
 

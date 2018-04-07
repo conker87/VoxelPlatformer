@@ -20,7 +20,7 @@ public class Coin : Collectable {
 
 			GameController.current.AddToCoins (CollectableID);
 
-			SFXManager.instance.PlayRandomCoinClip ();
+            SFXController.instance.PlayRandomCoinClip ();
 
 			CurrentLevel.LevelsLevelScore.CurrentCoins++;
 

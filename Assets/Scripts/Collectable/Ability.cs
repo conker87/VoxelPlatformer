@@ -15,8 +15,8 @@ public class Ability : Collectable {
 
 			GameController.current.AddToAbilities (AbilityID);
 
-			// TODO: Add some star collection clips.
-			SFXManager.instance.PlayRandomCoinClip ();
+            // TODO: Add some star collection clips.
+            SFXController.instance.PlayRandomCoinClip ();
 
 			Destroy (gameObject);
 

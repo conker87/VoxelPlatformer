@@ -5,8 +5,9 @@ public class InteractableTrigger {
 
     public Interactable InteractableToTrigger;
 
+    public InteractableTriggerCauses InteractableTriggerCause;
     public InteractableTriggerEffect InteractableTriggerEffect;
-    public InteractableTriggerCauses[] InteractableTriggerCauses;
+
 
     /// <summary>
     ///  Use this to invert the Trigger's clause. Will only work with the following:
@@ -29,18 +30,18 @@ public class InteractableTrigger {
     public InteractableTrigger(InteractableTrigger value) {
 
         InteractableToTrigger = value.InteractableToTrigger;
+        InteractableTriggerCause = value.InteractableTriggerCause;
         InteractableTriggerEffect = value.InteractableTriggerEffect;
-        InteractableTriggerCauses = value.InteractableTriggerCauses;
         Invert = value.Invert;
         CauseTriggerEffect = value.CauseTriggerEffect;
 
     }
 
-    public InteractableTrigger(Interactable interactableToTrigger, InteractableTriggerEffect interactableTriggerEffect, InteractableTriggerCauses[] interactableTriggerCauses, bool invert, bool triggerEffect) {
+    public InteractableTrigger(Interactable interactableToTrigger, InteractableTriggerCauses interactableTriggerCause, InteractableTriggerEffect interactableTriggerEffect, bool invert, bool triggerEffect) {
 
         InteractableToTrigger = interactableToTrigger;
+        InteractableTriggerCause = interactableTriggerCause;
         InteractableTriggerEffect = interactableTriggerEffect;
-        InteractableTriggerCauses = interactableTriggerCauses;
         Invert = invert;
         CauseTriggerEffect = triggerEffect;
 

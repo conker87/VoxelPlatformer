@@ -59,7 +59,9 @@ public class Interactable_Triggers : Interactable {
     }
     #endregion
 
-    public override void Interact(bool playerInteracting = true) {
+    public override void Interact(bool playerInteracting = false,
+        InteractableTriggerCauses interactableTriggerCauses = InteractableTriggerCauses.OnTriggerInteract,
+        InteractableTriggerEffect interactableTriggerEffect = InteractableTriggerEffect.Toggle) {
 
         if (OneTimeUse == true && HasBeenUsedOnce == true)
             return;
@@ -67,24 +69,34 @@ public class Interactable_Triggers : Interactable {
         if (CanOnlyInteractFromOtherInteractables == true && playerInteracting == true)
             return;
 
-        IsOn = !IsOn;
+        switch (interactableTriggerEffect) {
+            case InteractableTriggerEffect.TurnOff:
+                IsOn = false;
+                break;
+            case InteractableTriggerEffect.TurnOn:
+                IsOn = true;
+                break;
+            default:
+            case InteractableTriggerEffect.Toggle:
+                IsOn = !IsOn;
+                break;
+        }
+
+        // if (Anim != null)
+        //    Anim.SetBool("IsOn", IsOn);
 
         if (OneTimeUse == true)
             HasBeenUsedOnce = true;
 
-        if (IsOn == true) {
+        foreach (InteractableTrigger interactable in InteractableTriggers) {
 
-            foreach (InteractableTrigger interactable in InteractableTriggers) {
+            if (interactable.InteractableToTrigger == null)
+                continue;
 
-                if (interactable.InteractableToTrigger == null)
-                    continue;
+            if (interactable.InteractableTriggerCause != interactableTriggerCauses)
+                continue;
 
-                if (interactable.InteractableTriggerCauses.Length == 0)
-                    continue;
-
-                interactable.InteractableToTrigger.Interact(false);
-
-            }
+            interactable.InteractableToTrigger.Interact(false, interactableTriggerCauses, interactable.InteractableTriggerEffect);
 
         }
 
@@ -100,17 +112,10 @@ public class Interactable_Triggers : Interactable {
             if (interactable.InteractableToTrigger == null)
                 continue;
 
-            if (interactable.InteractableTriggerCauses.Length == 0)
+            if (interactable.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerEnter)
                 continue;
 
-            foreach (InteractableTriggerCauses cause in interactable.InteractableTriggerCauses) {
-
-                if (cause != InteractableTriggerCauses.OnTriggerEnter)
-                    continue;
-
-                interactable.InteractableToTrigger.Interact(false);
-
-            }
+            interactable.InteractableToTrigger.Interact(false, InteractableTriggerCauses.OnTriggerEnter, interactable.InteractableTriggerEffect);
 
         }
 
@@ -129,17 +134,10 @@ public class Interactable_Triggers : Interactable {
             if (interactable.InteractableToTrigger == null)
                 continue;
 
-            if (interactable.InteractableTriggerCauses.Length == 0)
+            if (interactable.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerStay)
                 continue;
 
-            foreach (InteractableTriggerCauses cause in interactable.InteractableTriggerCauses) {
-
-                if (cause != InteractableTriggerCauses.OnTriggerStay)
-                    continue;
-
-                interactable.InteractableToTrigger.Interact(false);
-
-            }
+            interactable.InteractableToTrigger.Interact(false, InteractableTriggerCauses.OnTriggerStay, interactable.InteractableTriggerEffect);
 
         }
 
@@ -157,19 +155,13 @@ public class Interactable_Triggers : Interactable {
             if (interactable.InteractableToTrigger == null)
                 continue;
 
-            if (interactable.InteractableTriggerCauses.Length == 0)
+            if (interactable.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerExit)
                 continue;
 
-            foreach (InteractableTriggerCauses cause in interactable.InteractableTriggerCauses) {
-
-                if (cause != InteractableTriggerCauses.OnTriggerExit)
-                    continue;
-
-                interactable.InteractableToTrigger.Interact(false);
-
-            }
+            interactable.InteractableToTrigger.Interact(false, InteractableTriggerCauses.OnTriggerExit, interactable.InteractableTriggerEffect);
 
         }
 
     }
+
 }

@@ -16,9 +16,4 @@ public class Interactable_Triggers_PressurePlate : Interactable_Triggers {
         }
     }
 
-    public override void Interact(bool playerInteracting = true) {
-
-
-
-    }
 }

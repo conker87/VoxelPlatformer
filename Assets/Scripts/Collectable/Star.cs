@@ -20,8 +20,8 @@ public class Star : Collectable {
 
 			GameController.current.AddToStars (CollectableID);
 
-			// TODO: Add some star collection clips.
-			SFXManager.instance.PlayRandomCoinClip ();
+            // TODO: Add some star collection clips.
+            SFXController.instance.PlayRandomCoinClip ();
 
 			Destroy (gameObject);
 
