@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public static Player current;
+    #region Singleton
+    public static Player current;
 
 	void Awake() {
 
@@ -16,16 +17,90 @@ public class Player : MonoBehaviour {
 
 	}
 
-	public int 		CurrentHealth, MaximumHealth;
+    #endregion
 
-	public bool		IsCurrentlyInInvincibilityFrames = false;
-	public float 	InvincibilityFramesLength = 0.5f, CurrentInvincibilityFramesTime;
+    #region Serialized Private Fields
 
-	public bool 	IsDead = false;
+    [SerializeField]
+    private int currentHealth = 3, maximumHealth = 3;
 
+    [SerializeField]
+    private bool isInvulnerable = false;
 
+    [SerializeField]
+    private bool isCurrentlyInInvincibilityFrames = false;
+    [SerializeField]
+    private float invincibilityFramesLength, invincibilityFramesTime;
 
-	void Start () {
+    [SerializeField]
+    private bool isDead = false;
+
+    #endregion
+
+    #region Encapsulated Public Fields
+
+    public int CurrentHealth {
+        get {
+            return currentHealth;
+        }
+
+        set {
+            currentHealth = value;
+        }
+    }
+    public int MaximumHealth {
+        get {
+            return maximumHealth;
+        }
+
+        set {
+            maximumHealth = value;
+        }
+    }
+
+    public bool IsInvulnerable {
+        get {
+            return isInvulnerable;
+        }
+
+        set {
+            isInvulnerable = value;
+        }
+    }
+
+    public bool IsCurrentlyInInvincibilityFrames {
+        get {
+            return isCurrentlyInInvincibilityFrames;
+        }
+
+        set {
+            isCurrentlyInInvincibilityFrames = value;
+        }
+    }
+
+    public float InvincibilityFramesLength {
+        get {
+            return invincibilityFramesLength;
+        }
+
+        set {
+            invincibilityFramesLength = value;
+        }
+    }
+
+    public bool IsDead {
+        get {
+            return isDead;
+        }
+
+        set {
+            isDead = value;
+        }
+    }
+
+    #endregion
+
+    void Start () {
 		
 	}
 
@@ -40,7 +115,7 @@ public class Player : MonoBehaviour {
 		IsDead = (CurrentHealth == 0) ? true : false;
 
 		// Disable invincibility frames when needed.
-		if (IsCurrentlyInInvincibilityFrames && Time.time > CurrentInvincibilityFramesTime) {
+		if (IsCurrentlyInInvincibilityFrames && Time.time > invincibilityFramesTime) {
 
 			IsCurrentlyInInvincibilityFrames = false;
 
@@ -63,12 +138,12 @@ public class Player : MonoBehaviour {
 
 	public void DamagePlayer(int health = 1) {
 
-		if (IsCurrentlyInInvincibilityFrames) {
+		if (IsInvulnerable == true || IsCurrentlyInInvincibilityFrames == true) {
 			return;
 		}
 
 		IsCurrentlyInInvincibilityFrames = true;
-		CurrentInvincibilityFramesTime = Time.time + InvincibilityFramesLength;
+        invincibilityFramesTime = Time.time + InvincibilityFramesLength;
 
 		if (CurrentHealth - health < 1) {
 

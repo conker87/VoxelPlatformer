@@ -45,8 +45,11 @@ public class CharController : MonoBehaviour {
 	Vector3 v3Forward, v3Right;
 
     [SerializeField]
-	float raycastSkin = 0.01f, isGroundedCheckTime, isGroundedCheckCooldown = 0.5f;
+	float raycastSkin = 0.01f, isGroundedCheckTime, isGroundedCheckCooldown = 0.25f;
 	float capsuleColliderYBounds;
+
+    [SerializeField]
+    CapsuleCollider capsuleCollider;
 
     void Start() {
 		
@@ -55,22 +58,18 @@ public class CharController : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		p = GetComponent<Player> ();
 
-		capsuleColliderYBounds = GetComponent<CapsuleCollider>().bounds.extents.y;
+		capsuleColliderYBounds = capsuleCollider.bounds.extents.y;
 
 	}
 
 	void Update() {
 
 		if (Input.GetButtonDown ("Jump")) {
-
 			Jump ();
-
 		}
 
 		if (Input.GetButtonDown ("ButtStomp") && hasButtStomped == false && isOnGround == false) {
-
-				ButtStomp ();
-
+			ButtStomp ();
 		}
 
         if (isOnGround == true) {

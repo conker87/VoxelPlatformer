@@ -12,6 +12,8 @@ public class Interactable_Triggers : Interactable {
     private float onTriggerStayCooldown = 1f;
     protected float onTriggerStayTime;
     protected float onTriggerUpdateTime;
+    protected float onTriggerRepeatTime;
+
 
     [SerializeField]
     private List<InteractableTrigger> interactableTriggers = new List<InteractableTrigger>();
@@ -41,22 +43,38 @@ public class Interactable_Triggers : Interactable {
 
     #endregion
 
-    private void Start() {
+    protected override void Start() {
+
+        base.Start();
 
         // Check to see if the list of triggers has a OnTriggerOverlapSphere, OnTriggerTimeSinceLevelStart or OnTriggerRepeatTime
         foreach (InteractableTrigger interactable in InteractableTriggers) {
 
-            if (interactable.InteractableToTrigger == null)
+            if (interactable.InteractableToTrigger == null) {
+                continue;
+            }
+
+            if (interactable.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerOverlapSphere) {
+
+                hasTriggerOverlapSphere = true;
                 continue;
 
-            if (interactable.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerOverlapSphere)
-                hasTriggerOverlapSphere = true;
+            }
 
-            if (interactable.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerTimeSinceLevelStart)
+
+            if (interactable.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerTimeSinceLevelStart) {
+
                 hasTriggerTimeSinceLevelStart = true;
+                continue;
 
-            if (interactable.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerRepeatTime)
+            }
+
+            if (interactable.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerRepeatTime) {
+
                 hasTriggerRepeatTime = true;
+                continue;
+
+            }
 
         }
 
@@ -74,27 +92,39 @@ public class Interactable_Triggers : Interactable {
 
             foreach (InteractableTrigger interactableTrigger in InteractableTriggers) {
 
-                if (interactableTrigger.InteractableToTrigger == null)
+                if (interactableTrigger.InteractableToTrigger == null) {
                     continue;
+                }
 
                 if (interactableTrigger.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerOverlapSphere) {
 
                     Collider[] overlappedSphere = Physics.OverlapSphere(transform.position, interactableTrigger.InteractableTriggerValue);
 
+                    bool foundPlayer = false;
+
                     if (overlappedSphere != null && overlappedSphere.Length > 0) {
 
                         foreach (Collider coll in overlappedSphere) {
 
-                            Player player;
+                            if (coll.GetComponent<Player>() != null) {
 
-                            if ((player = coll.GetComponent<Player>()) != null
-                                && GameController.current.currentTime > interactableTrigger.InteractableTriggerValue) {
+                                foundPlayer = true;
 
                                 interactableTrigger.InteractableToTrigger.Interact(true,
                                     interactableTrigger.InteractableTriggerCause,
-                                    interactableTrigger.InteractableTriggerEffect);
+                                    interactableTrigger.InteractableTriggerEffect,
+                                    interactableTrigger.DontCauseTriggerEffect);
 
                             }
+
+                        }
+
+                        if (foundPlayer == false && interactableTrigger.Invert == true) {
+
+                            interactableTrigger.InteractableToTrigger.Interact(true,
+                                interactableTrigger.InteractableTriggerCause,
+                                interactableTrigger.InteractableTriggerEffect,
+                                interactableTrigger.DontCauseTriggerEffect);
 
                         }
 
@@ -103,20 +133,36 @@ public class Interactable_Triggers : Interactable {
                 }
                 else if (interactableTrigger.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerTimeSinceLevelStart) {
 
-                    continue;
+                    if (GameController.current.currentTime < interactableTrigger.InteractableTriggerValue && interactableTrigger.Invert == true) {
 
-                    interactableTrigger.InteractableToTrigger.Interact(true,
-                        interactableTrigger.InteractableTriggerCause,
-                        interactableTrigger.InteractableTriggerEffect);
+                        interactableTrigger.InteractableToTrigger.Interact(true,
+                            interactableTrigger.InteractableTriggerCause,
+                            interactableTrigger.InteractableTriggerEffect,
+                            interactableTrigger.DontCauseTriggerEffect);
+
+                    }
+                    else if (GameController.current.currentTime > interactableTrigger.InteractableTriggerValue) {
+
+                        interactableTrigger.InteractableToTrigger.Interact(true,
+                            interactableTrigger.InteractableTriggerCause,
+                            interactableTrigger.InteractableTriggerEffect,
+                            interactableTrigger.DontCauseTriggerEffect);
+
+                    }
 
                 }
                 else if (interactableTrigger.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerRepeatTime) {
 
-                    continue;
+                    if (Time.time > onTriggerRepeatTime) {
 
-                    interactableTrigger.InteractableToTrigger.Interact(true,
-                        interactableTrigger.InteractableTriggerCause,
-                        interactableTrigger.InteractableTriggerEffect);
+                        interactableTrigger.InteractableToTrigger.Interact(true,
+                            interactableTrigger.InteractableTriggerCause,
+                            interactableTrigger.InteractableTriggerEffect,
+                            interactableTrigger.DontCauseTriggerEffect);
+
+                        onTriggerRepeatTime = Time.time + interactableTrigger.InteractableTriggerValue;
+
+                    }
 
                 }
 
@@ -130,13 +176,16 @@ public class Interactable_Triggers : Interactable {
 
     public override void Interact(bool playerInteracting = false,
         InteractableTriggerCauses interactableTriggerCauses = InteractableTriggerCauses.OnTriggerInteract,
-        InteractableTriggerEffect interactableTriggerEffect = InteractableTriggerEffect.Toggle) {
+        InteractableTriggerEffect interactableTriggerEffect = InteractableTriggerEffect.Toggle,
+        bool dontCauseTriggerEffect = false) {
 
-        if (OneTimeUse == true && HasBeenUsedOnce == true)
+        if (OneTimeUse == true && HasBeenUsedOnce == true) {
             return;
+        }
 
-        if (CanOnlyInteractFromOtherInteractables == true && playerInteracting == true)
+        if (CanOnlyInteractFromOtherInteractables == true && playerInteracting == true) {
             return;
+        }
 
         switch (interactableTriggerEffect) {
             case InteractableTriggerEffect.TurnOff:
@@ -151,19 +200,27 @@ public class Interactable_Triggers : Interactable {
                 break;
         }
 
-        // if (Anim != null)
-        //    Anim.SetBool("IsOn", IsOn);
+         if (Anim != null) {
+            Anim.SetBool("IsOn", IsOn);
+        }
 
-        if (OneTimeUse == true)
+        if (OneTimeUse == true) {
             HasBeenUsedOnce = true;
+        }
+
+        if (dontCauseTriggerEffect == true) {
+            return;
+        }
 
         foreach (InteractableTrigger interactable in InteractableTriggers) {
 
-            if (interactable.InteractableToTrigger == null)
+            if (interactable.InteractableToTrigger == null) {
                 continue;
+            }
 
-            if (interactable.InteractableTriggerCause != interactableTriggerCauses)
+            if (interactable.InteractableTriggerCause != interactableTriggerCauses) {
                 continue;
+            }
 
             interactable.InteractableToTrigger.Interact(false, interactableTriggerCauses, interactable.InteractableTriggerEffect);
 
@@ -171,18 +228,21 @@ public class Interactable_Triggers : Interactable {
 
     }
 
-    protected virtual void OnTriggerEnter(Collider other) {
+    public void OnTriggerEnter(Collider other) {
 
-        if (other.GetComponent<Player>() == null)
-            return;
+        Debug.Log("OnTriggerEnter");
 
         foreach (InteractableTrigger interactable in InteractableTriggers) {
 
-            if (interactable.InteractableToTrigger == null)
+            if (interactable.InteractableToTrigger == null) {
                 continue;
+            }
 
-            if (interactable.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerEnter)
+            if (interactable.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerEnter) {
                 continue;
+            }
+
+            Debug.Log("OnTriggerEnter -- Able");
 
             interactable.InteractableToTrigger.Interact(false, InteractableTriggerCauses.OnTriggerEnter, interactable.InteractableTriggerEffect);
 
@@ -190,42 +250,41 @@ public class Interactable_Triggers : Interactable {
 
     }
 
-    protected virtual void OnTriggerStay(Collider other) {
+    public void OnTriggerStay(Collider other) {
 
-        if (other.GetComponent<Player>() == null)
-            return;
+        foreach (InteractableTrigger interactableTrigger in InteractableTriggers) {
 
-        if (Time.time - onTriggerStayTime < OnTriggerStayCooldown)
-            return;
+            if (Time.time > onTriggerStayTime) {
+                break;
+            }
 
-        foreach (InteractableTrigger interactable in InteractableTriggers) {
-
-            if (interactable.InteractableToTrigger == null)
+            if (interactableTrigger.InteractableToTrigger == null) {
                 continue;
+            }
 
-            if (interactable.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerOverlapSphere)
+            if (interactableTrigger.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerStay) {
                 continue;
+            }
 
-            interactable.InteractableToTrigger.Interact(false, InteractableTriggerCauses.OnTriggerOverlapSphere, interactable.InteractableTriggerEffect);
+            interactableTrigger.InteractableToTrigger.Interact(false, interactableTrigger.InteractableTriggerCause, interactableTrigger.InteractableTriggerEffect);
+
+            onTriggerStayTime = Time.time + interactableTrigger.InteractableTriggerValue;
 
         }
 
-        onTriggerStayTime = Time.time;
-
     }
 
-    protected virtual void OnTriggerExit(Collider other) {
+    public void OnTriggerExit(Collider other) {
 
-        if (other.GetComponent<Player>() == null)
-            return;
+         foreach (InteractableTrigger interactable in InteractableTriggers) {
 
-        foreach (InteractableTrigger interactable in InteractableTriggers) {
-
-            if (interactable.InteractableToTrigger == null)
+            if (interactable.InteractableToTrigger == null) {
                 continue;
+            }
 
-            if (interactable.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerExit)
+            if (interactable.InteractableTriggerCause != InteractableTriggerCauses.OnTriggerExit) {
                 continue;
+            }
 
             interactable.InteractableToTrigger.Interact(false, InteractableTriggerCauses.OnTriggerExit, interactable.InteractableTriggerEffect);
 

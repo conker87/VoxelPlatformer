@@ -8,13 +8,16 @@ public class InteractableTrigger {
     public InteractableTriggerCauses InteractableTriggerCause;
     public InteractableTriggerEffect InteractableTriggerEffect;
 
-    public float InteractableTriggerValue = 0f;
-
+    [UnityEngine.Tooltip(@"This is used differently depending on the InteractableTriggerCause chosen:
+    • OnTriggerEnter, OnTriggerExit, OnTriggerInteract: No effect.
+    • OnTriggerOverlapSphere: Radius of sphere to check.
+    • OnTriggerTimeSinceLevelStart: Time from the level start.
+    • OnTriggerRepeatTime: After every this time.")]
+    public float InteractableTriggerValue = 5f;
 
     /// <summary>
     ///  Use this to invert the Trigger's clause. Will only work with the following:
-    ///     OnTriggerStay: Only when the Player is not within the trigger boundaries.
-    ///     OnTriggerDistance: Only when the Player is not within the Distance from GameObject.
+    ///     OnTriggerOverlapSphere: Only when the Player is not within the trigger boundaries.
     ///     OnTriggerTimeSinceLevelStart: Only when the time is under the given value.
     /// </summary>
     public bool Invert;
@@ -23,7 +26,13 @@ public class InteractableTrigger {
     /// Set to true to allow the InteractableToTrigger
     /// to activate its Interact();
     /// </summary>
-    public bool CauseTriggerEffect;
+    public bool DontCauseTriggerEffect = true;
+
+    void Reset() {
+
+        DontCauseTriggerEffect = true;
+
+    }
 
     public InteractableTrigger() {
 
@@ -36,22 +45,22 @@ public class InteractableTrigger {
         InteractableTriggerEffect = value.InteractableTriggerEffect;
         InteractableTriggerValue = value.InteractableTriggerValue;
         Invert = value.Invert;
-        CauseTriggerEffect = value.CauseTriggerEffect;
+        DontCauseTriggerEffect = value.DontCauseTriggerEffect;
 
     }
 
-    public InteractableTrigger(Interactable interactableToTrigger, InteractableTriggerCauses interactableTriggerCause, InteractableTriggerEffect interactableTriggerEffect, float interactableTriggerValue, bool invert, bool triggerEffect) {
+    public InteractableTrigger(Interactable interactableToTrigger, InteractableTriggerCauses interactableTriggerCause, InteractableTriggerEffect interactableTriggerEffect, float interactableTriggerValue, bool invert, bool triggerEffect = true) {
 
         InteractableToTrigger = interactableToTrigger;
         InteractableTriggerCause = interactableTriggerCause;
         InteractableTriggerEffect = interactableTriggerEffect;
         InteractableTriggerValue = interactableTriggerValue;
         Invert = invert;
-        CauseTriggerEffect = triggerEffect;
+        DontCauseTriggerEffect = triggerEffect;
 
     }
 
 }
 
-public enum InteractableTriggerEffect { TurnOn, Toggle, TurnOff };
+public enum InteractableTriggerEffect { Toggle, TurnOn, TurnOff };
 public enum InteractableTriggerCauses { OnTriggerEnter, OnTriggerStay, OnTriggerExit, OnTriggerInteract, OnTriggerOverlapSphere, OnTriggerTimeSinceLevelStart, OnTriggerRepeatTime };

@@ -79,20 +79,25 @@ public class Interactable : MonoBehaviour {
     }
     #endregion
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="interactableTriggerEffect"></param>
-    /// <param name="interactableTriggerCauses"></param>
-    /// <param name="playerInteracting"></param>
+    protected virtual void Start() {
+
+        anim = GetComponent<Animator>();
+
+    }
+
     public virtual void Interact(bool playerInteracting = false,
         InteractableTriggerCauses interactableTriggerCauses = InteractableTriggerCauses.OnTriggerInteract,
-        InteractableTriggerEffect interactableTriggerEffect = InteractableTriggerEffect.Toggle) {
+        InteractableTriggerEffect interactableTriggerEffect = InteractableTriggerEffect.Toggle,
+        bool causeTriggerEffects = true) {
+
+        if (CanOnlyInteractFromOtherInteractables == true && playerInteracting == true)
+            return;
 
         if (OneTimeUse == true && HasBeenUsedOnce == true)
             return;
 
-        if (CanOnlyInteractFromOtherInteractables == true && playerInteracting == true)
+        if ((interactableTriggerEffect == InteractableTriggerEffect.TurnOff && IsOn == false)
+            || (interactableTriggerEffect == InteractableTriggerEffect.TurnOn && IsOn == true))
             return;
 
         switch (interactableTriggerEffect) {
@@ -108,8 +113,8 @@ public class Interactable : MonoBehaviour {
                 break;
         }
 
-        //if (Anim != null)
-        //    Anim.SetBool("IsOn", IsOn);
+        if (Anim != null)
+            Anim.SetBool("IsOn", IsOn);
 
         if (OneTimeUse == true)
             HasBeenUsedOnce = true;

@@ -30,8 +30,7 @@ public class Interactable_PressurePlate_OnTriggers : MonoBehaviour {
 
         if (other.gameObject.tag.Equals(MoveableBlockName)) {
 
-            Debug.Log("ITP.Interact(false, InteractableTriggerCauses.OnTriggerEnter);");
-            ITP.Interact(false, InteractableTriggerCauses.OnTriggerEnter);
+            ITP.OnTriggerEnter(other);
 
         }
 
@@ -39,7 +38,11 @@ public class Interactable_PressurePlate_OnTriggers : MonoBehaviour {
 
     protected void OnTriggerStay(Collider other) {
 
+        if (other.gameObject.tag.Equals(MoveableBlockName)) {
 
+            ITP.OnTriggerStay(other);
+
+        }
 
     }
 
@@ -47,7 +50,7 @@ public class Interactable_PressurePlate_OnTriggers : MonoBehaviour {
 
         if (other.gameObject.tag.Equals(MoveableBlockName)) {
 
-            ITP.Interact(false, InteractableTriggerCauses.OnTriggerExit);
+            ITP.OnTriggerExit(other);
 
         }
 
