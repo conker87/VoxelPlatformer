@@ -88,7 +88,7 @@ public class Interactable : MonoBehaviour {
     public virtual void Interact(bool playerInteracting = false,
         InteractableTriggerCauses interactableTriggerCauses = InteractableTriggerCauses.OnTriggerInteract,
         InteractableTriggerEffect interactableTriggerEffect = InteractableTriggerEffect.Toggle,
-        bool causeTriggerEffects = true) {
+        bool dontCauseTriggerEffect = false) {
 
         if (CanOnlyInteractFromOtherInteractables == true && playerInteracting == true)
             return;

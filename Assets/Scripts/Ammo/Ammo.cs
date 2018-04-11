@@ -51,15 +51,16 @@ public class Ammo : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
 
-        Debug.Log("OnTriggerEnter");
-
         Player player;
 
         if ((player = other.GetComponentInParent<Player>()) != null) {
 
+            Debug.Log("Ammo::OnTriggerEnter::Player");
+
             player.DamagePlayer(1);
 
-            Destroy(gameObject);
+            Speed = 0f;
+            transform.parent = other.transform;
 
         }
 

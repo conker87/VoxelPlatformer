@@ -8,7 +8,7 @@ public class CharController : MonoBehaviour {
 	float moveSpeed = 4f, jumpHeight = 8f, preJumpYLevel, maxFallDistance = 5f;
 
 	[SerializeField]
-	bool canMove = true, isOnGround = true, hasJumped;
+	bool canMove = true, isOnGround = true, hasJumped = false, hasJumpedDouble = false;
 
 	[SerializeField]
 	float interactableDistance = 5f;
@@ -64,7 +64,11 @@ public class CharController : MonoBehaviour {
 
 	void Update() {
 
-		if (Input.GetButtonDown ("Jump")) {
+        if (p.IsDead == true || canMove == false) {
+            return;
+        }
+
+        if (Input.GetButtonDown ("Jump")) {
 			Jump ();
 		}
 
@@ -87,7 +91,7 @@ public class CharController : MonoBehaviour {
 		// Set this to "Interact"
 		if (Input.GetKeyDown (KeyCode.E)) {
 
-			Collider[] overlappedSphere = Physics.OverlapSphere (transform.position, interactableDistance, InteractableLayerMask);
+			Collider[] overlappedSphere = Physics.OverlapSphere (transform.position, interactableDistance);
 
 			if (overlappedSphere != null && overlappedSphere.Length > 0) {
 
@@ -95,9 +99,14 @@ public class CharController : MonoBehaviour {
 
 					Interactable interactable;
 
-					if ((interactable = coll.GetComponent<Interactable>()) != null) {
-					
-						interactable.Interact (true, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle);
+					if ((interactable = coll.GetComponentInParent<Interactable>()) != null) {
+
+                        Debug.Log(string.Format("Found Interactable: {0}", interactable));
+
+						interactable.Interact (true,
+                            InteractableTriggerCauses.OnTriggerInteract,
+                            InteractableTriggerEffect.Toggle,
+                            false);
 
 					}
 
@@ -115,16 +124,8 @@ public class CharController : MonoBehaviour {
 
 		rb.velocity = new Vector3 (0f, rb.velocity.y, 0f);
 
-		if (p.IsDead) {
-
+		if (p.IsDead == true || canMove == false) {
 			return;
-
-		}
-
-		if (!canMove) {
-
-			return;
-
 		}
 
 		Move ();
@@ -139,23 +140,19 @@ public class CharController : MonoBehaviour {
 
 		if (heading.magnitude > 0.1f) {
 
-            if (!isOnGround)
-            {
-               // rightMovement *= .2f;
-               // upMovement *= .2f;
-            }
-
             transform.forward = heading;
 
             transform.position += rightMovement;
             transform.position += upMovement;
 
         }
+
 	}
 
     void Jump() {
 
-        if (!isOnGround) {
+        if ((!isOnGround && hasJumped == true && GameController.current.HasAcquiredAbility("DOUBLE_JUMP") == true && hasJumpedDouble == true)
+            || (!isOnGround && hasJumped == true && GameController.current.HasAcquiredAbility("DOUBLE_JUMP") == false)) {
 
             return;
 
@@ -168,9 +165,17 @@ public class CharController : MonoBehaviour {
         rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
         //rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
 
+        // Set the main grounded bool to false.
         isOnGround = false;
-        hasJumped = true;
 
+        // Chec
+        if (hasJumped == false) {
+            hasJumped = true;
+        } else {
+            hasJumpedDouble = true;
+        }
+
+        // Prevent issues with IsGrounded() by stopping it checking for the ground for another .5 seconds.
         isGroundedCheckTime += 0.5f;
     }
 
@@ -207,7 +212,7 @@ public class CharController : MonoBehaviour {
             if (Physics.Raycast(transform.position, -Vector3.up, capsuleColliderYBounds + raycastSkin, GeometryLayerMask)) {
 
                 isOnGround = true;
-                hasButtStomped = hasJumped = false;
+                hasButtStomped = hasJumped = hasJumpedDouble = false;
                 
 
             } else {

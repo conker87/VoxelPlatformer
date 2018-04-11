@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 114082602826124092}
   - component: {fileID: 114906714296772224}
   m_Layer: 8
-  m_Name: Player_OLD
+  m_Name: Player.OLD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,6 +261,7 @@ MonoBehaviour:
   raycastSkin: 0.05
   isGroundedCheckTime: 0
   isGroundedCheckCooldown: 0.1
+  capsuleCollider: {fileID: 0}
 --- !u!114 &114906714296772224
 MonoBehaviour:
   m_ObjectHideFlags: 1

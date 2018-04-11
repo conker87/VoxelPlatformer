@@ -13,7 +13,7 @@ public class InteractableTrigger {
     • OnTriggerOverlapSphere: Radius of sphere to check.
     • OnTriggerTimeSinceLevelStart: Time from the level start.
     • OnTriggerRepeatTime: After every this time.")]
-    public float InteractableTriggerValue = 5f;
+    public float InteractableTriggerValue;
 
     /// <summary>
     ///  Use this to invert the Trigger's clause. Will only work with the following:
@@ -26,13 +26,7 @@ public class InteractableTrigger {
     /// Set to true to allow the InteractableToTrigger
     /// to activate its Interact();
     /// </summary>
-    public bool DontCauseTriggerEffect = true;
-
-    void Reset() {
-
-        DontCauseTriggerEffect = true;
-
-    }
+    public bool DontCauseTriggerEffect;
 
     public InteractableTrigger() {
 
@@ -49,14 +43,14 @@ public class InteractableTrigger {
 
     }
 
-    public InteractableTrigger(Interactable interactableToTrigger, InteractableTriggerCauses interactableTriggerCause, InteractableTriggerEffect interactableTriggerEffect, float interactableTriggerValue, bool invert, bool triggerEffect = true) {
+    public InteractableTrigger(Interactable interactableToTrigger, InteractableTriggerCauses interactableTriggerCause, InteractableTriggerEffect interactableTriggerEffect, float interactableTriggerValue, bool invert, bool dontCauseTriggerEffect = false) {
 
         InteractableToTrigger = interactableToTrigger;
         InteractableTriggerCause = interactableTriggerCause;
         InteractableTriggerEffect = interactableTriggerEffect;
         InteractableTriggerValue = interactableTriggerValue;
         Invert = invert;
-        DontCauseTriggerEffect = triggerEffect;
+        DontCauseTriggerEffect = dontCauseTriggerEffect;
 
     }
 

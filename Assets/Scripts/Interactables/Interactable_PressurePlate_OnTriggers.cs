@@ -17,11 +17,14 @@ public class Interactable_PressurePlate_OnTriggers : MonoBehaviour {
         }
     }
 
+    [SerializeField]
     Interactable_Triggers_PressurePlate ITP;
 
     private void Start() {
 
-        ITP = GetComponentInParent<Interactable_Triggers_PressurePlate>();
+        if (ITP == null) {
+            ITP = GetComponentInParent<Interactable_Triggers_PressurePlate>();
+        }
         moveableBlockName = ITP.MoveableBlockName;
 
     }

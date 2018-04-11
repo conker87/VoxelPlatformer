@@ -94,9 +94,13 @@ public class Interactable_Trap : Interactable {
             return;
         }
 
+        if (IsOn == false) {
+            return;
+        }
+
         if (Time.time > attackSpeedTime) {
 
-            Interact();
+            Fire();
             attackSpeedTime = Time.time + attackSpeed;
 
             if (FireOnce == true) {
@@ -151,8 +155,12 @@ public class Interactable_Trap : Interactable {
             return;
         }
 
+    }
+
+    void Fire() {
+
         Ammo ammoFired = null;
-  
+
         ammoFired = Instantiate(ammo, FireLocation.position, Quaternion.LookRotation(transform.forward), transform) as Ammo;
 
         ammoFired.Speed = AmmoSpeed;
@@ -160,6 +168,5 @@ public class Interactable_Trap : Interactable {
         ammoFired.DestroyAfter = AmmoDestroyAfter;
 
     }
-
 
 }

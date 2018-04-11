@@ -10,10 +10,10 @@ public class Interactable_Triggers : Interactable {
     
     [SerializeField]
     private float onTriggerStayCooldown = 1f;
-    protected float onTriggerStayTime;
-    protected float onTriggerUpdateTime;
-    protected float onTriggerRepeatTime;
-
+    [SerializeField]
+    protected float onTriggerStayTime, 
+        onTriggerUpdateTime, 
+        onTriggerRepeatTime;
 
     [SerializeField]
     private List<InteractableTrigger> interactableTriggers = new List<InteractableTrigger>();
@@ -222,7 +222,10 @@ public class Interactable_Triggers : Interactable {
                 continue;
             }
 
-            interactable.InteractableToTrigger.Interact(false, interactableTriggerCauses, interactable.InteractableTriggerEffect);
+            interactable.InteractableToTrigger.Interact(false,
+                interactableTriggerCauses,
+                interactable.InteractableTriggerEffect,
+                interactable.DontCauseTriggerEffect);
 
         }
 
@@ -230,7 +233,7 @@ public class Interactable_Triggers : Interactable {
 
     public void OnTriggerEnter(Collider other) {
 
-        Debug.Log("OnTriggerEnter");
+        Debug.Log("Interactable_Triggers::OnTriggerEnter");
 
         foreach (InteractableTrigger interactable in InteractableTriggers) {
 
@@ -242,8 +245,6 @@ public class Interactable_Triggers : Interactable {
                 continue;
             }
 
-            Debug.Log("OnTriggerEnter -- Able");
-
             interactable.InteractableToTrigger.Interact(false, InteractableTriggerCauses.OnTriggerEnter, interactable.InteractableTriggerEffect);
 
         }
@@ -252,11 +253,15 @@ public class Interactable_Triggers : Interactable {
 
     public void OnTriggerStay(Collider other) {
 
-        foreach (InteractableTrigger interactableTrigger in InteractableTriggers) {
+        if (onTriggerStayTime > Time.time) {
 
-            if (Time.time > onTriggerStayTime) {
-                break;
-            }
+            return;
+
+        }
+
+        Debug.Log("Interactable_Triggers::OnTriggerStay");
+
+        foreach (InteractableTrigger interactableTrigger in InteractableTriggers) {
 
             if (interactableTrigger.InteractableToTrigger == null) {
                 continue;
@@ -266,17 +271,21 @@ public class Interactable_Triggers : Interactable {
                 continue;
             }
 
-            interactableTrigger.InteractableToTrigger.Interact(false, interactableTrigger.InteractableTriggerCause, interactableTrigger.InteractableTriggerEffect);
-
-            onTriggerStayTime = Time.time + interactableTrigger.InteractableTriggerValue;
+            interactableTrigger.InteractableToTrigger.Interact(false,
+                interactableTrigger.InteractableTriggerCause,
+                interactableTrigger.InteractableTriggerEffect);
 
         }
+
+        onTriggerStayTime = Time.time + onTriggerStayCooldown;
 
     }
 
     public void OnTriggerExit(Collider other) {
 
-         foreach (InteractableTrigger interactable in InteractableTriggers) {
+        Debug.Log("Interactable_Triggers::OnTriggerExit");
+
+        foreach (InteractableTrigger interactable in InteractableTriggers) {
 
             if (interactable.InteractableToTrigger == null) {
                 continue;

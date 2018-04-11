@@ -19,9 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4086745456179934}
-  - component: {fileID: 64313341542514986}
-  - component: {fileID: 114743216839290966}
-  m_Layer: 10
+  - component: {fileID: 114716788928109900}
+  m_Layer: 9
   m_Name: Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,16 +29,32 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1130211090095442
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4557092107715892}
   - component: {fileID: 33438960496313040}
+  - component: {fileID: 64487737778872784}
   - component: {fileID: 23355314194109518}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: GFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1713037530116868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4111293483224454}
+  m_Layer: 9
+  m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,25 +66,39 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008136629111310}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.75, y: 0, z: -2}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -0.4, y: 0, z: -4.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4111293483224454}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!4 &4111293483224454
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1713037530116868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.125, y: 0.125, z: 0.125}
   m_Children:
   - {fileID: 4557092107715892}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 4086745456179934}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4557092107715892
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1130211090095442}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4086745456179934}
+  m_Father: {fileID: 4111293483224454}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23355314194109518
@@ -114,21 +143,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1130211090095442}
   m_Mesh: {fileID: 4300000, guid: c850f11b86e4d414584ec662fc30b825, type: 3}
---- !u!64 &64313341542514986
+--- !u!64 &64487737778872784
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1008136629111310}
+  m_GameObject: {fileID: 1130211090095442}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: c850f11b86e4d414584ec662fc30b825, type: 3}
---- !u!114 &114743216839290966
+--- !u!114 &114716788928109900
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -142,13 +171,16 @@ MonoBehaviour:
   interactableID: 
   oneTimeUse: 0
   canOnlyInteractFromOtherInteractables: 0
+  anim: {fileID: 0}
   isOn: 0
-  onTriggerExecuteCooldown: 1
-  onTriggerTimeSinceLevelStart: 60
-  onTriggerRepeatTime: 10
+  onTriggerStayCooldown: 1
+  onTriggerStayTime: 0
+  onTriggerUpdateTime: 0
+  onTriggerRepeatTime: 0
   interactableTriggers:
   - InteractableToTrigger: {fileID: 0}
+    InteractableTriggerCause: 3
     InteractableTriggerEffect: 0
-    InteractableTriggerCauses: 00000000
+    InteractableTriggerValue: 5
     Invert: 0
-    CauseTriggerEffect: 0
+    DontCauseTriggerEffect: 0

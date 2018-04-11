@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-	public static GameController current;
+    #region Singleton
+
+    public static GameController current;
 
 	void Awake() {
 
@@ -16,7 +18,9 @@ public class GameController : MonoBehaviour {
 
 	}
 
-	public List<float> BestLevelTimes = new List<float> ();
+    #endregion
+
+    public List<float> BestLevelTimes = new List<float> ();
 	public List<string> OpenedLevels = new List<string>();
 
 	// This is used ONLY as a place to store the prefabs of levels, (as I hate using Resources.*), this will not save currently loaded level scores!

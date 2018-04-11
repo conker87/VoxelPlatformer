@@ -59,7 +59,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DisableOnStart.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Constant.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Enum.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_IconUtility.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
     <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
     <Compile Include="Assets\Scripts\Ammo\Ammo.cs" />
+    <Compile Include="Assets\Scripts\Animation\GameObjectAnimator.cs" />
     <Compile Include="Assets\Scripts\Camera\IsometricCamera.cs" />
     <Compile Include="Assets\Scripts\Collectable\Ability.cs" />
     <Compile Include="Assets\Scripts\Collectable\Coin.cs" />
@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\UI\UILevelSelectButton.cs" />
     <Compile Include="Assets\Scripts\Util\DEBUG_UIQuitLevel.cs" />
     <Compile Include="Assets\Scripts\Util\DisableGameObjectOnLinecast.cs" />
+    <Compile Include="Assets\Scripts\Util\DisableOnStart.cs" />
     <Compile Include="Assets\Scripts\Util\MoveForward.cs" />
     <Compile Include="Assets\Scripts\Util\OrderGeometryChildren.cs" />
     <Compile Include="Assets\Scripts\Util\RotateChild.cs" />
