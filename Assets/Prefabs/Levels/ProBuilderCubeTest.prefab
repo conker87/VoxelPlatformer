@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4922709048624696}
   m_Layer: 9
-  m_Name: Pivot
+  m_Name: Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4188865078895876}
   m_Layer: 9
-  m_Name: Pivot
+  m_Name: Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4978708888239702}
   m_Layer: 9
-  m_Name: Pivot
+  m_Name: Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -758,7 +758,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1724465655339470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.29999998}
+  m_LocalPosition: {x: 0.225, y: 0.635, z: 0.29999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4251957434669466}
@@ -18005,12 +18005,15 @@ MonoBehaviour:
   canOnlyInteractFromOtherInteractables: 1
   anim: {fileID: 0}
   isOn: 1
-  ammo: {fileID: 114843635441899086, guid: 314b05c457b3afc4b8460202d8e5edcd, type: 2}
-  fireLocation: {fileID: 4330567892979130}
-  ammoSpeed: 5
-  ammoDamage: 1
-  ammoDestroyAfter: 5
-  attackSpeed: 0.5
+  fireCooldown: 0.5
+  trapFire:
+  - Ammo: {fileID: 114843635441899086, guid: 314b05c457b3afc4b8460202d8e5edcd, type: 2}
+    FireLocation: {fileID: 4330567892979130}
+    AmmoSpeed: 10
+    AmmoDamage: 1
+    AmmoDestroyAfter: 5
+    AttackSpeed: 1
+    AttackSpeedTime: 0
   fireOnce: 0
 --- !u!114 &114364246131298738
 MonoBehaviour:

@@ -7,7 +7,15 @@ public class Ability : Collectable {
 	[SerializeField]
 	string AbilityID;
 
-	protected override void OnTriggerEnter (Collider other) {
+    protected override void Start() {
+
+        base.Start();
+
+        HasCollectedCollectable();
+
+    }
+
+    protected override void OnTriggerEnter (Collider other) {
 
 		if (other.GetComponentInParent<Player>() != null) {
 
@@ -22,6 +30,20 @@ public class Ability : Collectable {
 
 		}
 
-	}
+    }
+
+    protected override void HasCollectedCollectable() {
+
+        foreach (string SCollectableID in GameController.current.Abilities) {
+
+            if (SCollectableID == AbilityID) {
+
+                gameObject.SetActive(false);
+
+            }
+
+        }
+
+    }
 
 }

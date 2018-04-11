@@ -7,7 +7,7 @@ public class GameObjectAnimator : MonoBehaviour {
     public bool isCurrentlyAnimating = false;
 
     [SerializeField]
-    float animationCheckCooldown = 2f, animationCheckTime;
+    float animationCheckCooldownMin = 1f, animationCheckCooldownMax = 2.5f, animationCheckTime;
 
     Coroutine animationCoroutine;
 
@@ -59,13 +59,15 @@ public class GameObjectAnimator : MonoBehaviour {
 
                     }
 
+                    break;
+
                 }
 
                 i++;
 
             }
 
-            animationCheckTime = Time.time + animationCheckCooldown;
+            animationCheckTime = Time.time + Random.Range(animationCheckCooldownMin, animationCheckCooldownMax);
 
         }
 

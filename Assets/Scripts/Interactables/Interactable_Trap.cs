@@ -7,75 +7,20 @@ public class Interactable_Trap : Interactable {
     #region Serialized Private Fields
 
     [SerializeField]
-    protected Ammo ammo;
+    float fireCooldown = 0.5f;
+    float fireTime;
+
     [SerializeField]
-    protected Transform fireLocation;
-    [SerializeField, Range(0.5f, 20f)]
-    protected float ammoSpeed = 5f, ammoDamage = 1f, ammoDestroyAfter = 5f, attackSpeed = 1f;
-    private float attackSpeedTime;
+    List<TrapAmmo> trapFire = new List<TrapAmmo>();
+
     [SerializeField]
     protected bool fireOnce = true;
-
     private bool hasFiredOnce = false;
 
     #endregion
 
     #region Encapsulated Public Fields
 
-    public Ammo Ammo {
-        get {
-            return ammo;
-        }
-
-        set {
-            ammo = value;
-        }
-    }
-    public Transform FireLocation {
-        get {
-            return fireLocation;
-        }
-
-        set {
-            fireLocation = value;
-        }
-    }
-    public float AmmoSpeed {
-        get {
-            return ammoSpeed;
-        }
-
-        set {
-            ammoSpeed = value;
-        }
-    }
-    public float AmmoDamage {
-        get {
-            return ammoDamage;
-        }
-
-        set {
-            ammoDamage = value;
-        }
-    }
-    public float AmmoDestroyAfter {
-        get {
-            return ammoDestroyAfter;
-        }
-
-        set {
-            ammoDestroyAfter = value;
-        }
-    }
-    public float AttackSpeed {
-        get {
-            return attackSpeed;
-        }
-
-        set {
-            attackSpeed = value;
-        }
-    }
     public bool FireOnce {
         get {
             return fireOnce;
@@ -86,10 +31,20 @@ public class Interactable_Trap : Interactable {
         }
     }
 
+    public List<TrapAmmo> TrapFire {
+        get {
+            return trapFire;
+        }
+
+        set {
+            trapFire = value;
+        }
+    }
+
     #endregion
 
     private void Update() {
-        
+
         if (FireOnce == true && hasFiredOnce == true) {
             return;
         }
@@ -98,10 +53,25 @@ public class Interactable_Trap : Interactable {
             return;
         }
 
-        if (Time.time > attackSpeedTime) {
+        if (fireTime > Time.time) {
+            return;
+        }
 
-            Fire();
-            attackSpeedTime = Time.time + attackSpeed;
+        foreach (TrapAmmo ammo in TrapFire) {
+
+            if (ammo.AttackSpeedTime > Time.time) {
+                continue;
+            }
+
+            Ammo ammoFired = null;
+
+            ammoFired = Instantiate(ammo.Ammo, ammo.FireLocation.position, Quaternion.LookRotation(transform.forward), transform) as Ammo;
+
+            ammoFired.Speed = ammo.AmmoSpeed;
+            ammoFired.Damage = ammo.AmmoDamage;
+            ammoFired.DestroyAfter = ammo.AmmoDestroyAfter;
+
+            ammo.AttackSpeedTime = Time.time + ammo.AttackSpeed;
 
             if (FireOnce == true) {
 
@@ -110,6 +80,8 @@ public class Interactable_Trap : Interactable {
             }
 
         }
+
+        fireTime = Time.time + fireCooldown;
 
     }
 
@@ -157,15 +129,32 @@ public class Interactable_Trap : Interactable {
 
     }
 
-    void Fire() {
+}
 
-        Ammo ammoFired = null;
+[System.Serializable]
+public class TrapAmmo {
 
-        ammoFired = Instantiate(ammo, FireLocation.position, Quaternion.LookRotation(transform.forward), transform) as Ammo;
+    public Ammo Ammo;
+    public Transform FireLocation;
+    public float AmmoSpeed = 5f;
+    public float AmmoDamage = 1f;
+    public float AmmoDestroyAfter = 5f;
+    public float AttackSpeed = 1f;
+    public float AttackSpeedTime;
 
-        ammoFired.Speed = AmmoSpeed;
-        ammoFired.Damage = AmmoDamage;
-        ammoFired.DestroyAfter = AmmoDestroyAfter;
+    public TrapAmmo() {
+
+    }
+
+    public TrapAmmo(TrapAmmo value) {
+
+        Ammo = value.Ammo;
+        FireLocation = value.FireLocation;
+        AmmoSpeed = value.AmmoSpeed;
+        AmmoDamage = value.AmmoDamage;
+        AmmoDestroyAfter = value.AmmoDestroyAfter;
+        AttackSpeed = value.AttackSpeed;
+        AttackSpeedTime = value.AttackSpeedTime;
 
     }
 

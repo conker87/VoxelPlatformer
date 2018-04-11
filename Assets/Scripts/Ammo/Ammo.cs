@@ -60,6 +60,9 @@ public class Ammo : MonoBehaviour {
             player.DamagePlayer(1);
 
             Speed = 0f;
+
+            Destroy(GetComponentInChildren<MeshCollider>());
+
             transform.parent = other.transform;
 
         }

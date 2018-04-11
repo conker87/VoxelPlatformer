@@ -2,6 +2,7 @@
 <SaveData SaveFileName="SaveFileName" SaveFileDate="SaveFileDate" SaveFileTime="SaveFileTime" SaveFileTimeOnGame="SaveFileTimeOnGame">
 <!--This is the list of Coins collected.-->
 	<coins>
+		<coin CollectableID="Coin_(-1.2, 1.4, -0.6)_ProBuilderCubeTest" />
 	</coins>
 
 <!--This is the list of Stars collected.-->
@@ -10,12 +11,13 @@
 
 <!--This is the list of Abilities collected.-->
 	<abilities>
+		<ability AbilityID="DOUBLE_JUMP" />
 	</abilities>
 
 <!--This is the list of level scores.-->
 	<levelscores>
 		<levelscore LevelID="ProBuilderCubeTest" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="True" />
-		<levelscore LevelID="level_01_your_house" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="True" />
-		<levelscore LevelID="new_prototype_level" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="True" />
+		<levelscore LevelID="level_01_your_house" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="False" />
+		<levelscore LevelID="new_prototype_level" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="False" />
 	</levelscores>
 </SaveData>
