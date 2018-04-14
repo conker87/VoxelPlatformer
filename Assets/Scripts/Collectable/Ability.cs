@@ -17,18 +17,20 @@ public class Ability : Collectable {
 
     protected override void OnTriggerEnter (Collider other) {
 
-		if (other.GetComponentInParent<Player>() != null) {
+        if (CollectableCollected == true) {
+            return;
+        }
 
-			Debug.Log(string.Format("Collectable '{0}' at position {1} has hit the player and will be collected.", CollectableID, transform.position), this);
+        if (other.GetComponentInParent<Player>() != null) {
+
+			Debug.Log(string.Format("Collectable '{0}' at position {1} has hit the player and will be collected. {2}", CollectableID, transform.position, other.ToString()), this);
 
 			GameController.current.AddToAbilities (AbilityID);
-
-            // TODO: Add some star collection clips.
             SFXController.instance.PlayRandomCoinClip ();
 
-			Destroy (gameObject);
+            CollectableCollected = true;
 
-		}
+        }
 
     }
 

@@ -2,7 +2,12 @@
 <SaveData SaveFileName="SaveFileName" SaveFileDate="SaveFileDate" SaveFileTime="SaveFileTime" SaveFileTimeOnGame="SaveFileTimeOnGame">
 <!--This is the list of Coins collected.-->
 	<coins>
+		<coin CollectableID="Coin_(-6.7, 1.4, -0.6)_ProBuilderCubeTest" />
+		<coin CollectableID="Coin_(-5.2, 1.4, -0.6)_ProBuilderCubeTest" />
+		<coin CollectableID="Coin_(-3.8, 1.4, -0.6)_ProBuilderCubeTest" />
+		<coin CollectableID="Coin_(-2.5, 1.4, -0.6)_ProBuilderCubeTest" />
 		<coin CollectableID="Coin_(-1.2, 1.4, -0.6)_ProBuilderCubeTest" />
+		<coin CollectableID="Coin_(0.2, 1.4, -0.6)_ProBuilderCubeTest" />
 	</coins>
 
 <!--This is the list of Stars collected.-->
@@ -11,7 +16,6 @@
 
 <!--This is the list of Abilities collected.-->
 	<abilities>
-		<ability AbilityID="DOUBLE_JUMP" />
 	</abilities>
 
 <!--This is the list of level scores.-->

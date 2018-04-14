@@ -7,15 +7,14 @@ public class Interactable_Trap : Interactable {
     #region Serialized Private Fields
 
     [SerializeField]
-    float fireCooldown = 0.5f;
-    float fireTime;
+    float fireCheckCooldown = 0.1f;
+    float fireCheckTime;
 
     [SerializeField]
     List<TrapAmmo> trapFire = new List<TrapAmmo>();
 
     [SerializeField]
     protected bool fireOnce = true;
-    private bool hasFiredOnce = false;
 
     #endregion
 
@@ -45,15 +44,15 @@ public class Interactable_Trap : Interactable {
 
     private void Update() {
 
-        if (FireOnce == true && hasFiredOnce == true) {
+        if (IsDisabled == true) {
             return;
         }
 
-        if (IsOn == false) {
+        if (IsActivated == false) {
             return;
         }
 
-        if (fireTime > Time.time) {
+        if (fireCheckTime > Time.time) {
             return;
         }
 
@@ -75,57 +74,13 @@ public class Interactable_Trap : Interactable {
 
             if (FireOnce == true) {
 
-                hasFiredOnce = true;
+                IsDisabled = true;
 
             }
 
         }
 
-        fireTime = Time.time + fireCooldown;
-
-    }
-
-    public override void Interact(bool playerInteracting = false,
-    InteractableTriggerCauses interactableTriggerCauses = InteractableTriggerCauses.OnTriggerInteract,
-    InteractableTriggerEffect interactableTriggerEffect = InteractableTriggerEffect.Toggle,
-    bool dontCauseTriggerEffect = false) {
-
-        if (OneTimeUse == true && HasBeenUsedOnce == true) {
-            return;
-        }
-
-        if (CanOnlyInteractFromOtherInteractables == true && playerInteracting == true) {
-            return;
-        }
-
-        switch (interactableTriggerEffect) {
-            case InteractableTriggerEffect.TurnOff:
-                IsOn = false;
-                break;
-            case InteractableTriggerEffect.TurnOn:
-                IsOn = true;
-                break;
-            default:
-            case InteractableTriggerEffect.Toggle:
-                IsOn = !IsOn;
-                break;
-        }
-
-        if (Anim != null) {
-            Anim.SetBool("IsOn", IsOn);
-        }
-
-        if (OneTimeUse == true) {
-            HasBeenUsedOnce = true;
-        }
-
-        if (dontCauseTriggerEffect == true) {
-            return;
-        }
-
-        if (fireOnce == true && hasFiredOnce == true) {
-            return;
-        }
+        fireCheckTime = Time.time + fireCheckCooldown;
 
     }
 

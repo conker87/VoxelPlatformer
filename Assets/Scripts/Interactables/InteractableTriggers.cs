@@ -7,6 +7,7 @@ public class InteractableTrigger {
 
     public InteractableTriggerCauses InteractableTriggerCause;
     public InteractableTriggerEffect InteractableTriggerEffect;
+    public InteractableTriggerAction InteractableTriggerAction;
 
     [UnityEngine.Tooltip(@"This is used differently depending on the InteractableTriggerCause chosen:
     • OnTriggerEnter, OnTriggerExit, OnTriggerInteract: No effect.
@@ -38,17 +39,21 @@ public class InteractableTrigger {
         InteractableTriggerCause = value.InteractableTriggerCause;
         InteractableTriggerEffect = value.InteractableTriggerEffect;
         InteractableTriggerValue = value.InteractableTriggerValue;
+        InteractableTriggerAction = value.InteractableTriggerAction;
         Invert = value.Invert;
         DontCauseTriggerEffect = value.DontCauseTriggerEffect;
 
     }
 
-    public InteractableTrigger(Interactable interactableToTrigger, InteractableTriggerCauses interactableTriggerCause, InteractableTriggerEffect interactableTriggerEffect, float interactableTriggerValue, bool invert, bool dontCauseTriggerEffect = false) {
+    public InteractableTrigger(Interactable interactableToTrigger, InteractableTriggerCauses interactableTriggerCause, 
+        InteractableTriggerEffect interactableTriggerEffect, InteractableTriggerAction interactableTriggerAction,
+        float interactableTriggerValue, bool invert, bool dontCauseTriggerEffect) {
 
         InteractableToTrigger = interactableToTrigger;
         InteractableTriggerCause = interactableTriggerCause;
         InteractableTriggerEffect = interactableTriggerEffect;
         InteractableTriggerValue = interactableTriggerValue;
+        InteractableTriggerAction = interactableTriggerAction;
         Invert = invert;
         DontCauseTriggerEffect = dontCauseTriggerEffect;
 
@@ -56,5 +61,6 @@ public class InteractableTrigger {
 
 }
 
-public enum InteractableTriggerEffect { Toggle, TurnOn, TurnOff };
+public enum InteractableTriggerEffect { Toggle, Activate, Deactivate };
 public enum InteractableTriggerCauses { OnTriggerEnter, OnTriggerStay, OnTriggerExit, OnTriggerInteract, OnTriggerOverlapSphere, OnTriggerTimeSinceLevelStart, OnTriggerRepeatTime };
+public enum InteractableTriggerAction { Interact, Lock };

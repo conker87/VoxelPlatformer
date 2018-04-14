@@ -103,10 +103,10 @@ public class CharController : MonoBehaviour {
 
                         Debug.Log(string.Format("Found Interactable: {0}", interactable));
 
-						interactable.Interact (true,
-                            InteractableTriggerCauses.OnTriggerInteract,
-                            InteractableTriggerEffect.Toggle,
-                            false);
+                        InteractableTrigger interactingTrigger = new
+                            InteractableTrigger(interactable, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle, InteractableTriggerAction.Interact, 0f, false, false);
+
+						interactable.Interact (interactingTrigger, true);
 
 					}
 
