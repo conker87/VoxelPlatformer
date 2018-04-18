@@ -67,33 +67,11 @@ public class GameController : MonoBehaviour {
 
 		if (CurrentState != "" || CurrentState != "LEVEL_SELECT" || CurrentState != "MAIN_MENU") {
 
-			// FindPlayer ();
+			
 
 		}
 
 	}
-
-//	bool FindPlayer() {
-//
-//		if (Player != null) {
-//
-//			return true;
-//
-//		} else {
-//
-//			Player = FindObjectOfType<Player> ();
-//
-//			if (Player != null) {
-//
-//				return true;
-//
-//			}
-//
-//		}
-//
-//		return false;
-//
-//	}
 
 	public void LoadLevel(Level level) {
 
@@ -103,6 +81,7 @@ public class GameController : MonoBehaviour {
 		currentlyLoadedLevel.IsCurrentLevel = true;
 
         currentlyLoadedLevel.gameObject.SetActive(true);
+        currentlyLoadedLevel.transform.position = Vector3.zero;
 
         currentTime = 0f;
 		Camera.main.orthographicSize = (currentlyLoadedLevel.OverwriteCameraFOV > 0) ? currentlyLoadedLevel.OverwriteCameraFOV : OriginalCameraFOV;

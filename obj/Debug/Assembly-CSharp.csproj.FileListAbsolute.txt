@@ -1,1 +1,2 @@
 U:\UNITY\VoxelPlatformer\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+U:\UNITY\VoxelPlatformer\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

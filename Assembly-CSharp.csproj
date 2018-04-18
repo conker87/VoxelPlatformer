@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SaveController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SFXController.cs" />
+    <Compile Include="Assets\Scripts\Cutscenes\Cutscene.cs" />
     <Compile Include="Assets\Scripts\Entity\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entity\Player.cs" />
     <Compile Include="Assets\Scripts\Geometry\EndLocation.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Scripts\Level\LevelScore.cs" />
     <Compile Include="Assets\Scripts\UI\UIButton_LoadGame.cs" />
     <Compile Include="Assets\Scripts\UI\UIButton_SaveGame.cs" />
+    <Compile Include="Assets\Scripts\UI\UICutsceneCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\UIElements.cs" />
     <Compile Include="Assets\Scripts\UI\UILevelList.cs" />
     <Compile Include="Assets\Scripts\UI\UILevelSelectButton.cs" />

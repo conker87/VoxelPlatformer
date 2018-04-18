@@ -13,6 +13,7 @@ public class UIElements : MonoBehaviour {
 	[Header("Canvases")]
 	public Transform IngameLevelLoadedCanvas;
 	public Transform MenuLevelSelectCanvas, IngameLevelLoadedPausedCanvas, MenuOptionsCanvas;
+    public Transform CutsceneCanvas;
 
 	[Header("Level Loaded Canvas")]
 	public TextMeshProUGUI NumberOfCoins;
