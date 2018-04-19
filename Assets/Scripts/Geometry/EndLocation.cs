@@ -9,7 +9,7 @@ public class EndLocation : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 
-		if (other.GetComponent<Player> () != null) {
+		if (other.GetComponentInParent<Player> () != null) {
 
 			Debug.LogWarning (string.Format("The player has his the end portal and should show the end screen and go to the level select screen."));
 
