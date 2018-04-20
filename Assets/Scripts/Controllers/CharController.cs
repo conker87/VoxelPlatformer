@@ -95,25 +95,31 @@ public class CharController : MonoBehaviour {
 
 			if (overlappedSphere != null && overlappedSphere.Length > 0) {
 
-				foreach (Collider coll in overlappedSphere) {
+                Interactable interactable, previousInteractable = null;
 
-					Interactable interactable;
+                foreach (Collider coll in overlappedSphere) {
 
-					if ((interactable = coll.GetComponentInParent<Interactable>()) != null) {
+                    interactable = coll.GetComponentInParent<Interactable>();
 
-                        Debug.Log(string.Format("Found Interactable: {0}", interactable));
+                    if (interactable == null) {
+                        continue;
+                    }
 
-                        InteractableTrigger interactingTrigger = new
-                            InteractableTrigger(interactable, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle, InteractableTriggerAction.Interact, 0f, false, false);
+                    if (previousInteractable != null && interactable == previousInteractable) {
+                        continue;
+                    }
 
-						interactable.Interact (interactingTrigger, true);
+                    Debug.Log(string.Format("Found Interactable: {0}", interactable));
 
-					}
+                    InteractableTrigger interactingTrigger = new
+                        InteractableTrigger(interactable, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle, InteractableTriggerAction.Interact, 0f, false, false);
 
-				}
+					interactable.Interact (interactingTrigger, true);
 
+                    previousInteractable = interactable;
+
+                }
 			}
-
 		}
 
         IsGrounded();

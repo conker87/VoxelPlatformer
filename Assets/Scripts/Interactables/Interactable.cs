@@ -14,6 +14,13 @@ public class Interactable : MonoBehaviour {
     [SerializeField]
     private bool isDisabled, isLocked, isActivated = false, oneTimeUse,
         canOnlyInteractFromOtherInteractables = true, canContinue = true;
+
+    [SerializeField]
+    private float resetInTime = -1f;
+    [SerializeField]
+    private bool hasReset = false;
+    [SerializeField]
+    protected float resetTime;
     [SerializeField]
     Animator anim;
     [SerializeField]
@@ -86,6 +93,15 @@ public class Interactable : MonoBehaviour {
             canContinue = value;
         }
     }
+    public float ResetInTime {
+        get {
+            return resetInTime;
+        }
+
+        set {
+            resetInTime = value;
+        }
+    }
     public Animator Anim {
         get {
             return anim;
@@ -105,27 +121,54 @@ public class Interactable : MonoBehaviour {
         }
     }
 
+    public bool HasToReset {
+        get {
+            return hasReset;
+        }
+
+        set {
+            hasReset = value;
+        }
+    }
+
     #endregion
 
     protected virtual void Start() {
 
-        anim = GetComponent<Animator>();
+        if (anim == null) {
+            anim = GetComponent<Animator>();
+        }
 
     }
 
-    public virtual void Interact(InteractableTrigger interactableTrigger, bool playerInteracting = false) {
+    protected virtual void Update() {
+
+        if (IsActivated == true && HasToReset == true && ResetInTime > 0f) {
+
+            if (Time.time > resetTime) {
+
+                Interact();
+                HasToReset = false;
+
+            }
+        }
+    }
+
+    public virtual void Interact(InteractableTrigger interactableTrigger = null, bool playerInteracting = false) {
 
         CanContinue = true;
 
-        interactableTrigger = (interactableTrigger == null) ?
-            new InteractableTrigger(this, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle, InteractableTriggerAction.Interact, 0, false, false)
-            : interactableTrigger;
+        if (interactableTrigger == null) {
+
+            interactableTrigger = new InteractableTrigger(this, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle, InteractableTriggerAction.Interact, 0, false, false);
+
+        }
 
         if (IsDisabled == true) {
             CanContinue = false;
         }
 
-        if (IsLocked == true && interactableTrigger.InteractableTriggerAction == InteractableTriggerAction.Interact) {
+        if (IsLocked == true && playerInteracting == true && interactableTrigger.InteractableTriggerAction == InteractableTriggerAction.Interact) {
             CanContinue = false;
         }
 
@@ -162,10 +205,6 @@ public class Interactable : MonoBehaviour {
 
             if (CanContinue == true) {
 
-                if (Anim != null) {
-                    Anim.SetBool("IsOn", IsActivated);
-                }
-
                 if (OneTimeUse == true) {
                     IsDisabled = true;
                 }
@@ -182,7 +221,17 @@ public class Interactable : MonoBehaviour {
                     IsActivated = !IsActivated;
                 }
 
+                if (Anim != null) {
+                    Anim.SetBool("IsOn", IsActivated);
+                }
             }
+        }
+
+        if (HasToReset == false && ResetInTime > 0f) {
+            Debug.Log("ResetTimer > 0f");
+
+            HasToReset = true;
+            resetTime = Time.time + ResetInTime;
         }
     }
 }

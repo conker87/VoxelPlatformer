@@ -101,7 +101,9 @@ public class Interactable_Triggers : Interactable {
 
     }
 
-    private void Update() {
+    protected override void Update() {
+
+        base.Update();
 
         if ((hasTriggerOverlapSphere == true || hasTriggerTimeSinceLevelStart == true || hasTriggerRepeatTime == true)
             && Time.time > onTriggerUpdateTime) {

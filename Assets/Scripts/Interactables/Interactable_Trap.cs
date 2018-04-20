@@ -42,7 +42,9 @@ public class Interactable_Trap : Interactable {
 
     #endregion
 
-    private void Update() {
+    protected override void Update() {
+
+        base.Update();
 
         if (IsDisabled == true) {
             return;
