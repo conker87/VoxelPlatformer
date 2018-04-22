@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -395903333, guid: 4f0627da958b4bb78c260446066f065f, type: 3}
+  m_Name: CastleWallColorPalette
+  m_EditorClassIdentifier: 
+  current: {r: 1, g: 1, b: 1, a: 1}
+  colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.875, g: 0.875, b: 0.875, a: 1}
+  - {r: 0.8125, g: 0.8125, b: 0.8125, a: 1}
+  - {r: 0.75, g: 0.75, b: 0.75, a: 1}
+  - {r: 0.6875, g: 0.6875, b: 0.6875, a: 1}
+  - {r: 0.625, g: 0.625, b: 0.625, a: 1}
+  - {r: 0.5625, g: 0.5625, b: 0.5625, a: 1}
+  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  - {r: 0.4375, g: 0.4375, b: 0.4375, a: 1}
+  - {r: 0.375, g: 0.375, b: 0.375, a: 1}
+  - {r: 0.3125, g: 0.3125, b: 0.3125, a: 1}
+  - {r: 0.25, g: 0.25, b: 0.25, a: 1}
+  - {r: 0.1875, g: 0.1875, b: 0.1875, a: 1}
+  - {r: 0.125, g: 0.125, b: 0.125, a: 1}
+  - {r: 0.0625, g: 0.0625, b: 0.0625, a: 1}
+  - {r: 0.071428575, g: 0, b: 0, a: 1}

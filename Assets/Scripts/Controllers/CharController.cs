@@ -95,7 +95,9 @@ public class CharController : MonoBehaviour {
 
 			if (overlappedSphere != null && overlappedSphere.Length > 0) {
 
-                Interactable interactable, previousInteractable = null;
+                Interactable interactable;
+
+                List<Interactable> interactedInteractables = new List<Interactable>();
 
                 foreach (Collider coll in overlappedSphere) {
 
@@ -105,7 +107,7 @@ public class CharController : MonoBehaviour {
                         continue;
                     }
 
-                    if (previousInteractable != null && interactable == previousInteractable) {
+                    if (interactedInteractables.Contains(interactable)) {
                         continue;
                     }
 
@@ -116,7 +118,7 @@ public class CharController : MonoBehaviour {
 
 					interactable.Interact (interactingTrigger, true);
 
-                    previousInteractable = interactable;
+                    interactedInteractables.Add(interactable);
 
                 }
 			}

@@ -67,6 +67,7 @@
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_SceneMeshRender.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
     <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
+    <Compile Include="Assets\RandomlyPickPBObjectColor.cs" />
     <Compile Include="Assets\Scripts\Ammo\Ammo.cs" />
     <Compile Include="Assets\Scripts\Animation\GameObjectAnimator.cs" />
     <Compile Include="Assets\Scripts\Camera\IsometricCamera.cs" />

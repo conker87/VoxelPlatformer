@@ -35,6 +35,8 @@ public class GameController : MonoBehaviour {
 
 	public Level currentlyLoadedLevel;
 
+    public int randomGeneratorSeed = 4096;
+
 	// PlayerSpawnablePrefab: The Prefab that should be spawned into the game.
 	// Player: 
 	public Player PlayerSpawnablePrefab, Player;
@@ -71,7 +73,12 @@ public class GameController : MonoBehaviour {
 
 		}
 
-	}
+        if (CurrentState == "LEVEL_LOADED") {
+            currentTime += Time.unscaledDeltaTime;
+        }
+
+
+    }
 
 	public void LoadLevel(Level level) {
 

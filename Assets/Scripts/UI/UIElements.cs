@@ -41,7 +41,7 @@ public class UIElements : MonoBehaviour {
 
 	}
 
-	void OnGUI() {
+	void Update() {
 
 		if (GameController.current.justChangedState) {
 			MenuLevelSelectCanvas.gameObject.SetActive (false);
@@ -93,9 +93,7 @@ public class UIElements : MonoBehaviour {
 
 			if (TimeT != null && GameController.current.Player != null) {
 
-				GameController.current.currentTime += Time.deltaTime;
-
-				TimeSpan t = TimeSpan.FromSeconds (GameController.current.currentTime);
+    			TimeSpan t = TimeSpan.FromSeconds (GameController.current.currentTime);
 
 				string format = "";
 

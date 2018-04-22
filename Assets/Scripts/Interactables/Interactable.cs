@@ -18,7 +18,7 @@ public class Interactable : MonoBehaviour {
     [SerializeField]
     private float resetInTime = -1f;
     [SerializeField]
-    private bool hasReset = false;
+    private bool hasToReset = false;
     [SerializeField]
     protected float resetTime;
     [SerializeField]
@@ -123,11 +123,11 @@ public class Interactable : MonoBehaviour {
 
     public bool HasToReset {
         get {
-            return hasReset;
+            return hasToReset;
         }
 
         set {
-            hasReset = value;
+            hasToReset = value;
         }
     }
 
@@ -163,7 +163,7 @@ public class Interactable : MonoBehaviour {
             interactableTrigger = new InteractableTrigger(this, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle, InteractableTriggerAction.Interact, 0, false, false);
 
         }
-
+        // 
         if (IsDisabled == true) {
             CanContinue = false;
         }
@@ -221,11 +221,15 @@ public class Interactable : MonoBehaviour {
                     IsActivated = !IsActivated;
                 }
 
+                IsLocked = true;
+
                 if (Anim != null) {
                     Anim.SetBool("IsOn", IsActivated);
                 }
             }
         }
+
+        HasToReset = false;
 
         if (HasToReset == false && ResetInTime > 0f) {
             Debug.Log("ResetTimer > 0f");
