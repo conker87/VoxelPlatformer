@@ -2513,7 +2513,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1678283881056016}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 1, z: -12.7}
+  m_LocalPosition: {x: 10.0625, y: 2.5625, z: -11.3125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4001064981878366}
@@ -5552,7 +5552,7 @@ Projector:
   m_Material: {fileID: 2100000, guid: e30ff3588e719f34bbf0c66f22d97487, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 65792
+    m_Bits: 1114368
 --- !u!136 &136462562883516968
 CapsuleCollider:
   m_ObjectHideFlags: 1

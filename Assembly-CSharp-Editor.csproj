@@ -65,6 +65,7 @@
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ParameterWindow.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_Preferences.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ToggleContent.cs" />
+    <Compile Include="Assets\Scripts\Geometry\Editor\RandomlyPickPBObjectColorEditor.cs" />
     <Reference Include="Assembly-UnityScript">
       <HintPath>U:/UNITY/VoxelPlatformer/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
     </Reference>

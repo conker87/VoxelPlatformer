@@ -59,7 +59,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\InteractableLockWhileAnimating.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Constant.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Enum.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_IconUtility.cs" />
@@ -67,9 +66,9 @@
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_SceneMeshRender.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
     <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
-    <Compile Include="Assets\RandomlyPickPBObjectColor.cs" />
     <Compile Include="Assets\Scripts\Ammo\Ammo.cs" />
     <Compile Include="Assets\Scripts\Animation\GameObjectAnimator.cs" />
+    <Compile Include="Assets\Scripts\Animation\InteractableLockWhileAnimating.cs" />
     <Compile Include="Assets\Scripts\Camera\IsometricCamera.cs" />
     <Compile Include="Assets\Scripts\Collectable\Ability.cs" />
     <Compile Include="Assets\Scripts\Collectable\Coin.cs" />
@@ -83,6 +82,7 @@
     <Compile Include="Assets\Scripts\Entity\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entity\Player.cs" />
     <Compile Include="Assets\Scripts\Geometry\EndLocation.cs" />
+    <Compile Include="Assets\Scripts\Geometry\RandomlyPickPBObjectColor.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable_PressurePlate_OnTriggers.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable_Switch.cs" />
@@ -104,7 +104,7 @@
     <Compile Include="Assets\Scripts\Util\DisableOnStart.cs" />
     <Compile Include="Assets\Scripts\Util\MoveForward.cs" />
     <Compile Include="Assets\Scripts\Util\OrderGeometryChildren.cs" />
-    <Compile Include="Assets\Scripts\Util\RotateChild.cs" />
+    <Compile Include="Assets\Scripts\Util\RotateTransform.cs" />
     <Compile Include="Assets\Scripts\Util\SetRenderQueue.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
