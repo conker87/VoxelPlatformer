@@ -99,6 +99,8 @@ public class Interactable_Triggers : Interactable {
 
         }
 
+        Debug.LogWarning(string.Format("{0} is an Interactable_Trigger and has not been sorted out in regards to IsActivated.", this.InteractableID));
+
     }
 
     protected override void Update() {
@@ -108,7 +110,7 @@ public class Interactable_Triggers : Interactable {
         if ((hasTriggerOverlapSphere == true || hasTriggerTimeSinceLevelStart == true || hasTriggerRepeatTime == true)
             && Time.time > onTriggerUpdateTime) {
 
-            Debug.Log(string.Format("This should only execute if one+ of these three values are true: {0},{1}, {2}",
+            Debug.Log(string.Format("This should only execute if one+ of these three values are true: {0}, {1}, {2}",
                 hasTriggerOverlapSphere,
                 hasTriggerTimeSinceLevelStart,
                 hasTriggerRepeatTime));
@@ -205,9 +207,7 @@ public class Interactable_Triggers : Interactable {
                 interactableTriggerItem.InteractableToTrigger.Interact(interactableTriggerItem, false);
 
             }
-
         }
-
     }
 
     public void OnTriggerEnter(Collider other) {

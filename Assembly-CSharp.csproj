@@ -81,8 +81,10 @@
     <Compile Include="Assets\Scripts\Cutscenes\Cutscene.cs" />
     <Compile Include="Assets\Scripts\Entity\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entity\Player.cs" />
+    <Compile Include="Assets\Scripts\Extend_List.cs" />
+    <Compile Include="Assets\Scripts\ExtendList.cs" />
     <Compile Include="Assets\Scripts\Geometry\EndLocation.cs" />
-    <Compile Include="Assets\Scripts\Geometry\RandomlyPickPBObjectColor.cs" />
+    <Compile Include="Assets\Scripts\Geometry\GeometryBlock.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable_PressurePlate_OnTriggers.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable_Switch.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Assets\Scripts\Interactables\InteractableTriggers.cs" />
     <Compile Include="Assets\Scripts\Level\Level.cs" />
     <Compile Include="Assets\Scripts\Level\LevelScore.cs" />
+    <Compile Include="Assets\Scripts\RandomlyPickPBObjectPosition.cs" />
     <Compile Include="Assets\Scripts\UI\UIButton_LoadGame.cs" />
     <Compile Include="Assets\Scripts\UI\UIButton_SaveGame.cs" />
     <Compile Include="Assets\Scripts\UI\UICutsceneCanvas.cs" />
@@ -377,19 +380,19 @@
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="ProBuilderCore">
-      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ProBuilderCore.dll</HintPath>
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.6/ProBuilder/Classes/ProBuilderCore.dll</HintPath>
     </Reference>
     <Reference Include="ProBuilderMeshOps">
-      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ProBuilderMeshOps.dll</HintPath>
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.6/ProBuilder/Classes/ProBuilderMeshOps.dll</HintPath>
     </Reference>
     <Reference Include="KdTreeLib">
-      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.6/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
     </Reference>
     <Reference Include="pb_Stl">
-      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.6/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
     </Reference>
     <Reference Include="Poly2Tri">
-      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.1/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.probuilder@3.0.6/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>

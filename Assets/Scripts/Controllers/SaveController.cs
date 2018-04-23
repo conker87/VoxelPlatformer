@@ -38,7 +38,20 @@ public class SaveController : MonoBehaviour {
 
 	}
 
-	static List<LevelScore> _levelScore = new List<LevelScore> ();
+    static List<InteractableSave> _interables = new List<InteractableSave>();
+    public static List<InteractableSave> Interactables {
+        get {
+            return _interables;
+        }
+
+        set {
+            _interables = value;
+        }
+    }
+
+    // static List
+
+    static List<LevelScore> _levelScore = new List<LevelScore> ();
 	public static List<LevelScore> LevelScore {
 
 		get { return _levelScore; } 
@@ -54,7 +67,7 @@ public class SaveController : MonoBehaviour {
 
 	}
 
-	static XmlWriter xmlWriter;
+    static XmlWriter xmlWriter;
 
 	void Start() {
 		
@@ -105,7 +118,21 @@ public class SaveController : MonoBehaviour {
 
 				}
 
-				if (xmlReader.Name == "levelscore") {
+                if (xmlReader.Name == "interactable") {
+
+                    InteractableSave temp = new InteractableSave(
+                    xmlReader.GetAttribute("CollectableID"),
+                    bool.Parse(xmlReader.GetAttribute("IsDisabled")),
+                    bool.Parse(xmlReader.GetAttribute("IsLocked")),
+                    bool.Parse(xmlReader.GetAttribute("IsActivated")));
+
+                    Interactables.Add(temp);
+
+                }
+
+
+                // Now that the game will proably be open-worldy, this will not be needed?
+                if (xmlReader.Name == "levelscore") {
 
 					LevelScore temp = new LevelScore(xmlReader.GetAttribute("LevelID").ToString(), float.Parse(xmlReader.GetAttribute("BestTime")),
 						int.Parse(xmlReader.GetAttribute("CurrentCoins")), int.Parse(xmlReader.GetAttribute("MaxCoins")),
@@ -116,21 +143,9 @@ public class SaveController : MonoBehaviour {
 					GameController.current.LevelScores.Add(temp);
 
 				}
-
 			}
-
-
-			//			if((xmlReader.NodeType == XmlNodeType.Element) && (xmlReader.Name == "saveLocation")) { 
-//
-//				Debug.Log ("SaveLocation");
-//
-//				if(xmlReader.HasAttributes)
-//					Debug.Log(xmlReader.GetAttribute("currency") + ": " + xmlReader.GetAttribute("rate"));  
-//				
-//			}
 		}
 
-		// TODO: We should make sure that when we load the level, it also does this, because having all levels loaded is fucking dumb af.
 		foreach (Coin coin in GameObject.FindObjectsOfType<Coin>()) {
 
 			if (GameController.current.Coins.Contains(coin.CollectableID)) {
@@ -138,20 +153,29 @@ public class SaveController : MonoBehaviour {
 				coin.CollectableCollected = true;
 
 			}
+        }
 
-		}
+        foreach (Star star in GameObject.FindObjectsOfType<Star>()) {
 
-		foreach (Star star in GameObject.FindObjectsOfType<Star>()) {
+            if (GameController.current.Stars.Contains(star.CollectableID)) {
 
-			if (GameController.current.Stars.Contains(star.CollectableID)) {
+                star.CollectableCollected = true;
 
-				star.CollectableCollected = true;
+            }
+        }
 
-			}
+        foreach (Interactable interactable in GameObject.FindObjectsOfType<Interactable>()) {
 
-		}
+            InteractableSave temp;
+            if ((temp = Interactables.FirstOrDefault(a => a.InteractableID == interactable.InteractableID)) != null) {
 
-	}
+                interactable.IsActivated = temp.IsActivated;
+                interactable.IsDisabled = temp.IsDisabled;
+                interactable.IsLocked = temp.IsLocked;
+
+            }
+        }
+    }
 
 	public static void SaveGame() {
 
@@ -167,8 +191,9 @@ public class SaveController : MonoBehaviour {
 		xmlWriter.WriteAttributeString ("SaveFileTime", "SaveFileTime");
 		xmlWriter.WriteAttributeString ("SaveFileTimeOnGame", "SaveFileTimeOnGame");
 
-		// SaveLocation (saveStationID);
-		SaveCoinsCollected ();
+        // SaveLocation (saveStationID);
+        SaveInteractables();
+        SaveCoinsCollected ();
 		SaveStarsCollected ();
 		SaveAbilitiesCollected ();
 		SaveLevelScores ();
@@ -179,7 +204,35 @@ public class SaveController : MonoBehaviour {
 
 	}
 
-	static void SaveStarsCollected() {
+    static void SaveInteractables() {
+
+        xmlWriter.WriteWhitespace("\n");
+        xmlWriter.WriteComment("Interactables.");
+        xmlWriter.WriteWhitespace("\n\t");
+
+        xmlWriter.WriteStartElement("interactables");
+
+        foreach (Interactable interactable in Extend_List.NewFindObjectsOfTypeAll<Interactable>()) {
+
+            xmlWriter.WriteWhitespace("\n\t\t");
+
+            xmlWriter.WriteStartElement("interactable");
+            xmlWriter.WriteAttributeString("InteractableID", interactable.InteractableID);
+            xmlWriter.WriteAttributeString("IsActivated",interactable.IsActivated.ToString());
+            xmlWriter.WriteAttributeString("IsDisabled",interactable.IsDisabled.ToString());
+            xmlWriter.WriteAttributeString("IsLocked",interactable.IsLocked.ToString());
+
+            xmlWriter.WriteEndElement();
+
+        }
+
+        xmlWriter.WriteWhitespace("\n\t");
+        xmlWriter.WriteEndElement();
+        xmlWriter.WriteWhitespace("\n");
+
+    }
+
+    static void SaveStarsCollected() {
 
 		xmlWriter.WriteWhitespace("\n");
 		xmlWriter.WriteComment ("This is the list of Stars collected.");
@@ -285,4 +338,30 @@ public class SaveController : MonoBehaviour {
 
 	}
 
+}
+
+public class InteractableSave {
+
+    public string InteractableID;
+    public bool IsDisabled;
+    public bool IsLocked;
+    public bool IsActivated;
+
+    public InteractableSave(InteractableSave value) {
+
+        InteractableID = value.InteractableID;
+        IsDisabled = value.IsDisabled;
+        IsLocked = value.IsLocked;
+        IsActivated = value.IsActivated;
+
+    }
+
+    public InteractableSave(string interactableID, bool isDisabled, bool isLocked, bool isActivated) {
+
+        InteractableID = interactableID;
+        IsDisabled = isDisabled;
+        IsLocked = isLocked;
+        IsActivated = isActivated;
+
+    }
 }

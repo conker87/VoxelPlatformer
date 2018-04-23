@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SaveData SaveFileName="SaveFileName" SaveFileDate="SaveFileDate" SaveFileTime="SaveFileTime" SaveFileTimeOnGame="SaveFileTimeOnGame">
+<!--Interactables.-->
+	<interactables>
+		<interactable InteractableID="" IsActivated="False" IsDisabled="False" IsLocked="False" />
+		<interactable InteractableID="" IsActivated="False" IsDisabled="False" IsLocked="False" />
+	</interactables>
+
 <!--This is the list of Coins collected.-->
 	<coins>
-		<coin CollectableID="Coin_(-6.7, 1.4, -0.6)_ProBuilderCubeTest" />
-		<coin CollectableID="Coin_(-5.2, 1.4, -0.6)_ProBuilderCubeTest" />
-		<coin CollectableID="Coin_(-3.8, 1.4, -0.6)_ProBuilderCubeTest" />
-		<coin CollectableID="Coin_(-2.5, 1.4, -0.6)_ProBuilderCubeTest" />
-		<coin CollectableID="Coin_(-1.2, 1.4, -0.6)_ProBuilderCubeTest" />
-		<coin CollectableID="Coin_(0.2, 1.4, -0.6)_ProBuilderCubeTest" />
 	</coins>
 
 <!--This is the list of Stars collected.-->
@@ -20,8 +20,7 @@
 
 <!--This is the list of level scores.-->
 	<levelscores>
-		<levelscore LevelID="ProBuilderCubeTest" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="True" />
-		<levelscore LevelID="level_01_your_house" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="False" />
-		<levelscore LevelID="new_prototype_level" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="False" />
+		<levelscore LevelID="Level01_NAME" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="True" />
+		<levelscore LevelID="ProBuilderCubeTest" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="False" />
 	</levelscores>
 </SaveData>

@@ -26,6 +26,9 @@ public class Interactable : MonoBehaviour {
     [SerializeField]
     private List<Interactable_Triggers> triggersConnectedToMe;
 
+    [SerializeField]
+    private string turnOnText, turnOffText;
+
     #endregion
 
     #region Encapsulated Public Fields
@@ -131,9 +134,32 @@ public class Interactable : MonoBehaviour {
         }
     }
 
+    public string TurnOnText {
+        get {
+            return turnOnText;
+        }
+
+        set {
+            turnOnText = value;
+        }
+    }
+    public string TurnOffText {
+        get {
+            return turnOffText;
+        }
+
+        set {
+            turnOffText = value;
+        }
+    }
+
     #endregion
 
     protected virtual void Start() {
+
+        if (InteractableID == "") {
+            Debug.LogErrorFormat("{0} REQUIRES AN InteractableID! THIS IS URGENT!", this);
+        }
 
         if (anim == null) {
             anim = GetComponent<Animator>();
@@ -163,7 +189,7 @@ public class Interactable : MonoBehaviour {
             interactableTrigger = new InteractableTrigger(this, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle, InteractableTriggerAction.Interact, 0, false, false);
 
         }
-        // 
+
         if (IsDisabled == true) {
             CanContinue = false;
         }
@@ -221,8 +247,6 @@ public class Interactable : MonoBehaviour {
                     IsActivated = !IsActivated;
                 }
 
-                IsLocked = true;
-
                 if (Anim != null) {
                     Anim.SetBool("IsOn", IsActivated);
                 }
@@ -230,6 +254,14 @@ public class Interactable : MonoBehaviour {
         }
 
         HasToReset = false;
+
+        if (isActivated == true && TurnOnText != "") {
+            Debug.Log(TurnOnText);
+        }
+
+        if (IsActivated == false && TurnOffText != "") {
+            Debug.Log(TurnOffText);
+        }
 
         if (HasToReset == false && ResetInTime > 0f) {
             Debug.Log("ResetTimer > 0f");

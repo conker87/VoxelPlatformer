@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class InteractableLockWhileAnimating : MonoBehaviour {
 
+    [SerializeField]
     Interactable interactable;
     public bool interactabledLocked;
 
     public void Start() {
-        interactable = GetComponentInParent<Interactable>();
+
+        if (interactable == null) {
+            interactable = GetComponentInParent<Interactable>();
+        }
     }
 
     public void Update() {
@@ -17,6 +21,7 @@ public class InteractableLockWhileAnimating : MonoBehaviour {
             return;
         }
 
+        Debug.Log(string.Format("{0}", interactable));
         interactable.IsLocked = interactabledLocked;
 
     }

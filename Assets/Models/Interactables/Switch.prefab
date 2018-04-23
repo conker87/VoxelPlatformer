@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008136629111310}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -0.4, y: 0, z: -4.5}
+  m_LocalPosition: {x: 18.875, y: 1.125, z: 7.8125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4111293483224454}
@@ -169,18 +169,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
+  isDisabled: 0
+  isLocked: 0
+  isActivated: 0
   oneTimeUse: 0
   canOnlyInteractFromOtherInteractables: 0
+  canContinue: 1
+  resetInTime: -1
+  hasToReset: 0
+  resetTime: 0
   anim: {fileID: 0}
-  isOn: 0
+  triggersConnectedToMe: []
+  turnOnText: 
+  turnOffText: 
+  hasOnTriggerEnter: 0
+  hasOnTriggerStay: 0
+  hasOnTriggerExit: 0
+  hasTriggerOverlapSphere: 0
+  hasTriggerTimeSinceLevelStart: 0
+  hasTriggerRepeatTime: 0
   onTriggerStayCooldown: 1
-  onTriggerStayTime: 0
-  onTriggerUpdateTime: 0
-  onTriggerRepeatTime: 0
   interactableTriggers:
   - InteractableToTrigger: {fileID: 0}
     InteractableTriggerCause: 3
     InteractableTriggerEffect: 0
-    InteractableTriggerValue: 5
+    InteractableTriggerAction: 0
+    InteractableTriggerValue: 0
     Invert: 0
     DontCauseTriggerEffect: 0
