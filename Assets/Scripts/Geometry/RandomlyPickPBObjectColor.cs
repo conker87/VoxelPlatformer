@@ -6,28 +6,9 @@ using ProBuilder.Core;
 
 public class RandomlyPickPBObjectColor : MonoBehaviour {
 
-    float randomMin = 0.44f, randomMax = 0.62f;
+    float[] randomColors = new float[] { 0.44f, 0.45f, 0.46f, 0.47f, 0.48f, 0.49f, 0.5f, 0.51f, 0.52f, 0.53f, 0.54f, 0.55f, 0.56f, 0.57f, 0.58f, 0.59f, 0.6f, 0.61f, 0.62f };
 
     List<pb_Object> childPBObjects = new List<pb_Object>();
-
-    public float RandomMin {
-        get {
-            return randomMin;
-        }
-
-        set {
-            randomMin = value;
-        }
-    }
-    public float RandomMax {
-        get {
-            return randomMax;
-        }
-
-        set {
-            randomMax = value;
-        }
-    }
 
     pb_Object[] PopulateChildObjects() {
 
@@ -37,6 +18,7 @@ public class RandomlyPickPBObjectColor : MonoBehaviour {
 
     public void ChangeBlockColorsToRandom(float minimum = 0.44f, float maximum = 0.62f) {
 
+        int randomColorsLength = randomColors.Length;
         childPBObjects = PopulateChildObjects().ToList<pb_Object>();
 
         foreach (pb_Object currentBlock in childPBObjects) {
@@ -45,10 +27,10 @@ public class RandomlyPickPBObjectColor : MonoBehaviour {
                 continue;
             }
 
-            float random = Random.Range(minimum, maximum);
+            int randomInt = Random.Range(0, randomColorsLength);
 
             // Random.seed = GameController.current.randomGeneratorSeed;
-            Color color = new Color(random, random, random);
+            Color color = new Color(randomColors[randomInt], randomColors[randomInt], randomColors[randomInt]);
 
             // Cycle through each unique vertex in the cube (8 total), and assign a color to the index in the sharedIndices array.
             int si_len = currentBlock.sharedIndices.Length;
