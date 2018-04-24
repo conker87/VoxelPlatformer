@@ -25,6 +25,7 @@ public class Interactable_PressurePlate_OnTriggers : MonoBehaviour {
         if (ITP == null) {
             ITP = GetComponentInParent<Interactable_Triggers_PressurePlate>();
         }
+
         moveableBlockName = ITP.MoveableBlockName;
 
     }
@@ -35,7 +36,7 @@ public class Interactable_PressurePlate_OnTriggers : MonoBehaviour {
             return;
         }
 
-        if (other.gameObject.tag.Equals(MoveableBlockName)) {
+        if (MoveableBlockName == "" || other.gameObject.tag.Equals(MoveableBlockName)) {
 
             ITP.OnTriggerEnter(other);
 
@@ -49,7 +50,7 @@ public class Interactable_PressurePlate_OnTriggers : MonoBehaviour {
             return;
         }
 
-        if (other.gameObject.tag.Equals(MoveableBlockName)) {
+        if (MoveableBlockName == "" || other.gameObject.tag.Equals(MoveableBlockName)) {
 
             ITP.OnTriggerStay(other);
 
@@ -63,7 +64,7 @@ public class Interactable_PressurePlate_OnTriggers : MonoBehaviour {
             return;
         }
 
-        if (other.gameObject.tag.Equals(MoveableBlockName)) {
+        if (MoveableBlockName == "" || other.gameObject.tag.Equals(MoveableBlockName)) {
 
             ITP.OnTriggerExit(other);
 

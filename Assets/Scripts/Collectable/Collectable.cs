@@ -2,53 +2,150 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Used for any collectable that will be added to the GameController's Collectables list.
+/// </summary>
 public class Collectable : MonoBehaviour {
 
-	// TODO: This needs to be split into different inherited Collectables: Coin, Star, etc.
+    #region Serialized Private Fields
 
-	public string CollectableID = "";
-	[SerializeField]
-	protected string CollectableType = "";
+    [SerializeField]
+    string collectableID = "";
+    [SerializeField]
+    CollectableType collectableType;
+    [SerializeField]
+    bool collectableCollected = false;
+    [SerializeField]
+    GameObject gfxParent;
 
-	public bool CollectableCollected = false;
+    #endregion
 
-	public Level CurrentLevel;
+    #region Encapsulated Public Fields
 
-	protected virtual void Start () {
+    public string CollectableID {
+        get {
+            return collectableID;
+        }
 
-		if (string.IsNullOrEmpty (CollectableType) || CollectableType.Equals ("") || CollectableType == "" || CollectableType == null) {
+        set {
+            collectableID = value;
+        }
+    }
+    public CollectableType CollectableType {
+        get {
+            return collectableType;
+        }
 
-			Debug.LogError (string.Format("Collectable at position: {0} has no CollectableID. This WILL break the game. Please fix.", transform.position));
+        set {
+            collectableType = value;
+        }
+    }
+    public bool CollectableCollected {
+        get {
+            return collectableCollected;
+        }
 
-		}
+        set {
+            collectableCollected = value;
+        }
+    }
+    public GameObject GFXParent {
+        get {
+            return gfxParent;
+        }
 
-        if (CurrentLevel != null)
-		    CollectableID = CollectableType + "_" + transform.position + "_" + CurrentLevel.LevelID;
+        set {
+            gfxParent = value;
+        }
+    }
 
+    #endregion
+
+    void Start() {
+
+        if (string.IsNullOrEmpty(CollectableID) || CollectableID.Equals("") || CollectableID == "" || CollectableID == null) {
+
+            // Debug.LogWarningFormat("Collectable at position: {0} has no CollectableID. A temporary ID has been given", transform.position);
+
+            CollectableID = CollectableType.ToString() + "_" + transform.position;
+
+        }
 	}
 
-	protected virtual void OnTriggerEnter(Collider other) {
+    private void OnEnable() {
 
-		Debug.LogError (string.Format("{0}, of type {1}, requires OnTriggerEnter to be overriden in its inheritence.", gameObject.name, CollectableType));
+        GetComponent<Collider>().enabled = true;
 
-		return;
 
-	}
+        if (GameController.current.CurrentSaveState == SaveState.NewGame) {
 
-	protected virtual void Update() {
-		
-		if (CollectableCollected) {
+            CollectableCollected = false;
 
-			gameObject.SetActive (false);
+        }
 
-		}
+        GetComponent<Collider>().enabled = !CollectableCollected;
+        gfxParent.SetActive(!CollectableCollected);
 
-	}
+    }
 
-	protected virtual void HasCollectedCollectable() {
+    void OnTriggerEnter(Collider other) {
 
-		Debug.LogError (string.Format("{0}, of type {1}, requires HasCollectedCollected to be overriden in its inheritence.", gameObject.name, CollectableType));
+        if (other.GetComponentInParent<Player>() == null) {
+            return;
+        }
 
-	}
+        CollectableListValue newCollectableListValue = new CollectableListValue(CollectableID, CollectableType);
 
+        GameController.current.AddToCollectables(newCollectableListValue);
+
+        CollectableCollected = true;
+
+        if (CollectableType == CollectableType.Coin) {
+
+            SFXController.instance.PlayRandomCoinClip();
+
+        }
+
+        GetComponent<Collider>().enabled = false;
+        gfxParent.SetActive(false);
+
+    }
+
+	bool HasCollectedCollectable() {
+
+        foreach (CollectableListValue value in GameController.current.Collectables) {
+
+            if (value.CollectableID == CollectableID) {
+
+                return true;
+
+            }
+        }
+
+        return false;
+
+    }
 }
+
+[System.Serializable]
+public class CollectableListValue {
+
+    public string CollectableID;
+    public CollectableType CollectableType;
+
+    public CollectableListValue(CollectableListValue value) {
+
+        CollectableID = value.CollectableID;
+        CollectableType = value.CollectableType;
+
+    }
+
+    public CollectableListValue(string collectableID, CollectableType collectableType) {
+
+        CollectableID = collectableID;
+        CollectableType = collectableType;
+
+    }
+}
+
+public enum CollectableType { Coin, Star, Ability };

@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Sets the GameObject to inactive on start. Useful for disabling objects until they will be needed later.
+/// </summary>
 public class DisableOnStart : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
+
         gameObject.SetActive(false);
+
     }
-	
 }

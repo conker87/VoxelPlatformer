@@ -2,46 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class used for backwards compat, you should use Collectable.
+/// </summary>
+[System.Obsolete("Ability, Coin and Star are now one class: Collectable. Use that.")]
 public class Star : Collectable {
 
-	protected override void Start () {
 
-		base.Start ();
-
-		HasCollectedCollectable ();
-
-	}
-
-	protected override void OnTriggerEnter (Collider other) {
-
-		if (other.GetComponent<Player>() != null) {
-
-			Debug.Log(string.Format("Collectable '{0}' at position {1} has hit the player and will be collected.", CollectableID, transform.position));
-
-			GameController.current.AddToStars (CollectableID);
-
-            // TODO: Add some star collection clips.
-            SFXController.instance.PlayRandomCoinClip ();
-
-			Destroy (gameObject);
-
-		}
-
-	}
-
-	protected override void HasCollectedCollectable () {
-
-		foreach (string SCollectableID in GameController.current.Stars) {
-
-			if (SCollectableID == CollectableID) {
-
-				gameObject.SetActive (false);
-
-
-			}
-
-		}
-
-	}
 
 }

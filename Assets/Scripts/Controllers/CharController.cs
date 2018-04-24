@@ -101,7 +101,7 @@ public class CharController : MonoBehaviour {
 
                 foreach (Collider coll in overlappedSphere) {
 
-                    interactable = coll.GetComponentInParent<Interactable>();
+                    interactable = coll.GetComponent<Interactable>();// coll.GetComponentInParent<Interactable>();
 
                     if (interactable == null) {
                         continue;
@@ -110,8 +110,6 @@ public class CharController : MonoBehaviour {
                     if (interactedInteractables.Contains(interactable)) {
                         continue;
                     }
-
-                    Debug.Log(string.Format("Found Interactable: {0}", interactable));
 
                     InteractableTrigger interactingTrigger = new
                         InteractableTrigger(interactable, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle, InteractableTriggerAction.Interact, 0f, false, false);
@@ -159,8 +157,14 @@ public class CharController : MonoBehaviour {
 
     void Jump() {
 
-        if ((!isOnGround && hasJumped == true && GameController.current.HasAcquiredAbility("DOUBLE_JUMP") == true && hasJumpedDouble == true)
-            || (!isOnGround && hasJumped == true && GameController.current.HasAcquiredAbility("DOUBLE_JUMP") == false)) {
+        if ((isOnGround == false
+            && hasJumped == true
+            && GameController.current.HasAcquiredCollectable("DOUBLE_JUMP") == true
+            && hasJumpedDouble == true)
+                ||
+            (isOnGround == false
+            && hasJumped == true
+            && GameController.current.HasAcquiredCollectable("DOUBLE_JUMP") == false)) {
 
             return;
 
@@ -171,20 +175,23 @@ public class CharController : MonoBehaviour {
         }
 
         rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
-        //rb.AddForce (Vector3.up * jumpHeight, ForceMode.Impulse);
 
         // Set the main grounded bool to false.
         isOnGround = false;
 
-        // Chec
         if (hasJumped == false) {
+
             hasJumped = true;
+
         } else {
+
             hasJumpedDouble = true;
+
         }
 
         // Prevent issues with IsGrounded() by stopping it checking for the ground for another .5 seconds.
         isGroundedCheckTime += 0.5f;
+
     }
 
     void ButtStomp() {

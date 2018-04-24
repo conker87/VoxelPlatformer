@@ -83,7 +83,6 @@
     <Compile Include="Assets\Scripts\Entity\Player.cs" />
     <Compile Include="Assets\Scripts\Extend_List.cs" />
     <Compile Include="Assets\Scripts\ExtendList.cs" />
-    <Compile Include="Assets\Scripts\Geometry\EndLocation.cs" />
     <Compile Include="Assets\Scripts\Geometry\GeometryBlock.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactable_PressurePlate_OnTriggers.cs" />
@@ -100,8 +99,6 @@
     <Compile Include="Assets\Scripts\UI\UIButton_SaveGame.cs" />
     <Compile Include="Assets\Scripts\UI\UICutsceneCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\UIElements.cs" />
-    <Compile Include="Assets\Scripts\UI\UILevelList.cs" />
-    <Compile Include="Assets\Scripts\UI\UILevelSelectButton.cs" />
     <Compile Include="Assets\Scripts\Util\DEBUG_UIQuitLevel.cs" />
     <Compile Include="Assets\Scripts\Util\DisableGameObjectOnLinecast.cs" />
     <Compile Include="Assets\Scripts\Util\DisableOnStart.cs" />
@@ -372,9 +369,6 @@
     </Reference>
     <Reference Include="TextMeshPro-1.0.55.2017.2.0b12">
       <HintPath>U:/UNITY/VoxelPlatformer/Assets/TextMesh Pro/Plugins/TextMeshPro-1.0.55.2017.2.0b12.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.4/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>

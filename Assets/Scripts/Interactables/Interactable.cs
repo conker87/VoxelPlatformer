@@ -12,8 +12,11 @@ public class Interactable : MonoBehaviour {
     [SerializeField]
     private string interactableID = "";
     [SerializeField]
-    private bool isDisabled, isLocked, isActivated = false, oneTimeUse,
-        canOnlyInteractFromOtherInteractables = true, canContinue = true;
+    private bool defaultIsDisabled, defaultIsLocked, defaultIsActivated;
+    [SerializeField]
+    private bool isDisabled, isLocked, isActivated;
+    [SerializeField]
+    private bool oneTimeUse, canOnlyInteractFromOtherInteractables = true, canContinue = true;
 
     [SerializeField]
     private float resetInTime = -1f;
@@ -42,6 +45,35 @@ public class Interactable : MonoBehaviour {
             interactableID = value;
         }
     }
+
+    public bool DefaultIsDisabled {
+        get {
+            return defaultIsDisabled;
+        }
+
+        set {
+            defaultIsDisabled = value;
+        }
+    }
+    public bool DefaultIsLocked {
+        get {
+            return defaultIsLocked;
+        }
+
+        set {
+            defaultIsLocked = value;
+        }
+    }
+    public bool DefaultIsActivated {
+        get {
+            return defaultIsActivated;
+        }
+
+        set {
+            defaultIsActivated = value;
+        }
+    }
+
     public bool IsDisabled {
         get {
             return isDisabled;
@@ -69,6 +101,7 @@ public class Interactable : MonoBehaviour {
             isActivated = value;
         }
     }
+
     public bool OneTimeUse {
         get {
             return oneTimeUse;
@@ -164,10 +197,34 @@ public class Interactable : MonoBehaviour {
         if (anim == null) {
             anim = GetComponent<Animator>();
         }
+    }
 
+    private void OnEnable() {
+
+        if (GameController.current.CurrentSaveState == SaveState.NewGame) {
+
+            Debug.Log("GameController.current.CurrentSaveState == SaveState.NewGame");
+
+            IsActivated = DefaultIsActivated;
+            IsDisabled = DefaultIsDisabled;
+            IsLocked = DefaultIsLocked;
+
+        }
+
+        if (anim != null) {
+
+            anim.SetBool("IsOn", IsActivated);
+
+        }
     }
 
     protected virtual void Update() {
+
+        if (anim != null) {
+
+            anim.SetBool("IsOn", IsActivated);
+
+        }
 
         if (IsActivated == true && HasToReset == true && ResetInTime > 0f) {
 
@@ -256,11 +313,15 @@ public class Interactable : MonoBehaviour {
         HasToReset = false;
 
         if (isActivated == true && TurnOnText != "") {
+
             Debug.Log(TurnOnText);
+
         }
 
         if (IsActivated == false && TurnOffText != "") {
+
             Debug.Log(TurnOffText);
+
         }
 
         if (HasToReset == false && ResetInTime > 0f) {

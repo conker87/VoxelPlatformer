@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+
+using System.Collections;
 using System.Collections.Generic;
 
 using System.Linq;
@@ -11,198 +13,144 @@ using System.Xml;
 
 public class SaveController : MonoBehaviour {
 
-	// TODO: Make it so that it actually saves to a file.
-		// Maybe obfuscate the save file to prevent editing? Who cares? Question mark?
-
-	static List<string> _starsInWorld = new List<string> ();
-	public static List<string> StarsInWorld {
-
-		get { return _starsInWorld; }
-		set { _starsInWorld = value; }
-
-	}
-
-	static List<string> _coinsInWorld = new List<string>();
-	public static List<string> CoinsInWorld {
-
-		get { return _coinsInWorld; } 
-		set { _coinsInWorld = value; }
-
-	}
-
-	static List<string> _abilitiesOfPlayer = new List<string>();
-	public static List<string> AbilitiesOfPlayer {
-
-		get { return _abilitiesOfPlayer; } 
-		set { _abilitiesOfPlayer = value; }
-
-	}
-
-    static List<InteractableSave> _interables = new List<InteractableSave>();
-    public static List<InteractableSave> Interactables {
-        get {
-            return _interables;
-        }
-
-        set {
-            _interables = value;
-        }
-    }
-
-    // static List
-
-    static List<LevelScore> _levelScore = new List<LevelScore> ();
-	public static List<LevelScore> LevelScore {
-
-		get { return _levelScore; } 
-		set { _levelScore = value; }
-
-	}
-
-	static List<string> _openedLevels = new List<string>();
-	public static List<string> OpenedLevels {
-
-		get { return _openedLevels; } 
-		set { _openedLevels = value; }
-
-	}
-
+    static List<InteractableSave> Interactables = new List<InteractableSave>();
     static XmlWriter xmlWriter;
 
-	void Start() {
-		
-	}
+    public static void QuitGame() {
+
+        GameController.current.QuitGame();
+
+    }
+
+    public static void NewGame() {
+
+        GameController.current.StartGame();
+
+    }
 
 	public static void LoadGame() {
 
 		XmlReader xmlReader = XmlReader.Create("saveGameTest.xml");
 
-		GameController.current.Abilities.Clear ();
-		GameController.current.Coins.Clear ();
-		GameController.current.Stars.Clear ();
-		GameController.current.OpenedLevels.Clear ();
-		GameController.current.LevelScores.Clear ();
-
-		while(xmlReader.Read()) {
+        while (xmlReader.Read()) {
 
 			if (xmlReader.NodeType == XmlNodeType.Element) {
 
-				// <SaveData SaveFileName="SaveFileName" SaveFileDate="SaveFileDate" SaveFileTime="SaveFileTime" SaveFileTimeOnGame="SaveFileTimeOnGame" stationID="SAVE_STATION_A">
-				if (xmlReader.Name == "SaveData") {
+				// <SaveData SaveFileName="SaveFileName" SaveFileDate="SaveFileDate" SaveFileTime="SaveFileTime" SaveFileTimeOnGame="SaveFileTimeOnGame" SaveFilePositionX/Y/Z="Vector3">
+				if (xmlReader.Name == "player") {
 
-					// Player.instance.transform.position = SaveStationLocations.FirstOrDefault (a => a.InteractableID == xmlReader.GetAttribute ("stationID")).transform.position;
+                    GameController.current.playerLoadedPosition = new Vector3(float.Parse(xmlReader.GetAttribute("playerPositionX")), float.Parse(xmlReader.GetAttribute("playerPositionY")), float.Parse(xmlReader.GetAttribute("playerPositionZ")));
 
-				}
+                }
 
-				// 	<abilities JUMP="True" JUMP_DOUBLE="False" JUMP_TRIPLE="False" WALL_SLIDE="False" WALL_JUMP="False" WALL_HIGH_JUMP="False"
-				//		DASH="False" DASH_MEGA="False" CHEAT_JUMP="False" CHEAT_DASH="False" WeaponProjectileModifier="1" />
-				if (xmlReader.Name == "ability") {
+				if (xmlReader.Name == "collectable") {
 
-					while (xmlReader.MoveToNextAttribute ()) {
-						// xmlReader.GetAttribute ("stationID"))
-						GameController.current.Abilities.Add (xmlReader.Value);
+                    CollectableType collectableType = (CollectableType) Enum.Parse(typeof(CollectableType), xmlReader.GetAttribute("CollectableType"));
 
-					}
+                    CollectableListValue newCollectableListValue = new CollectableListValue(
+                        xmlReader.GetAttribute("CollectableID"),
+                        collectableType
+                    );
 
-				}
-
-				if (xmlReader.Name == "coin") {
-
-					GameController.current.Coins.Add (xmlReader.GetAttribute("CollectableID"));
-
-				}
-
-				if (xmlReader.Name == "star") {
-
-					GameController.current.Stars.Add (xmlReader.GetAttribute("CollectableID"));
-
+                    GameController.current.Collectables.Add (newCollectableListValue);
+                    
 				}
 
                 if (xmlReader.Name == "interactable") {
 
                     InteractableSave temp = new InteractableSave(
-                    xmlReader.GetAttribute("CollectableID"),
-                    bool.Parse(xmlReader.GetAttribute("IsDisabled")),
-                    bool.Parse(xmlReader.GetAttribute("IsLocked")),
-                    bool.Parse(xmlReader.GetAttribute("IsActivated")));
+                        xmlReader.GetAttribute("InteractableID"),
+                        bool.Parse(xmlReader.GetAttribute("IsDisabled")),
+                        bool.Parse(xmlReader.GetAttribute("IsLocked")),
+                        bool.Parse(xmlReader.GetAttribute("IsActivated"))
+                       );
 
                     Interactables.Add(temp);
 
                 }
-
-
-                // Now that the game will proably be open-worldy, this will not be needed?
-                if (xmlReader.Name == "levelscore") {
-
-					LevelScore temp = new LevelScore(xmlReader.GetAttribute("LevelID").ToString(), float.Parse(xmlReader.GetAttribute("BestTime")),
-						int.Parse(xmlReader.GetAttribute("CurrentCoins")), int.Parse(xmlReader.GetAttribute("MaxCoins")),
-						int.Parse(xmlReader.GetAttribute("CurrentStars")), int.Parse(xmlReader.GetAttribute("MaxStars")),
-						bool.Parse(xmlReader.GetAttribute("HasUnlockedLevel")));
-
-					Debug.Log (string.Format("Details: {0}, {1}, {2}, {3}, {4}", temp.LevelID, temp.BestTime, temp.CurrentCoins, temp.MaxCoins, temp.HasUnlockedLevel));
-					GameController.current.LevelScores.Add(temp);
-
-				}
 			}
 		}
 
-		foreach (Coin coin in GameObject.FindObjectsOfType<Coin>()) {
+        foreach (Collectable collectable in GameController.current.levelsParent.GetComponentsInChildren<Collectable>(true)) {
 
-			if (GameController.current.Coins.Contains(coin.CollectableID)) {
+            if (GameController.current.HasAcquiredCollectable(collectable.CollectableID)) {
 
-				coin.CollectableCollected = true;
-
-			}
-        }
-
-        foreach (Star star in GameObject.FindObjectsOfType<Star>()) {
-
-            if (GameController.current.Stars.Contains(star.CollectableID)) {
-
-                star.CollectableCollected = true;
+                collectable.CollectableCollected = true;
 
             }
         }
 
-        foreach (Interactable interactable in GameObject.FindObjectsOfType<Interactable>()) {
+        foreach (Interactable interactable in GameController.current.levelsParent.GetComponentsInChildren<Interactable>(true)) {
 
-            InteractableSave temp;
-            if ((temp = Interactables.FirstOrDefault(a => a.InteractableID == interactable.InteractableID)) != null) {
+            foreach (InteractableSave save in Interactables) {
 
-                interactable.IsActivated = temp.IsActivated;
-                interactable.IsDisabled = temp.IsDisabled;
-                interactable.IsLocked = temp.IsLocked;
+                if (save.InteractableID == interactable.InteractableID) {
+
+                    interactable.IsActivated = save.IsActivated;
+                    interactable.IsDisabled = save.IsDisabled;
+                    interactable.IsLocked = save.IsLocked;
+                    break;
+
+                }
 
             }
         }
+
+        GameController.current.StartGame(SaveState.LoadedGame);
+
     }
 
 	public static void SaveGame() {
 
-		Debug.Log ("Saving...");
+        if (GameController.current.Player == null) {
+
+            Debug.LogErrorFormat("The Player is null which means that you're probably not in GameState.Ingame, so ignoring Loading.");
+            return;
+
+        }
+
+        Debug.Log ("Saving...");
 
 		xmlWriter = XmlWriter.Create("saveGameTest.xml");
 		xmlWriter.WriteStartDocument();
 		xmlWriter.WriteWhitespace("\n");
 
-		xmlWriter.WriteStartElement("SaveData");
-		xmlWriter.WriteAttributeString ("SaveFileName", "SaveFileName");
-		xmlWriter.WriteAttributeString ("SaveFileDate", "SaveFileDate");
-		xmlWriter.WriteAttributeString ("SaveFileTime", "SaveFileTime");
-		xmlWriter.WriteAttributeString ("SaveFileTimeOnGame", "SaveFileTimeOnGame");
+        xmlWriter.WriteStartElement("game");
+        xmlWriter.WriteWhitespace("\n");
 
-        // SaveLocation (saveStationID);
+        SavePlayerData();
+        SaveCollectables();
         SaveInteractables();
-        SaveCoinsCollected ();
-		SaveStarsCollected ();
-		SaveAbilitiesCollected ();
-		SaveLevelScores ();
 
-		xmlWriter.WriteEndElement();
-		xmlWriter.WriteEndDocument();
+        xmlWriter.WriteWhitespace("\n");
+        xmlWriter.WriteEndElement();
+
+        xmlWriter.WriteEndDocument();
 		xmlWriter.Close();
 
 	}
+
+    static void SavePlayerData() {
+
+        xmlWriter.WriteWhitespace("\n");
+        xmlWriter.WriteComment("Player data.");
+        xmlWriter.WriteWhitespace("\n\t");
+
+        xmlWriter.WriteStartElement("player");
+        xmlWriter.WriteAttributeString("saveName", "saveDataName");
+        xmlWriter.WriteAttributeString("saveTotalTime", GameController.current.currentTime.ToString());
+        xmlWriter.WriteAttributeString("saveCurrentTimestamp", DateTime.Now.ToString());
+
+        xmlWriter.WriteAttributeString("playerPositionX", GameController.current.Player.transform.position.x.ToString());
+        xmlWriter.WriteAttributeString("playerPositionY", GameController.current.Player.transform.position.y.ToString());
+        xmlWriter.WriteAttributeString("playerPositionZ", GameController.current.Player.transform.position.z.ToString());
+
+
+        xmlWriter.WriteWhitespace("\n\t");
+        xmlWriter.WriteEndElement();
+        xmlWriter.WriteWhitespace("\n");
+
+    }
 
     static void SaveInteractables() {
 
@@ -232,22 +180,23 @@ public class SaveController : MonoBehaviour {
 
     }
 
-    static void SaveStarsCollected() {
+	static void SaveCollectables() {
 
 		xmlWriter.WriteWhitespace("\n");
-		xmlWriter.WriteComment ("This is the list of Stars collected.");
+		xmlWriter.WriteComment ("This is the list of Collectables.");
 		xmlWriter.WriteWhitespace("\n\t");
 
-		xmlWriter.WriteStartElement("stars");
+		xmlWriter.WriteStartElement("collectables");
 
-		foreach (string star in GameController.current.Stars) {
+		foreach (CollectableListValue collectable in GameController.current.Collectables) {
 
 			xmlWriter.WriteWhitespace("\n\t\t");
 
-			xmlWriter.WriteStartElement("star");
-			xmlWriter.WriteAttributeString ("CollectableID", star);
+			xmlWriter.WriteStartElement("collectable");
+            xmlWriter.WriteAttributeString("CollectableID", collectable.CollectableID);
+            xmlWriter.WriteAttributeString("CollectableType", collectable.CollectableType.ToString());
 
-			xmlWriter.WriteEndElement();
+            xmlWriter.WriteEndElement();
 
 		}
 
@@ -256,88 +205,6 @@ public class SaveController : MonoBehaviour {
 		xmlWriter.WriteWhitespace("\n");
 
 	}
-
-	static void SaveAbilitiesCollected() {
-
-		xmlWriter.WriteWhitespace("\n");
-		xmlWriter.WriteComment ("This is the list of Abilities collected.");
-		xmlWriter.WriteWhitespace("\n\t");
-
-		xmlWriter.WriteStartElement("abilities");
-
-		foreach (string ability in GameController.current.Abilities) {
-
-			xmlWriter.WriteWhitespace("\n\t\t");
-
-			xmlWriter.WriteStartElement("ability");
-			xmlWriter.WriteAttributeString ("AbilityID", ability);
-
-			xmlWriter.WriteEndElement();
-
-		}
-
-		xmlWriter.WriteWhitespace("\n\t");
-		xmlWriter.WriteEndElement();
-		xmlWriter.WriteWhitespace("\n");
-
-	}
-
-	static void SaveCoinsCollected() {
-
-		xmlWriter.WriteWhitespace("\n");
-		xmlWriter.WriteComment ("This is the list of Coins collected.");
-		xmlWriter.WriteWhitespace("\n\t");
-
-		xmlWriter.WriteStartElement("coins");
-
-		foreach (string coin in GameController.current.Coins) {
-
-			xmlWriter.WriteWhitespace("\n\t\t");
-
-			xmlWriter.WriteStartElement("coin");
-			xmlWriter.WriteAttributeString ("CollectableID", coin);
-
-			xmlWriter.WriteEndElement();
-
-		}
-
-		xmlWriter.WriteWhitespace("\n\t");
-		xmlWriter.WriteEndElement();
-		xmlWriter.WriteWhitespace("\n");
-
-	}
-
-	static void SaveLevelScores() {
-
-		xmlWriter.WriteWhitespace("\n");
-		xmlWriter.WriteComment ("This is the list of level scores.");
-		xmlWriter.WriteWhitespace("\n\t");
-
-		xmlWriter.WriteStartElement("levelscores");
-
-		foreach (LevelScore levelScore in GameController.current.LevelScores) {
-
-			xmlWriter.WriteWhitespace("\n\t\t");
-
-			xmlWriter.WriteStartElement("levelscore");
-			xmlWriter.WriteAttributeString ("LevelID", levelScore.LevelID);
-			xmlWriter.WriteAttributeString ("BestTime", levelScore.BestTime.ToString());
-			xmlWriter.WriteAttributeString ("CurrentCoins", levelScore.CurrentCoins.ToString());
-			xmlWriter.WriteAttributeString ("MaxCoins", levelScore.MaxCoins.ToString());
-			xmlWriter.WriteAttributeString ("CurrentStars", levelScore.CurrentStars.ToString());
-			xmlWriter.WriteAttributeString ("MaxStars", levelScore.MaxStars.ToString());
-			xmlWriter.WriteAttributeString ("HasUnlockedLevel", levelScore.HasUnlockedLevel.ToString());
-
-			xmlWriter.WriteEndElement();
-
-		}
-
-		xmlWriter.WriteWhitespace("\n\t");
-		xmlWriter.WriteEndElement();
-		xmlWriter.WriteWhitespace("\n");
-
-	}
-
 }
 
 public class InteractableSave {

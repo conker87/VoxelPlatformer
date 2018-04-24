@@ -250,6 +250,8 @@ public class Interactable_Triggers : Interactable {
 
         IsActivated = false;
 
+        float cooldown = 0f;
+
         foreach (InteractableTrigger interactableTrigger in InteractableTriggers) {
 
             if (interactableTrigger.InteractableToTrigger == null) {
@@ -264,9 +266,11 @@ public class Interactable_Triggers : Interactable {
 
             interactableTrigger.InteractableToTrigger.Interact(interactableTrigger, false);
 
+            cooldown = interactableTrigger.InteractableTriggerValue;
+
         }
 
-        onTriggerStayTime = Time.time + onTriggerStayCooldown;
+        onTriggerStayTime = Time.time + cooldown;
 
     }
 

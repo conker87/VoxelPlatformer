@@ -19,8 +19,9 @@ public class UIElements : MonoBehaviour {
 	public TextMeshProUGUI NumberOfCoins;
 	public TextMeshProUGUI NumberOfStars, Health, TimeT;
 
-	[Header("Menu Level Select Canvas")]
-	public Button MenuOptionsButton;
+    [Header("Menu Level Select Canvas")]
+    public Button MenuOptionsContinueButton;
+    public Button MenusOptionsNewGameButton, MenusOptionsOptionsButton, MenuOptionsQuitButton;
 
 	[Header("Menu Options Canvas")]
 	public Dropdown QualityPresetsDropdown;
@@ -39,59 +40,58 @@ public class UIElements : MonoBehaviour {
 
 		FullscreenToggle.isOn = Screen.fullScreen;
 
+        // Add listeners to all the allocated Buttons.
+        AddListener(MenuOptionsContinueButton, SaveController.LoadGame);
+        AddListener(MenusOptionsNewGameButton, SaveController.NewGame);
+
 	}
 
 	void Update() {
 
-		if (GameController.current.justChangedState) {
+        if (GameController.current.justChangedState) {
+
 			MenuLevelSelectCanvas.gameObject.SetActive (false);
 			IngameLevelLoadedCanvas.gameObject.SetActive (false);
 			// IngameLevelLoadedPausedCanvas.gameObject.SetActive (false);
 			MenuOptionsCanvas.gameObject.SetActive(false);
 
-			GameController.current.justChangedState = false;
 		}
 
-		if (GameController.current.CurrentState == "") {
-			Debug.LogWarning (string.Format("GameController.current.CurrentState is empty, this shouldn't ever happen!!"));
-
-		}
-
-		if (GameController.current.CurrentState == "MAIN_MENU_OPTIONS") {
+		if (GameController.current.CurrentState == GameState.MainMenuOptions) {
 
 			MenuOptionsCanvas.gameObject.SetActive (true);
 
 		}
 
-		if (GameController.current.CurrentState == "LEVEL_SELECT") {
+		if (GameController.current.CurrentState == GameState.MainMenu) {
 
 			MenuLevelSelectCanvas.gameObject.SetActive (true);
 
 		}
 
-		if (GameController.current.CurrentState == "LEVEL_LOADED") {
+		if (GameController.current.CurrentState == GameState.Ingame) {
 
 			IngameLevelLoadedCanvas.gameObject.SetActive (true);
 
 			if (NumberOfCoins != null) {
 
-				NumberOfCoins.text = "Coins: " + GameController.current.NumberOfCoins ().ToString();
+                NumberOfCoins.text = "Coins: " + GameController.current.NumberOfCollectables(CollectableType.Coin);
 
 			}
 
 			if (NumberOfStars != null) {
 
-				NumberOfStars.text = "Stars: " + GameController.current.NumberOfStars ().ToString();
+				NumberOfStars.text = "Stars: " + GameController.current.NumberOfCollectables(CollectableType.Star);
 
-			}
+            }
 
-			if (Health != null && GameController.current.Player != null) {
+			if (Health != null) {
 
 				Health.text = GameController.current.Player.CurrentHealth + "/" + GameController.current.Player.MaximumHealth;
 
 			}
 
-			if (TimeT != null && GameController.current.Player != null) {
+			if (TimeT != null) {
 
     			TimeSpan t = TimeSpan.FromSeconds (GameController.current.currentTime);
 
@@ -111,7 +111,7 @@ public class UIElements : MonoBehaviour {
 
 		}
 
-		if (GameController.current.CurrentState == "LEVEL_LOADED_PAUSED") {
+		if (GameController.current.CurrentState == GameState.IngameOptions) {
 
 			IngameLevelLoadedCanvas.gameObject.SetActive (true);
 			IngameLevelLoadedPausedCanvas.gameObject.SetActive (true);
@@ -120,8 +120,22 @@ public class UIElements : MonoBehaviour {
 
 	}
 
-	// Populate Dropdowns
-	void PopulateQualityPresetsDropdown() {
+    void AddListener(Button button, UnityEngine.Events.UnityAction action) {
+
+        if (button == null) {
+
+            Debug.LogErrorFormat("{0} was null while trying to add a listener.", button.gameObject.name);
+            return;
+
+        }
+
+        button.onClick.AddListener(action);
+
+    }
+
+    #region Populate Dropdowns
+
+    void PopulateQualityPresetsDropdown() {
 
 		QualityPresetsDropdown.ClearOptions ();
 
@@ -168,8 +182,12 @@ public class UIElements : MonoBehaviour {
 
 	}
 
-	// OnClick methods
-	public void QualityPresetsOnClick(int index) {
+    #endregion
+
+    #region OnClicks
+
+    // OnClick methods
+    public void QualityPresetsOnClick(int index) {
 
 		QualitySettings.SetQualityLevel(index, true);
 
@@ -185,4 +203,5 @@ public class UIElements : MonoBehaviour {
 
 	}
 
+    #endregion
 }

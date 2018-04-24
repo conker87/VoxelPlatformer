@@ -11,6 +11,7 @@ public class InteractableTrigger {
 
     [UnityEngine.Tooltip(@"This is used differently depending on the InteractableTriggerCause chosen:
     • OnTriggerEnter, OnTriggerExit, OnTriggerInteract: No effect.
+    • OnTriggerStay: The cooldown between checking for next Stay.
     • OnTriggerOverlapSphere: Radius of sphere to check.
     • OnTriggerTimeSinceLevelStart: Time from the level start.
     • OnTriggerRepeatTime: After every this time.")]

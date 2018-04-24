@@ -21,7 +21,6 @@ public class InteractableLockWhileAnimating : MonoBehaviour {
             return;
         }
 
-        Debug.Log(string.Format("{0}", interactable));
         interactable.IsLocked = interactabledLocked;
 
     }

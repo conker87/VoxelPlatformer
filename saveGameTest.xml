@@ -1,26 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SaveData SaveFileName="SaveFileName" SaveFileDate="SaveFileDate" SaveFileTime="SaveFileTime" SaveFileTimeOnGame="SaveFileTimeOnGame">
+<game>
+
+<!--Player data.-->
+	<player saveName="saveDataName" saveTotalTime="17.31353" saveCurrentTimestamp="4/24/2018 8:01:19 PM" playerPositionX="5.430575" playerPositionY="-0.9375001" playerPositionZ="5.939703">
+	</player>
+
+<!--This is the list of Collectables.-->
+	<collectables>
+		<collectable CollectableID="Ability_(-1.4, -0.6, 13.4)" CollectableType="Ability" />
+		<collectable CollectableID="Coin_(0.3, -0.4, 13.6)" CollectableType="Coin" />
+		<collectable CollectableID="Coin_(1.4, -0.4, 13.6)" CollectableType="Coin" />
+		<collectable CollectableID="Coin_(2.7, -0.4, 13.6)" CollectableType="Coin" />
+		<collectable CollectableID="Coin_(4.2, -0.4, 13.6)" CollectableType="Coin" />
+	</collectables>
+
 <!--Interactables.-->
 	<interactables>
-		<interactable InteractableID="" IsActivated="False" IsDisabled="False" IsLocked="False" />
-		<interactable InteractableID="" IsActivated="False" IsDisabled="False" IsLocked="False" />
+		<interactable InteractableID="Level01_Switch_1" IsActivated="False" IsDisabled="False" IsLocked="False" />
+		<interactable InteractableID="Level01_PrisonGate_PortcullisUp_1" IsActivated="True" IsDisabled="False" IsLocked="False" />
+		<interactable InteractableID="Level01_PrisonGate_Door_Merged_1" IsActivated="True" IsDisabled="False" IsLocked="False" />
 	</interactables>
 
-<!--This is the list of Coins collected.-->
-	<coins>
-	</coins>
-
-<!--This is the list of Stars collected.-->
-	<stars>
-	</stars>
-
-<!--This is the list of Abilities collected.-->
-	<abilities>
-	</abilities>
-
-<!--This is the list of level scores.-->
-	<levelscores>
-		<levelscore LevelID="Level01_NAME" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="True" />
-		<levelscore LevelID="ProBuilderCubeTest" BestTime="0" CurrentCoins="0" MaxCoins="0" CurrentStars="0" MaxStars="0" HasUnlockedLevel="False" />
-	</levelscores>
-</SaveData>
+</game>

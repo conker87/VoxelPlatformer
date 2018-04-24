@@ -20,99 +20,80 @@ public class GameController : MonoBehaviour {
 
     #endregion
 
-    public List<float> BestLevelTimes = new List<float> ();
-	public List<string> OpenedLevels = new List<string>();
-
-	// This is used ONLY as a place to store the prefabs of levels, (as I hate using Resources.*), this will not save currently loaded level scores!
-	public List<Level> LevelPrefabs = new List<Level> ();
-	public List<LevelScore> LevelScores = new List<LevelScore> ();
-
-	public List<string> Abilities = new List<string>();
-	public List<string> Coins = new List<string>();
-	public List<string> Stars = new List<string>();
+    
+	public List<CollectableListValue> Collectables = new List<CollectableListValue>();
 
 	public float currentTime;
 
-	public Level currentlyLoadedLevel;
+    public GameObject levelsParent;
+    public GameObject definedGameStartPosition;
+    public Vector3 playerLoadedPosition = Vector3.zero;
 
-	// PlayerSpawnablePrefab: The Prefab that should be spawned into the game.
-	// Player: 
-	public Player PlayerSpawnablePrefab, Player;
+    public Player PlayerSpawnablePrefab, Player;
 
-	public string CurrentState = "";
-	public bool justChangedState = false;
-
-	public float OriginalCameraFOV = 17.5f;
+	public GameState CurrentState = GameState.MainMenu;
+    public SaveState CurrentSaveState;
+    
+    public bool justChangedState = false;
 
 	void Start() {
 
-		ChangeState ("LEVEL_SELECT");
-
-		bool first = true;
-
-		foreach (Level level in LevelPrefabs) {
-
-			// Create a new LevelScore, otherwise it saves details to the Prefab itself.
-			LevelScore newLS = new LevelScore (level.LevelID, 0f, 0, 0, 0, 0, first);
-
-			first = false;
-
-			LevelScores.Add (newLS);
-
-		}
+		ChangeState (GameState.MainMenu);
+        Collectables.Clear();
 
 	}
 
 	void Update() {
 
-		if (CurrentState != "" || CurrentState != "LEVEL_SELECT" || CurrentState != "MAIN_MENU") {
+		if (CurrentState != GameState.TitleScreen || CurrentState != GameState.MainMenu) {
 
-		}
+        }
 
-        if (CurrentState == "LEVEL_LOADED") {
+        if (CurrentState == GameState.TitleScreen || CurrentState == GameState.MainMenu) {
+
+            levelsParent.SetActive(false);
+
+        }
+
+        if (CurrentState == GameState.Ingame) {
 
             currentTime += Time.unscaledDeltaTime;
 
         }
     }
 
-	public void LoadLevel(Level level) {
+    private void LateUpdate() {
 
-		UnloadLevel (currentlyLoadedLevel);
+        justChangedState = false;
 
-		currentlyLoadedLevel = Instantiate (level, Vector3.zero, Quaternion.identity) as Level;
-		currentlyLoadedLevel.IsCurrentLevel = true;
+    }
 
-        currentlyLoadedLevel.gameObject.SetActive(true);
-        currentlyLoadedLevel.transform.position = Vector3.zero;
+    public void StartGame(SaveState saveState = SaveState.NewGame) {
 
-        currentTime = 0f;
-		Camera.main.orthographicSize = (currentlyLoadedLevel.OverwriteCameraFOV > 0) ? currentlyLoadedLevel.OverwriteCameraFOV : OriginalCameraFOV;
+        ChangeState(GameState.Ingame);
+        CurrentSaveState = saveState;
 
-		ChangeState ("LEVEL_LOADED");
+        levelsParent.SetActive(true);
+        Player = levelsParent.GetComponentInChildren<Player>();
 
-	}
+        Player.transform.position = (saveState == SaveState.NewGame) ? definedGameStartPosition.transform.position : playerLoadedPosition;
 
-	public void UnloadLevel(Level level, bool saveLevelScores = true) {
+    }
 
-		if (level != null) {
+    public void QuitGame() {
 
-            if (saveLevelScores == true)
-			    currentlyLoadedLevel.SaveLevelScores ();
+        Collectables.Clear();
+        playerLoadedPosition = Vector3.zero;
 
-			Destroy (level.gameObject);
-			currentlyLoadedLevel = null;
-            Player = null;
+        ChangeState(GameState.MainMenu);
 
-			Camera.main.orthographicSize = OriginalCameraFOV;
+    }
 
-			ChangeState ("LEVEL_SELECT");
 
-		}
 
-	}
 
-	public void ChangeState(string newState) {
+
+    public void ChangeState(GameState newState) {
 
 		justChangedState = true;
 		CurrentState = newState;
@@ -121,64 +102,50 @@ public class GameController : MonoBehaviour {
 
 	}
 
-	public void LoadLevel(int level) {
+	public void AddToCollectables(CollectableListValue collectableList) {
 
-		LoadLevel (LevelPrefabs [level]);
-
-	}
-
-	public void AddToAbilities(string abilityID) {
-
-		if (Abilities.Contains (abilityID)) {
+		if (Collectables.Contains (collectableList)) {
 
 			return;
 
 		}
 
-		Abilities.Add (abilityID);
+        Collectables.Add (collectableList);
 
 	}
 
-	public bool HasAcquiredAbility(string abilityID) {
+	public bool HasAcquiredCollectable(string collectableID) {
 
-		return Abilities.Contains (abilityID);
+        foreach (CollectableListValue value in Collectables) {
 
-	}
+            if (value.CollectableID == collectableID) {
 
-	public void AddToCoins(string coinID) {
+                return true;
 
-		if (Coins.Contains (coinID)) {
+            }
+        }
 
-			return;
-
-		}
-
-		Coins.Add (coinID);
+        return false;
 
 	}
 
-	public int NumberOfCoins() {
+	public int NumberOfCollectables(CollectableType collectableType) {
 
-		return Coins.Count;
+        int total = 0;
 
-	}
+        foreach (CollectableListValue value in Collectables) {
 
-	public void AddToStars(string starID) {
+            if (value.CollectableType == collectableType) {
 
-		if (Stars.Contains (starID)) {
+                total++;
 
-			return;
+            }
+        }
 
-		}
-
-		Stars.Add (starID);
-
-	}
-
-	public int NumberOfStars() {
-
-		return Stars.Count;
+        return total;
 
 	}
-
 }
+
+public enum GameState { TitleScreen, MainMenu, Ingame, IngameOptions, MainMenuOptions };
+public enum SaveState { NewGame, LoadedGame };
