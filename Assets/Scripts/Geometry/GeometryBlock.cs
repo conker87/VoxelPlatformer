@@ -21,25 +21,28 @@ public class GeometryBlock : MonoBehaviour {
 
     private System.Random rng = new System.Random();
 
-    void PopulatePositions() {
+    void PopulatePositions(bool ignoreNoneNamedBlocks = true) {
 
         childPositions.Clear();
 
         foreach (pb_Object pb in childPBObjects) {
 
+            if (ignoreNoneNamedBlocks == true && pb.gameObject.name != "Block") {
+                continue;
+            }
+
             childPositions.Add(pb.transform.localPosition);
-
+            
         }
-
     }
 
-    void PopulateChildObjects() {
+    void PopulateChildObjects(bool ignoreNoneNamedBlocks = true) {
 
         childPBObjects.Clear();
 
         foreach (pb_Object pb in GetComponentsInChildren<pb_Object>()) {
 
-            if (pb.gameObject.name != "Block") {
+            if (ignoreNoneNamedBlocks == true && pb.gameObject.name != "Block") {
                 continue;
             }
 
@@ -53,16 +56,11 @@ public class GeometryBlock : MonoBehaviour {
 
     public void ChangeBlockColorsToRandom(float minimum = 0.44f, float maximum = 0.62f) {
 
-        PopulateChildObjects();
-        PopulatePositions();
+        PopulateChildObjects(false);
 
         int randomColorsLength = randomColors.Length;
 
         foreach (pb_Object currentBlock in childPBObjects) {
-
-            if (currentBlock.name != "Block") {
-                continue;
-            }
 
             int randomInt = Random.Range(0, randomColorsLength);
 
@@ -103,22 +101,57 @@ public class GeometryBlock : MonoBehaviour {
 
     }
 
-    // Use this for initialization
     public void ChangeBlockPostionsToRandom() {
 
         PopulateChildObjects();
         PopulatePositions();
 
-        childPBObjects = childPBObjects.OrderBy(a => rng.Next()).ToList();
+        PopulateChildObjects();
 
         for (int i = 0; i < childPBObjects.Count; i++) {
 
             childPBObjects[i].transform.localPosition = childPositions[i];
 
         }
+    }
+
+    public void FlipBlockPattern() {
+
+        PopulateChildObjects(false);
+
+        float maxYLevel = 0f;
+
+        for (int i = 0; i < childPBObjects.Count; i++) {
+
+            if (childPBObjects[i].transform.localPosition.y > maxYLevel) {
+
+                maxYLevel = childPBObjects[i].transform.localPosition.y;
+
+            }
+        }
+
+        for (int i = 0; i < childPBObjects.Count; i++) {
+
+            float newYPosition = (childPBObjects[i].transform.localPosition.y - 1f < 0) ? maxYLevel : childPBObjects[i].transform.localPosition.y - 1f;
+
+            childPBObjects[i].transform.localPosition =
+            new Vector3(
+                childPBObjects[i].transform.localPosition.x,
+                newYPosition,
+                childPBObjects[i].transform.localPosition.z
+            );
+
+        }
+
 
         childPBObjects.Clear();
         childPositions.Clear();
+
+    }
+
+    public void MirrorBlocks() {
+
+        PopulateChildObjects();
 
     }
 }

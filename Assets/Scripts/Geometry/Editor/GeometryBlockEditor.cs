@@ -41,5 +41,23 @@ public class RandomlyPickPBObjectColorEditor : Editor {
 
             }
         }
+
+        if (GUILayout.Button("Flip Block Layer Pattern")) {
+
+            for (int i = 0; i < components.Length; i++) {
+
+                components[i].FlipBlockPattern();
+
+            }
+        }
+
+        if (GUILayout.Button("Mirror Blocks")) {
+
+            //for (int i = 0; i < components.Length; i++) {
+
+                //components[i].MirrorBlocks();
+
+            //}
+        }
     }
 }

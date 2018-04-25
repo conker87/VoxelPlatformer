@@ -13,6 +13,7 @@ using System.Xml;
 
 public class SaveController : MonoBehaviour {
 
+    [SerializeField]
     static List<InteractableSave> Interactables = new List<InteractableSave>();
     static XmlWriter xmlWriter;
 
@@ -58,6 +59,8 @@ public class SaveController : MonoBehaviour {
 
                 if (xmlReader.Name == "interactable") {
 
+                    Debug.Log("Found interactables");
+
                     InteractableSave temp = new InteractableSave(
                         xmlReader.GetAttribute("InteractableID"),
                         bool.Parse(xmlReader.GetAttribute("IsDisabled")),
@@ -85,6 +88,8 @@ public class SaveController : MonoBehaviour {
             foreach (InteractableSave save in Interactables) {
 
                 if (save.InteractableID == interactable.InteractableID) {
+
+                    Debug.LogFormat("Found an interactable in the world: {0} and also in the Saved Interactables.", interactable);
 
                     interactable.IsActivated = save.IsActivated;
                     interactable.IsDisabled = save.IsDisabled;
@@ -207,6 +212,7 @@ public class SaveController : MonoBehaviour {
 	}
 }
 
+[Serializable]
 public class InteractableSave {
 
     public string InteractableID;

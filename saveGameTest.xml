@@ -2,23 +2,16 @@
 <game>
 
 <!--Player data.-->
-	<player saveName="saveDataName" saveTotalTime="17.31353" saveCurrentTimestamp="4/24/2018 8:01:19 PM" playerPositionX="5.430575" playerPositionY="-0.9375001" playerPositionZ="5.939703">
+	<player saveName="saveDataName" saveTotalTime="3.578214" saveCurrentTimestamp="4/25/2018 3:39:37 PM" playerPositionX="4.097783E-07" playerPositionY="-2.38455E-07" playerPositionZ="1.866762">
 	</player>
 
 <!--This is the list of Collectables.-->
 	<collectables>
-		<collectable CollectableID="Ability_(-1.4, -0.6, 13.4)" CollectableType="Ability" />
-		<collectable CollectableID="Coin_(0.3, -0.4, 13.6)" CollectableType="Coin" />
-		<collectable CollectableID="Coin_(1.4, -0.4, 13.6)" CollectableType="Coin" />
-		<collectable CollectableID="Coin_(2.7, -0.4, 13.6)" CollectableType="Coin" />
-		<collectable CollectableID="Coin_(4.2, -0.4, 13.6)" CollectableType="Coin" />
 	</collectables>
 
 <!--Interactables.-->
 	<interactables>
-		<interactable InteractableID="Level01_Switch_1" IsActivated="False" IsDisabled="False" IsLocked="False" />
-		<interactable InteractableID="Level01_PrisonGate_PortcullisUp_1" IsActivated="True" IsDisabled="False" IsLocked="False" />
-		<interactable InteractableID="Level01_PrisonGate_Door_Merged_1" IsActivated="True" IsDisabled="False" IsLocked="False" />
+		<interactable InteractableID="CastlePrisonPortcullis[2][MO](-1,-1,3.2)" IsActivated="True" IsDisabled="False" IsLocked="False" />
 	</interactables>
 
 </game>

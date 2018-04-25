@@ -191,7 +191,10 @@ public class Interactable : MonoBehaviour {
     protected virtual void Start() {
 
         if (InteractableID == "") {
-            Debug.LogErrorFormat("{0} REQUIRES AN InteractableID! THIS IS URGENT!", this);
+            Debug.LogWarningFormat("{0} at {1} has no InteractableID and is being given a temporary one. Please copy the new ID and use this as the official one.", this, transform.position.ToString());
+
+            InteractableID = gameObject.name + string.Format("({0},{1},{2})", transform.position.x, transform.position.y, transform.position.z);
+
         }
 
         if (anim == null) {
@@ -222,7 +225,7 @@ public class Interactable : MonoBehaviour {
 
         if (anim != null) {
 
-            anim.SetBool("IsOn", IsActivated);
+            // anim.SetBool("IsOn", IsActivated);
 
         }
 
