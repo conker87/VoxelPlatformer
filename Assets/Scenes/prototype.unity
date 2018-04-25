@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 11224843}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 16550243}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1080,7 +1080,7 @@ GameObject:
   - component: {fileID: 25585714}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1113,7 +1113,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 0fef1c5a2d5c14348addd99fcf18405b, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bf5bee6e90fa0614fa1d39aca3dc092e, type: 2}
 --- !u!114 &25585715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,7 +1401,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 25585712}
-  m_Mesh: {fileID: 4300000, guid: 0fef1c5a2d5c14348addd99fcf18405b, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bf5bee6e90fa0614fa1d39aca3dc092e, type: 2}
 --- !u!23 &25585717
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1826,7 +1826,7 @@ GameObject:
   - component: {fileID: 44336041}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1859,7 +1859,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4ee9f945c5a332949b8e6f1749ceea48, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a239009aaa5bd604385391db67460b00, type: 2}
 --- !u!114 &44336042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2147,7 +2147,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 44336039}
-  m_Mesh: {fileID: 4300000, guid: 4ee9f945c5a332949b8e6f1749ceea48, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a239009aaa5bd604385391db67460b00, type: 2}
 --- !u!23 &44336044
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2572,7 +2572,7 @@ GameObject:
   - component: {fileID: 89743879}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2605,7 +2605,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4dec3d53ba9bdae4386e4f51ab03c36c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0396aa3f6e07f584a972d5a3aca2d77a, type: 2}
 --- !u!114 &89743880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2893,7 +2893,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 89743877}
-  m_Mesh: {fileID: 4300000, guid: 4dec3d53ba9bdae4386e4f51ab03c36c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0396aa3f6e07f584a972d5a3aca2d77a, type: 2}
 --- !u!23 &89743882
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2945,7 +2945,7 @@ GameObject:
   - component: {fileID: 94219902}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2978,7 +2978,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 021ff80d62d35a14ab238ac28baff24a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 388a9b89e8cb8d645827183e93d8aeb2, type: 2}
 --- !u!114 &94219903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3266,7 +3266,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 94219900}
-  m_Mesh: {fileID: 4300000, guid: 021ff80d62d35a14ab238ac28baff24a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 388a9b89e8cb8d645827183e93d8aeb2, type: 2}
 --- !u!23 &94219905
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3508,7 +3508,7 @@ GameObject:
   - component: {fileID: 114244715}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3881,7 +3881,7 @@ GameObject:
   - component: {fileID: 114792098}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3914,7 +3914,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 6a583db7083e9044781997dfee25f784, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 3ec50fa4da8c30d47b2ea18c1d402113, type: 2}
 --- !u!114 &114792099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4202,7 +4202,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 114792096}
-  m_Mesh: {fileID: 4300000, guid: 6a583db7083e9044781997dfee25f784, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 3ec50fa4da8c30d47b2ea18c1d402113, type: 2}
 --- !u!23 &114792101
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4254,7 +4254,7 @@ GameObject:
   - component: {fileID: 114957984}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4287,7 +4287,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 021ff80d62d35a14ab238ac28baff24a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0cf2a5a9ff9fe0e4f91136ce2e005785, type: 2}
 --- !u!114 &114957985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4575,7 +4575,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 114957982}
-  m_Mesh: {fileID: 4300000, guid: 021ff80d62d35a14ab238ac28baff24a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0cf2a5a9ff9fe0e4f91136ce2e005785, type: 2}
 --- !u!23 &114957987
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5034,7 +5034,7 @@ GameObject:
   - component: {fileID: 120178685}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5067,7 +5067,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: a915f20cc6120cd418230cf33168aa5c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 168905878b1796e4c816af3ceb5d4f10, type: 2}
 --- !u!114 &120178686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5355,7 +5355,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 120178683}
-  m_Mesh: {fileID: 4300000, guid: a915f20cc6120cd418230cf33168aa5c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 168905878b1796e4c816af3ceb5d4f10, type: 2}
 --- !u!23 &120178688
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5407,7 +5407,7 @@ GameObject:
   - component: {fileID: 120253868}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5440,7 +5440,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e72104773062c464fa9a81459200e911, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 993a8ce2ae40b1e41843d7b99b333718, type: 2}
 --- !u!114 &120253869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5728,7 +5728,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 120253866}
-  m_Mesh: {fileID: 4300000, guid: e72104773062c464fa9a81459200e911, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 993a8ce2ae40b1e41843d7b99b333718, type: 2}
 --- !u!23 &120253871
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6153,7 +6153,7 @@ GameObject:
   - component: {fileID: 124405159}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6186,7 +6186,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: fbc9a731ecca22b48a22cd8a277879f2, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e92a28a99c3012c4b98ad3c0cd02eff8, type: 2}
 --- !u!114 &124405160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6474,7 +6474,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 124405157}
-  m_Mesh: {fileID: 4300000, guid: fbc9a731ecca22b48a22cd8a277879f2, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e92a28a99c3012c4b98ad3c0cd02eff8, type: 2}
 --- !u!23 &124405162
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6526,7 +6526,7 @@ GameObject:
   - component: {fileID: 124468114}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6559,7 +6559,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c534a978667626744af32da7bab251ff, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 8be6ed2e6e5aa864fbce53d277ff2150, type: 2}
 --- !u!114 &124468115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6847,7 +6847,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 124468112}
-  m_Mesh: {fileID: 4300000, guid: c534a978667626744af32da7bab251ff, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 8be6ed2e6e5aa864fbce53d277ff2150, type: 2}
 --- !u!23 &124468117
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6973,7 +6973,7 @@ GameObject:
   - component: {fileID: 131194741}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7354,7 +7354,7 @@ GameObject:
   - component: {fileID: 133347738}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7387,7 +7387,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 021ff80d62d35a14ab238ac28baff24a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 3deb0a82360cbcc45ace1c14884d87da, type: 2}
 --- !u!114 &133347739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7675,7 +7675,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 133347736}
-  m_Mesh: {fileID: 4300000, guid: 021ff80d62d35a14ab238ac28baff24a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 3deb0a82360cbcc45ace1c14884d87da, type: 2}
 --- !u!23 &133347741
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7727,7 +7727,7 @@ GameObject:
   - component: {fileID: 141641901}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7760,7 +7760,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c8aaf5bafe7859340a632f9efe64c697, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 4be0197cb7df7a347bb3d845ffc91754, type: 2}
 --- !u!114 &141641902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8048,7 +8048,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 141641899}
-  m_Mesh: {fileID: 4300000, guid: c8aaf5bafe7859340a632f9efe64c697, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 4be0197cb7df7a347bb3d845ffc91754, type: 2}
 --- !u!23 &141641904
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8100,7 +8100,7 @@ GameObject:
   - component: {fileID: 149234670}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8133,7 +8133,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c38a3ca4bec79d74b838fdd66f26ccc3, type: 2}
+  m_Mesh: {fileID: 4300000, guid: f14a0c10a06dc964d9f4efa52e84fa01, type: 2}
 --- !u!114 &149234671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8421,7 +8421,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 149234668}
-  m_Mesh: {fileID: 4300000, guid: c38a3ca4bec79d74b838fdd66f26ccc3, type: 2}
+  m_Mesh: {fileID: 4300000, guid: f14a0c10a06dc964d9f4efa52e84fa01, type: 2}
 --- !u!23 &149234673
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8473,7 +8473,7 @@ GameObject:
   - component: {fileID: 151176647}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8506,7 +8506,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 9f160ce61ba9d594581da1c91dc25300, type: 2}
+  m_Mesh: {fileID: 4300000, guid: dbcbb7c20eada9645be6c687bd29dfca, type: 2}
 --- !u!114 &151176648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8794,7 +8794,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 151176645}
-  m_Mesh: {fileID: 4300000, guid: 9f160ce61ba9d594581da1c91dc25300, type: 2}
+  m_Mesh: {fileID: 4300000, guid: dbcbb7c20eada9645be6c687bd29dfca, type: 2}
 --- !u!23 &151176650
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8915,7 +8915,7 @@ GameObject:
   - component: {fileID: 154387906}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9288,7 +9288,7 @@ GameObject:
   - component: {fileID: 168819522}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9321,7 +9321,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c8aaf5bafe7859340a632f9efe64c697, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e1283ec0c9eda5e4d991c9478d355cc6, type: 2}
 --- !u!114 &168819523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9609,7 +9609,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 168819520}
-  m_Mesh: {fileID: 4300000, guid: c8aaf5bafe7859340a632f9efe64c697, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e1283ec0c9eda5e4d991c9478d355cc6, type: 2}
 --- !u!23 &168819525
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10156,7 +10156,7 @@ GameObject:
   - component: {fileID: 181293833}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10189,7 +10189,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 7760577f215acd6418c7fa40df98e9b9, type: 2}
+  m_Mesh: {fileID: 4300000, guid: cd09af4c5f1a44846b3db0beeae9ad7c, type: 2}
 --- !u!114 &181293834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10477,7 +10477,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 181293831}
-  m_Mesh: {fileID: 4300000, guid: 7760577f215acd6418c7fa40df98e9b9, type: 2}
+  m_Mesh: {fileID: 4300000, guid: cd09af4c5f1a44846b3db0beeae9ad7c, type: 2}
 --- !u!23 &181293836
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10902,7 +10902,7 @@ GameObject:
   - component: {fileID: 200424441}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11319,7 +11319,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 201285254}
   m_LocalRotation: {x: 0.15304591, y: 0.6903456, z: -0.15304591, w: 0.6903456}
-  m_LocalPosition: {x: -44.3125, y: 30.125, z: -5.875}
+  m_LocalPosition: {x: -2.8, y: 10.8, z: 3.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11461,7 +11461,7 @@ GameObject:
   - component: {fileID: 216499238}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11494,7 +11494,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: d6b671951e2b59e4ba657a01a2474168, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 49acfa4b52ca29949a1acb08ecfa783f, type: 2}
 --- !u!114 &216499239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11782,7 +11782,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 216499236}
-  m_Mesh: {fileID: 4300000, guid: d6b671951e2b59e4ba657a01a2474168, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 49acfa4b52ca29949a1acb08ecfa783f, type: 2}
 --- !u!23 &216499241
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12207,7 +12207,7 @@ GameObject:
   - component: {fileID: 218189729}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12580,7 +12580,7 @@ GameObject:
   - component: {fileID: 230139897}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12613,7 +12613,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 9f070bbae8039434aa2f071264e4f7e5, type: 2}
+  m_Mesh: {fileID: 4300000, guid: fe8ce56a9f5d53b439dc288d02e751a9, type: 2}
 --- !u!114 &230139898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12901,7 +12901,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 230139895}
-  m_Mesh: {fileID: 4300000, guid: 9f070bbae8039434aa2f071264e4f7e5, type: 2}
+  m_Mesh: {fileID: 4300000, guid: fe8ce56a9f5d53b439dc288d02e751a9, type: 2}
 --- !u!23 &230139900
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13699,7 +13699,7 @@ GameObject:
   - component: {fileID: 255888435}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13732,7 +13732,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 18d9cd30da4e4274fb4866e51885eef3, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c88dcd7e7c1f1ed4cbec713b21cfae0e, type: 2}
 --- !u!114 &255888436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14020,7 +14020,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 255888433}
-  m_Mesh: {fileID: 4300000, guid: 18d9cd30da4e4274fb4866e51885eef3, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c88dcd7e7c1f1ed4cbec713b21cfae0e, type: 2}
 --- !u!23 &255888438
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14818,7 +14818,7 @@ GameObject:
   - component: {fileID: 271592969}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14851,7 +14851,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 207c53f568cc2da43bbebc8255a6fcb1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 8ad15380454cac040bd0e108402656dc, type: 2}
 --- !u!114 &271592970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15139,7 +15139,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 271592967}
-  m_Mesh: {fileID: 4300000, guid: 207c53f568cc2da43bbebc8255a6fcb1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 8ad15380454cac040bd0e108402656dc, type: 2}
 --- !u!23 &271592972
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15191,7 +15191,7 @@ GameObject:
   - component: {fileID: 272919209}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15224,7 +15224,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 207c53f568cc2da43bbebc8255a6fcb1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: de677d02ee8ee7543bdb74181157e299, type: 2}
 --- !u!114 &272919210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15512,7 +15512,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 272919207}
-  m_Mesh: {fileID: 4300000, guid: 207c53f568cc2da43bbebc8255a6fcb1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: de677d02ee8ee7543bdb74181157e299, type: 2}
 --- !u!23 &272919212
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15564,7 +15564,7 @@ GameObject:
   - component: {fileID: 288525273}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15597,7 +15597,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 491e60f321eab7c48932f82b5f6e7c0e, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bb38830de41c53e4ebb097eca259f7f3, type: 2}
 --- !u!114 &288525274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15885,7 +15885,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 288525271}
-  m_Mesh: {fileID: 4300000, guid: 491e60f321eab7c48932f82b5f6e7c0e, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bb38830de41c53e4ebb097eca259f7f3, type: 2}
 --- !u!23 &288525276
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16111,7 +16111,7 @@ GameObject:
   - component: {fileID: 313691363}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16144,7 +16144,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4647b16ee036ced479555fce794481af, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 247d397975ddd044ba590f14ecd80314, type: 2}
 --- !u!114 &313691364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16432,7 +16432,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 313691361}
-  m_Mesh: {fileID: 4300000, guid: 4647b16ee036ced479555fce794481af, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 247d397975ddd044ba590f14ecd80314, type: 2}
 --- !u!23 &313691366
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17815,7 +17815,7 @@ GameObject:
   - component: {fileID: 336055992}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18188,7 +18188,7 @@ GameObject:
   - component: {fileID: 339831848}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18221,7 +18221,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 9f8cb476a10ef5f4394228a9d3e358f4, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 23a8238b56019184c8997dc132b10a81, type: 2}
 --- !u!114 &339831849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18509,7 +18509,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 339831846}
-  m_Mesh: {fileID: 4300000, guid: 9f8cb476a10ef5f4394228a9d3e358f4, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 23a8238b56019184c8997dc132b10a81, type: 2}
 --- !u!23 &339831851
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19036,7 +19036,7 @@ GameObject:
   - component: {fileID: 349000982}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19069,7 +19069,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c534a978667626744af32da7bab251ff, type: 2}
+  m_Mesh: {fileID: 4300000, guid: f03c755fb96f0894787591dea10bab20, type: 2}
 --- !u!114 &349000983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19357,7 +19357,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 349000980}
-  m_Mesh: {fileID: 4300000, guid: c534a978667626744af32da7bab251ff, type: 2}
+  m_Mesh: {fileID: 4300000, guid: f03c755fb96f0894787591dea10bab20, type: 2}
 --- !u!23 &349000985
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19409,7 +19409,7 @@ GameObject:
   - component: {fileID: 349284396}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19442,7 +19442,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c8aaf5bafe7859340a632f9efe64c697, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 8b7bb31d366da0648aa94d22e9fa1075, type: 2}
 --- !u!114 &349284397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19730,7 +19730,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 349284394}
-  m_Mesh: {fileID: 4300000, guid: c8aaf5bafe7859340a632f9efe64c697, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 8b7bb31d366da0648aa94d22e9fa1075, type: 2}
 --- !u!23 &349284399
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19782,7 +19782,7 @@ GameObject:
   - component: {fileID: 362906491}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20308,7 +20308,7 @@ GameObject:
   - component: {fileID: 378319590}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20341,7 +20341,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 23f8327a9968447478479221a8675641, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 30968d5806fa7de44a4373c203d3505b, type: 2}
 --- !u!114 &378319591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20629,7 +20629,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 378319588}
-  m_Mesh: {fileID: 4300000, guid: 23f8327a9968447478479221a8675641, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 30968d5806fa7de44a4373c203d3505b, type: 2}
 --- !u!23 &378319593
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21054,7 +21054,7 @@ GameObject:
   - component: {fileID: 394271605}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21087,7 +21087,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c8aaf5bafe7859340a632f9efe64c697, type: 2}
+  m_Mesh: {fileID: 4300000, guid: aafc032a4b7f0d64ab64222c332ac97a, type: 2}
 --- !u!114 &394271606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21375,7 +21375,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 394271603}
-  m_Mesh: {fileID: 4300000, guid: c8aaf5bafe7859340a632f9efe64c697, type: 2}
+  m_Mesh: {fileID: 4300000, guid: aafc032a4b7f0d64ab64222c332ac97a, type: 2}
 --- !u!23 &394271608
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21427,7 +21427,7 @@ GameObject:
   - component: {fileID: 403555687}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21460,7 +21460,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c534a978667626744af32da7bab251ff, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 6e9e06890b9ff6341af8e299acf18989, type: 2}
 --- !u!114 &403555688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21748,7 +21748,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 403555685}
-  m_Mesh: {fileID: 4300000, guid: c534a978667626744af32da7bab251ff, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 6e9e06890b9ff6341af8e299acf18989, type: 2}
 --- !u!23 &403555690
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23176,7 +23176,7 @@ GameObject:
   - component: {fileID: 427011817}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23209,7 +23209,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ef2c7d93029e39940808c75bf957c1ac, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e4f57b042c1bbae4f80141ea7bac9346, type: 2}
 --- !u!114 &427011818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23497,7 +23497,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 427011815}
-  m_Mesh: {fileID: 4300000, guid: ef2c7d93029e39940808c75bf957c1ac, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e4f57b042c1bbae4f80141ea7bac9346, type: 2}
 --- !u!23 &427011820
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23623,7 +23623,7 @@ GameObject:
   - component: {fileID: 442070420}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23656,7 +23656,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 0fef1c5a2d5c14348addd99fcf18405b, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 543eec9d5476ba44da87e831e45c3d72, type: 2}
 --- !u!114 &442070421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23944,7 +23944,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 442070418}
-  m_Mesh: {fileID: 4300000, guid: 0fef1c5a2d5c14348addd99fcf18405b, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 543eec9d5476ba44da87e831e45c3d72, type: 2}
 --- !u!23 &442070423
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24100,7 +24100,7 @@ GameObject:
   - component: {fileID: 458955978}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24473,7 +24473,7 @@ GameObject:
   - component: {fileID: 462470077}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24846,7 +24846,7 @@ GameObject:
   - component: {fileID: 464737161}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24879,7 +24879,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 09c6c286c20688c4db5165974a5e0d44, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 56d7f3586827b464fb1eea4f990cf809, type: 2}
 --- !u!114 &464737162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25167,7 +25167,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 464737159}
-  m_Mesh: {fileID: 4300000, guid: 09c6c286c20688c4db5165974a5e0d44, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 56d7f3586827b464fb1eea4f990cf809, type: 2}
 --- !u!23 &464737164
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25342,7 +25342,7 @@ GameObject:
   - component: {fileID: 469196166}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25375,7 +25375,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4647b16ee036ced479555fce794481af, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a81c81ed693946e41a359868576caeb3, type: 2}
 --- !u!114 &469196167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25663,7 +25663,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 469196164}
-  m_Mesh: {fileID: 4300000, guid: 4647b16ee036ced479555fce794481af, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a81c81ed693946e41a359868576caeb3, type: 2}
 --- !u!23 &469196169
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25715,7 +25715,7 @@ GameObject:
   - component: {fileID: 470339265}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26088,7 +26088,7 @@ GameObject:
   - component: {fileID: 472892020}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26527,7 +26527,7 @@ GameObject:
   - component: {fileID: 491192989}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26897,7 +26897,7 @@ GameObject:
   - component: {fileID: 491812035}
   m_Layer: 9
   m_Name: BASE_WALL
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27027,7 +27027,7 @@ GameObject:
   - component: {fileID: 503828276}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27060,7 +27060,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: cb8fa4c27961e5a42aec3379a3dd323c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d7c4329ef9369fc498c6d5b6570c9a0b, type: 2}
 --- !u!114 &503828277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27348,7 +27348,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 503828274}
-  m_Mesh: {fileID: 4300000, guid: cb8fa4c27961e5a42aec3379a3dd323c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d7c4329ef9369fc498c6d5b6570c9a0b, type: 2}
 --- !u!23 &503828279
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27397,11 +27397,11 @@ GameObject:
   - component: {fileID: 509155308}
   m_Layer: 9
   m_Name: BASE_WALL (1)
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &509155307
 Transform:
   m_ObjectHideFlags: 0
@@ -28226,7 +28226,7 @@ GameObject:
   - component: {fileID: 522321798}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28259,7 +28259,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ad75f37558a008947a78d286a5aa3f4a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a8d864fa760019f4585710a3cb4a1cd6, type: 2}
 --- !u!114 &522321799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28547,7 +28547,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 522321796}
-  m_Mesh: {fileID: 4300000, guid: ad75f37558a008947a78d286a5aa3f4a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a8d864fa760019f4585710a3cb4a1cd6, type: 2}
 --- !u!23 &522321801
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29573,7 +29573,7 @@ GameObject:
   - component: {fileID: 557180964}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30597,7 +30597,7 @@ GameObject:
   - component: {fileID: 601821869}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30630,7 +30630,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 23f8327a9968447478479221a8675641, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 63cfed7973a320e45bc7682cd6eaca79, type: 2}
 --- !u!114 &601821870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30918,7 +30918,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 601821867}
-  m_Mesh: {fileID: 4300000, guid: 23f8327a9968447478479221a8675641, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 63cfed7973a320e45bc7682cd6eaca79, type: 2}
 --- !u!23 &601821872
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30970,7 +30970,7 @@ GameObject:
   - component: {fileID: 624958245}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31003,7 +31003,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e72104773062c464fa9a81459200e911, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 849d65d801041e94f8819bc8dbf1e4a6, type: 2}
 --- !u!114 &624958246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31291,7 +31291,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 624958243}
-  m_Mesh: {fileID: 4300000, guid: e72104773062c464fa9a81459200e911, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 849d65d801041e94f8819bc8dbf1e4a6, type: 2}
 --- !u!23 &624958248
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31343,7 +31343,7 @@ GameObject:
   - component: {fileID: 627904877}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31716,7 +31716,7 @@ GameObject:
   - component: {fileID: 632036863}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31749,7 +31749,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 207c53f568cc2da43bbebc8255a6fcb1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: ca676dae5e57d7445933adbaa28902b9, type: 2}
 --- !u!114 &632036864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32037,7 +32037,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 632036861}
-  m_Mesh: {fileID: 4300000, guid: 207c53f568cc2da43bbebc8255a6fcb1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: ca676dae5e57d7445933adbaa28902b9, type: 2}
 --- !u!23 &632036866
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32536,7 +32536,7 @@ GameObject:
   - component: {fileID: 639140682}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32569,7 +32569,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 207c53f568cc2da43bbebc8255a6fcb1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 358b95ff2666c0a4ea406ee2dc719722, type: 2}
 --- !u!114 &639140683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32857,7 +32857,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 639140680}
-  m_Mesh: {fileID: 4300000, guid: 207c53f568cc2da43bbebc8255a6fcb1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 358b95ff2666c0a4ea406ee2dc719722, type: 2}
 --- !u!23 &639140685
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33014,7 +33014,7 @@ GameObject:
   - component: {fileID: 654670410}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33047,7 +33047,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e4b3e2dc180d4804d9734ab954df62bb, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 2f3d725be16fef84596674d2631a9f87, type: 2}
 --- !u!114 &654670411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33335,7 +33335,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 654670408}
-  m_Mesh: {fileID: 4300000, guid: e4b3e2dc180d4804d9734ab954df62bb, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 2f3d725be16fef84596674d2631a9f87, type: 2}
 --- !u!23 &654670413
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34428,7 +34428,7 @@ GameObject:
   - component: {fileID: 697140491}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34461,7 +34461,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e72104773062c464fa9a81459200e911, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 59c0d307719e5704d812c734b4e54e0f, type: 2}
 --- !u!114 &697140492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34749,7 +34749,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 697140489}
-  m_Mesh: {fileID: 4300000, guid: e72104773062c464fa9a81459200e911, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 59c0d307719e5704d812c734b4e54e0f, type: 2}
 --- !u!23 &697140494
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34786,6 +34786,90 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &705844447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 705844448}
+  - component: {fileID: 705844449}
+  - component: {fileID: 705844452}
+  - component: {fileID: 705844451}
+  - component: {fileID: 705844450}
+  m_Layer: 0
+  m_Name: BlockHider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &705844448
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705844447}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 150}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1736562406}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &705844449
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705844447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &705844450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705844447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885049ce41781314597e61fdaba9d404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideTag: CanBeDisabled
+--- !u!54 &705844451
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705844447}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &705844452
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705844447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 2.8
+  m_Height: 20
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &710491220
 GameObject:
   m_ObjectHideFlags: 0
@@ -34924,7 +35008,7 @@ GameObject:
   - component: {fileID: 711511934}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34957,7 +35041,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 81f8c7ddc53b3f3489208477be38ce75, type: 2}
+  m_Mesh: {fileID: 4300000, guid: ec12e044974c67f479a8dd48be70aedb, type: 2}
 --- !u!114 &711511935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35245,7 +35329,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 711511932}
-  m_Mesh: {fileID: 4300000, guid: 81f8c7ddc53b3f3489208477be38ce75, type: 2}
+  m_Mesh: {fileID: 4300000, guid: ec12e044974c67f479a8dd48be70aedb, type: 2}
 --- !u!23 &711511937
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35522,7 +35606,7 @@ GameObject:
   - component: {fileID: 752709336}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35555,7 +35639,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 18d9cd30da4e4274fb4866e51885eef3, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 09183d34c482d6f4a90ebe521eddfd87, type: 2}
 --- !u!114 &752709337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35843,7 +35927,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 752709334}
-  m_Mesh: {fileID: 4300000, guid: 18d9cd30da4e4274fb4866e51885eef3, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 09183d34c482d6f4a90ebe521eddfd87, type: 2}
 --- !u!23 &752709339
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35895,7 +35979,7 @@ GameObject:
   - component: {fileID: 762623138}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36268,7 +36352,7 @@ GameObject:
   - component: {fileID: 784447190}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37420,7 +37504,7 @@ GameObject:
   - component: {fileID: 814213614}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37453,7 +37537,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 9f070bbae8039434aa2f071264e4f7e5, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 9cf12cf0735e8014d97b19acc8ff0824, type: 2}
 --- !u!114 &814213615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37741,7 +37825,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 814213612}
-  m_Mesh: {fileID: 4300000, guid: 9f070bbae8039434aa2f071264e4f7e5, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 9cf12cf0735e8014d97b19acc8ff0824, type: 2}
 --- !u!23 &814213617
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -37793,7 +37877,7 @@ GameObject:
   - component: {fileID: 815717454}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37826,7 +37910,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 81f8c7ddc53b3f3489208477be38ce75, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 3ad42bad5f1fd0b40b27d6efd25289d5, type: 2}
 --- !u!114 &815717455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38114,7 +38198,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 815717452}
-  m_Mesh: {fileID: 4300000, guid: 81f8c7ddc53b3f3489208477be38ce75, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 3ad42bad5f1fd0b40b27d6efd25289d5, type: 2}
 --- !u!23 &815717457
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38166,7 +38250,7 @@ GameObject:
   - component: {fileID: 816507488}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38199,7 +38283,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e72104773062c464fa9a81459200e911, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 659be0391ad833446b22d6b3079bfe56, type: 2}
 --- !u!114 &816507489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38487,7 +38571,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 816507486}
-  m_Mesh: {fileID: 4300000, guid: e72104773062c464fa9a81459200e911, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 659be0391ad833446b22d6b3079bfe56, type: 2}
 --- !u!23 &816507491
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38912,7 +38996,7 @@ GameObject:
   - component: {fileID: 828673846}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39658,7 +39742,7 @@ GameObject:
   - component: {fileID: 836904693}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39691,7 +39775,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ad75f37558a008947a78d286a5aa3f4a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 9108fb1851db63342a1aba1535a0d7f9, type: 2}
 --- !u!114 &836904694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39979,7 +40063,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 836904691}
-  m_Mesh: {fileID: 4300000, guid: ad75f37558a008947a78d286a5aa3f4a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 9108fb1851db63342a1aba1535a0d7f9, type: 2}
 --- !u!23 &836904696
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -40404,7 +40488,7 @@ GameObject:
   - component: {fileID: 864903155}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40437,7 +40521,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ad75f37558a008947a78d286a5aa3f4a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 83bc99b72c91d854eb497da47eb38c4d, type: 2}
 --- !u!114 &864903156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40725,7 +40809,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 864903153}
-  m_Mesh: {fileID: 4300000, guid: ad75f37558a008947a78d286a5aa3f4a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 83bc99b72c91d854eb497da47eb38c4d, type: 2}
 --- !u!23 &864903158
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41978,7 +42062,7 @@ GameObject:
   - component: {fileID: 947797509}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42011,7 +42095,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 0fef1c5a2d5c14348addd99fcf18405b, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 6bb5f1e76dd05d8478c1adaef79b4ad9, type: 2}
 --- !u!114 &947797510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42299,7 +42383,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 947797507}
-  m_Mesh: {fileID: 4300000, guid: 0fef1c5a2d5c14348addd99fcf18405b, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 6bb5f1e76dd05d8478c1adaef79b4ad9, type: 2}
 --- !u!23 &947797512
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42351,7 +42435,7 @@ GameObject:
   - component: {fileID: 951674851}
   m_Layer: 9
   m_Name: EndBlock
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42724,7 +42808,7 @@ GameObject:
   - component: {fileID: 953828966}
   m_Layer: 9
   m_Name: EndBlock
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43097,7 +43181,7 @@ GameObject:
   - component: {fileID: 953992747}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43130,7 +43214,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 5d40b348210de7345822ec5268c6df3d, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 59b382c65c0470b43bef12d1e4f0b086, type: 2}
 --- !u!114 &953992748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43418,7 +43502,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 953992745}
-  m_Mesh: {fileID: 4300000, guid: 5d40b348210de7345822ec5268c6df3d, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 59b382c65c0470b43bef12d1e4f0b086, type: 2}
 --- !u!23 &953992750
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -43470,7 +43554,7 @@ GameObject:
   - component: {fileID: 965800180}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43503,7 +43587,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 94ba4abb84b612448b3da7ac0448d7fc, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c07ebe474e37f4a4f986cf098a2ee621, type: 2}
 --- !u!114 &965800181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43791,7 +43875,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 965800178}
-  m_Mesh: {fileID: 4300000, guid: 94ba4abb84b612448b3da7ac0448d7fc, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c07ebe474e37f4a4f986cf098a2ee621, type: 2}
 --- !u!23 &965800183
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44216,7 +44300,7 @@ GameObject:
   - component: {fileID: 976333008}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44249,7 +44333,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 81f8c7ddc53b3f3489208477be38ce75, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 44b7a42c1446e544a8c308e7020446c7, type: 2}
 --- !u!114 &976333009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44537,7 +44621,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 976333006}
-  m_Mesh: {fileID: 4300000, guid: 81f8c7ddc53b3f3489208477be38ce75, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 44b7a42c1446e544a8c308e7020446c7, type: 2}
 --- !u!23 &976333011
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44731,7 +44815,7 @@ GameObject:
   - component: {fileID: 995441562}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44764,7 +44848,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: bb2ca723b1100904c98f41e9be7ef44c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: fe9dad8d58ae6cd4f8c47d8cb2985ec8, type: 2}
 --- !u!114 &995441563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45052,7 +45136,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995441560}
-  m_Mesh: {fileID: 4300000, guid: bb2ca723b1100904c98f41e9be7ef44c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: fe9dad8d58ae6cd4f8c47d8cb2985ec8, type: 2}
 --- !u!23 &995441565
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -45314,7 +45398,7 @@ GameObject:
   - component: {fileID: 1028476449}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45347,7 +45431,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 94ba4abb84b612448b3da7ac0448d7fc, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bbb3618ef6ccc1d4983c2b38a07adeea, type: 2}
 --- !u!114 &1028476450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45635,7 +45719,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1028476447}
-  m_Mesh: {fileID: 4300000, guid: 94ba4abb84b612448b3da7ac0448d7fc, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bbb3618ef6ccc1d4983c2b38a07adeea, type: 2}
 --- !u!23 &1028476452
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -45755,7 +45839,7 @@ GameObject:
   - component: {fileID: 1041222355}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46128,7 +46212,7 @@ GameObject:
   - component: {fileID: 1042636884}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46501,7 +46585,7 @@ GameObject:
   - component: {fileID: 1077688670}
   m_Layer: 9
   m_Name: EndBlock
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47006,7 +47090,7 @@ GameObject:
   - component: {fileID: 1083610036}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47039,7 +47123,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: bb2ca723b1100904c98f41e9be7ef44c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 76fb517dbf7cdab47945a9058ce6d973, type: 2}
 --- !u!114 &1083610037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47327,7 +47411,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1083610034}
-  m_Mesh: {fileID: 4300000, guid: bb2ca723b1100904c98f41e9be7ef44c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 76fb517dbf7cdab47945a9058ce6d973, type: 2}
 --- !u!23 &1083610039
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47379,7 +47463,7 @@ GameObject:
   - component: {fileID: 1086910908}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47412,7 +47496,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 9f160ce61ba9d594581da1c91dc25300, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d426e6cb916420a408c130c5e71ac325, type: 2}
 --- !u!114 &1086910909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47700,7 +47784,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1086910906}
-  m_Mesh: {fileID: 4300000, guid: 9f160ce61ba9d594581da1c91dc25300, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d426e6cb916420a408c130c5e71ac325, type: 2}
 --- !u!23 &1086910911
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -48191,7 +48275,7 @@ GameObject:
   - component: {fileID: 1104674511}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48564,7 +48648,7 @@ GameObject:
   - component: {fileID: 1110809892}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48597,7 +48681,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e51545aea7443764d9e40f666cc35566, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a8676d572f7ada648b6317e6a6973694, type: 2}
 --- !u!114 &1110809893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48885,7 +48969,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1110809890}
-  m_Mesh: {fileID: 4300000, guid: e51545aea7443764d9e40f666cc35566, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a8676d572f7ada648b6317e6a6973694, type: 2}
 --- !u!23 &1110809895
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49805,7 +49889,7 @@ GameObject:
   - component: {fileID: 1132097530}
   m_Layer: 9
   m_Name: EndBlock
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50551,7 +50635,7 @@ GameObject:
   - component: {fileID: 1139863221}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50924,7 +51008,7 @@ GameObject:
   - component: {fileID: 1147715495}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50957,7 +51041,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4ee9f945c5a332949b8e6f1749ceea48, type: 2}
+  m_Mesh: {fileID: 4300000, guid: fa59a01fbcdaf6c42ba954fbe913b003, type: 2}
 --- !u!114 &1147715496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51245,7 +51329,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1147715493}
-  m_Mesh: {fileID: 4300000, guid: 4ee9f945c5a332949b8e6f1749ceea48, type: 2}
+  m_Mesh: {fileID: 4300000, guid: fa59a01fbcdaf6c42ba954fbe913b003, type: 2}
 --- !u!23 &1147715498
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -51670,7 +51754,7 @@ GameObject:
   - component: {fileID: 1165144566}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51703,7 +51787,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: fbc9a731ecca22b48a22cd8a277879f2, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 47c9117d96d66fc4f9b631ff0608765a, type: 2}
 --- !u!114 &1165144567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51991,7 +52075,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1165144564}
-  m_Mesh: {fileID: 4300000, guid: fbc9a731ecca22b48a22cd8a277879f2, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 47c9117d96d66fc4f9b631ff0608765a, type: 2}
 --- !u!23 &1165144569
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -52175,7 +52259,7 @@ GameObject:
   - component: {fileID: 1184263600}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52718,7 +52802,7 @@ GameObject:
   - component: {fileID: 1206146622}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52751,7 +52835,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ef2c7d93029e39940808c75bf957c1ac, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 306b76d77663f1446850cdefc0bbfdf9, type: 2}
 --- !u!114 &1206146623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53039,7 +53123,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1206146620}
-  m_Mesh: {fileID: 4300000, guid: ef2c7d93029e39940808c75bf957c1ac, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 306b76d77663f1446850cdefc0bbfdf9, type: 2}
 --- !u!23 &1206146625
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -53136,7 +53220,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1736562406}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1213911693
 GameObject:
@@ -53153,7 +53237,7 @@ GameObject:
   - component: {fileID: 1213911695}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53186,7 +53270,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ea839f27431dbdd4b97b6cbbeae5b1e0, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e3686cd70f735274990516462d2f1ccd, type: 2}
 --- !u!114 &1213911696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53474,7 +53558,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1213911693}
-  m_Mesh: {fileID: 4300000, guid: ea839f27431dbdd4b97b6cbbeae5b1e0, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e3686cd70f735274990516462d2f1ccd, type: 2}
 --- !u!23 &1213911698
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -53526,7 +53610,7 @@ GameObject:
   - component: {fileID: 1216645772}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53899,7 +53983,7 @@ GameObject:
   - component: {fileID: 1216936815}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55068,7 +55152,7 @@ GameObject:
   - component: {fileID: 1227540344}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55101,7 +55185,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ea839f27431dbdd4b97b6cbbeae5b1e0, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 187a6a010efb67a43b35b59c979276f5, type: 2}
 --- !u!114 &1227540345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55389,7 +55473,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1227540342}
-  m_Mesh: {fileID: 4300000, guid: ea839f27431dbdd4b97b6cbbeae5b1e0, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 187a6a010efb67a43b35b59c979276f5, type: 2}
 --- !u!23 &1227540347
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -55848,7 +55932,7 @@ GameObject:
   - component: {fileID: 1255124908}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55881,7 +55965,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ef2c7d93029e39940808c75bf957c1ac, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b12b0af44a4eb7a4ba9d6092fb1aaa08, type: 2}
 --- !u!114 &1255124909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56169,7 +56253,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1255124906}
-  m_Mesh: {fileID: 4300000, guid: ef2c7d93029e39940808c75bf957c1ac, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b12b0af44a4eb7a4ba9d6092fb1aaa08, type: 2}
 --- !u!23 &1255124911
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -56221,7 +56305,7 @@ GameObject:
   - component: {fileID: 1262272953}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56254,7 +56338,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 95589e4f9dfb4be4db7d958087e5c38a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e10ffdb499299c54c923557d4f62ea9e, type: 2}
 --- !u!114 &1262272954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56542,7 +56626,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1262272951}
-  m_Mesh: {fileID: 4300000, guid: 95589e4f9dfb4be4db7d958087e5c38a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e10ffdb499299c54c923557d4f62ea9e, type: 2}
 --- !u!23 &1262272956
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -56591,11 +56675,11 @@ GameObject:
   - component: {fileID: 1267025818}
   m_Layer: 9
   m_Name: BASE_WALL
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1267025818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57018,7 +57102,7 @@ GameObject:
   - component: {fileID: 1272011816}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57051,7 +57135,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: bb2ca723b1100904c98f41e9be7ef44c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 78373c495c563514b8f61812137a70a0, type: 2}
 --- !u!114 &1272011817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57339,7 +57423,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1272011814}
-  m_Mesh: {fileID: 4300000, guid: bb2ca723b1100904c98f41e9be7ef44c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 78373c495c563514b8f61812137a70a0, type: 2}
 --- !u!23 &1272011819
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -57391,7 +57475,7 @@ GameObject:
   - component: {fileID: 1282129118}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57424,7 +57508,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: cb8fa4c27961e5a42aec3379a3dd323c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 3d9234f8d78ce2749892a3328cbc00e9, type: 2}
 --- !u!114 &1282129119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57712,7 +57796,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1282129116}
-  m_Mesh: {fileID: 4300000, guid: cb8fa4c27961e5a42aec3379a3dd323c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 3d9234f8d78ce2749892a3328cbc00e9, type: 2}
 --- !u!23 &1282129121
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -57764,7 +57848,7 @@ GameObject:
   - component: {fileID: 1285351262}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57797,7 +57881,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 491e60f321eab7c48932f82b5f6e7c0e, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e5a9c7383b0a6a74da0a802f0bcdb25a, type: 2}
 --- !u!114 &1285351263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58085,7 +58169,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1285351260}
-  m_Mesh: {fileID: 4300000, guid: 491e60f321eab7c48932f82b5f6e7c0e, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e5a9c7383b0a6a74da0a802f0bcdb25a, type: 2}
 --- !u!23 &1285351265
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -58137,7 +58221,7 @@ GameObject:
   - component: {fileID: 1288139063}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58170,7 +58254,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c24d9a7107d4a4c47a6bc38d8c401f87, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 170465b39943e9c4e84d7944618a3ad5, type: 2}
 --- !u!114 &1288139064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58458,7 +58542,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1288139061}
-  m_Mesh: {fileID: 4300000, guid: c24d9a7107d4a4c47a6bc38d8c401f87, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 170465b39943e9c4e84d7944618a3ad5, type: 2}
 --- !u!23 &1288139066
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -58883,7 +58967,7 @@ GameObject:
   - component: {fileID: 1295346909}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58916,7 +59000,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 021ff80d62d35a14ab238ac28baff24a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 5c9cce831ffca284fbe8093e8b72eefb, type: 2}
 --- !u!114 &1295346910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59204,7 +59288,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1295346907}
-  m_Mesh: {fileID: 4300000, guid: 021ff80d62d35a14ab238ac28baff24a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 5c9cce831ffca284fbe8093e8b72eefb, type: 2}
 --- !u!23 &1295346912
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -59256,7 +59340,7 @@ GameObject:
   - component: {fileID: 1295965967}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59289,7 +59373,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 207c53f568cc2da43bbebc8255a6fcb1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: fc961068d15918848abee5a69cd591ab, type: 2}
 --- !u!114 &1295965968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59577,7 +59661,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1295965965}
-  m_Mesh: {fileID: 4300000, guid: 207c53f568cc2da43bbebc8255a6fcb1, type: 2}
+  m_Mesh: {fileID: 4300000, guid: fc961068d15918848abee5a69cd591ab, type: 2}
 --- !u!23 &1295965970
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -59629,7 +59713,7 @@ GameObject:
   - component: {fileID: 1302478781}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59662,7 +59746,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ea839f27431dbdd4b97b6cbbeae5b1e0, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 5ba8e307052b18f4b92d8fe35ca5875c, type: 2}
 --- !u!114 &1302478782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59950,7 +60034,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1302478779}
-  m_Mesh: {fileID: 4300000, guid: ea839f27431dbdd4b97b6cbbeae5b1e0, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 5ba8e307052b18f4b92d8fe35ca5875c, type: 2}
 --- !u!23 &1302478784
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60629,7 +60713,7 @@ GameObject:
   - component: {fileID: 1312280305}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61070,7 +61154,7 @@ GameObject:
   - component: {fileID: 1319385481}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61103,7 +61187,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4dec3d53ba9bdae4386e4f51ab03c36c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: ea212c9694a940441a844c2152f01f68, type: 2}
 --- !u!114 &1319385482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61391,7 +61475,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1319385479}
-  m_Mesh: {fileID: 4300000, guid: 4dec3d53ba9bdae4386e4f51ab03c36c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: ea212c9694a940441a844c2152f01f68, type: 2}
 --- !u!23 &1319385484
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61443,7 +61527,7 @@ GameObject:
   - component: {fileID: 1319492651}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61982,7 +62066,7 @@ GameObject:
   - component: {fileID: 1338774911}
   m_Layer: 9
   m_Name: BASE_WALL
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62108,7 +62192,7 @@ GameObject:
   - component: {fileID: 1346483914}
   m_Layer: 9
   m_Name: EndBlock
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62481,7 +62565,7 @@ GameObject:
   - component: {fileID: 1354985020}
   m_Layer: 9
   m_Name: EndBlock
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62854,7 +62938,7 @@ GameObject:
   - component: {fileID: 1360466648}
   m_Layer: 9
   m_Name: EndBlock
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63227,7 +63311,7 @@ GameObject:
   - component: {fileID: 1363603572}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63260,7 +63344,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: cb8fa4c27961e5a42aec3379a3dd323c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0657c9c46992b6c4f8529df743880a55, type: 2}
 --- !u!114 &1363603573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63548,7 +63632,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1363603570}
-  m_Mesh: {fileID: 4300000, guid: cb8fa4c27961e5a42aec3379a3dd323c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0657c9c46992b6c4f8529df743880a55, type: 2}
 --- !u!23 &1363603575
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64386,7 +64470,7 @@ GameObject:
   - component: {fileID: 1388985794}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64419,7 +64503,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 5d40b348210de7345822ec5268c6df3d, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0b744d14992a94140a80070cfbcce201, type: 2}
 --- !u!114 &1388985795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64707,7 +64791,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1388985792}
-  m_Mesh: {fileID: 4300000, guid: 5d40b348210de7345822ec5268c6df3d, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 0b744d14992a94140a80070cfbcce201, type: 2}
 --- !u!23 &1388985797
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64759,7 +64843,7 @@ GameObject:
   - component: {fileID: 1395088814}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66171,7 +66255,7 @@ GameObject:
   - component: {fileID: 1443589609}
   m_Layer: 9
   m_Name: EndBlock
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66544,7 +66628,7 @@ GameObject:
   - component: {fileID: 1448857472}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66917,7 +67001,7 @@ GameObject:
   - component: {fileID: 1451739768}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66950,7 +67034,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ad75f37558a008947a78d286a5aa3f4a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b11695121d993274c8a361209389fcdb, type: 2}
 --- !u!114 &1451739769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67238,7 +67322,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1451739766}
-  m_Mesh: {fileID: 4300000, guid: ad75f37558a008947a78d286a5aa3f4a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b11695121d993274c8a361209389fcdb, type: 2}
 --- !u!23 &1451739771
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -67290,7 +67374,7 @@ GameObject:
   - component: {fileID: 1452826197}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67323,7 +67407,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e344301c2a60f63448ad636202f10a76, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e93912ab77e9e3946ba247978f651a0c, type: 2}
 --- !u!114 &1452826198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67611,7 +67695,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1452826195}
-  m_Mesh: {fileID: 4300000, guid: e344301c2a60f63448ad636202f10a76, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e93912ab77e9e3946ba247978f651a0c, type: 2}
 --- !u!23 &1452826200
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -67663,7 +67747,7 @@ GameObject:
   - component: {fileID: 1454271576}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67696,7 +67780,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c8aaf5bafe7859340a632f9efe64c697, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d70677f3a40e8ed4bb589c808f0b5b1c, type: 2}
 --- !u!114 &1454271577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67984,7 +68068,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1454271574}
-  m_Mesh: {fileID: 4300000, guid: c8aaf5bafe7859340a632f9efe64c697, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d70677f3a40e8ed4bb589c808f0b5b1c, type: 2}
 --- !u!23 &1454271579
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -68536,7 +68620,7 @@ GameObject:
   - component: {fileID: 1457231708}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68569,7 +68653,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e4b3e2dc180d4804d9734ab954df62bb, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 2c8b6511becef334e925def8e4b912ea, type: 2}
 --- !u!114 &1457231709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68857,7 +68941,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1457231706}
-  m_Mesh: {fileID: 4300000, guid: e4b3e2dc180d4804d9734ab954df62bb, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 2c8b6511becef334e925def8e4b912ea, type: 2}
 --- !u!23 &1457231711
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -68909,7 +68993,7 @@ GameObject:
   - component: {fileID: 1460912790}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68942,7 +69026,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: cb8fa4c27961e5a42aec3379a3dd323c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 37380542bf175fa43827955f7fef6d69, type: 2}
 --- !u!114 &1460912791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69238,7 +69322,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1460912788}
-  m_Mesh: {fileID: 4300000, guid: cb8fa4c27961e5a42aec3379a3dd323c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 37380542bf175fa43827955f7fef6d69, type: 2}
 --- !u!23 &1460912793
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -69290,7 +69374,7 @@ GameObject:
   - component: {fileID: 1462058812}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69323,7 +69407,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: a915f20cc6120cd418230cf33168aa5c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a95cc167321381041a927b249700a15c, type: 2}
 --- !u!114 &1462058813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69611,7 +69695,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1462058810}
-  m_Mesh: {fileID: 4300000, guid: a915f20cc6120cd418230cf33168aa5c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a95cc167321381041a927b249700a15c, type: 2}
 --- !u!23 &1462058815
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -69860,7 +69944,7 @@ GameObject:
   - component: {fileID: 1477315264}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70298,11 +70382,11 @@ GameObject:
   - component: {fileID: 1485035644}
   m_Layer: 9
   m_Name: BASE_WALL
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1485035643
 Transform:
   m_ObjectHideFlags: 0
@@ -70423,7 +70507,7 @@ GameObject:
   - component: {fileID: 1498883951}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70456,7 +70540,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: fbc9a731ecca22b48a22cd8a277879f2, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 91d30936765a29f43820422096d40e92, type: 2}
 --- !u!114 &1498883952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70744,7 +70828,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1498883949}
-  m_Mesh: {fileID: 4300000, guid: fbc9a731ecca22b48a22cd8a277879f2, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 91d30936765a29f43820422096d40e92, type: 2}
 --- !u!23 &1498883954
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -70796,7 +70880,7 @@ GameObject:
   - component: {fileID: 1499218030}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70829,7 +70913,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e344301c2a60f63448ad636202f10a76, type: 2}
+  m_Mesh: {fileID: 4300000, guid: cf6a43c5c59df374e8432ead20b6844a, type: 2}
 --- !u!114 &1499218031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71117,7 +71201,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1499218028}
-  m_Mesh: {fileID: 4300000, guid: e344301c2a60f63448ad636202f10a76, type: 2}
+  m_Mesh: {fileID: 4300000, guid: cf6a43c5c59df374e8432ead20b6844a, type: 2}
 --- !u!23 &1499218033
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -71542,7 +71626,7 @@ GameObject:
   - component: {fileID: 1517867334}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71575,7 +71659,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: b23186b8e95c2b6478fe2a9148733114, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 029711e729d398f45a49941e592cdbb5, type: 2}
 --- !u!114 &1517867335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71863,7 +71947,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1517867332}
-  m_Mesh: {fileID: 4300000, guid: b23186b8e95c2b6478fe2a9148733114, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 029711e729d398f45a49941e592cdbb5, type: 2}
 --- !u!23 &1517867337
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -72120,7 +72204,7 @@ GameObject:
   - component: {fileID: 1529857094}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72153,7 +72237,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 23f8327a9968447478479221a8675641, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e11986ec0e028eb478cc599722477aa4, type: 2}
 --- !u!114 &1529857095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72441,7 +72525,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1529857092}
-  m_Mesh: {fileID: 4300000, guid: 23f8327a9968447478479221a8675641, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e11986ec0e028eb478cc599722477aa4, type: 2}
 --- !u!23 &1529857097
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -72940,7 +73024,7 @@ GameObject:
   - component: {fileID: 1535970835}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72973,7 +73057,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c24d9a7107d4a4c47a6bc38d8c401f87, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d8c071cc788dd0d41b954aafda2f7190, type: 2}
 --- !u!114 &1535970836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73261,7 +73345,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1535970833}
-  m_Mesh: {fileID: 4300000, guid: c24d9a7107d4a4c47a6bc38d8c401f87, type: 2}
+  m_Mesh: {fileID: 4300000, guid: d8c071cc788dd0d41b954aafda2f7190, type: 2}
 --- !u!23 &1535970838
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -73313,7 +73397,7 @@ GameObject:
   - component: {fileID: 1538437791}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73686,7 +73770,7 @@ GameObject:
   - component: {fileID: 1542532030}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73719,7 +73803,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 0fef1c5a2d5c14348addd99fcf18405b, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 09109da947829eb499ae90843f5b8df9, type: 2}
 --- !u!114 &1542532031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74007,7 +74091,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1542532028}
-  m_Mesh: {fileID: 4300000, guid: 0fef1c5a2d5c14348addd99fcf18405b, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 09109da947829eb499ae90843f5b8df9, type: 2}
 --- !u!23 &1542532033
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -74207,7 +74291,7 @@ GameObject:
   - component: {fileID: 1552326840}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74580,7 +74664,7 @@ GameObject:
   - component: {fileID: 1557549378}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74613,7 +74697,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 9f070bbae8039434aa2f071264e4f7e5, type: 2}
+  m_Mesh: {fileID: 4300000, guid: be92e5c6d0bac484fb5e30cb612f2dbc, type: 2}
 --- !u!114 &1557549379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74901,7 +74985,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1557549376}
-  m_Mesh: {fileID: 4300000, guid: 9f070bbae8039434aa2f071264e4f7e5, type: 2}
+  m_Mesh: {fileID: 4300000, guid: be92e5c6d0bac484fb5e30cb612f2dbc, type: 2}
 --- !u!23 &1557549381
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -75326,7 +75410,7 @@ GameObject:
   - component: {fileID: 1564126842}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75359,7 +75443,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4647b16ee036ced479555fce794481af, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 924f99e75a6880941ae817cc8d57aa17, type: 2}
 --- !u!114 &1564126843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75647,7 +75731,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1564126840}
-  m_Mesh: {fileID: 4300000, guid: 4647b16ee036ced479555fce794481af, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 924f99e75a6880941ae817cc8d57aa17, type: 2}
 --- !u!23 &1564126845
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -75815,7 +75899,7 @@ GameObject:
   - component: {fileID: 1571290572}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76242,7 +76326,7 @@ GameObject:
   - component: {fileID: 1578667414}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76275,7 +76359,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 23f8327a9968447478479221a8675641, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b736c2653e59ea345b68660f3a06d41a, type: 2}
 --- !u!114 &1578667415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76563,7 +76647,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1578667412}
-  m_Mesh: {fileID: 4300000, guid: 23f8327a9968447478479221a8675641, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b736c2653e59ea345b68660f3a06d41a, type: 2}
 --- !u!23 &1578667417
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -76988,7 +77072,7 @@ GameObject:
   - component: {fileID: 1600511646}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77021,7 +77105,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 95589e4f9dfb4be4db7d958087e5c38a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: f61a833959bec67498629d8bf56a8cbb, type: 2}
 --- !u!114 &1600511647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77309,7 +77393,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1600511644}
-  m_Mesh: {fileID: 4300000, guid: 95589e4f9dfb4be4db7d958087e5c38a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: f61a833959bec67498629d8bf56a8cbb, type: 2}
 --- !u!23 &1600511649
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -77361,7 +77445,7 @@ GameObject:
   - component: {fileID: 1613484186}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78480,7 +78564,7 @@ GameObject:
   - component: {fileID: 1623471971}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78513,7 +78597,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: b23186b8e95c2b6478fe2a9148733114, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 677f2b67eb35fdd4ca078dd030a3042d, type: 2}
 --- !u!114 &1623471972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78801,7 +78885,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1623471969}
-  m_Mesh: {fileID: 4300000, guid: b23186b8e95c2b6478fe2a9148733114, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 677f2b67eb35fdd4ca078dd030a3042d, type: 2}
 --- !u!23 &1623471974
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -78853,7 +78937,7 @@ GameObject:
   - component: {fileID: 1623632261}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78886,7 +78970,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 5d40b348210de7345822ec5268c6df3d, type: 2}
+  m_Mesh: {fileID: 4300000, guid: f695180b94576a741852bb6186176267, type: 2}
 --- !u!114 &1623632262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79174,7 +79258,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1623632259}
-  m_Mesh: {fileID: 4300000, guid: 5d40b348210de7345822ec5268c6df3d, type: 2}
+  m_Mesh: {fileID: 4300000, guid: f695180b94576a741852bb6186176267, type: 2}
 --- !u!23 &1623632264
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -79673,7 +79757,7 @@ GameObject:
   - component: {fileID: 1633603798}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79706,7 +79790,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e51545aea7443764d9e40f666cc35566, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 953162f3d11da5e458f2274c1e9ac517, type: 2}
 --- !u!114 &1633603799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79994,7 +80078,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1633603796}
-  m_Mesh: {fileID: 4300000, guid: e51545aea7443764d9e40f666cc35566, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 953162f3d11da5e458f2274c1e9ac517, type: 2}
 --- !u!23 &1633603801
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -80046,7 +80130,7 @@ GameObject:
   - component: {fileID: 1646459254}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80079,7 +80163,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ad75f37558a008947a78d286a5aa3f4a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b0d52826950b8f84b985742be656ece9, type: 2}
 --- !u!114 &1646459255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80367,7 +80451,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1646459252}
-  m_Mesh: {fileID: 4300000, guid: ad75f37558a008947a78d286a5aa3f4a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b0d52826950b8f84b985742be656ece9, type: 2}
 --- !u!23 &1646459257
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -80874,7 +80958,7 @@ GameObject:
   - component: {fileID: 1668995006}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80907,7 +80991,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: fbc9a731ecca22b48a22cd8a277879f2, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 9a431342aaf70284c883e9a2ecdf50e4, type: 2}
 --- !u!114 &1668995007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81195,7 +81279,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1668995004}
-  m_Mesh: {fileID: 4300000, guid: fbc9a731ecca22b48a22cd8a277879f2, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 9a431342aaf70284c883e9a2ecdf50e4, type: 2}
 --- !u!23 &1668995009
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -81369,7 +81453,7 @@ GameObject:
   - component: {fileID: 1705806894}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81402,7 +81486,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4dec3d53ba9bdae4386e4f51ab03c36c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 5391547f79455a744815f8f61f6d3eef, type: 2}
 --- !u!114 &1705806895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81690,7 +81774,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1705806892}
-  m_Mesh: {fileID: 4300000, guid: 4dec3d53ba9bdae4386e4f51ab03c36c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 5391547f79455a744815f8f61f6d3eef, type: 2}
 --- !u!23 &1705806897
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -81742,7 +81826,7 @@ GameObject:
   - component: {fileID: 1707004708}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82169,7 +82253,7 @@ GameObject:
   - component: {fileID: 1715425627}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82202,7 +82286,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 6a583db7083e9044781997dfee25f784, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c507db50989353948b45cee4cf12cc47, type: 2}
 --- !u!114 &1715425628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82490,7 +82574,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1715425625}
-  m_Mesh: {fileID: 4300000, guid: 6a583db7083e9044781997dfee25f784, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c507db50989353948b45cee4cf12cc47, type: 2}
 --- !u!23 &1715425630
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -82568,7 +82652,7 @@ Camera:
   m_GameObject: {fileID: 1736562402}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -82577,7 +82661,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 200
   field of view: 30
   orthographic: 1
   orthographic size: 10
@@ -82606,6 +82690,7 @@ Transform:
   m_LocalPosition: {x: -68.875, y: 53.8125, z: -68.4375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 705844448}
   - {fileID: 1211947891}
   m_Father: {fileID: 1968888889}
   m_RootOrder: 0
@@ -82642,7 +82727,7 @@ GameObject:
   - component: {fileID: 1751081856}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82675,7 +82760,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 09c6c286c20688c4db5165974a5e0d44, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c10b45d47b59c2e49b57b08809c240b0, type: 2}
 --- !u!114 &1751081857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82963,7 +83048,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1751081854}
-  m_Mesh: {fileID: 4300000, guid: 09c6c286c20688c4db5165974a5e0d44, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c10b45d47b59c2e49b57b08809c240b0, type: 2}
 --- !u!23 &1751081859
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -83015,7 +83100,7 @@ GameObject:
   - component: {fileID: 1762173071}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83388,7 +83473,7 @@ GameObject:
   - component: {fileID: 1763411635}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83421,7 +83506,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e344301c2a60f63448ad636202f10a76, type: 2}
+  m_Mesh: {fileID: 4300000, guid: edee432ab24a2994eb30a64d7cf2b41f, type: 2}
 --- !u!114 &1763411636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83709,7 +83794,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1763411633}
-  m_Mesh: {fileID: 4300000, guid: e344301c2a60f63448ad636202f10a76, type: 2}
+  m_Mesh: {fileID: 4300000, guid: edee432ab24a2994eb30a64d7cf2b41f, type: 2}
 --- !u!23 &1763411638
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -83761,7 +83846,7 @@ GameObject:
   - component: {fileID: 1763971034}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84134,7 +84219,7 @@ GameObject:
   - component: {fileID: 1764445063}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84167,7 +84252,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 491e60f321eab7c48932f82b5f6e7c0e, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 692c9b8781d0fbf46afd31f4e38bfaa4, type: 2}
 --- !u!114 &1764445064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84455,7 +84540,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1764445061}
-  m_Mesh: {fileID: 4300000, guid: 491e60f321eab7c48932f82b5f6e7c0e, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 692c9b8781d0fbf46afd31f4e38bfaa4, type: 2}
 --- !u!23 &1764445066
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -85253,7 +85338,7 @@ GameObject:
   - component: {fileID: 1774000935}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85286,7 +85371,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 09c6c286c20688c4db5165974a5e0d44, type: 2}
+  m_Mesh: {fileID: 4300000, guid: daf103ce454e82c4a8748a2232c69758, type: 2}
 --- !u!114 &1774000936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85574,7 +85659,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1774000933}
-  m_Mesh: {fileID: 4300000, guid: 09c6c286c20688c4db5165974a5e0d44, type: 2}
+  m_Mesh: {fileID: 4300000, guid: daf103ce454e82c4a8748a2232c69758, type: 2}
 --- !u!23 &1774000938
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -86441,7 +86526,7 @@ GameObject:
   - component: {fileID: 1800468004}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86474,7 +86559,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: d6b671951e2b59e4ba657a01a2474168, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c3294a47ae01cd745b888264d3170945, type: 2}
 --- !u!114 &1800468005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86762,7 +86847,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1800468002}
-  m_Mesh: {fileID: 4300000, guid: d6b671951e2b59e4ba657a01a2474168, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c3294a47ae01cd745b888264d3170945, type: 2}
 --- !u!23 &1800468007
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -87261,7 +87346,7 @@ GameObject:
   - component: {fileID: 1805667986}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87693,7 +87778,7 @@ GameObject:
   - component: {fileID: 1811033438}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87726,7 +87811,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 95589e4f9dfb4be4db7d958087e5c38a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b7673a9fff1782d4fb9eb031c3c163c9, type: 2}
 --- !u!114 &1811033439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88014,7 +88099,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1811033436}
-  m_Mesh: {fileID: 4300000, guid: 95589e4f9dfb4be4db7d958087e5c38a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b7673a9fff1782d4fb9eb031c3c163c9, type: 2}
 --- !u!23 &1811033441
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -88066,7 +88151,7 @@ GameObject:
   - component: {fileID: 1812329836}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89517,7 +89602,7 @@ GameObject:
   - component: {fileID: 1876075618}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89550,7 +89635,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: bb2ca723b1100904c98f41e9be7ef44c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 8df15c4209f29a94b8f48b6666a0bd89, type: 2}
 --- !u!114 &1876075619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89838,7 +89923,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1876075616}
-  m_Mesh: {fileID: 4300000, guid: bb2ca723b1100904c98f41e9be7ef44c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 8df15c4209f29a94b8f48b6666a0bd89, type: 2}
 --- !u!23 &1876075621
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -89890,7 +89975,7 @@ GameObject:
   - component: {fileID: 1879800664}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89923,7 +90008,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e51545aea7443764d9e40f666cc35566, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a1cf693947439f144aa08e3884c94223, type: 2}
 --- !u!114 &1879800665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90211,7 +90296,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1879800662}
-  m_Mesh: {fileID: 4300000, guid: e51545aea7443764d9e40f666cc35566, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a1cf693947439f144aa08e3884c94223, type: 2}
 --- !u!23 &1879800667
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -90263,7 +90348,7 @@ GameObject:
   - component: {fileID: 1880277512}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90636,7 +90721,7 @@ GameObject:
   - component: {fileID: 1881571173}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91009,7 +91094,7 @@ GameObject:
   - component: {fileID: 1888413614}
   m_Layer: 9
   m_Name: EndBlock
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92252,7 +92337,7 @@ GameObject:
   - component: {fileID: 1902290560}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92285,7 +92370,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 9f8cb476a10ef5f4394228a9d3e358f4, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 7f19d5f538e3c8b41b72199045429ebc, type: 2}
 --- !u!114 &1902290561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92573,7 +92658,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1902290558}
-  m_Mesh: {fileID: 4300000, guid: 9f8cb476a10ef5f4394228a9d3e358f4, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 7f19d5f538e3c8b41b72199045429ebc, type: 2}
 --- !u!23 &1902290563
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -92625,7 +92710,7 @@ GameObject:
   - component: {fileID: 1905490081}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92995,7 +93080,7 @@ GameObject:
   - component: {fileID: 1911789464}
   m_Layer: 9
   m_Name: BASE_WALL
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93121,7 +93206,7 @@ GameObject:
   - component: {fileID: 1913812224}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93154,7 +93239,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 09c6c286c20688c4db5165974a5e0d44, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 81a4e6234c910b042b0881c1d2d956e4, type: 2}
 --- !u!114 &1913812225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93442,7 +93527,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1913812222}
-  m_Mesh: {fileID: 4300000, guid: 09c6c286c20688c4db5165974a5e0d44, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 81a4e6234c910b042b0881c1d2d956e4, type: 2}
 --- !u!23 &1913812227
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -93494,7 +93579,7 @@ GameObject:
   - component: {fileID: 1919813868}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93527,7 +93612,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: d6b671951e2b59e4ba657a01a2474168, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 4dda4b6d965aeb1468c4caa498aa7071, type: 2}
 --- !u!114 &1919813869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93815,7 +93900,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1919813866}
-  m_Mesh: {fileID: 4300000, guid: d6b671951e2b59e4ba657a01a2474168, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 4dda4b6d965aeb1468c4caa498aa7071, type: 2}
 --- !u!23 &1919813871
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -93936,7 +94021,7 @@ GameObject:
   - component: {fileID: 1929806927}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93969,7 +94054,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c38a3ca4bec79d74b838fdd66f26ccc3, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 84baffb1240cbe34386098a0a2cab239, type: 2}
 --- !u!114 &1929806928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94257,7 +94342,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1929806925}
-  m_Mesh: {fileID: 4300000, guid: c38a3ca4bec79d74b838fdd66f26ccc3, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 84baffb1240cbe34386098a0a2cab239, type: 2}
 --- !u!23 &1929806930
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -94436,7 +94521,7 @@ GameObject:
   - component: {fileID: 1955325880}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94469,7 +94554,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e4b3e2dc180d4804d9734ab954df62bb, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bdafc8261102b794d8e0c0fe3801f80b, type: 2}
 --- !u!114 &1955325881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94757,7 +94842,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1955325878}
-  m_Mesh: {fileID: 4300000, guid: e4b3e2dc180d4804d9734ab954df62bb, type: 2}
+  m_Mesh: {fileID: 4300000, guid: bdafc8261102b794d8e0c0fe3801f80b, type: 2}
 --- !u!23 &1955325883
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -96165,7 +96250,7 @@ GameObject:
   - component: {fileID: 2004873199}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96612,7 +96697,7 @@ GameObject:
   - component: {fileID: 2026025317}
   m_Layer: 9
   m_Name: EndBlock
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97358,7 +97443,7 @@ GameObject:
   - component: {fileID: 2044622216}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97391,7 +97476,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c534a978667626744af32da7bab251ff, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b07745c6d951944458e016026eca9008, type: 2}
 --- !u!114 &2044622217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97679,7 +97764,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2044622214}
-  m_Mesh: {fileID: 4300000, guid: c534a978667626744af32da7bab251ff, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b07745c6d951944458e016026eca9008, type: 2}
 --- !u!23 &2044622219
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -97731,7 +97816,7 @@ GameObject:
   - component: {fileID: 2049612143}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98168,7 +98253,7 @@ GameObject:
   - component: {fileID: 2086616901}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98541,7 +98626,7 @@ GameObject:
   - component: {fileID: 2092482894}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98574,7 +98659,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 95589e4f9dfb4be4db7d958087e5c38a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: fca5f7a660ae5d04bb21a131b85dd280, type: 2}
 --- !u!114 &2092482895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98862,7 +98947,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2092482892}
-  m_Mesh: {fileID: 4300000, guid: 95589e4f9dfb4be4db7d958087e5c38a, type: 2}
+  m_Mesh: {fileID: 4300000, guid: fca5f7a660ae5d04bb21a131b85dd280, type: 2}
 --- !u!23 &2092482897
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -98914,7 +98999,7 @@ GameObject:
   - component: {fileID: 2102802861}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98947,7 +99032,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 9f8cb476a10ef5f4394228a9d3e358f4, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 4311bc475b59d9340822c7c8f22ba57c, type: 2}
 --- !u!114 &2102802862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99235,7 +99320,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2102802859}
-  m_Mesh: {fileID: 4300000, guid: 9f8cb476a10ef5f4394228a9d3e358f4, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 4311bc475b59d9340822c7c8f22ba57c, type: 2}
 --- !u!23 &2102802864
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -99287,7 +99372,7 @@ GameObject:
   - component: {fileID: 2103657017}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99320,7 +99405,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: c534a978667626744af32da7bab251ff, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 2822e489e456ac348baac402c6a6c490, type: 2}
 --- !u!114 &2103657018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99608,7 +99693,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2103657015}
-  m_Mesh: {fileID: 4300000, guid: c534a978667626744af32da7bab251ff, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 2822e489e456ac348baac402c6a6c490, type: 2}
 --- !u!23 &2103657020
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -99718,7 +99803,7 @@ GameObject:
   - component: {fileID: 2116579841}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100165,7 +100250,7 @@ GameObject:
   - component: {fileID: 2120865611}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100198,7 +100283,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: bb2ca723b1100904c98f41e9be7ef44c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 4b841d88ba836444795317a9d7c97925, type: 2}
 --- !u!114 &2120865612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100486,7 +100571,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2120865609}
-  m_Mesh: {fileID: 4300000, guid: bb2ca723b1100904c98f41e9be7ef44c, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 4b841d88ba836444795317a9d7c97925, type: 2}
 --- !u!23 &2120865614
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -100911,7 +100996,7 @@ GameObject:
   - component: {fileID: 2136782110}
   m_Layer: 9
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: CanBeDisabled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
