@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour {
 
     #endregion
 
-    
 	public List<CollectableListValue> Collectables = new List<CollectableListValue>();
 
 	public float currentTime;
@@ -28,6 +27,8 @@ public class GameController : MonoBehaviour {
     public GameObject levelsParent;
     public GameObject definedGameStartPosition;
     public Vector3 playerLoadedPosition = Vector3.zero;
+
+    public static List<Level> allLevels = new List<Level>();
 
     public Player PlayerSpawnablePrefab, Player;
 
@@ -37,6 +38,13 @@ public class GameController : MonoBehaviour {
     public bool justChangedState = false;
 
 	void Start() {
+
+        foreach (Level level in levelsParent.GetComponentsInChildren<Level>(true)) {
+
+            Debug.Log(level);
+            GameController.allLevels.Add(level);
+
+        }
 
 		ChangeState (GameState.MainMenu);
         Collectables.Clear();

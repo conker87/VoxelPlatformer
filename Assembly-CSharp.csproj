@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Collectable\Star.cs" />
     <Compile Include="Assets\Scripts\Controllers\CharController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\LoadingController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SaveController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SFXController.cs" />
     <Compile Include="Assets\Scripts\Cutscenes\Cutscene.cs" />
