@@ -25,7 +25,19 @@ public class HideModelsTriggerEnter : MonoBehaviour {
 
         }
 
+        if (otherRenderer.enabled == false) {
+
+            return;
+
+        }
+
         otherRenderer.enabled = false;
+
+    }
+
+    private void OnTriggerStay(Collider other) {
+
+        OnTriggerEnter(other);
 
     }
 

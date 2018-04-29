@@ -12,6 +12,8 @@ public class CharController : MonoBehaviour {
 
 	[SerializeField]
 	float interactableDistance = 5f;
+    [SerializeField]
+    Transform interactableTransform;
 
 	[SerializeField]
 	float baseButtStompForce = 10f;
@@ -91,7 +93,7 @@ public class CharController : MonoBehaviour {
 		// Set this to "Interact"
 		if (Input.GetKeyDown (KeyCode.E)) {
 
-			Collider[] overlappedSphere = Physics.OverlapSphere (transform.position, interactableDistance);
+			Collider[] overlappedSphere = Physics.OverlapSphere (interactableTransform.position, interactableDistance);
 
 			if (overlappedSphere != null && overlappedSphere.Length > 0) {
 
@@ -240,11 +242,14 @@ public class CharController : MonoBehaviour {
 
     }
 
-	void OnDrawGizmos() {
+    void OnDrawGizmos() {
 
-		Debug.DrawLine (transform.position, new Vector3 (transform.position.x, transform.position.y - (capsuleColliderYBounds + raycastSkin), transform.position.z), Color.green);
-		Gizmos.DrawWireSphere (transform.position, interactableDistance);
+        Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - (capsuleColliderYBounds + raycastSkin), transform.position.z), Color.green);
 
+        if (interactableTransform != null) {
+
+            Gizmos.DrawWireSphere(interactableTransform.position, interactableDistance);
+
+        }
 	}
-
 }

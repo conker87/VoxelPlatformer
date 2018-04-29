@@ -39,9 +39,11 @@ public class GameController : MonoBehaviour {
 
 	void Start() {
 
+        Debug.LogWarning(@"We should probably have the game in its own scene once we've completed the game so all rigidbodies reset.
+Also, we should set up areas where the player is not allowed to save the game because of said rigidbodies.");
+
         foreach (Level level in levelsParent.GetComponentsInChildren<Level>(true)) {
 
-            Debug.Log(level);
             GameController.allLevels.Add(level);
 
         }

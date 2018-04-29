@@ -27,7 +27,7 @@ public class GeometryBlock : MonoBehaviour {
 
         foreach (pb_Object pb in childPBObjects) {
 
-            if (ignoreNoneNamedBlocks == true && pb.gameObject.name != "Block") {
+            if (ignoreNoneNamedBlocks == true && pb.gameObject.name.Contains("Block") == false) {
                 continue;
             }
 
@@ -42,7 +42,7 @@ public class GeometryBlock : MonoBehaviour {
 
         foreach (pb_Object pb in GetComponentsInChildren<pb_Object>()) {
 
-            if (ignoreNoneNamedBlocks == true && pb.gameObject.name != "Block") {
+            if (ignoreNoneNamedBlocks == true && pb.gameObject.name.Contains("Block") == false) {
                 continue;
             }
 

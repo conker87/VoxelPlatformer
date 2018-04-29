@@ -31,6 +31,12 @@ public class LoadingController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         
+        if (levelsToLoad.Count == 0) {
+
+            return;
+
+        }
+
         if (other.GetComponentInParent<Player>() != null) {
 
             foreach (Level level in GameController.allLevels) {
@@ -40,7 +46,9 @@ public class LoadingController : MonoBehaviour {
                 foreach (Level levelToLoad in LevelsToLoad) {
 
                     if (level == levelToLoad) {
+
                         levelToLoad.gameObject.SetActive(true);
+
                     }
                 }
             }
