@@ -102,7 +102,7 @@ public class Collectable : MonoBehaviour {
 
         if (CollectableType == CollectableType.Coin) {
 
-            SFXController.instance.PlayRandomCoinClip();
+            SFXController.current.PlayRandomCoinClip();
 
         }
 

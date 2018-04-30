@@ -6,13 +6,14 @@ using UnityEngine.Audio;
 public class SFXController : MonoBehaviour {
 
 	#region Singleton
-	public static SFXController instance = null;
+
+	public static SFXController current = null;
 
 	void Awake() {
 
-		if (instance == null) {
-			instance = this;
-		} else if (instance != this) {
+		if (current == null) {
+            current = this;
+		} else if (current != this) {
 			Destroy (gameObject);    
 		}
 

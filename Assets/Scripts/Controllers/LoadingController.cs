@@ -9,6 +9,7 @@ public class LoadingController : MonoBehaviour {
 
     [SerializeField]
     List<Level> levelsToLoad = new List<Level>();
+    bool loadedLevel = false;
 
     public List<Level> LevelsToLoad {
         get {
@@ -31,7 +32,7 @@ public class LoadingController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         
-        if (levelsToLoad.Count == 0) {
+        if (levelsToLoad.Count == 0 || GameController.current.allLevels.Count == 0 || GameController.current.allLevels == null) {
 
             return;
 
@@ -39,17 +40,54 @@ public class LoadingController : MonoBehaviour {
 
         if (other.GetComponentInParent<Player>() != null) {
 
-            foreach (Level level in GameController.allLevels) {
+            /* This doesn't work with the current SaveController system.
+             * 
+             * foreach (Level level in GameController.allLevels) {
 
-                level.gameObject.SetActive(false);
+                loadedLevel = false;
+
+                foreach (Level loadingLevel in levelsToLoad) {
+
+                    if (loadingLevel.LevelName == level.LevelName) {
+
+                        level.LoadLevel();
+                        loadedLevel = true;
+
+                        break;
+
+                    }
+                }
+
+                if (loadedLevel == false && level.IsCurrentlyLoaded == true) {
+
+                    level.UnloadLevel();
+
+                }
+
+            } */
+
+            foreach (Level level in GameController.current.allLevels) {
+
+                loadedLevel = false;
 
                 foreach (Level levelToLoad in LevelsToLoad) {
 
-                    if (level == levelToLoad) {
+                    if (level.LevelName == levelToLoad.LevelName) {
 
-                        levelToLoad.gameObject.SetActive(true);
+                        loadedLevel = true;
+                        break;
 
                     }
+                }
+
+                if (loadedLevel == false) {
+
+                    level.gameObject.SetActive(false);
+
+                } else {
+
+                    level.gameObject.SetActive(true);
+
                 }
             }
         }

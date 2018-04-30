@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4133147214992214}
   - component: {fileID: 114813368402083378}
+  - component: {fileID: 65042976732254416}
   m_Layer: 9
   m_Name: PrisonGate_Door
   m_TagString: Untagged
@@ -276,14 +277,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426275764072586}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.125, y: 0.25, z: -5.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 3.8, y: -0.7, z: -0.9}
+  m_LocalScale: {x: 1, y: 0.9, z: 1}
   m_Children:
   - {fileID: 4519759492746228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4209765213013600
 Transform:
   m_ObjectHideFlags: 1
@@ -737,56 +738,56 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013089428506754}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 59f0e8b589a04e7408d0ab3ee24b676a, type: 2}
 --- !u!33 &33271389969941618
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1848833963374090}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: ab885b69f3d234a4f837bf7e653da2d7, type: 2}
 --- !u!33 &33298440667024450
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172512128329638}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: dc068b98b0100414d9568a12c8989766, type: 2}
 --- !u!33 &33632594448973680
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1617637628332758}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 422b255909aa93942865ba5bb791aa8d, type: 2}
 --- !u!33 &33724098031380456
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1371907278906476}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 5880c83988abd45459b0144078e8f5b7, type: 2}
 --- !u!33 &33728272730474816
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1522971386636876}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: bb2dc16b3d063d742b2da9c8234d8208, type: 2}
 --- !u!33 &33782078454148794
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1167083435677380}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 48f5744a55bacc24898bb8c57b8db933, type: 2}
 --- !u!33 &33933721840336798
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1279534322935272}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 224ee3ad028935840841b7e0795fce2e, type: 2}
 --- !u!64 &64003132618339340
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -800,7 +801,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: bb2dc16b3d063d742b2da9c8234d8208, type: 2}
 --- !u!64 &64033794219803052
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -814,7 +815,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: ab885b69f3d234a4f837bf7e653da2d7, type: 2}
 --- !u!64 &64255787368201800
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -828,7 +829,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 5880c83988abd45459b0144078e8f5b7, type: 2}
 --- !u!64 &64282661399412124
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -842,7 +843,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 224ee3ad028935840841b7e0795fce2e, type: 2}
 --- !u!64 &64481723332882940
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -856,7 +857,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: dc068b98b0100414d9568a12c8989766, type: 2}
 --- !u!64 &64916685679768392
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -870,7 +871,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 48f5744a55bacc24898bb8c57b8db933, type: 2}
 --- !u!64 &64954500278692842
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -884,7 +885,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 422b255909aa93942865ba5bb791aa8d, type: 2}
 --- !u!64 &64979399167255816
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -898,7 +899,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 59f0e8b589a04e7408d0ab3ee24b676a, type: 2}
+--- !u!65 &65042976732254416
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426275764072586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 1}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!95 &95358107132082508
 Animator:
   serializedVersion: 3
@@ -5947,6 +5960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd0f57954bee9240abfe544f2b18fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: {fileID: 0}
   interactabledLocked: 0
 --- !u!114 &114576059164371420
 MonoBehaviour:
@@ -6518,6 +6532,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
+  defaultIsDisabled: 0
+  defaultIsLocked: 0
+  defaultIsActivated: 0
   isDisabled: 0
   isLocked: 0
   isActivated: 0
@@ -6525,10 +6542,12 @@ MonoBehaviour:
   canOnlyInteractFromOtherInteractables: 0
   canContinue: 1
   resetInTime: -1
-  hasReset: 0
+  hasToReset: 0
   resetTime: 0
   anim: {fileID: 95358107132082508}
   triggersConnectedToMe: []
+  turnOnText: fdsfd
+  turnOffText: 
 --- !u!114 &114883773388649690
 MonoBehaviour:
   m_ObjectHideFlags: 1

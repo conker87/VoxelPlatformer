@@ -40,7 +40,11 @@ public class SaveController : MonoBehaviour {
 				// <SaveData SaveFileName="SaveFileName" SaveFileDate="SaveFileDate" SaveFileTime="SaveFileTime" SaveFileTimeOnGame="SaveFileTimeOnGame" SaveFilePositionX/Y/Z="Vector3">
 				if (xmlReader.Name == "player") {
 
-                    GameController.current.playerLoadedPosition = new Vector3(float.Parse(xmlReader.GetAttribute("playerPositionX")), float.Parse(xmlReader.GetAttribute("playerPositionY")), float.Parse(xmlReader.GetAttribute("playerPositionZ")));
+                    GameController.current.playerLoadedPosition = new Vector3(
+                        float.Parse(xmlReader.GetAttribute("playerPositionX")),
+                        float.Parse(xmlReader.GetAttribute("playerPositionY")),
+                        float.Parse(xmlReader.GetAttribute("playerPositionZ"))
+                    );
 
                 }
 
@@ -74,6 +78,8 @@ public class SaveController : MonoBehaviour {
 			}
 		}
 
+        xmlReader.Close();
+
         foreach (Collectable collectable in GameController.current.levelsParent.GetComponentsInChildren<Collectable>(true)) {
 
             if (GameController.current.HasAcquiredCollectable(collectable.CollectableID)) {
@@ -97,9 +103,10 @@ public class SaveController : MonoBehaviour {
                     break;
 
                 }
-
             }
         }
+
+        Interactables.Clear();
 
         GameController.current.StartGame(SaveState.LoadedGame);
 
@@ -157,6 +164,32 @@ public class SaveController : MonoBehaviour {
 
     }
 
+    static void SaveCollectables() {
+
+        xmlWriter.WriteWhitespace("\n");
+        xmlWriter.WriteComment("This is the list of Collectables.");
+        xmlWriter.WriteWhitespace("\n\t");
+
+        xmlWriter.WriteStartElement("collectables");
+
+        foreach (CollectableListValue collectable in GameController.current.Collectables) {
+
+            xmlWriter.WriteWhitespace("\n\t\t");
+
+            xmlWriter.WriteStartElement("collectable");
+            xmlWriter.WriteAttributeString("CollectableID", collectable.CollectableID);
+            xmlWriter.WriteAttributeString("CollectableType", collectable.CollectableType.ToString());
+
+            xmlWriter.WriteEndElement();
+
+        }
+
+        xmlWriter.WriteWhitespace("\n\t");
+        xmlWriter.WriteEndElement();
+        xmlWriter.WriteWhitespace("\n");
+
+    }
+
     static void SaveInteractables() {
 
         xmlWriter.WriteWhitespace("\n");
@@ -184,32 +217,6 @@ public class SaveController : MonoBehaviour {
         xmlWriter.WriteWhitespace("\n");
 
     }
-
-	static void SaveCollectables() {
-
-		xmlWriter.WriteWhitespace("\n");
-		xmlWriter.WriteComment ("This is the list of Collectables.");
-		xmlWriter.WriteWhitespace("\n\t");
-
-		xmlWriter.WriteStartElement("collectables");
-
-		foreach (CollectableListValue collectable in GameController.current.Collectables) {
-
-			xmlWriter.WriteWhitespace("\n\t\t");
-
-			xmlWriter.WriteStartElement("collectable");
-            xmlWriter.WriteAttributeString("CollectableID", collectable.CollectableID);
-            xmlWriter.WriteAttributeString("CollectableType", collectable.CollectableType.ToString());
-
-            xmlWriter.WriteEndElement();
-
-		}
-
-		xmlWriter.WriteWhitespace("\n\t");
-		xmlWriter.WriteEndElement();
-		xmlWriter.WriteWhitespace("\n");
-
-	}
 }
 
 [Serializable]

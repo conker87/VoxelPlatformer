@@ -52,8 +52,6 @@ public class Interactable_Triggers : Interactable {
                 continue;
             }
 
-            interactableTrigger.InteractableToTrigger.TriggersConnectedToMe.Add(this);
-
             if (interactableTrigger.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerEnter) {
 
                 hasOnTriggerEnter = true;

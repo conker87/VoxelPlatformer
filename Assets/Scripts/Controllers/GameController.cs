@@ -1,38 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
     #region Singleton
 
-    public static GameController current;
+    public static GameController current = null;
 
-	void Awake() {
+    void Awake() {
 
-		if (current == null) {
+        if (current == null) {
+            current = this;
+        }
+        else if (current != this) {
+            Destroy(gameObject);
+        }
 
-			current = this;
+       //  DontDestroyOnLoad(gameObject);
 
-		}
-
-	}
+    }
 
     #endregion
 
+    [Header("Saving Lists")]
 	public List<CollectableListValue> Collectables = new List<CollectableListValue>();
 
-	public float currentTime;
-
+    [Header("Game Objects")]
     public GameObject levelsParent;
     public GameObject definedGameStartPosition;
     public Vector3 playerLoadedPosition = Vector3.zero;
-
-    public static List<Level> allLevels = new List<Level>();
-
     public Player PlayerSpawnablePrefab, Player;
 
-	public GameState CurrentState = GameState.MainMenu;
+    public List<Level> allLevels = new List<Level>();
+
+    [Header("Game Fields")]
+    public bool isAllowedToSaveGame;
+    public float currentTime;
+
+    [Header("Game States")]
+    public GameState CurrentState = GameState.MainMenu;
     public SaveState CurrentSaveState;
     
     public bool justChangedState = false;
@@ -40,11 +49,14 @@ public class GameController : MonoBehaviour {
 	void Start() {
 
         Debug.LogWarning(@"We should probably have the game in its own scene once we've completed the game so all rigidbodies reset.
-Also, we should set up areas where the player is not allowed to save the game because of said rigidbodies.");
+Also, we should set up areas where the player is not allowed to save the game because of said rigidbodies.
+LoadingController::OnTriggerEnter -> Needs sorting as this messes up frame rate entirely. It's Object.Awake()");
+
+        Application.targetFrameRate = 60;
 
         foreach (Level level in levelsParent.GetComponentsInChildren<Level>(true)) {
 
-            GameController.allLevels.Add(level);
+            GameController.current.allLevels.Add(level);
 
         }
 
@@ -85,6 +97,7 @@ Also, we should set up areas where the player is not allowed to save the game be
 
         levelsParent.SetActive(true);
         Player = levelsParent.GetComponentInChildren<Player>();
+        // SceneManager.LoadScene("game");
 
         Player.transform.position = (saveState == SaveState.NewGame) ? definedGameStartPosition.transform.position : playerLoadedPosition;
 
@@ -92,10 +105,13 @@ Also, we should set up areas where the player is not allowed to save the game be
 
     public void QuitGame() {
 
+      
         Collectables.Clear();
         playerLoadedPosition = Vector3.zero;
 
-        ChangeState(GameState.MainMenu);
+        SceneManager.LoadScene("prototype");
+
+        //ChangeState(GameState.MainMenu);
 
     }
 

@@ -95,7 +95,7 @@ public class CharController : MonoBehaviour {
 
 			Collider[] overlappedSphere = Physics.OverlapSphere (interactableTransform.position, interactableDistance);
 
-			if (overlappedSphere != null && overlappedSphere.Length > 0) {
+            if (overlappedSphere != null && overlappedSphere.Length > 0) {
 
                 Interactable interactable;
 

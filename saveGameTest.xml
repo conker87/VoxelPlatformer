@@ -2,15 +2,20 @@
 <game>
 
 <!--Player data.-->
-	<player saveName="saveDataName" saveTotalTime="7.698073" saveCurrentTimestamp="4/29/2018 12:55:53 AM" playerPositionX="3.394401" playerPositionY="-5.231959E-08" playerPositionZ="0.3964263">
+	<player saveName="saveDataName" saveTotalTime="4.196401" saveCurrentTimestamp="4/30/2018 2:01:50 AM" playerPositionX="7.260899" playerPositionY="-4.314752E-07" playerPositionZ="-1.750605">
 	</player>
 
 <!--This is the list of Collectables.-->
 	<collectables>
+		<collectable CollectableID="Coin_(6.6, 1.5, -1.4)" CollectableType="Coin" />
+		<collectable CollectableID="Coin_(7.0, 1.5, 1.5)" CollectableType="Coin" />
+		<collectable CollectableID="Coin_(7.1, 1.5, -0.1)" CollectableType="Coin" />
+		<collectable CollectableID="Coin_(6.2, 1.5, 2.4)" CollectableType="Coin" />
 	</collectables>
 
 <!--Interactables.-->
 	<interactables>
+		<interactable InteractableID="PrisonGate_Door(3.8,-0.7,-0.9)" IsActivated="True" IsDisabled="False" IsLocked="False" />
 	</interactables>
 
 </game>

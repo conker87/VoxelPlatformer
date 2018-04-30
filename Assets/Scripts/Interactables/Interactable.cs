@@ -9,28 +9,27 @@ public class Interactable : MonoBehaviour {
 
     #region Serialized Private Fields
 
-    [SerializeField]
+    [Header("ID")][SerializeField]
     private string interactableID = "";
-    [SerializeField]
-    private bool defaultIsDisabled, defaultIsLocked, defaultIsActivated;
-    [SerializeField]
-    private bool isDisabled, isLocked, isActivated;
+    [Header("Interactable Booleans")][SerializeField]
+    private bool isDisabled;
+    private bool isLocked, isActivated;
     [SerializeField]
     private bool oneTimeUse, canOnlyInteractFromOtherInteractables = true, canContinue = true;
+    [SerializeField]
+    Animator anim;
 
+    [Header("Reset Fields")]
     [SerializeField]
     private float resetInTime = -1f;
     [SerializeField]
     private bool hasToReset = false;
     [SerializeField]
     protected float resetTime;
-    [SerializeField]
-    Animator anim;
-    [SerializeField]
-    private List<Interactable_Triggers> triggersConnectedToMe;
-
-    [SerializeField]
-    private string turnOnText, turnOffText;
+    
+    [Header("RPG Text")][SerializeField]
+    private string disabledText = "disabledText";
+    private string lockedText = "lockedText", isActivatedText = "isActivatedText", isDeactivatedText = "isDeactivatedText";
 
     #endregion
 
@@ -43,34 +42,6 @@ public class Interactable : MonoBehaviour {
 
         set {
             interactableID = value;
-        }
-    }
-
-    public bool DefaultIsDisabled {
-        get {
-            return defaultIsDisabled;
-        }
-
-        set {
-            defaultIsDisabled = value;
-        }
-    }
-    public bool DefaultIsLocked {
-        get {
-            return defaultIsLocked;
-        }
-
-        set {
-            defaultIsLocked = value;
-        }
-    }
-    public bool DefaultIsActivated {
-        get {
-            return defaultIsActivated;
-        }
-
-        set {
-            defaultIsActivated = value;
         }
     }
 
@@ -138,6 +109,7 @@ public class Interactable : MonoBehaviour {
             resetInTime = value;
         }
     }
+
     public Animator Anim {
         get {
             return anim;
@@ -145,15 +117,6 @@ public class Interactable : MonoBehaviour {
 
         set {
             anim = value;
-        }
-    }
-    public List<Interactable_Triggers> TriggersConnectedToMe {
-        get {
-            return triggersConnectedToMe;
-        }
-
-        set {
-            triggersConnectedToMe = value;
         }
     }
 
@@ -167,26 +130,46 @@ public class Interactable : MonoBehaviour {
         }
     }
 
-    public string TurnOnText {
+    public string DisabledText {
         get {
-            return turnOnText;
+            return disabledText;
         }
 
         set {
-            turnOnText = value;
+            disabledText = value;
         }
     }
-    public string TurnOffText {
+    public string LockedText {
         get {
-            return turnOffText;
+            return lockedText;
         }
 
         set {
-            turnOffText = value;
+            lockedText = value;
+        }
+    }
+    public string IsActivatedText {
+        get {
+            return isActivatedText;
+        }
+
+        set {
+            isActivatedText = value;
+        }
+    }
+    public string IsDeactivatedText {
+        get {
+            return isDeactivatedText;
+        }
+
+        set {
+            isDeactivatedText = value;
         }
     }
 
     #endregion
+
+    bool firstDisable = true;
 
     protected virtual void Start() {
 
@@ -198,21 +181,13 @@ public class Interactable : MonoBehaviour {
         }
 
         if (anim == null) {
+
             anim = GetComponent<Animator>();
+
         }
     }
 
-    private void OnEnable() {
-
-        if (GameController.current.CurrentSaveState == SaveState.NewGame) {
-
-            Debug.Log("GameController.current.CurrentSaveState == SaveState.NewGame");
-
-            IsActivated = DefaultIsActivated;
-            IsDisabled = DefaultIsDisabled;
-            IsLocked = DefaultIsLocked;
-
-        }
+    protected void OnEnable() {
 
         if (anim != null) {
 
@@ -251,10 +226,25 @@ public class Interactable : MonoBehaviour {
         }
 
         if (IsDisabled == true) {
+
+            if (DisabledText != "") {
+
+                Debug.Log(DisabledText);
+
+            }
+
             CanContinue = false;
+
         }
 
         if (IsLocked == true && playerInteracting == true && interactableTrigger.InteractableTriggerAction == InteractableTriggerAction.Interact) {
+
+            if (LockedText != "") {
+
+                Debug.Log(LockedText);
+
+            }
+
             CanContinue = false;
         }
 
@@ -315,16 +305,19 @@ public class Interactable : MonoBehaviour {
 
         HasToReset = false;
 
-        if (isActivated == true && TurnOnText != "") {
+        if (canContinue == true) {
 
-            Debug.Log(TurnOnText);
+            if (isActivated == true && IsActivatedText != "") {
 
-        }
+                Debug.Log(IsActivatedText);
 
-        if (IsActivated == false && TurnOffText != "") {
+            }
 
-            Debug.Log(TurnOffText);
+            if (IsActivated == false && IsDeactivatedText != "") {
 
+                Debug.Log(IsDeactivatedText);
+
+            }
         }
 
         if (HasToReset == false && ResetInTime > 0f) {
