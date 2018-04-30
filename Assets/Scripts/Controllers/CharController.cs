@@ -2,26 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The Controller that controls movement of the Player.
+/// </summary>
 public class CharController : MonoBehaviour {
 
 	[SerializeField]
-	float moveSpeed = 4f, jumpHeight = 8f, preJumpYLevel, maxFallDistance = 5f;
+    // moveSpeed:           The Movement Speed of the Player.
+    // jumpHeight:          The Maximum jump height of the Player.
+    // preJumpYLevel:       The y position of where the Player jumped off.
+    // maxFallDistance:     The maximum distance the Player can fall before incuring damage.
+    // baseButtStompForce:  The base force of the Butt Stomp ability.
+    float moveSpeed = 4f, jumpHeight = 8f, preJumpYLevel, maxFallDistance = 5f, baseButtStompForce = 10f, currentJumpTimer;
 
 	[SerializeField]
-	bool canMove = true, isOnGround = true, hasJumped = false, hasJumpedDouble = false;
+    // canMove:         Can the Player move?
+    // isOnGround:      Is the Player currenty on the Ground?
+    // hasJumped:       Has the Player jumped?
+    // hasJumpedDouble: Has the Player Jumped again, if they have that ability?
+    // hasButtStomped:  Has the Player Butt Stomped?
+    bool canMove = true, isGrounded = true, hasJumped = false, hasJumpedDouble = false, hasButtStomped = false;
 
-	[SerializeField]
-	float interactableDistance = 5f;
     [SerializeField]
+    // The Transform of where the Player can Interact from.
     Transform interactableTransform;
+    [SerializeField]
+    // The maximum distance the Player can Interact from.
+	float interactableDistance = 5f;
 
 	[SerializeField]
-	float baseButtStompForce = 10f;
-	bool hasButtStomped = false;
-
-	[SerializeField]
-	LayerMask geometryLayerMask, interactableLayerMask;
-
+    // geometryLayerMask:       The Layer of what the Player can walk on and what it collides with.
+    LayerMask geometryLayerMask;
     public LayerMask GeometryLayerMask {
         get {
             return geometryLayerMask;
@@ -31,24 +42,21 @@ public class CharController : MonoBehaviour {
             geometryLayerMask = value;
         }
     }
-    public LayerMask InteractableLayerMask {
-        get {
-            return interactableLayerMask;
-        }
 
-        set {
-            interactableLayerMask = value;
-        }
-    }
-
+    // The rigidbody connected to the Player.
     Rigidbody rb;
+    // The actual Player component.
 	Player p;
 
+    // Forward and Right based on the Camera, used for Isometric calculations.
 	Vector3 v3Forward, v3Right;
 
     [SerializeField]
-	float raycastSkin = 0.01f, isGroundedCheckTime, isGroundedCheckCooldown = 0.25f;
-	float capsuleColliderYBounds;
+    // raycastSkin:             The amount purtuding from the Player collider to check for Ground.
+    // isGroundedCheckTime:     The next time when the ground should be checked for.
+    // isGroundedCheckCooldown: The cooldown on when the ground should be checked for.
+    // capsuleColliderYBounds:  The vertical bounds of the Player Capsule Collider.
+    float raycastSkin = 0.01f, isGroundedCheckTime, isGroundedCheckCooldown = 0.25f, capsuleColliderYBounds;
 
     [SerializeField]
     CapsuleCollider capsuleCollider;
@@ -57,95 +65,139 @@ public class CharController : MonoBehaviour {
 		
 		ResetForwardDirection ();
 
-		rb = GetComponent<Rigidbody> ();
-		p = GetComponent<Player> ();
+        // If these vars are null then find their respective components on the objec.
+		rb = rb ?? GetComponent<Rigidbody>();
+		p = p ?? GetComponent<Player>();
+        capsuleCollider = capsuleCollider ?? GetComponent<CapsuleCollider>();
 
-		capsuleColliderYBounds = capsuleCollider.bounds.extents.y;
+        // Sets the Collider bounds to a var.
+        capsuleColliderYBounds = capsuleCollider.bounds.extents.y;
 
 	}
 
 	void Update() {
 
+        // If the Player is Dead or it cannot move then just return this entire function.
         if (p.IsDead == true || canMove == false) {
+
             return;
+
         }
 
+        // If the button for Jump was pressed.
         if (Input.GetButtonDown ("Jump")) {
+
 			Jump ();
+
 		}
 
-		if (Input.GetButtonDown ("ButtStomp") && hasButtStomped == false && isOnGround == false) {
+        // If the Button for the Butt Stomp
+		if (Input.GetButtonDown ("ButtStomp")) {
+
 			ButtStomp ();
+
 		}
 
-        if (isOnGround == true) {
+        // If the Player is Grounded.
+        if (isGrounded == true) {
 
+            // If the previous jump lead to a drop of more than the Max Fall Distance.
             if (preJumpYLevel - transform.position.y > maxFallDistance) {
 
                 Player.current.DamagePlayer(1);
 
             }
             
-            preJumpYLevel = transform.position.y;
+            // Always set the Pre-Jump float to the Y position if Grounded.
+            // preJumpYLevel = transform.position.y;
 
         }
 
-		// Set this to "Interact"
+		// If the button for Interact was pressed.
+        // TODO: Set this up as an actual button.
 		if (Input.GetKeyDown (KeyCode.E)) {
 
+            // Populate an array with all of the Geometry Colliders within the Interact sphere.
 			Collider[] overlappedSphere = Physics.OverlapSphere (interactableTransform.position, interactableDistance);
 
+            // If this array is not null and has a length.
             if (overlappedSphere != null && overlappedSphere.Length > 0) {
 
                 Interactable interactable;
-
-                List<Interactable> interactedInteractables = new List<Interactable>();
-
+                
+                // Itterate through the array of Colliders. 
                 foreach (Collider coll in overlappedSphere) {
 
-                    interactable = coll.GetComponent<Interactable>();// coll.GetComponentInParent<Interactable>();
+                    interactable = coll.GetComponent<Interactable>();
 
+                    // If the Current collider does not have the Interactable component.
                     if (interactable == null) {
+
                         continue;
+
                     }
 
-                    if (interactedInteractables.Contains(interactable)) {
-                        continue;
-                    }
-
+                    // Create a new basic InteractableTrigger so it can be Interacted with.
                     InteractableTrigger interactingTrigger = new
-                        InteractableTrigger(interactable, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle, InteractableTriggerAction.Interact, 0f, false, false);
+                        InteractableTrigger(
+                            interactable,
+                            InteractableTriggerCauses.OnTriggerInteract,
+                            InteractableTriggerEffect.Toggle,
+                            InteractableTriggerAction.Interact,
+                            0f,
+                            false,
+                            false
+                        );
 
+                    // Interact with the Interactable.
 					interactable.Interact (interactingTrigger, true);
-
-                    interactedInteractables.Add(interactable);
 
                 }
 			}
 		}
 
+        if (isGrounded == false) {
+
+            currentJumpTimer += Time.unscaledDeltaTime;
+
+        }
+
+        // Check to see if the Player is Grounded.
         IsGrounded();
 
     }
 
 	void FixedUpdate() {
 
+        // Sets the velocity of the Rigidbody to 0 on the horizontal plane while keeping the vertical speed.
+        //      Had issues with the Player moving about while stood still, this fixed it.
 		rb.velocity = new Vector3 (0f, rb.velocity.y, 0f);
 
-		if (p.IsDead == true || canMove == false) {
-			return;
-		}
+        // If the Player is Dead or it cannot move then just return this entire function.
+        if (p.IsDead == true || canMove == false) {
 
-		Move ();
+            return;
+
+        }
+
+        // Actually Move the Player.
+        Move ();
 
     }
 
+    /// <summary>
+    /// Moves the Player in accordance to the Current Camera's Forward and Right vector.
+    /// </summary>
 	void Move() {
-		
-		Vector3 rightMovement = v3Right * moveSpeed * Time.deltaTime * Input.GetAxis ("HorizontalKey"); 
+
+        // rightMovement:   Sets the West/East movement to the speed.
+        // upMovement:      Sets the North/South movement to the speed.
+        // heading:         Sets the current forward vector of the Player.
+        Vector3 rightMovement = v3Right * moveSpeed * Time.deltaTime * Input.GetAxis ("HorizontalKey"); 
 		Vector3 upMovement = v3Forward * moveSpeed * Time.deltaTime * Input.GetAxis ("VerticalKey");
 		Vector3 heading = Vector3.Normalize (rightMovement + upMovement);
 
+        // Makes sure the Player facing direction is only updated if the Player is moving.
 		if (heading.magnitude > 0.1f) {
 
             transform.forward = heading;
@@ -157,30 +209,60 @@ public class CharController : MonoBehaviour {
 
 	}
 
+    /// <summary>
+    /// Makes the Player Jump.
+    /// </summary>
     void Jump() {
 
-        if ((isOnGround == false
+        // If we're not Grounded, we have Jumped, we have the DOUBLE_JUMP ability and we have Double Jumped
+        // OR we're not Grounded, we have Jumped, we don't have the DOUBLE_JUMP ability.
+        if ((isGrounded == false
             && hasJumped == true
             && GameController.current.HasAcquiredCollectable("DOUBLE_JUMP") == true
-            && hasJumpedDouble == true)
-                ||
-            (isOnGround == false
-            && hasJumped == true
-            && GameController.current.HasAcquiredCollectable("DOUBLE_JUMP") == false)) {
+            && hasJumpedDouble == true)) {
 
+            Debug.Log("All");
+
+            // Do not continue the function.
             return;
-
-        } else {
-
-            preJumpYLevel = transform.position.y;
 
         }
 
+        if (isGrounded == false
+            && hasJumped == true
+            && GameController.current.HasAcquiredCollectable("DOUBLE_JUMP") == false) {
+
+            Debug.Log("Most");
+
+            // Do not continue the function.
+            return;
+
+        }
+
+        if (isGrounded == false && hasJumped == false) {
+
+            Debug.Log("None");
+
+            // Do not continue the function.
+            return;
+
+        }
+
+        // Set the Pre-Jump float to the Y position.
+        preJumpYLevel = transform.position.y;
+
+        // Set the vertical velocity of the Player while keeping the horizontal velocities.
         rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
 
         // Set the main grounded bool to false.
-        isOnGround = false;
+        isGrounded = false;
 
+        // hasJumpedDouble = (hasJumped == true) ? true : hasJumpedDouble;
+        // hasJumped = (hasJumped == false) ? true : hasJumped;
+
+        currentJumpTimer = 0f;
+
+        // If the Player hasn't jumped before.
         if (hasJumped == false) {
 
             hasJumped = true;
@@ -196,19 +278,46 @@ public class CharController : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Makes the Player Butt Stomp.
+    /// </summary>
     void ButtStomp() {
 
-		float fCurrentYLevel = transform.position.y;
-		float fButtStompForce = baseButtStompForce + (1.5f * (fCurrentYLevel - preJumpYLevel));
+        if (isGrounded == true) {
 
-		Debug.Log (string.Format("buttonStompForce: {0}, original/currentY: {1}/{2}", fButtStompForce, preJumpYLevel, fCurrentYLevel));
+            return;
 
+        }
+
+        if (hasButtStomped == true) {
+
+            return;
+
+        }
+
+        // Sets the Current Player's Y position.
+		float currentYLevel = transform.position.y;
+        // Sets the Butt Stomp Force to a value depending on how far away from the original Y pos.
+        float buttStompForce = baseButtStompForce + (3f * currentJumpTimer);
+            
+            // Mathf.Abs((1.5f * (currentYLevel - preJumpYLevel)));
+
+		Debug.LogFormat ("buttonStompForce: {0}, original/currentY: {1}/{2}", buttStompForce, preJumpYLevel, currentYLevel);
+
+        // We set the Player's velocity to 0f.
 		rb.velocity = Vector3.zero;
+
+        // We reset the Butt Stomped bool to true.
 		hasButtStomped = true;
-		rb.AddForce (-Vector3.up * fButtStompForce, ForceMode.Force);
 
-	}
+        // We actually do the butt stomp.
+        rb.velocity = new Vector3(rb.velocity.x, -buttStompForce, rb.velocity.z);
 
+    }
+
+    /// <summary>
+    /// Resets the Forward direction depending on the Current Foward vector of the Camera.
+    /// </summary>
 	public void ResetForwardDirection() {
 
 		v3Forward = Camera.main.transform.forward; 
@@ -228,13 +337,13 @@ public class CharController : MonoBehaviour {
 
             if (Physics.Raycast(transform.position, -Vector3.up, capsuleColliderYBounds + raycastSkin, GeometryLayerMask)) {
 
-                isOnGround = true;
+                isGrounded = true;
                 hasButtStomped = hasJumped = hasJumpedDouble = false;
                 
 
             } else {
 
-                isOnGround = false;
+                isGrounded = false;
 
             }
 

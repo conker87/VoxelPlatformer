@@ -38,58 +38,56 @@ public class LoadingController : MonoBehaviour {
 
         }
 
-        if (other.GetComponentInParent<Player>() != null) {
+        if (other.GetComponentInParent<Player>() == null) {
 
-            /* This doesn't work with the current SaveController system.
-             * 
-             * foreach (Level level in GameController.allLevels) {
+            return;
 
-                loadedLevel = false;
+        }
 
-                foreach (Level loadingLevel in levelsToLoad) {
+        foreach (Level level in GameController.current.allLevels) {
 
-                    if (loadingLevel.LevelName == level.LevelName) {
+            loadedLevel = false;
 
-                        level.LoadLevel();
-                        loadedLevel = true;
+            foreach (Level loadingLevel in levelsToLoad) {
 
-                        break;
+                if (loadingLevel.LevelName == level.LevelName) {
 
-                    }
-                }
+                    level.LoadLevel();
+                    loadedLevel = true;
 
-                if (loadedLevel == false && level.IsCurrentlyLoaded == true) {
-
-                    level.UnloadLevel();
-
-                }
-
-            } */
-
-            foreach (Level level in GameController.current.allLevels) {
-
-                loadedLevel = false;
-
-                foreach (Level levelToLoad in LevelsToLoad) {
-
-                    if (level.LevelName == levelToLoad.LevelName) {
-
-                        loadedLevel = true;
-                        break;
-
-                    }
-                }
-
-                if (loadedLevel == false) {
-
-                    level.gameObject.SetActive(false);
-
-                } else {
-
-                    level.gameObject.SetActive(true);
+                    break;
 
                 }
             }
+
+            if (loadedLevel == false && level.IsCurrentlyLoaded == true) {
+
+                level.UnloadLevel();
+
+            }
+
+            //loadedLevel = false;
+
+            //foreach (Level levelToLoad in LevelsToLoad) {
+
+            //    if (level.LevelName == levelToLoad.LevelName) {
+
+            //        loadedLevel = true;
+            //        break;
+
+            //    }
+            //}
+
+            //if (loadedLevel == false) {
+
+            //    level.gameObject.SetActive(false);
+
+            //} else {
+
+            //    Debug.Log("gfgwe");
+            //    level.gameObject.SetActive(true);
+
+            //}
         }
     }
 }

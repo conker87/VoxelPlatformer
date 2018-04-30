@@ -1,5 +1,9 @@
 ﻿using System;
 
+/// <summary>
+/// The trigger used in Interactables that contains all details of what the Interactable needs.
+/// 
+/// </summary>
 [Serializable]
 public class InteractableTrigger {
 
@@ -25,8 +29,7 @@ public class InteractableTrigger {
     public bool Invert;
 
     /// <summary>
-    /// Set to true to allow the InteractableToTrigger
-    /// to activate its Interact();
+    /// Set to true to allow the InteractableToTrigger to activate its Interact();
     /// </summary>
     public bool DontCauseTriggerEffect;
 

@@ -166,6 +166,7 @@
     <None Include="Assets\ProCore\ProGrids\About\changelog.txt" />
     <None Include="Assets\Shaders\ProjectorMultiply.shader" />
     <None Include="Assets\Shaders\DepthMask.shader" />
+    <None Include="Assets\Shaders\pb_StandardVertexColorBGWall.shader" />
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>U:/UNITY/VoxelPlatformer/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
@@ -424,6 +425,12 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity 2018.1.0b13/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{58ED1430-189F-5923-B778-63910037F8BE}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
