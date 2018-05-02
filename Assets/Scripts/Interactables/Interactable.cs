@@ -9,27 +9,32 @@ public class Interactable : MonoBehaviour {
 
     #region Serialized Private Fields
 
-    [Header("ID")][SerializeField]
-    private string interactableID = "";
-    [Header("Interactable Booleans")][SerializeField]
-    private bool isDisabled;
-    private bool isLocked, isActivated;
-    [SerializeField]
-    private bool oneTimeUse, canOnlyInteractFromOtherInteractables = true, canContinue = true;
-    [SerializeField]
-    Animator anim;
+    [Header("Interactable Settings")]
+    [SerializeField] private string interactableID = "";
+    [SerializeField] private bool oneTimeUse;
+    [SerializeField] private bool canContinue = true;
+    [SerializeField] private Animator anim;
+
+    [Header("Interacting Settings")]
+    [SerializeField] private bool canOnlyInteractFromOtherInteractables = true;
+    [SerializeField] private string onlyInteractFromOtherInteracblesText = "";
+
+    [Header("Disabled Settings")]
+    [SerializeField] private bool isDisabled;
+    [SerializeField] private string disabledText = "";
+
+    [Header("Locked Settings")]
+    [SerializeField] private bool isLocked;
+    [SerializeField] private string lockedText = "";
+
+    [Header("Activated Settings")]
+    [SerializeField] private bool isActivated;
+    [SerializeField] private string isActivatedText = "", isDeactivatedText = "";
 
     [Header("Reset Fields")]
-    [SerializeField]
-    private float resetInTime = -1f;
-    [SerializeField]
-    private bool hasToReset = false;
-    [SerializeField]
-    protected float resetTime;
-    
-    [Header("RPG Text")][SerializeField]
-    private string disabledText = "disabledText";
-    private string lockedText = "lockedText", isActivatedText = "isActivatedText", isDeactivatedText = "isDeactivatedText";
+    [SerializeField] private float resetInTime = -1f;
+    [SerializeField] private bool hasToReset = false;
+    [SerializeField] protected float resetTime;
 
     #endregion
 
@@ -185,6 +190,13 @@ public class Interactable : MonoBehaviour {
             anim = GetComponent<Animator>();
 
         }
+
+        if (GetComponent<Collider>() != null) {
+
+            GetComponent<Collider>().isTrigger = true;
+
+        }
+
     }
 
     protected void OnEnable() {
@@ -229,7 +241,7 @@ public class Interactable : MonoBehaviour {
 
             if (DisabledText != "") {
 
-                Debug.Log(DisabledText);
+                UIElements.current.ShowRPGFluffText(DisabledText);
 
             }
 
@@ -241,7 +253,7 @@ public class Interactable : MonoBehaviour {
 
             if (LockedText != "") {
 
-                Debug.Log(LockedText);
+                UIElements.current.ShowRPGFluffText(LockedText);
 
             }
 
@@ -249,7 +261,15 @@ public class Interactable : MonoBehaviour {
         }
 
         if (CanOnlyInteractFromOtherInteractables == true && playerInteracting == true) {
+
+            if (onlyInteractFromOtherInteracblesText != "") {
+
+                UIElements.current.ShowRPGFluffText(onlyInteractFromOtherInteracblesText);
+
+            }
+
             CanContinue = false;
+
         }
 
         if ((interactableTrigger.InteractableTriggerEffect == InteractableTriggerEffect.Deactivate
@@ -309,13 +329,15 @@ public class Interactable : MonoBehaviour {
 
             if (isActivated == true && IsActivatedText != "") {
 
-                Debug.Log(IsActivatedText);
+
+                UIElements.current.ShowRPGFluffText(IsActivatedText);
 
             }
 
             if (IsActivated == false && IsDeactivatedText != "") {
 
-                Debug.Log(IsDeactivatedText);
+
+                UIElements.current.ShowRPGFluffText(IsDeactivatedText);
 
             }
         }

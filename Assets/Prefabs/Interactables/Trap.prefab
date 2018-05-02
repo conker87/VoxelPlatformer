@@ -95,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1041388742381862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4597102337080524}
@@ -199,13 +199,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableID: 
   oneTimeUse: 0
-  canOnlyInteractFromOtherInteractables: 1
+  canContinue: 1
   anim: {fileID: 0}
-  isOn: 0
-  ammo: {fileID: 114744745248303988, guid: 85cffa522ea9e3d4aaef82c6d701f79e, type: 2}
-  fireLocation: {fileID: 4145321943920642}
-  ammoSpeed: 5
-  ammoDamage: 1
-  ammoDestroyAfter: 5
-  attackSpeed: 1
+  canOnlyInteractFromOtherInteractables: 1
+  onlyInteractFromOtherInteracblesText: 
+  isDisabled: 0
+  disabledText: 
+  isLocked: 0
+  lockedText: 
+  isActivated: 0
+  isActivatedText: 
+  isDeactivatedText: 
+  resetInTime: -1
+  hasToReset: 0
+  resetTime: 0
+  fireCheckCooldown: 0.1
+  trapFire: []
   fireOnce: 0

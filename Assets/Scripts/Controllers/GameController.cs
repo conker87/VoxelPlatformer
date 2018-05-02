@@ -123,6 +123,7 @@ public class GameController : MonoBehaviour {
         CurrentSaveState = saveState;
 
         // Sets the Levels Parent to true to show the game.
+        levelsParent.transform.position = Vector3.zero;
         levelsParent.SetActive(true);
         
         // Find the already instansiated Player object that's in Levels Parent.

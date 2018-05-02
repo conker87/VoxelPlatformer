@@ -10,14 +10,31 @@ using TMPro;
 
 public class UIElements : MonoBehaviour {
 
-	[Header("Canvases")]
+    // Create the Singleton for this class.
+    public static UIElements current = null;
+    void Awake() {
+
+        if (current == null) {
+
+            current = this;
+
+        }
+        else if (current != this) {
+
+            Destroy(gameObject);
+
+        }
+    }
+
+    [Header("Canvases")]
 	public Transform IngameLevelLoadedCanvas;
 	public Transform MenuLevelSelectCanvas, IngameLevelLoadedPausedCanvas, MenuOptionsCanvas;
     public Transform CutsceneCanvas;
 
 	[Header("Level Loaded Canvas")]
 	public TextMeshProUGUI NumberOfCoins;
-	public TextMeshProUGUI NumberOfStars, Health, TimeT;
+	public TextMeshProUGUI NumberOfStars, Health, TimeT, RPGFluff;
+    Coroutine RPGFluffFadeOut;
 
     [Header("Menu Level Select Canvas")]
     public Button MenuOptionsContinueButton;
@@ -30,7 +47,6 @@ public class UIElements : MonoBehaviour {
 
 	// Not usable currently?
 	public float resolutionScale = 1f;
-
 
 	void Start() {
 
@@ -75,21 +91,11 @@ public class UIElements : MonoBehaviour {
 
 			if (NumberOfCoins != null) {
 
-                NumberOfCoins.text = "Coins: " + GameController.current.NumberOfCollectables(CollectableType.Coin);
-
-			}
-
-			if (NumberOfStars != null) {
-
-				NumberOfStars.text = "Stars: " + GameController.current.NumberOfCollectables(CollectableType.Star);
+                NumberOfCoins.text = " " + GameController.current.Player.CurrentHealth + "/" + GameController.current.Player.MaximumHealth +
+                    " | Coins: " + GameController.current.NumberOfCollectables(CollectableType.Coin) +
+                    " | Stars: " + GameController.current.NumberOfCollectables(CollectableType.Star);
 
             }
-
-			if (Health != null) {
-
-				Health.text = GameController.current.Player.CurrentHealth + "/" + GameController.current.Player.MaximumHealth;
-
-			}
 
 			if (TimeT != null) {
 
@@ -103,9 +109,9 @@ public class UIElements : MonoBehaviour {
 				if (t.Minutes > 0)
 					format += "{2:D2}:";
 
-				format += "{1:D2}.{0:D1}";
+				format += "{1:D2}.{0:D3}";
 
-				TimeT.text = string.Format(format, t.Milliseconds, t.Seconds, t.Minutes, t.Hours);
+				TimeT.text = " " + string.Format(format, t.Milliseconds, t.Seconds, t.Minutes, t.Hours);
 
 			}
 
@@ -130,6 +136,49 @@ public class UIElements : MonoBehaviour {
         }
 
         button.onClick.AddListener(action);
+
+    }
+
+    public void ShowRPGFluffText(string text, float fadeOutInTime = 3f, float fadeOutTime = 1f) {
+
+        if (RPGFluffFadeOut != null) {
+
+            RPGFluff.color = new Color(RPGFluff.color.r, RPGFluff.color.g, RPGFluff.color.b, 1);
+            StopCoroutine(RPGFluffFadeOut);
+
+        }
+
+        if (RPGFluff == null) {
+
+            return;
+
+        }
+
+        RPGFluff.text = text;
+
+        RPGFluffFadeOut = null;
+
+        RPGFluffFadeOut = StartCoroutine(FadeOutRPGFluffText(fadeOutInTime, fadeOutTime));
+    }
+
+    IEnumerator FadeOutRPGFluffText(float fadeOutInTime, float fadeOutTime) {
+
+        yield return new WaitForSeconds(fadeOutInTime);
+
+        RPGFluff.color = new Color(RPGFluff.color.r, RPGFluff.color.g, RPGFluff.color.b, 1);
+
+        while (RPGFluff.color.a > 0.0f) {
+
+            RPGFluff.color = new Color(RPGFluff.color.r,
+                RPGFluff.color.g,
+                RPGFluff.color.b,
+                RPGFluff.color.a - (Time.deltaTime / fadeOutTime)
+            );
+
+            yield return null;
+        }
+
+        RPGFluff.text = "";
 
     }
 
