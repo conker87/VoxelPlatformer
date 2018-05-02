@@ -17,19 +17,29 @@ public class Interactable : MonoBehaviour {
 
     [Header("Interacting Settings")]
     [SerializeField] private bool canOnlyInteractFromOtherInteractables = true;
-    [SerializeField] private string onlyInteractFromOtherInteracblesText = "";
+    [SerializeField] private string onlyInteractFromOtherInteractblesText = "";
+    [SerializeField] private bool onlyInteractOnlyDisplayOncePerSession = true;
+    private bool hasOnlyInteractOnlyDisplayed = false;
 
     [Header("Disabled Settings")]
     [SerializeField] private bool isDisabled;
     [SerializeField] private string disabledText = "";
+    [SerializeField] private bool disabledTextOnlyDisplayOncePerSession = true;
+    private bool hasDisabledTextOnlyDisplayed = false;
 
     [Header("Locked Settings")]
     [SerializeField] private bool isLocked;
     [SerializeField] private string lockedText = "";
+    [SerializeField] private bool lockedTextOnlyDisplayOncePerSession = true;
+    private bool hasLockedTextOnlyDisplayed = false;
 
     [Header("Activated Settings")]
     [SerializeField] private bool isActivated;
     [SerializeField] private string isActivatedText = "", isDeactivatedText = "";
+    [SerializeField] private bool isActivatedTextOnlyDisplayOncePerSession = true;
+    private bool hasIsActivatedTextOnlyDisplayed = false;
+    [SerializeField] private bool isDeactivatedTextOnlyDisplayOncePerSession = true;
+    private bool hasIsDeactivatedTextOnlyDisplayed = false;
 
     [Header("Reset Fields")]
     [SerializeField] private float resetInTime = -1f;
@@ -241,7 +251,11 @@ public class Interactable : MonoBehaviour {
 
             if (DisabledText != "") {
 
-                UIElements.current.ShowRPGFluffText(DisabledText);
+                if (hasDisabledTextOnlyDisplayed == false) {
+                    UIElements.current.ShowRPGFluffText(DisabledText);
+                }
+
+                hasDisabledTextOnlyDisplayed = disabledTextOnlyDisplayOncePerSession;
 
             }
 
@@ -262,9 +276,13 @@ public class Interactable : MonoBehaviour {
 
         if (CanOnlyInteractFromOtherInteractables == true && playerInteracting == true) {
 
-            if (onlyInteractFromOtherInteracblesText != "") {
+            if (onlyInteractFromOtherInteractblesText != "") {
 
-                UIElements.current.ShowRPGFluffText(onlyInteractFromOtherInteracblesText);
+                if (hasOnlyInteractOnlyDisplayed == false) {
+                    UIElements.current.ShowRPGFluffText(onlyInteractFromOtherInteractblesText);
+                }
+
+                hasOnlyInteractOnlyDisplayed = onlyInteractOnlyDisplayOncePerSession;
 
             }
 
@@ -329,15 +347,21 @@ public class Interactable : MonoBehaviour {
 
             if (isActivated == true && IsActivatedText != "") {
 
+                if (hasIsActivatedTextOnlyDisplayed == false) {
+                    UIElements.current.ShowRPGFluffText(onlyInteractFromOtherInteractblesText);
+                }
 
-                UIElements.current.ShowRPGFluffText(IsActivatedText);
+                hasIsActivatedTextOnlyDisplayed = isActivatedTextOnlyDisplayOncePerSession;
 
             }
 
             if (IsActivated == false && IsDeactivatedText != "") {
 
+                if (hasIsDeactivatedTextOnlyDisplayed == false) {
+                    UIElements.current.ShowRPGFluffText(IsDeactivatedText);
+                }
 
-                UIElements.current.ShowRPGFluffText(IsDeactivatedText);
+                hasIsDeactivatedTextOnlyDisplayed = isDeactivatedTextOnlyDisplayOncePerSession;
 
             }
         }

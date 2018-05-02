@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1268428504936508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -1, z: 3.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4065589411405926}
@@ -2727,19 +2727,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  defaultIsDisabled: 0
-  defaultIsLocked: 0
-  defaultIsActivated: 1
-  isDisabled: 0
-  isLocked: 0
-  isActivated: 0
   oneTimeUse: 0
-  canOnlyInteractFromOtherInteractables: 0
   canContinue: 1
+  anim: {fileID: 95445198963447942}
+  canOnlyInteractFromOtherInteractables: 0
+  onlyInteractFromOtherInteracblesText: 
+  isDisabled: 0
+  disabledText: 
+  isLocked: 0
+  lockedText: 
+  isActivated: 0
+  isActivatedText: 
+  isDeactivatedText: 
   resetInTime: -1
   hasToReset: 0
   resetTime: 0
-  anim: {fileID: 95445198963447942}
-  triggersConnectedToMe: []
-  turnOnText: 
-  turnOffText: 
