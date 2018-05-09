@@ -109,6 +109,7 @@
     <Compile Include="Assets\Scripts\Util\OrderGeometryChildren.cs" />
     <Compile Include="Assets\Scripts\Util\RotateTransform.cs" />
     <Compile Include="Assets\Scripts\Util\SetRenderQueue.cs" />
+    <Compile Include="Assets\SetParent_OnTriggerEnter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />
