@@ -52,7 +52,10 @@ public class GameController : MonoBehaviour {
     public GameState CurrentState = GameState.MainMenu;
     // The Current Save State of the game, used to determine if it's a New Game or Loaded Game.
     public SaveState CurrentSaveState;
-    
+
+    public bool CanCurrentSaveGame = true;
+
+
     public bool justChangedState = false;
 
 	void Start() {
@@ -139,7 +142,7 @@ public class GameController : MonoBehaviour {
     /// </summary>
     public void QuitGame() {
 
-        SceneManager.LoadScene("prototype");
+        SceneManager.LoadScene("loadGame");
 
     }
     
@@ -152,7 +155,7 @@ public class GameController : MonoBehaviour {
 		justChangedState = true;
 		CurrentState = newState;
 
-		Debug.Log (string.Format("GameController::ChangeGameState: New State: {0}", newState));
+		// Debug.Log (string.Format("GameController::ChangeGameState: New State: {0}", newState));
 
 	}
 

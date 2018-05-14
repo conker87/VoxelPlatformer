@@ -154,7 +154,7 @@ public class UIElements : MonoBehaviour {
 
         }
 
-        RPGFluff.text = text;
+        RPGFluff.text = "[PH] " + text;
 
         RPGFluffFadeOut = null;
 

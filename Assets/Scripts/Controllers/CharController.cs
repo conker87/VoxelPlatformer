@@ -115,7 +115,7 @@ public class CharController : MonoBehaviour {
 
 		// If the button for Interact was pressed.
         // TODO: Set this up as an actual button.
-		if (Input.GetKeyDown (KeyCode.E)) {
+		if (Input.GetButtonDown("Interact")) {
 
             // Populate an array with all of the Geometry Colliders within the Interact sphere.
 			Collider[] overlappedSphere = Physics.OverlapSphere (interactableTransform.position, interactableDistance);
@@ -193,9 +193,17 @@ public class CharController : MonoBehaviour {
         // rightMovement:   Sets the West/East movement to the speed.
         // upMovement:      Sets the North/South movement to the speed.
         // heading:         Sets the current forward vector of the Player.
-        Vector3 rightMovement = v3Right * moveSpeed * Time.deltaTime * Input.GetAxis ("HorizontalKey"); 
-		Vector3 upMovement = v3Forward * moveSpeed * Time.deltaTime * Input.GetAxis ("VerticalKey");
-		Vector3 heading = Vector3.Normalize (rightMovement + upMovement);
+
+        // TODO: Do I want to force the player into snapping to the directions?
+        float horizontalAxis = Mathf.Round(Input.GetAxisRaw("HorizontalKey"));
+        float verticalAxis = Mathf.Round(Input.GetAxisRaw("VerticalKey"));
+
+        // Vector3 rightMovement = v3Right * moveSpeed * Time.deltaTime * Input.GetAxisRaw("HorizontalKey"); 
+        // Vector3 upMovement = v3Forward * moveSpeed * Time.deltaTime * Input.GetAxisRaw("VerticalKey");
+        Vector3 rightMovement = v3Right * moveSpeed * Time.deltaTime * horizontalAxis; 
+        Vector3 upMovement = v3Forward * moveSpeed * Time.deltaTime * verticalAxis;
+
+        Vector3 heading = Vector3.Normalize (rightMovement + upMovement);
 
         // Makes sure the Player facing direction is only updated if the Player is moving.
 		if (heading.magnitude > 0.1f) {
@@ -214,25 +222,21 @@ public class CharController : MonoBehaviour {
     /// </summary>
     void Jump() {
 
-        // If we're not Grounded, we have Jumped, we have the DOUBLE_JUMP ability and we have Double Jumped
-        // OR we're not Grounded, we have Jumped, we don't have the DOUBLE_JUMP ability.
+        // We're not Grounded, we have Jumped, we have the DOUBLE_JUMP ability and we have Double Jumped
         if ((isGrounded == false
             && hasJumped == true
             && GameController.current.HasAcquiredCollectable("DOUBLE_JUMP") == true
             && hasJumpedDouble == true)) {
-
-            Debug.Log("All");
 
             // Do not continue the function.
             return;
 
         }
 
+        // We're not Grounded, we have Jumped, we don't have the DOUBLE_JUMP ability.
         if (isGrounded == false
             && hasJumped == true
             && GameController.current.HasAcquiredCollectable("DOUBLE_JUMP") == false) {
-
-            Debug.Log("Most");
 
             // Do not continue the function.
             return;
@@ -240,8 +244,6 @@ public class CharController : MonoBehaviour {
         }
 
         if (isGrounded == false && hasJumped == false) {
-
-            Debug.Log("None");
 
             // Do not continue the function.
             return;
@@ -332,8 +334,6 @@ public class CharController : MonoBehaviour {
         if (Time.time > isGroundedCheckTime) {
 
             isGroundedCheckTime = Time.time + isGroundedCheckCooldown;
-
-            // Debug.Log("Will Ground Check.");
 
             if (Physics.Raycast(transform.position, -Vector3.up, capsuleColliderYBounds + raycastSkin, GeometryLayerMask)) {
 

@@ -121,6 +121,12 @@ public class SaveController : MonoBehaviour {
 
         }
 
+        if (GameController.current.CanCurrentSaveGame == false) {
+
+            return;
+
+        }
+
         Debug.Log ("Saving...");
 
 		xmlWriter = XmlWriter.Create("saveGameTest.xml");

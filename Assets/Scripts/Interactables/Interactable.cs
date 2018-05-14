@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This class must be given to Interactables that will be interacted by other Interactables.
+/// This component must be given to Interactables that will be interacted by other Interactables.
 /// </summary>
 public class Interactable : MonoBehaviour {
 
@@ -13,36 +13,37 @@ public class Interactable : MonoBehaviour {
     [SerializeField] private string interactableID = "";
     [SerializeField] private bool oneTimeUse;
     [SerializeField] private bool canContinue = true;
-    [SerializeField] private Animator anim;
+    [SerializeField] protected Animator anim;
+    [SerializeField] protected bool isCurrentlyAnimating;
 
     [Header("Interacting Settings")]
     [SerializeField] private bool canOnlyInteractFromOtherInteractables = true;
-    [SerializeField] private string onlyInteractFromOtherInteractblesText = "";
-    [SerializeField] private bool onlyInteractOnlyDisplayOncePerSession = true;
-    private bool hasOnlyInteractOnlyDisplayed = false;
+    [SerializeField] private string onlyInteractFromOtherInteractblesText = "onlyInteractFromOtherInteractblesText";
+    [SerializeField] protected bool onlyInteractOnlyDisplayOncePerSession = true;
+    protected bool hasOnlyInteractOnlyDisplayed = false;
 
     [Header("Disabled Settings")]
     [SerializeField] private bool isDisabled;
-    [SerializeField] private string disabledText = "";
-    [SerializeField] private bool disabledTextOnlyDisplayOncePerSession = true;
-    private bool hasDisabledTextOnlyDisplayed = false;
+    [SerializeField] private string disabledText = "disabledText";
+    [SerializeField] protected bool disabledTextOnlyDisplayOncePerSession = true;
+    protected bool hasDisabledTextOnlyDisplayed = false;
 
     [Header("Locked Settings")]
     [SerializeField] private bool isLocked;
-    [SerializeField] private string lockedText = "";
-    [SerializeField] private bool lockedTextOnlyDisplayOncePerSession = true;
-    private bool hasLockedTextOnlyDisplayed = false;
+    [SerializeField] private string lockedText = "lockedText";
+    [SerializeField] protected bool lockedTextOnlyDisplayOncePerSession = true;
+    protected bool hasLockedTextOnlyDisplayed = false;
 
     [Header("Activated Settings")]
     [SerializeField] private bool isActivated;
-    [SerializeField] private string isActivatedText = "", isDeactivatedText = "";
-    [SerializeField] private bool isActivatedTextOnlyDisplayOncePerSession = true;
-    private bool hasIsActivatedTextOnlyDisplayed = false;
-    [SerializeField] private bool isDeactivatedTextOnlyDisplayOncePerSession = true;
-    private bool hasIsDeactivatedTextOnlyDisplayed = false;
+    [SerializeField] private string isActivatedText = "isActivatedText", isDeactivatedText = "isDeactivatedText";
+    [SerializeField] protected bool isActivatedTextOnlyDisplayOncePerSession = true;
+    protected bool hasIsActivatedTextOnlyDisplayed = false;
+    [SerializeField] protected bool isDeactivatedTextOnlyDisplayOncePerSession = true;
+    protected bool hasIsDeactivatedTextOnlyDisplayed = false;
 
     [Header("Reset Fields")]
-    [SerializeField] private float resetInTime = -1f;
+    [SerializeField] protected float resetInTime = -1f;
     [SerializeField] private bool hasToReset = false;
     [SerializeField] protected float resetTime;
 
@@ -184,8 +185,6 @@ public class Interactable : MonoBehaviour {
 
     #endregion
 
-    bool firstDisable = true;
-
     protected virtual void Start() {
 
         if (InteractableID == "") {
@@ -209,7 +208,7 @@ public class Interactable : MonoBehaviour {
 
     }
 
-    protected void OnEnable() {
+    protected virtual void OnEnable() {
 
         if (anim != null) {
 
@@ -222,7 +221,7 @@ public class Interactable : MonoBehaviour {
 
         if (anim != null) {
 
-            // anim.SetBool("IsOn", IsActivated);
+            isCurrentlyAnimating = anim.IsInTransition(0);
 
         }
 
@@ -244,6 +243,12 @@ public class Interactable : MonoBehaviour {
         if (interactableTrigger == null) {
 
             interactableTrigger = new InteractableTrigger(this, InteractableTriggerCauses.OnTriggerInteract, InteractableTriggerEffect.Toggle, InteractableTriggerAction.Interact, 0, false, false);
+
+        }
+
+        if (isCurrentlyAnimating == true) {
+
+            CanContinue = false;
 
         }
 
@@ -348,7 +353,7 @@ public class Interactable : MonoBehaviour {
             if (isActivated == true && IsActivatedText != "") {
 
                 if (hasIsActivatedTextOnlyDisplayed == false) {
-                    UIElements.current.ShowRPGFluffText(onlyInteractFromOtherInteractblesText);
+                    UIElements.current.ShowRPGFluffText(IsActivatedText);
                 }
 
                 hasIsActivatedTextOnlyDisplayed = isActivatedTextOnlyDisplayOncePerSession;
