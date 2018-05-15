@@ -6,21 +6,14 @@ using ProBuilder.Core;
 
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class ProgrammableWall : MonoBehaviour {
 
-    [SerializeField] Transform pivot;
+    [SerializeField] public Transform pivot;
 
-    [Header("Block Pools")]
+    [Header("Block Pools & Colors")]
     [SerializeField] List<pb_Object> blockPool = new List<pb_Object>();
-    // End Blocks must be blockSizeX / 2f and the same blockSizeY.
-    [SerializeField] List<pb_Object> endBlockPool = new List<pb_Object>();
-    List<pb_Object> currentBlocks = new List<pb_Object>();
-
-    [Header("Block Size")]
-    [SerializeField] float blockSizeY = 1f;
-    [SerializeField] float blockSizeX = 2f;
-
-    [Header("Block Colors")]
+    [SerializeField] List<pb_Object> endBlockPool = new List<pb_Object>();  // blockSizeX / 2, blockSizeY.
     [SerializeField] Color[] randomColors = new Color[] { new Color(0.44f, 0.44f, 0.44f), new Color(0.45f, 0.45f, 0.45f),
         new Color(0.46f, 0.46f, 0.46f), new Color(0.47f, 0.47f, 0.47f), new Color(0.48f, 0.48f, 0.48f),
         new Color(0.49f, 0.49f, 0.49f), new Color(0.5f, 0.5f, 0.5f), new Color(0.51f, 0.51f, 0.51f),
@@ -28,16 +21,31 @@ public class ProgrammableWall : MonoBehaviour {
         new Color(0.56f, 0.56f, 0.56f), new Color(0.57f, 0.57f, 0.57f), new Color(0.58f, 0.58f, 0.58f),
         new Color(0.59f, 0.59f, 0.59f), new Color(0.6f, 0.6f, 0.6f), new Color(0.61f, 0.61f, 0.61f),
         new Color(0.62f, 0.62f, 0.62f), new Color(0.63f, 0.63f, 0.63f) };
+    [SerializeField] string forceTag = "CanBeDisabled";
+
+    [Header("Block Size")]
+    [SerializeField] float blockSizeY = 1f;
+    [SerializeField] float blockSizeX = 2f;
+
+    float previousBlockSizeY, previousBlockSizeX;
 
     [Header("Wall Size")]
-    [Range(1, 50)][SerializeField] int layers = 6;
-    [Range(1, 50)][SerializeField] int columns = 8;
+    [Range(1, 50)] [SerializeField] int layerSize = 6;
+    [Range(1, 50)] [SerializeField] int columnSize = 8;
+
+    float previousLayerSize, previousColumnSize;
 
     [Header("Wall Settings")]
+    [SerializeField] WallDirection wallDirection = WallDirection.North;
     [SerializeField] bool stagger = true;
-    [SerializeField] bool flipStagger = false, addEndingBlock = false, isAcshullyFloor = false, opposite = false;
+    [SerializeField] bool flipStagger = false, addEndingBlock = false, isAcshullyFloor = false, evenSize = true, flipGrowDirection = false;
+
+    WallDirection previousWallDirection;
+    bool previousStagger, previousFlipStagger, previousAddEndingBlock, previousIsAcshullyFloor, previousEvenSize, previousFlipGrowDirection;
 
     bool doEndBlock = false;
+
+    public bool finalizeWall;
 
     bool doNotInstantiate = false;
 
@@ -49,22 +57,44 @@ public class ProgrammableWall : MonoBehaviour {
             return;
 
         }
+
+        if (blockPool.Count == 0 || endBlockPool.Count == 0) {
+
+            Debug.LogError("This prefab does not have any blocks assigned to the Pool Lists.");
+            return;
+
+        }
         
         ResetWall();
 
         pivot.localEulerAngles = (isAcshullyFloor == true) ? new Vector3(-90f, 0f, 0f) : new Vector3(0f, 0f, 0f);
 
-        for (int j = 0; j < layers; j++) {
+        if (wallDirection == WallDirection.North) {
+            pivot.localEulerAngles = new Vector3(pivot.localEulerAngles.x, -90f, 0f);
+        }
+        if (wallDirection == WallDirection.East) {
+            pivot.localEulerAngles = new Vector3(pivot.localEulerAngles.x, 0f, 0f);
+        }
+        if (wallDirection == WallDirection.South) {
+            pivot.localEulerAngles = new Vector3(pivot.localEulerAngles.x, 90f, 0f);
+        }
+        if (wallDirection == WallDirection.West) {
+            pivot.localEulerAngles = new Vector3(pivot.localEulerAngles.x, 180f, 0f);
+        }
 
-            GameObject currentLayer = new GameObject();
-            currentLayer.name = j.ToString();
+        for (int j = 0; j < layerSize; j++) {
+
+            GameObject currentLayer = new GameObject {
+                name = j.ToString(),
+
+            };
             currentLayer.transform.parent = pivot;
 
-            for (int i = 0; i < columns; i++) {
+            for (int i = 0; i < columnSize; i++) {
 
                 doNotInstantiate = false;
                 float currentLocalX = i * (blockSizeX);
-                float currentLocalY = (opposite == true) ? j * (-blockSizeY) : j * (blockSizeY);
+                float currentLocalY = (flipGrowDirection == true) ? j * (-blockSizeY) : j * (blockSizeY);
                 Vector3 currentLocalPostion = new Vector3(currentLocalX, currentLocalY, 0f);
 
                 if (addEndingBlock == true && stagger == true) {
@@ -73,16 +103,18 @@ public class ProgrammableWall : MonoBehaviour {
 
                     Vector3 endPosition = currentLocalPostion;
 
-                    if (flipStagger == false) {
+                    if (evenSize == false) {
 
-                        if (j % 2 == 0 && i == 0) {
+                        if ((flipStagger == false && j % 2 == 0 && i == 0)
+                            || (flipStagger == true && j % 2 != 0 && i == 0)) {
 
                             endPosition = new Vector3(currentLocalPostion.x, currentLocalPostion.y, 0f);
                             doEndBlock = true;
 
                         }
 
-                        if (j % 2 != 0 && i == columns - 1) {
+                        if ((flipStagger == false && j % 2 != 0 && i == columnSize - 1)
+                            || (flipStagger == true && j % 2 == 0 && i == columnSize - 1)) {
 
                             endPosition = new Vector3(currentLocalPostion.x + blockSizeX, currentLocalPostion.y, 0f);
                             doEndBlock = true;
@@ -90,24 +122,27 @@ public class ProgrammableWall : MonoBehaviour {
                         }
                     }
 
-                    if (flipStagger == true) {
+                    if (evenSize == true) {
 
-                        if (j % 2 != 0 && i == 0) {
+                        if ((flipStagger == false && j % 2 == 0 && i == 0)
+                            || (flipStagger == true && j % 2 != 0 && i == 0)) {
 
                             endPosition = new Vector3(currentLocalPostion.x, currentLocalPostion.y, 0f);
                             doEndBlock = true;
 
                         }
 
-                        if (j % 2 == 0 && i == columns - 1) {
+                        if ((flipStagger == true && j % 2 != 0 && i == columnSize - 1)
+                            || (flipStagger == false && j % 2 == 0 && i == columnSize - 1)) {
 
-                            endPosition = new Vector3(currentLocalPostion.x + blockSizeX, currentLocalPostion.y, 0f);
+                            endPosition = new Vector3(currentLocalPostion.x + (blockSizeX / 2f), currentLocalPostion.y, 0f);
                             doEndBlock = true;
 
                         }
                     }
 
                     if (doEndBlock == true) {
+
                         pb_Object endObj = Instantiate(endBlockPool[Random.Range(0, endBlockPool.Count)]) as pb_Object;
 
                         endObj.transform.parent = pivot;
@@ -116,13 +151,11 @@ public class ProgrammableWall : MonoBehaviour {
                         endObj.gameObject.name = string.Format("EndBlock({0},{1})", j, i);
                         endObj.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
 
-                        currentBlocks.Add(endObj);
-
                         endObj.transform.parent = currentLayer.transform;
+                        endObj.tag = forceTag;
 
                         ColorizeObject(endObj);
                     }
-
                 }
 
                 if (stagger == true) {
@@ -140,6 +173,16 @@ public class ProgrammableWall : MonoBehaviour {
                     }
                 }
 
+                if (stagger == true && evenSize == true) {
+
+                    if ((flipStagger == true && j % 2 != 0 && i == columnSize - 1)
+                        || (flipStagger == false && j % 2 == 0 && i == columnSize - 1)) {
+
+                        continue;
+
+                    }
+                }
+
                 pb_Object obj = Instantiate(blockPool[Random.Range(0, blockPool.Count)]) as pb_Object;
 
                 obj.transform.parent = pivot;
@@ -149,9 +192,9 @@ public class ProgrammableWall : MonoBehaviour {
                 obj.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
 
                 obj.transform.parent = currentLayer.transform;
-                ColorizeObject(obj);
+                obj.tag = forceTag;
 
-                currentBlocks.Add(obj);
+                ColorizeObject(obj);
 
             }
         }
@@ -159,14 +202,14 @@ public class ProgrammableWall : MonoBehaviour {
 
     public void ResetWall() {
 
-        currentBlocks.Clear();
-
         do {
 
-            for (int i = 0; i < pivot.GetComponentsInChildren<Transform>().Length; i++) {
+            for (int i = pivot.GetComponentsInChildren<Transform>().Length - 1; i >= 0; i--) {
 
-                if (pivot.GetComponentsInChildren<Transform>()[i].gameObject.name.Contains("MergedObject") || pivot.GetComponentsInChildren<Transform>()[i].gameObject.name.Contains("Pivot")) {
-
+                if (pivot.GetComponentsInChildren<Transform>()[i].gameObject.name.Contains("MergedObject")
+                    || pivot.GetComponentsInChildren<Transform>()[i].gameObject.name.Contains("Pivot")
+                    || pivot.GetComponentsInChildren<Transform>()[i].gameObject.name.Contains("Prevent")) {
+                    
                     continue;
 
                 }
@@ -175,7 +218,7 @@ public class ProgrammableWall : MonoBehaviour {
 
             }
 
-        } while (pivot.GetComponentsInChildren<Transform>().Length > 1);
+        } while (pivot.GetComponentsInChildren<Transform>().Count(a => a.gameObject.name.Contains("Block")) > 0);
     }
 
     public void MergeWall() {
@@ -235,4 +278,60 @@ public class ProgrammableWall : MonoBehaviour {
         return pivot.GetComponentsInChildren<pb_Object>().FirstOrDefault(a => a.gameObject.name.Contains("MergedObject"));
 
     }
+
+    void Start() {
+
+        foreach (Transform transform in GetComponentsInChildren<Transform>()) {
+
+            if (transform.gameObject.name.Contains("Pivot")) {
+
+                pivot = transform;
+                break;
+
+            }
+        }
+    }
+
+    void Update() {
+        
+        if (previousColumnSize != columnSize
+            || previousLayerSize != layerSize
+            || previousBlockSizeX != blockSizeX
+            || previousBlockSizeY != blockSizeY
+            || previousWallDirection != wallDirection
+            || previousStagger != stagger
+            || previousFlipStagger != flipStagger
+            || previousAddEndingBlock != addEndingBlock
+            || previousIsAcshullyFloor != isAcshullyFloor
+            || previousEvenSize != evenSize
+            || previousFlipGrowDirection != flipGrowDirection) {
+
+            CreateWall();
+
+        }
+    }
+
+    void LateUpdate() {
+
+        previousColumnSize = columnSize;
+        previousLayerSize = layerSize;
+        previousBlockSizeX = blockSizeX;
+        previousBlockSizeY = blockSizeY;
+
+        previousWallDirection = wallDirection;
+
+        previousStagger = stagger;
+        previousFlipStagger = flipStagger;
+        previousAddEndingBlock = addEndingBlock;
+        previousIsAcshullyFloor = isAcshullyFloor;
+        previousEvenSize = evenSize;
+        previousFlipGrowDirection = flipGrowDirection;
+
+    }
+
+    void OnEnable() {
+        Start();
+    }
 }
+
+enum WallDirection { North, East, South, West }

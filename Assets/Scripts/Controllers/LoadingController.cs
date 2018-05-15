@@ -65,6 +65,7 @@ public class LoadingController : MonoBehaviour {
 
                 if (loadingLevel.LevelName == level.LevelName) {
 
+                    level.gameObject.SetActive(true);
                     level.LoadLevel();
                     loadedLevel = true;
 
@@ -75,6 +76,7 @@ public class LoadingController : MonoBehaviour {
 
             if (loadedLevel == false && level.IsCurrentlyLoaded == true) {
 
+                // level.gameObject.SetActive(true);
                 level.UnloadLevel();
 
             }

@@ -1,16 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+
 using UnityEditor;
 
-[CustomEditor(typeof(ProgrammableWall))]
+[CustomEditor(typeof(ProgrammableWall)), CanEditMultipleObjects]
 public class ProgrammableWallEditor : Editor {
 
-    ProgrammableWall component;
+    ProgrammableWall[] components;
 
     private void OnEnable() {
 
-        component = (ProgrammableWall) target;
+        Object[] objects = targets;
+        components = new ProgrammableWall[objects.Length];
+
+        for (int i = 0; i < objects.Length; i++) {
+
+            components[i] = objects[i] as ProgrammableWall;
+
+        }
 
     }
 
@@ -20,27 +29,100 @@ public class ProgrammableWallEditor : Editor {
 
         if (GUILayout.Button("Create Wall")) {
 
-            component.CreateWall();
+            for (int i = 0; i < components.Length; i++) {
 
+                components[i].CreateWall();
+                components[i].finalizeWall = false;
+
+            }
         }
 
         if (GUILayout.Button("Reset Wall")) {
 
-            component.ResetWall();
+            for (int i = 0; i < components.Length; i++) {
+
+                components[i].ResetWall();
+                components[i].finalizeWall = false;
+
+            }
 
         }
 
         if (GUILayout.Button("Colorize Wall")) {
 
-            component.ColorizeAllObjects();
+            for (int i = 0; i < components.Length; i++) {
+
+                components[i].ColorizeAllObjects();
+                components[i].finalizeWall = false;
+
+            }
 
         }
 
-        /* if (GUILayout.Button("Merge Wall")) {
+        if (GUILayout.Button("Finalize Wall")) {
 
-            component.MergeWall();
+            for (int i = 0; i < components.Length; i++) {
 
-        } */
+                if (components[i].finalizeWall == true) { continue; }
+
+                components[i].finalizeWall = true;
+
+            }
+
+        }
+
+        for (int i = 0; i < components.Length; i++) {
+
+            if (components[i].finalizeWall == true) {
+
+                if (GUILayout.Button("Are You Sure? Yes & Merge")) {
+
+                    components[i].finalizeWall = false;
+                    Debug.LogError("Still no werky");
+                    return;
+
+                    DestroyImmediate(components[i]);
+
+                }
+
+                if (GUILayout.Button("Are You Sure? Yes.")) {
+
+                    components[i].finalizeWall = false;
+                    DestroyImmediate(components[i]);
+
+                }
+
+                if (GUILayout.Button("Are You Sure? No.")) {
+
+                    components[i].finalizeWall = false;
+
+                }
+            }
+        }
+    }
+
+    void MergeObjects(Transform pivot, int currentIndex) {
+
+        /* MeshFilter[] meshFilters = pivot.GetComponentsInChildren<MeshFilter>();
+        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+
+        int i = 0;
+
+        while (i < meshFilters.Length) {
+            combine[i].mesh = meshFilters[i].sharedMesh;
+            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+            meshFilters[i].gameObject.SetActive(false);
+            i++;
+        }
+
+        GameObject mergedObject = new GameObject();
+
+        mergedObject.transform.parent = pivot;
+        mergedObject.AddComponent<MeshFilter>();
+
+        mergedObject.GetComponent<MeshFilter>().sharedMesh = new Mesh();
+        mergedObject.GetComponent<MeshFilter>().sharedMesh.CombineMeshes(combine);
+        mergedObject.gameObject.SetActive(true); */
 
     }
 }
