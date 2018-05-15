@@ -91,7 +91,9 @@ public class Collectable : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
 
         if (other.GetComponentInParent<Player>() == null) {
+
             return;
+
         }
 
         CollectableListValue newCollectableListValue = new CollectableListValue(CollectableID, CollectableType);

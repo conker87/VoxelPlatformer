@@ -44,15 +44,16 @@ public class HideModelsTriggerEnter : MonoBehaviour {
         ///     And not if they are behind the player at any point:
         ///         - (x-,z-),
         ///         - (x-,z+).
-        // if ((otherRenderer.transform.position.x > GameController.current.Player.transform.position.x
-            //     && otherRenderer.transform.position.z < GameController.current.Player.transform.position.z)
-            // || (otherRenderer.transform.position.x > GameController.current.Player.transform.position.x
-            //     && otherRenderer.transform.position.z > GameController.current.Player.transform.position.z)
-            // || otherRenderer.transform.position.y > GameController.current.Player.transform.position.y + 5f) {
+        if ((otherRenderer.transform.position.x > GameController.current.Player.transform.position.x
+                 && otherRenderer.transform.position.z < GameController.current.Player.transform.position.z)
+             || (otherRenderer.transform.position.x > GameController.current.Player.transform.position.x
+                 && otherRenderer.transform.position.z > GameController.current.Player.transform.position.z)
+             || otherRenderer.transform.position.y > GameController.current.Player.transform.position.y + 5f) {
 
             otherRenderer.enabled = false;
+            return;
 
-        // }
+        }
     }
 
     private void OnTriggerStay(Collider other) {

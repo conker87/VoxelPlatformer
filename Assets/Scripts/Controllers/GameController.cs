@@ -55,7 +55,6 @@ public class GameController : MonoBehaviour {
 
     public bool CanCurrentSaveGame = true;
 
-
     public bool justChangedState = false;
 
 	void Start() {
