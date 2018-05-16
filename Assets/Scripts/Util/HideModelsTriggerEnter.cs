@@ -7,6 +7,9 @@ public class HideModelsTriggerEnter : MonoBehaviour {
     [SerializeField]
     string hideTag = "";
 
+    [SerializeField]
+    float zOffset = 2f, yOffset = 5f;
+
     Renderer otherRenderer;
 
     private void OnTriggerEnter(Collider other) {
@@ -45,10 +48,10 @@ public class HideModelsTriggerEnter : MonoBehaviour {
         ///         - (x-,z-),
         ///         - (x-,z+).
         if ((otherRenderer.transform.position.x > GameController.current.Player.transform.position.x
-                 && otherRenderer.transform.position.z < GameController.current.Player.transform.position.z)
-             || (otherRenderer.transform.position.x > GameController.current.Player.transform.position.x
-                 && otherRenderer.transform.position.z > GameController.current.Player.transform.position.z)
-             || otherRenderer.transform.position.y > GameController.current.Player.transform.position.y + 5f) {
+                 && otherRenderer.transform.position.z < GameController.current.Player.transform.position.z + zOffset)
+             //|| (otherRenderer.transform.position.x > GameController.current.Player.transform.position.x
+             //    && otherRenderer.transform.position.z > GameController.current.Player.transform.position.z)
+             || otherRenderer.transform.position.y > GameController.current.Player.transform.position.y + yOffset) {
 
             otherRenderer.enabled = false;
             return;

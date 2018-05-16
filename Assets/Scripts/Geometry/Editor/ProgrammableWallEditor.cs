@@ -20,7 +20,6 @@ public class ProgrammableWallEditor : Editor {
             components[i] = objects[i] as ProgrammableWall;
 
         }
-
     }
 
     public override void OnInspectorGUI() {
@@ -45,7 +44,6 @@ public class ProgrammableWallEditor : Editor {
                 components[i].finalizeWall = false;
 
             }
-
         }
 
         if (GUILayout.Button("Colorize Wall")) {
@@ -56,7 +54,6 @@ public class ProgrammableWallEditor : Editor {
                 components[i].finalizeWall = false;
 
             }
-
         }
 
         if (GUILayout.Button("Finalize Wall")) {
@@ -68,22 +65,11 @@ public class ProgrammableWallEditor : Editor {
                 components[i].finalizeWall = true;
 
             }
-
         }
 
         for (int i = 0; i < components.Length; i++) {
 
             if (components[i].finalizeWall == true) {
-
-                if (GUILayout.Button("Are You Sure? Yes & Merge")) {
-
-                    components[i].finalizeWall = false;
-                    Debug.LogError("Still no werky");
-                    return;
-
-                    DestroyImmediate(components[i]);
-
-                }
 
                 if (GUILayout.Button("Are You Sure? Yes.")) {
 
