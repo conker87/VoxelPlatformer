@@ -12,6 +12,8 @@ public class HideModelsTriggerEnter : MonoBehaviour {
 
     Renderer otherRenderer;
 
+    Level rendererLevel;
+
     private void OnTriggerEnter(Collider other) {
      
         if (GameController.current.Player == null) {
@@ -76,6 +78,14 @@ public class HideModelsTriggerEnter : MonoBehaviour {
         otherRenderer = other.GetComponent<Renderer>();
 
         if (otherRenderer == false) {
+
+            return;
+
+        }
+
+        rendererLevel = other.GetComponentInParent<Level>();
+
+        if (rendererLevel.IsCurrentlyLoaded == false) {
 
             return;
 

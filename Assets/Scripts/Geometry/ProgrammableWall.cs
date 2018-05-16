@@ -26,8 +26,10 @@ public class ProgrammableWall : MonoBehaviour {
     [Header("Block Size")]
     [SerializeField] float blockSizeY = 1f;
     [SerializeField] float blockSizeX = 2f;
+    [SerializeField] Vector3 blockGlobalScale = Vector3.one;
 
     float previousBlockSizeY, previousBlockSizeX;
+    Vector3 previousBlockGlobalScale;
 
     [Header("Wall Size")]
     [Range(1, 50)] [SerializeField] int layerSize = 6;
@@ -227,6 +229,12 @@ public class ProgrammableWall : MonoBehaviour {
 
     }
 
+    public void ScaleWall() {
+
+        pivot.transform.localScale = new Vector3(1f * blockGlobalScale.x, 1f * blockGlobalScale.y, 1f * blockGlobalScale.z);
+
+    }
+
     void ColorizeObject(pb_Object obj) {
 
         int randomColorsLength = randomColors.Length;
@@ -306,7 +314,16 @@ public class ProgrammableWall : MonoBehaviour {
             || previousEvenSize != evenSize
             || previousFlipGrowDirection != flipGrowDirection) {
 
+            pivot.transform.localScale = Vector3.one;
+
             CreateWall();
+
+        }
+
+        if (previousBlockGlobalScale != blockGlobalScale
+            || blockGlobalScale != pivot.localScale) {
+
+            ScaleWall();
 
         }
     }
@@ -315,8 +332,10 @@ public class ProgrammableWall : MonoBehaviour {
 
         previousColumnSize = columnSize;
         previousLayerSize = layerSize;
+
         previousBlockSizeX = blockSizeX;
         previousBlockSizeY = blockSizeY;
+        previousBlockGlobalScale = blockGlobalScale;
 
         previousWallDirection = wallDirection;
 

@@ -83,7 +83,13 @@ public class GameController : MonoBehaviour {
 
 	void Update() {
 
-		if (CurrentState != GameState.TitleScreen || CurrentState != GameState.MainMenu) {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+
+            SaveController.EndGame();
+
+        }
+
+        if (CurrentState != GameState.TitleScreen || CurrentState != GameState.MainMenu) {
 
         }
 

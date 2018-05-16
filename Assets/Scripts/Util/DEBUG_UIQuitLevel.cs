@@ -7,7 +7,7 @@ public class DEBUG_UIQuitLevel : MonoBehaviour {
 
 	void Start() {
 
-		GetComponent<Button>().onClick.AddListener (SaveController.QuitGame);
+		GetComponent<Button>().onClick.AddListener (SaveController.EndGame);
 
 	}
 

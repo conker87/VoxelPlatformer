@@ -59,8 +59,9 @@ public class UIElements : MonoBehaviour {
         // Add listeners to all the allocated Buttons.
         AddListener(MenuOptionsContinueButton, SaveController.LoadGame);
         AddListener(MenusOptionsNewGameButton, SaveController.NewGame);
+        AddListener(MenuOptionsQuitButton, SaveController.QuitGame);
 
-	}
+    }
 
 	void Update() {
 

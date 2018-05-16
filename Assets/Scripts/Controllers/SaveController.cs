@@ -17,9 +17,15 @@ public class SaveController : MonoBehaviour {
     static List<InteractableSave> Interactables = new List<InteractableSave>();
     static XmlWriter xmlWriter;
 
-    public static void QuitGame() {
+    public static void EndGame() {
 
         GameController.current.QuitGame();
+
+    }
+
+    public static void QuitGame() {
+
+        Application.Quit();
 
     }
 

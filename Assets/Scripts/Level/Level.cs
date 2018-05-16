@@ -55,7 +55,7 @@ public class Level : MonoBehaviour {
 
     private void Start() {
 
-        // AddRenderersToList();
+        AddRenderersToList();
 
     }
 
