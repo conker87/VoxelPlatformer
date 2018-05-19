@@ -225,7 +225,7 @@ public class CharController : MonoBehaviour {
         // We're not Grounded, we have Jumped, we have the DOUBLE_JUMP ability and we have Double Jumped
         if ((isGrounded == false
             && hasJumped == true
-            && GameController.current.HasAcquiredCollectable("DOUBLE_JUMP") == true
+            && MainGameController.current.HasPlayerCollectedCollectable("DOUBLE_JUMP") == true
             && hasJumpedDouble == true)) {
 
             // Do not continue the function.
@@ -236,7 +236,7 @@ public class CharController : MonoBehaviour {
         // We're not Grounded, we have Jumped, we don't have the DOUBLE_JUMP ability.
         if (isGrounded == false
             && hasJumped == true
-            && GameController.current.HasAcquiredCollectable("DOUBLE_JUMP") == false) {
+            && MainGameController.current.HasPlayerCollectedCollectable("DOUBLE_JUMP") == false) {
 
             // Do not continue the function.
             return;

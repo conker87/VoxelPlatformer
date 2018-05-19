@@ -7,7 +7,7 @@ public class DEBUG_UIQuitLevel : MonoBehaviour {
 
 	void Start() {
 
-		GetComponent<Button>().onClick.AddListener (SaveController.EndGame);
+		GetComponent<Button>().onClick.AddListener(delegate { UnityEngine.SceneManagement.SceneManager.LoadScene("_LoadMainMenu"); });
 
 	}
 

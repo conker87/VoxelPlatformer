@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class UIButton_LoadGame : MonoBehaviour {
 
+    string tempSaveGameLocation = "saveGameTest.xml";
+
 	void Start() {
 
-		GetComponent<Button>().onClick.AddListener (SaveController.LoadGame);
+		GetComponent<Button>().onClick.AddListener (delegate { LoadSaveController.LoadMainGame(tempSaveGameLocation); });
 
 	}
 

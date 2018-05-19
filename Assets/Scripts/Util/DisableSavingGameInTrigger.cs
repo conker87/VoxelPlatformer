@@ -12,7 +12,7 @@ public class DisableSavingGameInTrigger : MonoBehaviour {
 
         }
 
-        GameController.current.CanCurrentSaveGame = false;
+        MainGameController.current.SavingGameAllowed = false;
 
     }
 
@@ -24,7 +24,7 @@ public class DisableSavingGameInTrigger : MonoBehaviour {
 
         }
 
-        GameController.current.CanCurrentSaveGame = true;
+        MainGameController.current.SavingGameAllowed = true;
 
     }
 

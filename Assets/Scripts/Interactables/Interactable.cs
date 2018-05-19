@@ -185,6 +185,19 @@ public class Interactable : MonoBehaviour {
 
     #endregion
 
+    public Interactable() {
+
+    }
+
+    public Interactable(string _InteractableID, bool _IsDisabled, bool _IsLocked, bool _IsActivated) {
+
+        InteractableID = _InteractableID;
+        IsDisabled = _IsDisabled;
+        IsLocked = _IsLocked;
+        IsActivated = _IsActivated;
+
+    }
+
     protected virtual void Start() {
 
         if (InteractableID == "") {
@@ -257,7 +270,7 @@ public class Interactable : MonoBehaviour {
             if (DisabledText != "") {
 
                 if (hasDisabledTextOnlyDisplayed == false) {
-                    UIElements.current.ShowRPGFluffText(DisabledText);
+                    MainGameController.current.ShowRPGFluffText(DisabledText);
                 }
 
                 hasDisabledTextOnlyDisplayed = disabledTextOnlyDisplayOncePerSession;
@@ -272,7 +285,7 @@ public class Interactable : MonoBehaviour {
 
             if (LockedText != "") {
 
-                UIElements.current.ShowRPGFluffText(LockedText);
+                MainGameController.current.ShowRPGFluffText(LockedText);
 
             }
 
@@ -284,7 +297,7 @@ public class Interactable : MonoBehaviour {
             if (onlyInteractFromOtherInteractblesText != "") {
 
                 if (hasOnlyInteractOnlyDisplayed == false) {
-                    UIElements.current.ShowRPGFluffText(onlyInteractFromOtherInteractblesText);
+                    MainGameController.current.ShowRPGFluffText(onlyInteractFromOtherInteractblesText);
                 }
 
                 hasOnlyInteractOnlyDisplayed = onlyInteractOnlyDisplayOncePerSession;
@@ -353,7 +366,7 @@ public class Interactable : MonoBehaviour {
             if (isActivated == true && IsActivatedText != "") {
 
                 if (hasIsActivatedTextOnlyDisplayed == false) {
-                    UIElements.current.ShowRPGFluffText(IsActivatedText);
+                    MainGameController.current.ShowRPGFluffText(IsActivatedText);
                 }
 
                 hasIsActivatedTextOnlyDisplayed = isActivatedTextOnlyDisplayOncePerSession;
@@ -363,7 +376,7 @@ public class Interactable : MonoBehaviour {
             if (IsActivated == false && IsDeactivatedText != "") {
 
                 if (hasIsDeactivatedTextOnlyDisplayed == false) {
-                    UIElements.current.ShowRPGFluffText(IsDeactivatedText);
+                    MainGameController.current.ShowRPGFluffText(IsDeactivatedText);
                 }
 
                 hasIsDeactivatedTextOnlyDisplayed = isDeactivatedTextOnlyDisplayOncePerSession;

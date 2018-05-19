@@ -61,6 +61,15 @@ public class Collectable : MonoBehaviour {
 
     #endregion
 
+    public Collectable(string _CollectableID, CollectableType _CollectableType, bool _CollectableCollected) {
+
+        CollectableID = _CollectableID;
+        CollectableType = _CollectableType;
+        CollectableCollected = _CollectableCollected;
+        GFXParent = null;
+
+    }
+
     void Start() {
 
         if (string.IsNullOrEmpty(CollectableID) || CollectableID.Equals("") || CollectableID == "" || CollectableID == null) {
@@ -70,18 +79,10 @@ public class Collectable : MonoBehaviour {
             CollectableID = CollectableType.ToString() + "_" + transform.position;
 
         }
-	}
-
-    private void OnEnable() {
 
         GetComponent<Collider>().enabled = true;
 
-
-        if (GameController.current.CurrentSaveState == SaveState.NewGame) {
-
-            CollectableCollected = false;
-
-        }
+        CollectableCollected = MainGameController.current.HasPlayerCollectedCollectable(CollectableID);
 
         GetComponent<Collider>().enabled = !CollectableCollected;
         gfxParent.SetActive(!CollectableCollected);
@@ -96,10 +97,6 @@ public class Collectable : MonoBehaviour {
 
         }
 
-        CollectableListValue newCollectableListValue = new CollectableListValue(CollectableID, CollectableType);
-
-        GameController.current.AddToCollectables(newCollectableListValue);
-
         CollectableCollected = true;
 
         if (CollectableType == CollectableType.Coin) {
@@ -110,42 +107,6 @@ public class Collectable : MonoBehaviour {
 
         GetComponent<Collider>().enabled = false;
         gfxParent.SetActive(false);
-
-    }
-
-	bool HasCollectedCollectable() {
-
-        foreach (CollectableListValue value in GameController.current.Collectables) {
-
-            if (value.CollectableID == CollectableID) {
-
-                return true;
-
-            }
-        }
-
-        return false;
-
-    }
-}
-
-[System.Serializable]
-public class CollectableListValue {
-
-    public string CollectableID;
-    public CollectableType CollectableType;
-
-    public CollectableListValue(CollectableListValue value) {
-
-        CollectableID = value.CollectableID;
-        CollectableType = value.CollectableType;
-
-    }
-
-    public CollectableListValue(string collectableID, CollectableType collectableType) {
-
-        CollectableID = collectableID;
-        CollectableType = collectableType;
 
     }
 }

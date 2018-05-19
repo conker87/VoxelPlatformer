@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Extend_List : MonoBehaviour {
+public class ExtendList : MonoBehaviour {
 
     /// Use this method to get all loaded objects of some type, including inactive objects. 
     /// This is an alternative to Resources.FindObjectsOfTypeAll (returns project assets, including prefabs), and GameObject.FindObjectsOfTypeAll (deprecated).
-    public static List<T> NewFindObjectsOfTypeAll<T>() {
+    public static List<T> FindObjectsOfTypeInactive<T>() {
 
         List<T> results = new List<T>();
 

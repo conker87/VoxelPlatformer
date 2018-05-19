@@ -150,12 +150,12 @@ public class Interactable_Triggers : Interactable {
                 }
                 else if (interactableTrigger.InteractableTriggerCause == InteractableTriggerCauses.OnTriggerTimeSinceLevelStart) {
 
-                    if (GameController.current.currentTime < interactableTrigger.InteractableTriggerValue && interactableTrigger.Invert == true) {
+                    if (MainGameController.current.TotalTimePlayed < interactableTrigger.InteractableTriggerValue && interactableTrigger.Invert == true) {
 
                         interactableTrigger.InteractableToTrigger.Interact(interactableTrigger, false);
 
                     }
-                    else if (GameController.current.currentTime > interactableTrigger.InteractableTriggerValue) {
+                    else if (MainGameController.current.TotalTimePlayed > interactableTrigger.InteractableTriggerValue) {
 
                         interactableTrigger.InteractableToTrigger.Interact(interactableTrigger, false);
 
