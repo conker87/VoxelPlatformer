@@ -26,7 +26,11 @@ public class InteractableEditor : Editor {
 
             for (int i = 0; i < components.Length; i++) {
 
-                components[i].InteractableID = components[i].gameObject.name + string.Format("({0},{1},{2})", components[i].transform.position.x, components[i].transform.position.y, components[i].transform.position.z);
+                components[i].InteractableID = components[i].gameObject.name + string.Format("({0},{1},{2})",
+                    components[i].transform.position.x.ToString("F1"),
+                    components[i].transform.position.y.ToString("F1"),
+                    components[i].transform.position.z.ToString("F1")
+                );
 
             }
 
@@ -35,5 +39,4 @@ public class InteractableEditor : Editor {
         DrawDefaultInspector();
 
     }
-
 }

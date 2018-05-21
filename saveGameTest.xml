@@ -2,21 +2,28 @@
 <game>
 
 <!--Player data.-->
-	<player saveName="saveDataName" saveTotalTime="50.10054" saveCurrentTimestamp="5/17/2018 1:25:14 PM" playerPositionX="6.755483" playerPositionY="1" playerPositionZ="-6.028026">
+	<player saveName="saveDataName" saveTotalTime="34.49775" saveCurrentTimestamp="5/20/2018 4:26:40 PM" playerPositionX="-1.030357" playerPositionY="-4.823109E-06" playerPositionZ="8.85548">
 	</player>
 
 <!--This is the list of Collectables.-->
 	<collectables>
+		<collectable CollectableID="DOUBLE_JUMP" CollectableType="Ability" CollectableCollected="True" />
+		<collectable CollectableID="Coin_(5.9, 0.0, 3.2)" CollectableType="Coin" CollectableCollected="True" />
+		<collectable CollectableID="Coin_(5.2, 0.0, 3.2)" CollectableType="Coin" CollectableCollected="True" />
+		<collectable CollectableID="Coin_(6.6, 0.0, 3.2)" CollectableType="Coin" CollectableCollected="True" />
+		<collectable CollectableID="Coin_(7.3, 0.0, 3.2)" CollectableType="Coin" CollectableCollected="True" />
+		<collectable CollectableID="Coin_(8.1, 0.0, 3.2)" CollectableType="Coin" CollectableCollected="True" />
 	</collectables>
 
 <!--Interactables.-->
 	<interactables>
-		<interactable InteractableID="RPGFluff_MoveableWall(-100,1.7,-4.4)" IsActivated="False" IsDisabled="True" IsLocked="False" />
+		<interactable InteractableID="CastlePrisonDoor_Cell (1)(9.4,0.0,-10.0)" IsActivated="False" IsDisabled="True" IsLocked="False" />
+		<interactable InteractableID="CastlePrisonDoor_Cell (1)(9.4,0.0,-10.0)" IsActivated="True" IsDisabled="True" IsLocked="False" />
+		<interactable InteractableID="CastlePrisonDoor_Cell_Disabled_Closed_Player(3.8,0,1)" IsActivated="False" IsDisabled="True" IsLocked="False" />
+		<interactable InteractableID="CastlePrisonDoor_Cell(3.8,0,-17)" IsActivated="False" IsDisabled="False" IsLocked="False" />
+		<interactable InteractableID="CastlePrisonDoor_Cell(9.400001,0,-1)" IsActivated="False" IsDisabled="False" IsLocked="False" />
 		<interactable InteractableID="Elevator(-96,-1,-19)" IsActivated="False" IsDisabled="False" IsLocked="False" />
-		<interactable InteractableID="CastlePrisonDoor[2](-96.7,-1,0)" IsActivated="False" IsDisabled="True" IsLocked="False" />
-		<interactable InteractableID="CastlePrisonDoor[2](-96.7,-1,0)" IsActivated="False" IsDisabled="False" IsLocked="False" />
-		<interactable InteractableID="CastlePrisonDoor[2](-96.7,-1,0)" IsActivated="False" IsDisabled="False" IsLocked="False" />
-		<interactable InteractableID="CastlePrisonDoor[2](-96.7,-1,0)" IsActivated="False" IsDisabled="False" IsLocked="False" />
+		<interactable InteractableID="CastlePrisonDoor_Cell(3.8,0,-8)" IsActivated="True" IsDisabled="False" IsLocked="False" />
 	</interactables>
 
 </game>

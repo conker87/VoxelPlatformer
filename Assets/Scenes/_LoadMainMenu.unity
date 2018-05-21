@@ -153,7 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b09ea5477f548d44a463f2cabcb2ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Text: {fileID: 1412249323}
+  progressionText: {fileID: 1412249323}
+  requiresInputToContinue: 0
+  sceneToLoad: MainMenu
 --- !u!1 &271306510
 GameObject:
   m_ObjectHideFlags: 0

@@ -71,6 +71,8 @@
     <Compile Include="Assets\Scripts\Animation\InteractableLockWhileAnimating.cs" />
     <Compile Include="Assets\Scripts\Camera\IsometricCamera.cs" />
     <Compile Include="Assets\Scripts\Collectable\Collectable.cs" />
+    <Compile Include="Assets\Scripts\Controllers\AreaController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\AreaLoadController.cs" />
     <Compile Include="Assets\Scripts\Controllers\CharController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Controllers\LoadingController.cs" />
@@ -78,8 +80,8 @@
     <Compile Include="Assets\Scripts\Controllers\MainGameController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainGameLoader.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainMenuController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\MainMenuLoader.cs" />
     <Compile Include="Assets\Scripts\Controllers\SaveController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\Controllers\SFXController.cs" />
     <Compile Include="Assets\Scripts\Cutscenes\Cutscene.cs" />
     <Compile Include="Assets\Scripts\Entity\Enemy.cs" />
@@ -97,8 +99,6 @@
     <Compile Include="Assets\Scripts\Interactables\Interactable_Triggers_PressurePlate.cs" />
     <Compile Include="Assets\Scripts\Interactables\InteractableTriggerCauseAndEffects.cs" />
     <Compile Include="Assets\Scripts\Interactables\InteractableTriggers.cs" />
-    <Compile Include="Assets\Scripts\Level\Level.cs" />
-    <Compile Include="Assets\Scripts\Level\LevelScore.cs" />
     <Compile Include="Assets\Scripts\UI\UIButton_LoadGame.cs" />
     <Compile Include="Assets\Scripts\UI\UIButton_SaveGame.cs" />
     <Compile Include="Assets\Scripts\UI\UICutsceneCanvas.cs" />
@@ -106,6 +106,7 @@
     <Compile Include="Assets\Scripts\Util\DEBUG_UIQuitLevel.cs" />
     <Compile Include="Assets\Scripts\Util\DisableGameObjectOnLinecast.cs" />
     <Compile Include="Assets\Scripts\Util\DisableSavingGameInTrigger.cs" />
+    <Compile Include="Assets\Scripts\Util\EditorCleanup.cs" />
     <Compile Include="Assets\Scripts\Util\HideModelsTriggerEnter.cs" />
     <Compile Include="Assets\Scripts\Util\MoveForward.cs" />
     <Compile Include="Assets\Scripts\Util\OrderGeometryChildren.cs" />

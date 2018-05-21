@@ -6,39 +6,39 @@ using UnityEngine.UI;
 
 public class MainGameLoader : MonoBehaviour {
 
-    public Text progessionText;
+    //public Text progressionText;
 
-    void OnEnable() {
+    //void OnEnable() {
 
-        StopAllCoroutines();
-        StartCoroutine(LoadScene());
+    //    StopAllCoroutines();
+    //    StartCoroutine(LoadScene());
 
-    }
+    //}
 
-    IEnumerator LoadScene() {
+    //IEnumerator LoadScene() {
 
-        yield return null;
+    //    yield return null;
 
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("MainGame");
+    //    AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("MainGame");
 
-        asyncOperation.allowSceneActivation = false;
+    //    asyncOperation.allowSceneActivation = false;
 
-        while (!asyncOperation.isDone) {
+    //    while (!asyncOperation.isDone) {
 
-            progessionText.text = "Loading progress: " + (asyncOperation.progress * 100) * (10f / 9f) + "%";
+    //        progessionText.text = "Loading progress: " + (asyncOperation.progress * 100f) * (10f / 9f) + "%";
 
-            if (asyncOperation.progress >= 0.9f) {
+    //        if (asyncOperation.progress >= 1f) {
 
-                progessionText.text = "Press the space bar to continue";
+    //            progessionText.text = "Press the space bar to continue";
 
-                if (Input.GetKeyDown(KeyCode.Space)) {
+    //            if (Input.GetKeyDown(KeyCode.Space)) {
 
-                    asyncOperation.allowSceneActivation = true;
-                }
-            }
+    //                asyncOperation.allowSceneActivation = true;
+    //            }
+    //        }
 
-            yield return null;
+    //        yield return null;
 
-        }
-    }
+    //    }
+    //}
 }

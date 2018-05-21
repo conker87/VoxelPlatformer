@@ -74,8 +74,6 @@ public class Collectable : MonoBehaviour {
 
         if (string.IsNullOrEmpty(CollectableID) || CollectableID.Equals("") || CollectableID == "" || CollectableID == null) {
 
-            // Debug.LogWarningFormat("Collectable at position: {0} has no CollectableID. A temporary ID has been given", transform.position);
-
             CollectableID = CollectableType.ToString() + "_" + transform.position;
 
         }
@@ -99,6 +97,8 @@ public class Collectable : MonoBehaviour {
 
         CollectableCollected = true;
 
+        LoadSaveController.LoadedCollectables.Add(new CollectableSave(this));
+
         if (CollectableType == CollectableType.Coin) {
 
             SFXController.current.PlayRandomCoinClip();
@@ -112,3 +112,35 @@ public class Collectable : MonoBehaviour {
 }
 
 public enum CollectableType { Coin, Star, Ability };
+
+[System.Serializable]
+public class CollectableSave {
+
+    public string CollectableID;
+    public CollectableType CollectableType;
+    public bool CollectableCollected;
+    
+    public CollectableSave(Collectable value) {
+
+        CollectableID = value.CollectableID;
+        CollectableType = value.CollectableType;
+        CollectableCollected = value.CollectableCollected;
+
+    }
+
+    public CollectableSave(CollectableSave value) {
+
+        CollectableID = value.CollectableID;
+        CollectableType = value.CollectableType;
+        CollectableCollected = value.CollectableCollected;
+
+    }
+
+    public CollectableSave(string _collectableID, CollectableType _collectableType, bool _collectableCollected) {
+
+        CollectableID = _collectableID;
+        CollectableType = _collectableType;
+        CollectableCollected = _collectableCollected;
+
+    }
+}

@@ -228,30 +228,3 @@ public class SaveController : MonoBehaviour {
 
  //   }
 }
-
-[Serializable]
-public class InteractableSave {
-
-    public string InteractableID;
-    public bool IsDisabled;
-    public bool IsLocked;
-    public bool IsActivated;
-
-    public InteractableSave(InteractableSave value) {
-
-        InteractableID = value.InteractableID;
-        IsDisabled = value.IsDisabled;
-        IsLocked = value.IsLocked;
-        IsActivated = value.IsActivated;
-
-    }
-
-    public InteractableSave(string interactableID, bool isDisabled, bool isLocked, bool isActivated) {
-
-        InteractableID = interactableID;
-        IsDisabled = isDisabled;
-        IsLocked = isLocked;
-        IsActivated = isActivated;
-
-    }
-}

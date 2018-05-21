@@ -19,11 +19,16 @@ public class LoadSaveController : MonoBehaviour {
     public static string LoadedSaveName = "";
     public static float LoadedTotalTime = 0f;
     public static Vector3 LoadedPosition = Vector3.zero;
-    public static List<Collectable> LoadedCollectables = new List<Collectable>();
-    public static List<Interactable> LoadedInteractables = new List<Interactable>();
+    public static List<CollectableSave> LoadedCollectables = new List<CollectableSave>();
+    public static List<InteractableSave> LoadedInteractables = new List<InteractableSave>();
+
+    public static bool loadedFromMainMenu = false;
 
     public static void LoadMainGame(string saveGameLocation) {
 
+        LoadSaveController.loadedFromMainMenu = true;
+
+        // Should probably check if he file exists first.
         if (saveGameLocation != "") {
 
             // This is a loaded game so load the details into the vars.
@@ -37,10 +42,10 @@ public class LoadSaveController : MonoBehaviour {
 
     public static void SaveMainGame(SaveDetails saveDetails) {
 
-        Debug.Log("Saving...");
+        Debug.LogFormat("Saving to...'{0}'", saveDetails.SaveGameLocation);
 
         XmlWriter xmlWriter;
-        xmlWriter = XmlWriter.Create(saveDetails.SaveGameLocation);
+        xmlWriter = XmlWriter.Create("saveGameTest.xml");
 
         xmlWriter.WriteStartDocument();
         xmlWriter.WriteWhitespace("\n");
@@ -71,13 +76,14 @@ public class LoadSaveController : MonoBehaviour {
 
         xmlWriter.WriteStartElement("collectables");
 
-        foreach (Collectable Collectable in saveDetails.Collectables) {
+        foreach (CollectableSave Collectable in saveDetails.Collectables) {
 
             xmlWriter.WriteWhitespace("\n\t\t");
 
             xmlWriter.WriteStartElement("collectable");
             xmlWriter.WriteAttributeString("CollectableID", Collectable.CollectableID);
             xmlWriter.WriteAttributeString("CollectableType", Collectable.CollectableType.ToString());
+            xmlWriter.WriteAttributeString("CollectableCollected", Collectable.CollectableCollected.ToString());
 
             xmlWriter.WriteEndElement();
 
@@ -94,7 +100,7 @@ public class LoadSaveController : MonoBehaviour {
         xmlWriter.WriteStartElement("interactables");
 
         // foreach (Interactable interactable in Extend_List.NewFindObjectsOfTypeAll<Interactable>()) {
-        foreach (Interactable Interactable in saveDetails.Interactables) {
+        foreach (InteractableSave Interactable in saveDetails.Interactables) {
 
             xmlWriter.WriteWhitespace("\n\t\t");
 
@@ -120,6 +126,7 @@ public class LoadSaveController : MonoBehaviour {
 
     }
 
+    // This should really be a bool so that the game can be prevented loading if it fails.
     static void LoadSavedGame(string saveGameLocation) {
 
         LoadedSaveName = "";
@@ -127,6 +134,8 @@ public class LoadSaveController : MonoBehaviour {
         LoadedPosition = Vector3.zero;
         LoadedCollectables.Clear();
         LoadedInteractables.Clear();
+
+        SaveGameLocation = saveGameLocation;
 
         XmlReader xmlReader;
         xmlReader = XmlReader.Create(saveGameLocation);
@@ -153,9 +162,9 @@ public class LoadSaveController : MonoBehaviour {
 
                     string CollectableID = xmlReader.GetAttribute("CollectableID");
                     CollectableType CollectableType = (CollectableType)Enum.Parse(typeof(CollectableType), xmlReader.GetAttribute("CollectableType"));
-                    bool CollectableCollected = true;
+                    bool CollectableCollected = bool.Parse(xmlReader.GetAttribute("CollectableCollected"));
 
-                    Collectable currentLoadingCollectable = new Collectable(
+                    CollectableSave currentLoadingCollectable = new CollectableSave(
                         CollectableID,
                         CollectableType,
                         CollectableCollected
@@ -172,7 +181,7 @@ public class LoadSaveController : MonoBehaviour {
                     bool IsLocked = bool.Parse(xmlReader.GetAttribute("IsLocked"));
                     bool IsActivated = bool.Parse(xmlReader.GetAttribute("IsActivated"));
 
-                    Interactable currentLoadingInteractable = new Interactable(
+                    InteractableSave currentLoadingInteractable = new InteractableSave(
                         InteractableID,
                         IsDisabled,
                         IsLocked,
@@ -191,6 +200,7 @@ public class LoadSaveController : MonoBehaviour {
 
 }
 
+[Serializable]
 public class SaveDetails {
 
     public string SaveGameLocation;
@@ -198,19 +208,19 @@ public class SaveDetails {
     public float TotalTime;
     public DateTime CurrentTimestamp;
 
-    public List<Collectable> Collectables = new List<Collectable>();
-    public List<Interactable> Interactables = new List<Interactable>();
+    public List<CollectableSave> Collectables = new List<CollectableSave>();
+    public List<InteractableSave> Interactables = new List<InteractableSave>();
 
     public SaveDetails() { }
 
-    public SaveDetails(string _SaveGameLocation, Vector3 _PlayerLocation, float _TotalTime, DateTime _CurrentTimestamp, List<Collectable> _Collectables, List<Interactable> _Interactables) {
+    public SaveDetails(string _SaveGameLocation, Vector3 _PlayerLocation, float _TotalTime, DateTime _CurrentTimestamp, List<CollectableSave> _Collectables, List<InteractableSave> _Interactables) {
 
-        _SaveGameLocation = SaveGameLocation;
-        _PlayerLocation = PlayerLocation;
-        _TotalTime = TotalTime;
-        _CurrentTimestamp = CurrentTimestamp;
-        _Collectables = Collectables;
-        _Interactables = Interactables;
+        SaveGameLocation = _SaveGameLocation;
+        PlayerLocation = _PlayerLocation;
+        TotalTime = _TotalTime;
+        CurrentTimestamp = _CurrentTimestamp;
+        Collectables = _Collectables;
+        Interactables = _Interactables;
 
     }
 }

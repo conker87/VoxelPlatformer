@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using ProBuilder.Core;
 using TMPro;
 
 /// <summary>
@@ -33,19 +34,23 @@ public class MainGameController : MonoBehaviour {
         }
     }
 
-    public static Player player;
+    public Player player;
     SaveDetails SaveDetails;
-    public List<Level> levels = new List<Level>();
+    public List<AreaController> levels = new List<AreaController>();
 
-    bool changedState;
+    [SerializeField] pb_Object backgroundPlane;
 
+    // bool hasChangedState;
+    bool hasFullyLoaded = false;
+
+    string saveGameName = "";
     float totalTimePlayed = 0f;
     bool savingGameAllowed = true;
 
     MainGameState MainGameState;
-    bool ChangedState;
 
     // Public Fields
+    public string SaveGameName { get { return saveGameName; } set { saveGameName = value; } }
     public float TotalTimePlayed { get { return totalTimePlayed; } set { totalTimePlayed = value; } }
     public bool SavingGameAllowed { get { return savingGameAllowed; } set { savingGameAllowed = value; } }
 
@@ -60,32 +65,63 @@ public class MainGameController : MonoBehaviour {
     public TextMeshProUGUI NumberOfStars, Health, TimeT, RPGFluff, Location;
     Coroutine RPGFluffFadeOut, LocationTextFadeout;
 
-    // Use this for initialization
+    public List<CollectableSave> Collectables = new List<CollectableSave>();
+    public List<InteractableSave> Interactables = new List<InteractableSave>();
+
+    void OnEnable() {
+
+        FindPlayer();
+        SceneManager.sceneLoaded += ApplySaveData;
+
+    }
+
+    void OnDisable() {
+
+        SceneManager.sceneLoaded -= ApplySaveData;
+
+    }
+
     void Start () {
 
         player = null;
         levels.Clear();
 
         // Technically we're still loading...
-        LocateAndUpdateCollectablesAndInteractables();
-
+        // LocateAndUpdateCollectablesAndInteractables();
+        
         // Populate levels
-        foreach (Level level in ExtendList.FindObjectsOfTypeInactive<Level>()) {
+        foreach (AreaController level in ExtendList.FindObjectsOfTypeInactive<AreaController>()) {
             //levelsParent.GetComponentsInChildren<Level>(true)) {
 
             levels.Add(level);
 
         }
 
-        FindPlayer();
+        #if UNITY_EDITOR
+            FindPlayer();
+        #endif
+
+
+        if (backgroundPlane == null) {
+
+            backgroundPlane = GameObject.Find("BackgroundPlane").GetComponent<pb_Object>();
+
+        }
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Update () {
+
+        if (hasFullyLoaded == false) {
+
+            Debug.Log("hasFullyLoaded is false.");
+            return;
+
+        }
 
         if (FindPlayer() == false) {
 
+            Debug.Log("FindPlayer() is false, will try next frame.");
             return;
 
         }
@@ -94,7 +130,33 @@ public class MainGameController : MonoBehaviour {
 
             TotalTimePlayed += Time.unscaledDeltaTime;
 
-            if (Input.GetKeyDown(KeyCode.Escape)) {
+            // Update UI
+            if (NumberOfCoins != null) {
+
+                NumberOfCoins.text = string.Format("{0}/{1} | Coins: {2} | Stars: {3}",
+                    player.CurrentHealth, player.MaximumHealth, NumberOfCollectables(CollectableType.Coin), NumberOfCollectables(CollectableType.Star));
+
+            }
+
+            if (TimeT != null) {
+
+                TimeSpan t = TimeSpan.FromSeconds(TotalTimePlayed);
+
+                string format = "";
+
+                if (t.Hours > 0)
+                    format += "{3:D2}:";
+
+                if (t.Minutes > 0)
+                    format += "{2:D2}:";
+
+                format += "{1:D2}.{0:D3}";
+
+                TimeT.text = string.Format(format, t.Milliseconds, t.Seconds, t.Minutes, t.Hours);
+
+            }
+
+                if (Input.GetKeyDown(KeyCode.Escape)) {
 
                 // This is supposed to enable the PlayingMenu.
                 ChangeGameState(MainGameState.PausedMenu);
@@ -102,29 +164,54 @@ public class MainGameController : MonoBehaviour {
 
             }
         }
+
+        // hasChangedState = false;
     }
 
-    void LocateAndUpdateCollectablesAndInteractables() {
+    void ApplySaveData(Scene scene, LoadSceneMode mode) {
+
+        // Editor function as loadedFromMainMenu will never be false in production.
+        if (LoadSaveController.loadedFromMainMenu == false) {
+
+            LoadSaveController.SaveGameLocation = "saveGameTest.xml";
+
+        }
 
         if (LoadSaveController.SaveGameLocation == "") {
 
+            Debug.Log("LoadSaveController.SaveGameLocation");
+
+            FindPlayer();
+
+            hasFullyLoaded = true;
             return;
 
         }
 
+        SaveGameName = LoadSaveController.LoadedSaveName;
+        player.transform.position = LoadSaveController.LoadedPosition;
+        TotalTimePlayed = LoadSaveController.LoadedTotalTime;
+
+        // Populate Collectable list.
         foreach (Collectable collectable in ExtendList.FindObjectsOfTypeInactive<Collectable>()) {
 
-            collectable.CollectableCollected = true;
+            foreach (CollectableSave savedCollectable in LoadSaveController.LoadedCollectables) {
 
+                if (collectable.CollectableID == savedCollectable.CollectableID) {
+
+                    collectable.CollectableCollected = savedCollectable.CollectableCollected;
+                    break;
+
+                }
+            }
         }
 
+        // Populate Interactable list.
         foreach (Interactable interactable in ExtendList.FindObjectsOfTypeInactive<Interactable>()) {
 
-            foreach (Interactable savedInteractable in LoadSaveController.LoadedInteractables) {
+            foreach (InteractableSave savedInteractable in LoadSaveController.LoadedInteractables) {
 
                 if (savedInteractable.InteractableID == interactable.InteractableID) {
-
-                    Debug.LogFormat("Found an interactable in the world: {0} and also in the Saved Interactables.", interactable);
 
                     interactable.IsActivated = savedInteractable.IsActivated;
                     interactable.IsDisabled = savedInteractable.IsDisabled;
@@ -134,11 +221,15 @@ public class MainGameController : MonoBehaviour {
                 }
             }
         }
+
+        FindPlayer();
+
+        hasFullyLoaded = true;
     }
 
     public bool HasPlayerCollectedCollectable(string _CollectableID) {
 
-        foreach (Collectable collectable in LoadSaveController.LoadedCollectables) {
+        foreach (CollectableSave collectable in LoadSaveController.LoadedCollectables) {
 
             if (collectable.CollectableID == _CollectableID) {
 
@@ -148,6 +239,18 @@ public class MainGameController : MonoBehaviour {
         }
 
         return false;
+
+    }
+
+    public int NumberOfCollectables(CollectableType _CollectableType, bool _countAllCollectables = false) {
+
+        if (_countAllCollectables == true) {
+
+            return LoadSaveController.LoadedCollectables.Count;
+
+        }
+
+        return LoadSaveController.LoadedCollectables.Where(a => a.CollectableType == _CollectableType).Count();
 
     }
 
@@ -161,18 +264,25 @@ public class MainGameController : MonoBehaviour {
 
         }
 
-        List<Collectable> Collectables = FindObjectsOfType<Collectable>().Where(a => a.CollectableCollected = true).ToList<Collectable>();
-        List<Interactable> Interactables = FindObjectsOfType<Interactable>().ToList<Interactable>();
+        Collectables.Clear();
+        Interactables.Clear();
 
+        // FindObjectsOfType<Collectable>().Where(a => a.CollectableCollected == true).ToList<Collectable>().ForEach(x => Collectables.Add(new CollectableSave(x.CollectableID, x.CollectableType, x.CollectableCollected)));
+
+         FindObjectsOfType<Interactable>().ToList<Interactable>().ForEach(x => Interactables.Add(new InteractableSave(x.InteractableID, x.IsDisabled, x.IsLocked, x.IsActivated)));
+
+        // Hardcoding for the time being...
         SaveDetails gatheredSaveDetails = new SaveDetails(
             LoadSaveController.SaveGameLocation,
-            player.transform.position,
+            MainGameController.current.player.transform.position,
             TotalTimePlayed,
             DateTime.Now,
-            Collectables,
+            LoadSaveController.LoadedCollectables,
+            //Collectables,
             Interactables);
 
         LoadSaveController.SaveMainGame(gatheredSaveDetails);
+
     }
 
     public void ShowRPGFluffText(string text, float fadeOutInTime = 3f, float fadeOutTime = 1f) {
@@ -262,30 +372,106 @@ public class MainGameController : MonoBehaviour {
     // Menu State Changer
     void ChangeGameState(MainGameState state) {
 
-        changedState = true;
+        // hasChangedState = true;
         MainGameState = state;
+
+    }
+
+    public void CheckIfInArea(List<AreaController> areasToLoad, Color backgroundColor) {
+
+        string debug_log = "";
+        bool loadedLevel = false;
+
+        foreach (AreaController area in MainGameController.current.levels) {
+
+            loadedLevel = false;
+
+            foreach (AreaController loadingArea in areasToLoad) {
+
+                Debug.LogFormat("Current area being checked: {0}, against: {1}", area.areaName, loadingArea.areaName);
+
+                if (loadingArea.LevelName == area.LevelName) {
+
+                    debug_log += area.LevelName + ", ";
+
+                    area.gameObject.SetActive(true);
+                    area.LoadArea();
+                    loadedLevel = true;
+
+                    MainGameController.current.ShowLocationText(area.LevelName);
+
+                    continue;
+
+                }
+
+            }
+
+            if (loadedLevel == true) {
+
+                continue;
+
+            }
+
+            area.UnloadArea();
+
+        }
+
+        // Debug.LogFormat("You are in: {0}, plus, these should load: {1}", LevelName, debug_log);
+
+        ChangeBackgroundColor(backgroundColor);
+
+    }
+
+    void ChangeBackgroundColor(Color newColor) {
+
+        Color color = newColor;
+
+        // Cycle through each unique vertex in the cube (8 total), and assign a color to the index in the sharedIndices array.
+        int si_len = backgroundPlane.sharedIndices.Length;
+        Color[] vertexColors = new Color[si_len];
+
+        for (int i = 0; i < si_len; i++) {
+
+            vertexColors[i] = color;
+
+        }
+
+        // Now go through each face (vertex colors are stored the pb_Face class) and assign the pre-calculated index color to each index in the triangles array.
+        Color[] colors = backgroundPlane.colors;
+
+        for (int CurSharedIndex = 0; CurSharedIndex < backgroundPlane.sharedIndices.Length; CurSharedIndex++) {
+
+            foreach (int CurIndex in backgroundPlane.sharedIndices[CurSharedIndex].array) {
+
+                colors[CurIndex] = vertexColors[CurSharedIndex];
+
+            }
+        }
+
+        backgroundPlane.SetColors(colors);
+
+        // In order for these changes to take effect, you must refresh the mesh object.
+        backgroundPlane.Refresh();
 
     }
 
     public static bool FindPlayer() {
 
-        if (player == null) {
+        if (current.player == null) {
 
-            player = FindObjectOfType<Player>();
+            current.player = FindObjectOfType<Player>();
 
-            if (player == null) {
+            if (current.player == null) {
 
                 Debug.LogError("MainGameController::FindPlayer -- Something is seriously wrong, we could not find the player!");
 
                 return false;
 
             }
-
-            return true;
-
         }
 
-        return false;
+        return true;
+
     }
 }
 

@@ -65,6 +65,7 @@
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ParameterWindow.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_Preferences.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Editor\pg_ToggleContent.cs" />
+    <Compile Include="Assets\Scripts\Collectable\Editor\CollectableEditor.cs" />
     <Compile Include="Assets\Scripts\Geometry\Editor\GeometryBlockEditor.cs" />
     <Compile Include="Assets\Scripts\Geometry\Editor\ProgrammableWallEditor.cs" />
     <Compile Include="Assets\Scripts\Interactables\Editor\InteractableEditor.cs" />

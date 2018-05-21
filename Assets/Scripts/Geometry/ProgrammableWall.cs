@@ -37,6 +37,8 @@ public class ProgrammableWall : MonoBehaviour {
 
     float previousLayerSize, previousColumnSize;
 
+    // bool doNotInstantiate = false;
+
     [Header("Wall Settings")]
     [SerializeField] WallDirection wallDirection = WallDirection.North;
     [SerializeField] bool stagger = true;
@@ -44,12 +46,10 @@ public class ProgrammableWall : MonoBehaviour {
 
     WallDirection previousWallDirection;
     bool previousStagger, previousFlipStagger, previousAddEndingBlock, previousIsAcshullyFloor, previousEvenSize, previousFlipGrowDirection;
-
+    // 
     bool doEndBlock = false;
 
     public bool finalizeWall;
-
-    bool doNotInstantiate = false;
 
     public void CreateWall() {
 
@@ -94,7 +94,7 @@ public class ProgrammableWall : MonoBehaviour {
 
             for (int i = 0; i < columnSize; i++) {
 
-                doNotInstantiate = false;
+                // doNotInstantiate = false;
                 float currentLocalX = i * (blockSizeX);
                 float currentLocalY = (flipGrowDirection == true) ? j * (-blockSizeY) : j * (blockSizeY);
                 Vector3 currentLocalPostion = new Vector3(currentLocalX, currentLocalY, 0f);

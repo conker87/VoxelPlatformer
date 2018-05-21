@@ -14,29 +14,30 @@ public class IsometricCamera : MonoBehaviour
 
 	void Start() {
 		
-		Camera.main.orthographic = true;
+		// Camera.main.orthographic = true;
         // transform.rotation = Quaternion.Euler(30f, 45f, 0);
+
         Camera.main.transform.eulerAngles = new Vector3 (30f, 315f, 0f);
 
-        if (MainGameController.player == null) {
+        if (MainGameController.current.player == null) {
 
             return;
 
         }
 
-        MainGameController.player.GetComponent<CharController>().ResetForwardDirection();
+        MainGameController.current.player.GetComponent<CharController>().ResetForwardDirection();
 
     }
 
 	void LateUpdate() {
 
-		if (MainGameController.player == null) {
+		if (MainGameController.current.player == null) {
 
 			return;
 
 		}
 
-		transform.position = MainGameController.player.transform.position;
+		transform.position = MainGameController.current.player.transform.position;
 
 		Vector3 addition = Vector3.zero;
 
@@ -44,7 +45,7 @@ public class IsometricCamera : MonoBehaviour
 
         addition = new Vector3 (cameraDistanceXZ, cameraDistanceY, -cameraDistanceXZ);
 
-        Camera.main.transform.position = MainGameController.player.transform.position + addition;
+        Camera.main.transform.position = MainGameController.current.player.transform.position + addition;
 
 	}
 }

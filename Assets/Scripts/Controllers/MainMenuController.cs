@@ -59,14 +59,14 @@ public class MainMenuController : MonoBehaviour {
         OptionsMenuFullscreen.isOn = Screen.fullScreen;
 
         // Add listeners to all the allocated Buttons.
-        AddListener(MainMenuContinue, delegate { LoadSaveController.LoadMainGame(LoadSaveController.SaveGameLocation); });
+        AddListener(MainMenuContinue, delegate { LoadSaveController.LoadMainGame("saveGameTest.xml"); });
         AddListener(MainMenuNewGame, delegate { LoadSaveController.LoadMainGame(""); });
         AddListener(MainMenuOptions, delegate { ChangeMainMenuState(MainMenuState.OptionsMenu); });
         AddListener(MainMenuQuit, Application.Quit);
 
         AddListener(OptionsMenuSave, SaveButton_OnClick);
         AddListener(OptionsMenuRevert, null);
-        AddListener(OptionsMenuSave, delegate { ChangeMainMenuState(MainMenuState.MainMenu); });
+        AddListener(OptionsMenuClose, delegate { ChangeMainMenuState(MainMenuState.MainMenu); });
 
     }
 

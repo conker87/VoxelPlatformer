@@ -12,9 +12,15 @@ public class HideModelsTriggerEnter : MonoBehaviour {
 
     Renderer otherRenderer;
 
-    Level rendererLevel;
+    AreaController rendererLevel;
 
     private void OnTriggerEnter(Collider other) {
+
+        if (MainGameController.current.player == null) {
+
+            return;
+
+        }
 
         if (other.gameObject.tag != hideTag) {
 
@@ -43,11 +49,11 @@ public class HideModelsTriggerEnter : MonoBehaviour {
         ///     And not if they are behind the player at any point:
         ///         - (x-,z-),
         ///         - (x-,z+).
-        if ((otherRenderer.transform.position.x > MainGameController.player.transform.position.x
-                 && otherRenderer.transform.position.z < MainGameController.player.transform.position.z + zOffset)
+        if ((otherRenderer.transform.position.x > MainGameController.current.player.transform.position.x
+                 && otherRenderer.transform.position.z < MainGameController.current.player.transform.position.z + zOffset)
              //|| (otherRenderer.transform.position.x > GameController.current.Player.transform.position.x
              //    && otherRenderer.transform.position.z > GameController.current.Player.transform.position.z)
-             || otherRenderer.transform.position.y > MainGameController.player.transform.position.y + yOffset) {
+             || otherRenderer.transform.position.y > MainGameController.current.player.transform.position.y + yOffset) {
 
             otherRenderer.enabled = false;
             return;
@@ -77,7 +83,7 @@ public class HideModelsTriggerEnter : MonoBehaviour {
 
         }
 
-        rendererLevel = other.GetComponentInParent<Level>();
+        rendererLevel = other.GetComponentInParent<AreaController>();
 
         if (rendererLevel.IsCurrentlyLoaded == false) {
 
