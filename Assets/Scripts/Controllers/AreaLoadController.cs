@@ -19,7 +19,6 @@ public class AreaLoadController : MonoBehaviour {
     [SerializeField] public string SubareaText = "";
     [SerializeField] bool isCurrentlyLoaded = false;
     [SerializeField] Color backgroundColor;
-
     #endregion
 
     #region Encapsulated Public Fields
@@ -51,14 +50,17 @@ public class AreaLoadController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
 
-        if (MainGameController.current.currentArea == areaLoaderIsConnectedTo) {
+        if (other.GetComponentInParent<Player>() == null) {
 
             return;
 
         }
 
-        if (other.GetComponentInParent<Player>() == null) {
+        if (MainGameController.current.currentArea == areaLoaderIsConnectedTo) {
 
+            // Debug.Log("MainGameController.current.currentArea == areaLoaderIsConnectedTo: " + other.transform.position + " called: " + other.gameObject.name, other.gameObject);
+
+            MainGameController.current.ShowSubLocationText(SubareaText);
             return;
 
         }

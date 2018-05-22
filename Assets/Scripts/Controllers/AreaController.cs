@@ -13,7 +13,8 @@ public class AreaController : MonoBehaviour {
     [SerializeField] string areaName = "";
     [SerializeField] string areaID = "";
     [SerializeField] bool isCurrentlyLoaded = false;
-    [SerializeField] Transform levelOffset;
+
+    [SerializeField] Transform geometryPivot;
 
     #endregion
 
@@ -46,38 +47,18 @@ public class AreaController : MonoBehaviour {
             isCurrentlyLoaded = value;
         }
     }
-    public Transform LevelOffset {
-        get {
-            return levelOffset;
-        }
-
-        set {
-            levelOffset = value;
-        }
-    }
 
     #endregion
 
-    // public List<Renderer> allLevelRenderers = new List<Renderer>();
-
-    private void Start() {
-
-        if (LevelOffset == null) {
-
-            LevelOffset = GetComponentsInChildren<Transform>().Single(a => a.gameObject.name == "Offset").transform;
-
-        }
-    }
-
     public void LoadArea() {
 
-        if (LevelOffset == null) {
+        if (geometryPivot == null) {
 
             return;
 
         }
 
-        foreach (Renderer renderer in LevelOffset.GetComponentsInChildren<Renderer>(true)) {
+        foreach (Renderer renderer in geometryPivot.GetComponentsInChildren<Renderer>(true)) {
 
             renderer.enabled = true;
 
@@ -89,15 +70,13 @@ public class AreaController : MonoBehaviour {
 
     public void UnloadArea() {
 
-        if (LevelOffset == null) {
+        if (geometryPivot == null) {
 
             return;
 
         }
 
-        // Debug.LogFormat("Area '{0}' is currently being unloaded.", areaName);
-
-        foreach (Renderer renderer in LevelOffset.GetComponentsInChildren<Renderer>(true)) {
+        foreach (Renderer renderer in geometryPivot.GetComponentsInChildren<Renderer>(true)) {
 
             renderer.enabled = false;
 

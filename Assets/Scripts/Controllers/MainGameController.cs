@@ -62,8 +62,10 @@ public class MainGameController : MonoBehaviour {
 
     [Header("Level Loaded Canvas")]
     public TextMeshProUGUI NumberOfCoins;
-    public TextMeshProUGUI NumberOfStars, Health, TimeT, RPGFluff, Location;
-    Coroutine RPGFluffFadeOut, LocationTextFadeout;
+    public TextMeshProUGUI NumberOfStars, Health, TimeT, RPGFluff;
+    public Text MainAreaLocation, SubAreaLocation;
+
+    Coroutine RPGFluffFadeOut, MainLocationTextFadeout, SubLocationTextFadeout;
 
     public List<CollectableSave> Collectables = new List<CollectableSave>();
     public List<InteractableSave> Interactables = new List<InteractableSave>();
@@ -295,6 +297,12 @@ public class MainGameController : MonoBehaviour {
 
         }
 
+        if (text == "") {
+
+            return;
+
+        }
+
         if (RPGFluffFadeOut != null) {
 
             StopCoroutine(RPGFluffFadeOut);
@@ -324,51 +332,90 @@ public class MainGameController : MonoBehaviour {
 
             yield return null;
         }
-
-        RPGFluff.text = "";
-
     }
 
-    public void ShowLocationText(string text, float fadeOutInTime = 3f, float fadeOutTime = 1f) {
+    public void ShowMainLocationText(string text, float fadeOutInTime = 3f, float fadeOutTime = 1f) {
 
-        if (Location == null) {
+        if (MainAreaLocation == null || text == "" || MainAreaLocation.text == text) {
 
             return;
 
         }
 
-        if (LocationTextFadeout != null) {
+        if (SubLocationTextFadeout != null) {
 
-            StopCoroutine(LocationTextFadeout);
+            StopCoroutine(SubLocationTextFadeout);
 
         }
 
-        Location.color = new Color(Location.color.r, Location.color.g, Location.color.b, 1);
+        if (MainLocationTextFadeout != null) {
 
-        Location.text = text;
+            StopCoroutine(MainLocationTextFadeout);
 
-        LocationTextFadeout = null;
-        LocationTextFadeout = StartCoroutine(FadeOutLocationText(fadeOutInTime, fadeOutTime));
+        }
+
+        MainAreaLocation.color = new Color(MainAreaLocation.color.r, MainAreaLocation.color.g, MainAreaLocation.color.b, 1);
+
+        MainAreaLocation.text = text;
+
+        MainLocationTextFadeout = null;
+        MainLocationTextFadeout = StartCoroutine(FadeOutMainLocationText(fadeOutInTime, fadeOutTime));
     }
-    IEnumerator FadeOutLocationText(float fadeOutInTime, float fadeOutTime) {
+    IEnumerator FadeOutMainLocationText(float fadeOutInTime, float fadeOutTime) {
 
         yield return new WaitForSeconds(fadeOutInTime);
 
-        Location.color = new Color(Location.color.r, Location.color.g, Location.color.b, 1);
+        MainAreaLocation.color = new Color(MainAreaLocation.color.r, MainAreaLocation.color.g, MainAreaLocation.color.b, 1);
 
-        while (Location.color.a > 0.0f) {
+        while (MainAreaLocation.color.a > 0.0f) {
 
-            Location.color = new Color(Location.color.r,
-                Location.color.g,
-                Location.color.b,
-                Location.color.a - (Time.deltaTime / fadeOutTime)
+            MainAreaLocation.color = new Color(MainAreaLocation.color.r,
+                MainAreaLocation.color.g,
+                MainAreaLocation.color.b,
+                MainAreaLocation.color.a - (Time.deltaTime / fadeOutTime)
             );
 
             yield return null;
         }
+    }
 
-        Location.text = "";
+    public void ShowSubLocationText(string text, float fadeOutInTime = 3f, float fadeOutTime = 1f) {
 
+        if (SubAreaLocation == null || text == ""  || SubAreaLocation.text == text) {
+
+            return;
+
+        }
+
+        if (SubLocationTextFadeout != null) {
+
+            StopCoroutine(SubLocationTextFadeout);
+
+        }
+
+        SubAreaLocation.color = new Color(SubAreaLocation.color.r, SubAreaLocation.color.g, SubAreaLocation.color.b, 1);
+
+        SubAreaLocation.text = text;
+
+        SubLocationTextFadeout = null;
+        SubLocationTextFadeout = StartCoroutine(FadeOutSubLocationText(fadeOutInTime, fadeOutTime));
+    }
+    IEnumerator FadeOutSubLocationText(float fadeOutInTime, float fadeOutTime) {
+
+        yield return new WaitForSeconds(fadeOutInTime);
+
+        SubAreaLocation.color = new Color(SubAreaLocation.color.r, SubAreaLocation.color.g, SubAreaLocation.color.b, 1);
+
+        while (SubAreaLocation.color.a > 0.0f) {
+
+            SubAreaLocation.color = new Color(SubAreaLocation.color.r,
+                SubAreaLocation.color.g,
+                SubAreaLocation.color.b,
+                SubAreaLocation.color.a - (Time.deltaTime / fadeOutTime)
+            );
+
+            yield return null;
+        }
     }
 
     // Menu State Changer
@@ -383,7 +430,7 @@ public class MainGameController : MonoBehaviour {
 
         if (onlyShowNewSubareaText == true) {
 
-            MainGameController.current.ShowLocationText(subAreaText);
+            MainGameController.current.ShowSubLocationText(subAreaText, 2f);
 
             return;
         }
@@ -448,11 +495,10 @@ public class MainGameController : MonoBehaviour {
 
                     if (i == 0) {
 
-                        MainGameController.current.ShowLocationText(area.AreaName);
+                        MainGameController.current.ShowMainLocationText(area.AreaName, 2f);
+                        MainGameController.current.ShowSubLocationText(subAreaText, 2f);
 
                         currentArea = loadingArea;
-
-                        Debug.LogFormat("{0} == {1}", currentArea.AreaName, loadingArea.AreaName);
                     }
                 }
 
@@ -464,11 +510,10 @@ public class MainGameController : MonoBehaviour {
                 continue;
 
             }
+
             area.UnloadArea();
 
         }
-
-        // Debug.LogFormat("You are in: {0}, plus, these should load: {1}", area.LevelName, debug_log);
 
         ChangeBackgroundColor(backgroundColor);
 
