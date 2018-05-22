@@ -68,6 +68,8 @@ public class MainGameController : MonoBehaviour {
     public List<CollectableSave> Collectables = new List<CollectableSave>();
     public List<InteractableSave> Interactables = new List<InteractableSave>();
 
+    public AreaController currentArea;
+
     void OnEnable() {
 
         FindPlayer();
@@ -377,33 +379,84 @@ public class MainGameController : MonoBehaviour {
 
     }
 
-    public void CheckIfInArea(List<AreaController> areasToLoad, Color backgroundColor) {
+    public void CheckIfInArea(List<AreaController> areasToLoad, Color backgroundColor, bool onlyShowNewSubareaText = false, string subAreaText = "") {
+
+        if (onlyShowNewSubareaText == true) {
+
+            MainGameController.current.ShowLocationText(subAreaText);
+
+            return;
+        }
 
         string debug_log = "";
         bool loadedLevel = false;
+        int i = 0;
+
+        #region
+        /* foreach (AreaController loadingArea in areasToLoad) {
+
+        //    foreach (AreaController area in MainGameController.current.levels) {
+
+        //        if (loadingArea.LevelName == area.LevelName) {
+
+        //            debug_log += area.LevelName + ", ";
+
+        //            area.gameObject.SetActive(true);
+        //            area.LoadArea();
+        //            loadedLevel = true;
+
+        //            if (i == 0) {
+
+        //                if (currentArea != loadingArea) {
+
+        //                    MainGameController.current.ShowLocationText(area.LevelName);
+
+        //                    currentArea = loadingArea;
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    if (loadedLevel == true) {
+
+        //        continue;
+
+        //    }
+
+        //    i++;
+        //    area.UnloadArea();
+        } */
+
+        // --
+
+        #endregion
 
         foreach (AreaController area in MainGameController.current.levels) {
 
             loadedLevel = false;
+            i = 0;
 
             foreach (AreaController loadingArea in areasToLoad) {
+                
+                if (loadingArea.AreaName == area.AreaName) {
 
-                Debug.LogFormat("Current area being checked: {0}, against: {1}", area.areaName, loadingArea.areaName);
-
-                if (loadingArea.LevelName == area.LevelName) {
-
-                    debug_log += area.LevelName + ", ";
+                    debug_log += area.AreaName + ", ";
 
                     area.gameObject.SetActive(true);
                     area.LoadArea();
                     loadedLevel = true;
 
-                    MainGameController.current.ShowLocationText(area.LevelName);
+                    if (i == 0) {
 
-                    continue;
+                        MainGameController.current.ShowLocationText(area.AreaName);
 
+                        currentArea = loadingArea;
+
+                        Debug.LogFormat("{0} == {1}", currentArea.AreaName, loadingArea.AreaName);
+                    }
                 }
 
+                i++;
             }
 
             if (loadedLevel == true) {
@@ -411,12 +464,11 @@ public class MainGameController : MonoBehaviour {
                 continue;
 
             }
-
             area.UnloadArea();
 
         }
 
-        // Debug.LogFormat("You are in: {0}, plus, these should load: {1}", LevelName, debug_log);
+        // Debug.LogFormat("You are in: {0}, plus, these should load: {1}", area.LevelName, debug_log);
 
         ChangeBackgroundColor(backgroundColor);
 

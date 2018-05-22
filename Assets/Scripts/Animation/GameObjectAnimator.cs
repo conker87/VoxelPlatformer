@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete("Use Unity Animations.")]
 public class GameObjectAnimator : MonoBehaviour {
 
     public bool isCurrentlyAnimating = false;

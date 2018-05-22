@@ -15,7 +15,8 @@ public class AreaLoadController : MonoBehaviour {
     [SerializeField] AreaController areaLoaderIsConnectedTo;
 
     [SerializeField] List<AreaController> areasToLoad = new List<AreaController>();
-    [SerializeField] bool loadedLevel = false;
+    // [SerializeField] bool loadedLevel = false;
+    [SerializeField] public string SubareaText = "";
     [SerializeField] bool isCurrentlyLoaded = false;
     [SerializeField] Color backgroundColor;
 
@@ -50,6 +51,12 @@ public class AreaLoadController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
 
+        if (MainGameController.current.currentArea == areaLoaderIsConnectedTo) {
+
+            return;
+
+        }
+
         if (other.GetComponentInParent<Player>() == null) {
 
             return;
@@ -62,9 +69,8 @@ public class AreaLoadController : MonoBehaviour {
 
         }
 
-        Debug.Log("Player has been found & levels have been populated.");
-
-        MainGameController.current.CheckIfInArea(areasToLoad, backgroundColor);
+        // TODO: Change this so that there's two location texts, one for the main area, on for sub-area
+        MainGameController.current.CheckIfInArea(areasToLoad, backgroundColor, MainGameController.current.currentArea == areaLoaderIsConnectedTo, SubareaText);
 
     }
 }

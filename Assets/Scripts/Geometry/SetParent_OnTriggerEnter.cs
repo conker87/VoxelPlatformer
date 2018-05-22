@@ -29,9 +29,15 @@ public class SetParent_OnTriggerEnter : MonoBehaviour {
 
     }
 
-    private void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other) {
 
-        if (levelsParent == null || pivotTransform == null) {
+        if (MainGameController.current.player == null || levelsParent == null || pivotTransform == null) {
+
+            return;
+
+        }
+
+        if (MainGameController.current.player.GetComponent<CharController>().IsGrounded == false) {
 
             return;
 
@@ -46,9 +52,41 @@ public class SetParent_OnTriggerEnter : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider other) {
+    void OnTriggerStay(Collider other) {
 
-        if (levelsParent == null || pivotTransform == null) {
+        if (MainGameController.current.player == null || levelsParent == null || pivotTransform == null) {
+
+            return;
+
+        }
+
+        if (MainGameController.current.player.GetComponent<CharController>().IsGrounded == false) {
+
+            if (other.GetComponentInParent<Player>() != null) {
+
+                Debug.Log("Setting Player to elevator.");
+
+                player = other.GetComponentInParent<Player>().transform;
+
+                player.parent = levelsParent;
+
+            }
+        } else {
+
+            if (other.GetComponentInParent<Player>() != null) {
+
+                player = other.GetComponentInParent<Player>().transform;
+
+                player.parent = pivotTransform;
+
+            }
+        }
+
+    }
+
+    void OnTriggerExit(Collider other) {
+
+        if (MainGameController.current.player == null || levelsParent == null || pivotTransform == null) {
 
             return;
 

@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\Cutscenes\Cutscene.cs" />
     <Compile Include="Assets\Scripts\Entity\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entity\Player.cs" />
+    <Compile Include="Assets\Scripts\Entity\PlayerEyeAnimationController.cs" />
     <Compile Include="Assets\Scripts\ExtendList.cs" />
     <Compile Include="Assets\Scripts\Geometry\GeometryBlock.cs" />
     <Compile Include="Assets\Scripts\Geometry\ProgrammableWall.cs" />

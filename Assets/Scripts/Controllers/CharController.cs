@@ -53,10 +53,14 @@ public class CharController : MonoBehaviour {
 
     [SerializeField]
     // raycastSkin:             The amount purtuding from the Player collider to check for Ground.
-    // isGroundedCheckTime:     The next time when the ground should be checked for.
+    // isGroundedCheckTime:     The next tim    e when the ground should be checked for.
     // isGroundedCheckCooldown: The cooldown on when the ground should be checked for.
     // capsuleColliderYBounds:  The vertical bounds of the Player Capsule Collider.
     float raycastSkin = 0.01f, isGroundedCheckTime, isGroundedCheckCooldown = 0.25f, capsuleColliderYBounds;
+    public bool IsGrounded {
+        get { return isGrounded; }
+        set { isGrounded = value; }
+    }
 
     [SerializeField]
     CapsuleCollider capsuleCollider;
@@ -163,7 +167,7 @@ public class CharController : MonoBehaviour {
         }
 
         // Check to see if the Player is Grounded.
-        IsGrounded();
+        IsCurrentlyGrounded();
 
     }
 
@@ -329,7 +333,7 @@ public class CharController : MonoBehaviour {
 
 	}
 
-    void IsGrounded() {
+    void IsCurrentlyGrounded() {
 
         if (Time.time > isGroundedCheckTime) {
 

@@ -10,7 +10,7 @@ public class AreaController : MonoBehaviour {
     #region Serialized Private Fields
 
     [Header("Level Details")]
-    [SerializeField] public string areaName = "";
+    [SerializeField] string areaName = "";
     [SerializeField] string areaID = "";
     [SerializeField] bool isCurrentlyLoaded = false;
     [SerializeField] Transform levelOffset;
@@ -19,7 +19,7 @@ public class AreaController : MonoBehaviour {
 
     #region Encapsulated Public Fields
 
-    public string LevelName {
+    public string AreaName {
         get {
             return areaName;
         }
@@ -95,19 +95,14 @@ public class AreaController : MonoBehaviour {
 
         }
 
-        Debug.LogFormat("Area '{0}' is currently being unloaded, number of renderers being unloaded: {1}", areaName, LevelOffset.GetComponentsInChildren<Renderer>(true).Count());
-
-        string rendererNames = "";
+        // Debug.LogFormat("Area '{0}' is currently being unloaded.", areaName);
 
         foreach (Renderer renderer in LevelOffset.GetComponentsInChildren<Renderer>(true)) {
 
             renderer.enabled = false;
-            rendererNames += renderer.gameObject.name;
 
         }
-
-        Debug.Log(rendererNames);
-
+        
         IsCurrentlyLoaded = false;
 
     }
