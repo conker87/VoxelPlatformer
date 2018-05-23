@@ -160,7 +160,7 @@ public class MainGameController : MonoBehaviour {
 
             }
 
-                if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
 
                 // This is supposed to enable the PlayingMenu.
                 ChangeGameState(MainGameState.PausedMenu);
@@ -426,7 +426,7 @@ public class MainGameController : MonoBehaviour {
 
     }
 
-    public void CheckIfInArea(List<AreaController> areasToLoad, Color backgroundColor, bool onlyShowNewSubareaText = false, string subAreaText = "") {
+    public void AreaCheck(AreaController _currentArea, List<AreaController> areasToLoad, Color backgroundColor, bool onlyShowNewSubareaText = false, string subAreaText = "") {
 
         if (onlyShowNewSubareaText == true) {
 
@@ -439,44 +439,7 @@ public class MainGameController : MonoBehaviour {
         bool loadedLevel = false;
         int i = 0;
 
-        #region
-        /* foreach (AreaController loadingArea in areasToLoad) {
-
-        //    foreach (AreaController area in MainGameController.current.levels) {
-
-        //        if (loadingArea.LevelName == area.LevelName) {
-
-        //            debug_log += area.LevelName + ", ";
-
-        //            area.gameObject.SetActive(true);
-        //            area.LoadArea();
-        //            loadedLevel = true;
-
-        //            if (i == 0) {
-
-        //                if (currentArea != loadingArea) {
-
-        //                    MainGameController.current.ShowLocationText(area.LevelName);
-
-        //                    currentArea = loadingArea;
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    if (loadedLevel == true) {
-
-        //        continue;
-
-        //    }
-
-        //    i++;
-        //    area.UnloadArea();
-        } */
-
-        // --
-
-        #endregion
+        currentArea = _currentArea;
 
         foreach (AreaController area in MainGameController.current.levels) {
 
@@ -489,7 +452,6 @@ public class MainGameController : MonoBehaviour {
 
                     debug_log += area.AreaName + ", ";
 
-                    area.gameObject.SetActive(true);
                     area.LoadArea();
                     loadedLevel = true;
 
@@ -498,7 +460,6 @@ public class MainGameController : MonoBehaviour {
                         MainGameController.current.ShowMainLocationText(area.AreaName, 2f);
                         MainGameController.current.ShowSubLocationText(subAreaText, 2f);
 
-                        currentArea = loadingArea;
                     }
                 }
 
@@ -553,6 +514,12 @@ public class MainGameController : MonoBehaviour {
     }
 
     public static bool FindPlayer() {
+
+        if (current == null) {
+
+            return false;
+
+        }
 
         if (current.player == null) {
 

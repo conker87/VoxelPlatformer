@@ -37,9 +37,9 @@ public class SceneLoader : MonoBehaviour {
 
                 if (currentProgressionPercentage >= 99f) {
 
-                    progressionText.text = "Press the space bar to continue";
+                    progressionText.text = "Press any key to continue";
 
-                    if (Input.GetKeyDown(KeyCode.Space)) {
+                    if (Input.anyKeyDown == true || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {
 
                         asyncOperation.allowSceneActivation = true;
 

@@ -64,7 +64,7 @@ public class SetParent_OnTriggerEnter : MonoBehaviour {
 
             if (other.GetComponentInParent<Player>() != null) {
 
-                Debug.Log("Setting Player to elevator.");
+                // Debug.Log("Setting Player to elevator.");
 
                 player = other.GetComponentInParent<Player>().transform;
 

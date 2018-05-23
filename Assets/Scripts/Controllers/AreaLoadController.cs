@@ -71,8 +71,7 @@ public class AreaLoadController : MonoBehaviour {
 
         }
 
-        // TODO: Change this so that there's two location texts, one for the main area, on for sub-area
-        MainGameController.current.CheckIfInArea(areasToLoad, backgroundColor, MainGameController.current.currentArea == areaLoaderIsConnectedTo, SubareaText);
+        MainGameController.current.AreaCheck(areaLoaderIsConnectedTo, areasToLoad, backgroundColor, MainGameController.current.currentArea == areaLoaderIsConnectedTo, SubareaText);
 
     }
 }

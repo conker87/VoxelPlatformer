@@ -20,6 +20,12 @@ MonoBehaviour:
   - pbVertexPaletteDockable
   - pbDefaultOpenInDockableWindow
   - pbMaterialEditorFloating
+  - pbObjExportRightHanded
+  - pbObjApplyTransform
+  - pbObjExportCopyTextures
+  - pbObjExportVertexColors
+  - pbObjTextureOffsetScale
+  - pbObjQuads
   m_Int_keys:
   - pbDefaultCollider
   - pbShadowCastingMode
@@ -39,7 +45,7 @@ MonoBehaviour:
   m_Color_keys: []
   m_Material_keys:
   - pbDefaultMaterial
-  m_Bool_values: 0100000000010100
+  m_Bool_values: 0100000000010100010101010001
   m_Int_values: 020000000200000000000000000000000000000001000000000000000000000000000000
   m_Float_values:
   - 0

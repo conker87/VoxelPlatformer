@@ -16,31 +16,15 @@ public class HideModelsTriggerEnter : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
 
-        if (MainGameController.current.player == null) {
-
-            return;
-
-        }
-
-        if (other.gameObject.tag != hideTag) {
-
-            return;
-
-        }
-
         otherRenderer = other.GetComponent<Renderer>();
-
-        if (otherRenderer == false) {
-
-            return;
-
-        }
-
-        if (otherRenderer.enabled == false) {
+        if (MainGameController.current.player == null || otherRenderer == null || other.gameObject.tag != hideTag) {
 
             return;
 
         }
+
+        otherRenderer.enabled = false;
+        return;
 
         /// I literally had to draw a diagram for this as it was pretty hard to imagine:
         ///     The camera is at x+,z-, we want all blocks (with the tag) to be made invisible if they are:
@@ -63,29 +47,14 @@ public class HideModelsTriggerEnter : MonoBehaviour {
 
     private void OnTriggerStay(Collider other) {
 
-        OnTriggerEnter(other);
+        // OnTriggerEnter(other);
 
     }
 
     private void OnTriggerExit(Collider other) {
 
-        if (other.gameObject.tag != hideTag) {
-
-            return;
-
-        }
-
         otherRenderer = other.GetComponent<Renderer>();
-
-        if (otherRenderer == false) {
-
-            return;
-
-        }
-
-        rendererLevel = other.GetComponentInParent<AreaController>();
-
-        if (rendererLevel.IsCurrentlyLoaded == false) {
+        if (MainGameController.current.player == null || otherRenderer == null || other.gameObject.tag != hideTag) {
 
             return;
 
