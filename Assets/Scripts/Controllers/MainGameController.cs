@@ -35,6 +35,7 @@ public class MainGameController : MonoBehaviour {
     }
 
     public Player player;
+    public Transform GameStartLocation;
     SaveDetails SaveDetails;
     public List<AreaController> levels = new List<AreaController>();
 
@@ -174,6 +175,8 @@ public class MainGameController : MonoBehaviour {
 
     void ApplySaveData(Scene scene, LoadSceneMode mode) {
 
+        FindPlayer();
+
         // Editor function as loadedFromMainMenu will never be false in production.
         if (LoadSaveController.loadedFromMainMenu == false) {
 
@@ -185,15 +188,13 @@ public class MainGameController : MonoBehaviour {
 
             Debug.Log("LoadSaveController.SaveGameLocation");
 
-            FindPlayer();
-
             hasFullyLoaded = true;
             return;
 
         }
 
         SaveGameName = LoadSaveController.LoadedSaveName;
-        player.transform.position = LoadSaveController.LoadedPosition;
+        player.transform.position = (LoadSaveController.loadedFromMainMenu == false) ? GameStartLocation.transform.position : LoadSaveController.LoadedPosition; //LoadSaveController.LoadedPosition;
         TotalTimePlayed = LoadSaveController.LoadedTotalTime;
 
         // Populate Collectable list.
@@ -225,8 +226,6 @@ public class MainGameController : MonoBehaviour {
                 }
             }
         }
-
-        FindPlayer();
 
         hasFullyLoaded = true;
     }

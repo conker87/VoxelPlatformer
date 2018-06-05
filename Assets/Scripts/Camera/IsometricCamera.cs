@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IsometricCamera : MonoBehaviour
-{
-	public Player player;
+public class IsometricCamera : MonoBehaviour {
 	public float size = 10;
 	public float scrollSpeed = 30;
 
@@ -28,7 +26,7 @@ public class IsometricCamera : MonoBehaviour
 
     }
 
-	void LateUpdate() {
+    void LateUpdate() {
 
 		if (MainGameController.current == null || MainGameController.current.player == null) {
 

@@ -7,6 +7,7 @@ TagManager:
   - Geometry
   - MoveableBlock
   - CanBeDisabled
+  - Elevator
   layers:
   - Default
   - TransparentFX

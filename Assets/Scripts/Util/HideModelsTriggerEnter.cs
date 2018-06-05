@@ -23,6 +23,8 @@ public class HideModelsTriggerEnter : MonoBehaviour {
 
         }
 
+
+        Debug.Log(otherRenderer.gameObject.name);
         otherRenderer.enabled = false;
         return;
 

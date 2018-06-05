@@ -46,16 +46,14 @@ public class ProgrammableWall : MonoBehaviour {
 
     WallDirection previousWallDirection;
     bool previousStagger, previousFlipStagger, previousAddEndingBlock, previousIsAcshullyFloor, previousEvenSize, previousFlipGrowDirection;
-    // 
-    bool doEndBlock = false;
 
-    public bool finalizeWall;
+    bool doEndBlock = false;
 
     public void CreateWall() {
 
         if (CheckForMergedObjects()) {
 
-            Debug.LogError("This prefab contains a merged object, if you want to create a new wall then add another ProgrammableWall prefab into the scene.");
+            // Debug.LogError("This prefab contains a merged object, if you want to create a new wall then add another ProgrammableWall prefab into the scene.");
             return;
 
         }
