@@ -105,9 +105,10 @@ MonoBehaviour:
   - {r: 0.61, g: 0.61, b: 0.61, a: 1}
   - {r: 0.62, g: 0.62, b: 0.62, a: 1}
   - {r: 0.63, g: 0.63, b: 0.63, a: 1}
-  forceTag: CanBeDisabled
+  forceTag: Untagged
   blockSizeY: 1
   blockSizeX: 2
+  blockGlobalScale: {x: 1, y: 1, z: 1}
   layerSize: 6
   columnSize: 8
   wallDirection: 0
@@ -117,4 +118,3 @@ MonoBehaviour:
   isAcshullyFloor: 0
   evenSize: 1
   flipGrowDirection: 0
-  finalizeWall: 0

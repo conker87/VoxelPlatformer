@@ -50,10 +50,6 @@ public class AreaController : MonoBehaviour {
 
     #endregion
 
-    private void Start() {
-        
-    }
-
     public void LoadArea() {
 
         if (geometryPivot == null || geometryPivot.gameObject.activeInHierarchy == true) {
@@ -63,12 +59,6 @@ public class AreaController : MonoBehaviour {
         }
 
         geometryPivot.gameObject.SetActive(true);
-
-        //for (int i = 0; i < geometryPivot.GetComponentsInChildren<Renderer>(true).Count(); i++) {
-
-        //    geometryPivot.GetComponentsInChildren<Renderer>(true)[i].enabled = true;
-
-        //}
 
         IsCurrentlyLoaded = true;
 
@@ -83,12 +73,6 @@ public class AreaController : MonoBehaviour {
         }
 
         geometryPivot.gameObject.SetActive(false);
-
-        //for (int i = 0; i < geometryPivot.GetComponentsInChildren<Renderer>(true).Count(); i++) {
-
-        //    geometryPivot.GetComponentsInChildren<Renderer>(true)[i].enabled = false;
-
-        //}
         
         IsCurrentlyLoaded = false;
 

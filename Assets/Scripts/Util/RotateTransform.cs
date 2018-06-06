@@ -9,7 +9,7 @@ public class RotateTransform : MonoBehaviour {
 
 	void Update () {
 	
-		transform.Rotate (0f, rotationSpeed, 0f, Space.Self);
+		transform.Rotate (0f, rotationSpeed * Time.deltaTime, 0f, Space.Self);
 
 	}
 }

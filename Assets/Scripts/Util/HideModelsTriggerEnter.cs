@@ -7,12 +7,7 @@ public class HideModelsTriggerEnter : MonoBehaviour {
     [SerializeField]
     string hideTag = "";
 
-    [SerializeField]
-    float zOffset = 2f, yOffset = 5f;
-
     Renderer otherRenderer;
-
-    AreaController rendererLevel;
 
     private void OnTriggerEnter(Collider other) {
 
@@ -23,8 +18,7 @@ public class HideModelsTriggerEnter : MonoBehaviour {
 
         }
 
-
-        Debug.Log(otherRenderer.gameObject.name);
+        // Debug.Log(otherRenderer.gameObject.name);
         otherRenderer.enabled = false;
         return;
 
@@ -35,21 +29,21 @@ public class HideModelsTriggerEnter : MonoBehaviour {
         ///     And not if they are behind the player at any point:
         ///         - (x-,z-),
         ///         - (x-,z+).
-        if ((otherRenderer.transform.position.x > MainGameController.current.player.transform.position.x
-                 && otherRenderer.transform.position.z < MainGameController.current.player.transform.position.z + zOffset)
-             //|| (otherRenderer.transform.position.x > GameController.current.Player.transform.position.x
-             //    && otherRenderer.transform.position.z > GameController.current.Player.transform.position.z)
-             || otherRenderer.transform.position.y > MainGameController.current.player.transform.position.y + yOffset) {
+        //if ((otherRenderer.transform.position.x > MainGameController.current.player.transform.position.x
+        //         && otherRenderer.transform.position.z < MainGameController.current.player.transform.position.z + zOffset)
+        //     //|| (otherRenderer.transform.position.x > GameController.current.Player.transform.position.x
+        //     //    && otherRenderer.transform.position.z > GameController.current.Player.transform.position.z)
+        //     || otherRenderer.transform.position.y > MainGameController.current.player.transform.position.y + yOffset) {
 
-            otherRenderer.enabled = false;
-            return;
+        //    otherRenderer.enabled = false;
+        //    return;
 
-        }
+        //}
     }
 
     private void OnTriggerStay(Collider other) {
 
-        // OnTriggerEnter(other);
+        OnTriggerEnter(other);
 
     }
 

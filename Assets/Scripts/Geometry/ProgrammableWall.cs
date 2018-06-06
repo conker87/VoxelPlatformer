@@ -21,7 +21,7 @@ public class ProgrammableWall : MonoBehaviour {
         new Color(0.56f, 0.56f, 0.56f), new Color(0.57f, 0.57f, 0.57f), new Color(0.58f, 0.58f, 0.58f),
         new Color(0.59f, 0.59f, 0.59f), new Color(0.6f, 0.6f, 0.6f), new Color(0.61f, 0.61f, 0.61f),
         new Color(0.62f, 0.62f, 0.62f), new Color(0.63f, 0.63f, 0.63f) };
-    [SerializeField] string forceTag = "CanBeDisabled";
+    [SerializeField] string forceTag = "Untagged";
 
     [Header("Block Size")]
     [SerializeField] float blockSizeY = 1f;
@@ -344,10 +344,6 @@ public class ProgrammableWall : MonoBehaviour {
         previousEvenSize = evenSize;
         previousFlipGrowDirection = flipGrowDirection;
 
-    }
-
-    void OnEnable() {
-        Start();
     }
 }
 

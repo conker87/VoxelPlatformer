@@ -72,6 +72,7 @@ public class MainGameController : MonoBehaviour {
     public List<InteractableSave> Interactables = new List<InteractableSave>();
 
     public AreaController currentArea;
+    public AreaLoadController currentSubArea;
 
     void OnEnable() {
 
@@ -341,12 +342,6 @@ public class MainGameController : MonoBehaviour {
 
         }
 
-        if (SubLocationTextFadeout != null) {
-
-            StopCoroutine(SubLocationTextFadeout);
-
-        }
-
         if (MainLocationTextFadeout != null) {
 
             StopCoroutine(MainLocationTextFadeout);
@@ -380,7 +375,7 @@ public class MainGameController : MonoBehaviour {
 
     public void ShowSubLocationText(string text, float fadeOutInTime = 3f, float fadeOutTime = 1f) {
 
-        if (SubAreaLocation == null || text == ""  || SubAreaLocation.text == text) {
+        if (SubAreaLocation == null || text == "" || SubAreaLocation.text == text) {
 
             return;
 
@@ -425,61 +420,7 @@ public class MainGameController : MonoBehaviour {
 
     }
 
-    public void AreaCheck(AreaController _currentArea, List<AreaController> areasToLoad, Color backgroundColor, bool onlyShowNewSubareaText = false, string subAreaText = "") {
-
-        if (onlyShowNewSubareaText == true) {
-
-            MainGameController.current.ShowSubLocationText(subAreaText, 2f);
-
-            return;
-        }
-
-        string debug_log = "";
-        bool loadedLevel = false;
-        int i = 0;
-
-        currentArea = _currentArea;
-
-        foreach (AreaController area in MainGameController.current.levels) {
-
-            loadedLevel = false;
-            i = 0;
-
-            foreach (AreaController loadingArea in areasToLoad) {
-                
-                if (loadingArea.AreaName == area.AreaName) {
-
-                    debug_log += area.AreaName + ", ";
-
-                    area.LoadArea();
-                    loadedLevel = true;
-
-                    if (i == 0) {
-
-                        MainGameController.current.ShowMainLocationText(area.AreaName, 2f);
-                        MainGameController.current.ShowSubLocationText(subAreaText, 2f);
-
-                    }
-                }
-
-                i++;
-            }
-
-            if (loadedLevel == true) {
-
-                continue;
-
-            }
-
-            area.UnloadArea();
-
-        }
-
-        ChangeBackgroundColor(backgroundColor);
-
-    }
-
-    void ChangeBackgroundColor(Color newColor) {
+    public void ChangeBackgroundColor(Color newColor) {
 
         Color color = newColor;
 

@@ -2,22 +2,16 @@
 <game>
 
 <!--Player data.-->
-	<player saveName="saveDataName" saveTotalTime="23.7055" saveCurrentTimestamp="5/23/2018 4:09:45 PM" playerPositionX="6.363954" playerPositionY="8" playerPositionZ="-17.70349">
+	<player saveName="saveDataName" saveTotalTime="18.45093" saveCurrentTimestamp="6/6/2018 2:38:16 PM" playerPositionX="3.243928" playerPositionY="8" playerPositionZ="-16.86205">
 	</player>
 
 <!--This is the list of Collectables.-->
 	<collectables>
+		<collectable CollectableID="DOUBLE_JUMP" CollectableType="Ability" CollectableCollected="True" />
 	</collectables>
 
 <!--Interactables.-->
 	<interactables>
-		<interactable InteractableID="CastlePrisonDoor_Cell_Disabled_Closed_Player(3.8,0,1)" IsActivated="False" IsDisabled="True" IsLocked="False" />
-		<interactable InteractableID="CastlePrisonDoor_Cell (1)(9.4,0.0,-10.0)" IsActivated="True" IsDisabled="True" IsLocked="False" />
-		<interactable InteractableID="CastlePrisonDoor_Cell(3.8,0,-17)" IsActivated="False" IsDisabled="False" IsLocked="False" />
-		<interactable InteractableID="CastlePrisonDoor_Cell(9.400001,0,-1)" IsActivated="False" IsDisabled="False" IsLocked="False" />
-		<interactable InteractableID="Elevator(-96,-1,-19)" IsActivated="True" IsDisabled="False" IsLocked="False" />
-		<interactable InteractableID="CastlePrisonDoor_Cell (1)(9.4,0.0,-10.0)" IsActivated="True" IsDisabled="True" IsLocked="False" />
-		<interactable InteractableID="CastlePrisonDoor_Cell(3.8,0,-8)" IsActivated="False" IsDisabled="False" IsLocked="False" />
 	</interactables>
 
 </game>
